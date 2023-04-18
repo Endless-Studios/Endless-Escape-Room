@@ -36,4 +36,9 @@ public class PlayerInput : MonoBehaviour
     {
         return Input.GetButton("Jump");
     }
+
+    internal bool GetInteractPressed()
+    {
+        return Input.GetButton("Fire1");
+    }
 }
