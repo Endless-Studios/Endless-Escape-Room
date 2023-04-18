@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public CharacterController characterController;
+    [SerializeField] private CharacterController characterController = null;
+    [SerializeField] private PlayerInput playerInput = null;
 
-    [SerializeField]
-    private float walkSpeed = 1f;
-    [SerializeField]
-    private float acceleration = 1f;
+    [SerializeField] private float walkSpeed = 1f;
+    [SerializeField] private float accelerationTime = 1f;
+    [SerializeField] private float terminalVelocity = -60;
+    [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
 
+    private float yVelocity = 0;
     private bool isGrounded;
+    private Vector3 movementDampVelocity = Vector3.zero;
+    private Vector3 motion;
 
-    private Vector3 velocity = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +28,43 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(transform.position + Vector3.up * 0.01f, Vector3.down, 0.02f))
+        Ray groundedRay = new Ray(transform.position + characterController.center + Vector3.up * (0.01f - characterController.height / 2f), Vector3.down);
+        Debug.DrawLine(groundedRay.origin, groundedRay.origin + groundedRay.direction * 0.02f, Color.red);
+        if(Physics.Raycast(groundedRay, 0.02f))
         {
             isGrounded = true;
+            yVelocity = 0;
+            if(playerInput.GetJumpRequested())
+                yVelocity = jumpForce;//Temp simple jump
         }
         else
-        {
+        { 
             isGrounded = false;
+            yVelocity += Physics.gravity.y * Time.deltaTime;
+            yVelocity = Mathf.Max(yVelocity, terminalVelocity);
         }
-    }
 
-    public void Move(Vector3 moveDir)
-    {
-        characterController.Move(Vector3.SmoothDamp(characterController.velocity, moveDir * walkSpeed, ref velocity, acceleration) * Time.deltaTime);
+        Vector3 moveInput = playerInput.GetMovementInput();
+
+        //--Could go either way on this. Does playerInput communicate direction it intends to move? Or just wrapping input and letting character movement determine how to utilize that input?
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        Vector3 forwardRelativeMovement = moveInput.z * forward;
+        Vector3 rightRelativeMovement = moveInput.x * right;
+
+        Vector3 cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
+        moveInput = cameraRelativeMovement;
+        //--
+
+        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * walkSpeed, ref movementDampVelocity, accelerationTime);
+        motion.y = yVelocity;
+
+        characterController.Move(motion * Time.deltaTime);
     }
 }

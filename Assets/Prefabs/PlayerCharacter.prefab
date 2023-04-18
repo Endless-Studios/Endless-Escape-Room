@@ -102,8 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 2419621909708617996}
+  playerInput: {fileID: 8377813685331739176}
   walkSpeed: 1
-  acceleration: 0.15
+  accelerationTime: 0.15
 --- !u!1 &5845523689269721828
 GameObject:
   m_ObjectHideFlags: 0
