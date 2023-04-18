@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PickupableOutline
   - Water
   - UI
   - PostProcessing
-  - 
+  - RenderOnTop
   - 
   - 
   - 
