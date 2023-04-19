@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,23 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    //TODO convert all axis to be SerializedFields
+
+    bool lookEnabled = true;
+    bool moveEnabled = true;
+
+    private void Awake()
+    {
+        CinemachineCore.GetInputAxis = GetInputAxis;
+    }
+
+    private float GetInputAxis(string axisName)
+    {
+        if(lookEnabled)
+            return Input.GetAxis(axisName);
+        return 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,19 +44,44 @@ public class PlayerInput : MonoBehaviour
 
     internal Vector3 GetMovementInput()
     {
-        Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        moveDirection.Normalize();
+        if(moveEnabled)
+        {
+            Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            moveDirection.Normalize();
 
-        return moveDirection;
+            return moveDirection;
+        }
+        else
+            return Vector3.zero;
     }
 
     public bool GetJumpRequested()
     {
-        return Input.GetButton("Jump");
+        return moveEnabled && Input.GetButton("Jump");
     }
 
     internal bool GetInteractPressed()
     {
-        return Input.GetButton("Fire1");
+        return Input.GetButtonDown("Fire1");
+    }
+
+    public void SetLookControlsActive(bool active)
+    {
+        lookEnabled = active;
+    }
+
+    public void SetMoveCotrolsActive(bool active)
+    {
+        moveEnabled = active;
+    }
+
+    public Vector2 GetMouseInput()
+    {
+        return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+    }
+
+    public bool GetBackPressed()
+    {
+        return Input.GetButtonDown("Cancel");
     }
 }

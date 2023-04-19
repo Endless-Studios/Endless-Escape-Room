@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInteractor : MonoBehaviour
 {
@@ -9,16 +10,12 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] float interactDistance = 2;
     [SerializeField] bool debug = false;
     [SerializeField] LayerMask interactLayerMask;
-    
+
+    public UnityEvent<Interactable> OnItemInteracted = new UnityEvent<Interactable>();
+
     RaycastHit[] interactHits = new RaycastHit[1];
 
     Interactable lastHoveredInteractable = null;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -54,5 +51,6 @@ public class PlayerInteractor : MonoBehaviour
     private void Interact(Interactable interactable)
     {
         interactable.Interact();
+        OnItemInteracted.Invoke(interactable);
     }
 }

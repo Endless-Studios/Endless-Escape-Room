@@ -25,20 +25,39 @@ public class Interactable : MonoBehaviour
 
     bool isHighlighted = false;
 
+    private void Awake()
+    {
+        Unhighlight();
+    }
+
     internal void Unhighlight()
     {
-        gameObject.layer = LayerMask.NameToLayer(normalLayer);
+        SetLayerRecursive(transform, LayerMask.NameToLayer(normalLayer));
         isHighlighted = false;
     }
 
     internal void Highlight()
     {
-        gameObject.layer = LayerMask.NameToLayer(highlightLayer);
+        SetLayerRecursive(transform, LayerMask.NameToLayer(highlightLayer));
         isHighlighted = true;
+    }
+
+    static void SetLayerRecursive(Transform transform, int layer)
+    {
+        transform.gameObject.layer = layer;
+        int childCount = transform.childCount;
+        for(int childIndex = 0; childIndex < childCount; childIndex++)
+            SetLayerRecursive(transform.GetChild(childIndex), layer);
     }
 
     internal void Interact()
     {
         OnInteracted.Invoke();
+        InternalHandleInteract();
+    }
+
+    protected virtual void InternalHandleInteract()
+    {
+
     }
 }
