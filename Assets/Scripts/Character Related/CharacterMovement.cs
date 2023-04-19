@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
 
     private float yVelocity = 0;
-    private bool isGrounded;
+    //private bool isGrounded; //may need this later
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
 
@@ -32,14 +32,14 @@ public class CharacterMovement : MonoBehaviour
         Debug.DrawLine(groundedRay.origin, groundedRay.origin + groundedRay.direction * 0.02f, Color.red);
         if(Physics.Raycast(groundedRay, 0.02f))
         {
-            isGrounded = true;
+            //isGrounded = true;
             yVelocity = 0;
             if(playerInput.GetJumpRequested())
                 yVelocity = jumpForce;//Temp simple jump
         }
         else
         { 
-            isGrounded = false;
+            //isGrounded = false;
             yVelocity += Physics.gravity.y * Time.deltaTime;
             yVelocity = Mathf.Max(yVelocity, terminalVelocity);
         }

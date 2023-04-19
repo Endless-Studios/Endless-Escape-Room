@@ -84,4 +84,14 @@ public class PlayerInput : MonoBehaviour
     {
         return Input.GetButtonDown("Cancel");
     }
+
+    public bool GetPickupPressed()
+    {
+        return Input.GetButtonDown("Submit");
+    }
+
+    public bool GetDropPressed()
+    {
+        return Input.GetButtonDown("Fire2");
+    }
 }

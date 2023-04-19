@@ -13,15 +13,14 @@ public class Inspectable : Interactable
 
     private void Awake()
     {
+        CacheTransform();
+    }
+
+    protected void CacheTransform()
+    {
         initialRotation = visualsRoot.rotation;
         initialPosition = visualsRoot.position;
         initialParent = visualsRoot.transform.parent;
-    }
-
-    protected override void InternalHandleInteract()
-    {
-        base.InternalHandleInteract();
-
     }
 
     public void RestoreVisualsRoot()

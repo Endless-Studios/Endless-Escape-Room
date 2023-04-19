@@ -7,6 +7,7 @@ public class ItemInspector : MonoBehaviour
 {
     [SerializeField] private PlayerInteractor interactor = null;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private InventoryBase inventory;
     [SerializeField] private float attachOffset = 2;
     [SerializeField] private float inspectMoveTime = 0.5f;
     [SerializeField] private float rotationSpeed = 30;
@@ -52,23 +53,36 @@ public class ItemInspector : MonoBehaviour
         currentInspectable.VisualsRoot.transform.localRotation = Quaternion.identity;
         currentInspectable.VisualsRoot.transform.SetParent(null, true);
         bool backPressed = false;
-        while(backPressed == false)
+        bool pickupPressed = false;
+
+        Pickupable currentPickupable = currentInspectable as Pickupable;
+        while(backPressed == false && pickupPressed == false)
         {
             Vector2 mouseInput = playerInput.GetMouseInput();
             currentInspectable.VisualsRoot.transform.Rotate(Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
             currentInspectable.VisualsRoot.transform.Rotate(Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
             yield return null;
             backPressed = playerInput.GetBackPressed();
+            pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && CanPickupItem(currentPickupable);
         }
         if(backPressed)
         {
             currentInspectable.RestoreVisualsRoot();
             currentInspectable.IsInteractable = true;
-            currentInspectable = null;
         }
-        //TODO pickup functionality, if is pickupable
+        else if (pickupPressed)
+        {
+            currentInspectable.RestoreVisualsRoot();
+            inventory.PickupItem(currentPickupable);
+        }
+        currentInspectable = null;
         playerInput.SetLookControlsActive(true);
         playerInput.SetMoveCotrolsActive(true);
         inspectMoveCoroutine = null;
+    }
+
+    bool CanPickupItem(Pickupable pickupable)
+    {
+        return inventory != null && inventory.CanPickupItem(pickupable);
     }
 }
