@@ -59,6 +59,7 @@ public class SimpleInventory : InventoryBase
             ProjectHeldItem();
             if(playerInput.GetDropPressed())
             {
+                //TODO only for visuals, not collisions until we're done maybe?
                 currentPickupable.SetToNormalLayer();
                 if(currentSnappable)
                 {
@@ -99,12 +100,14 @@ public class SimpleInventory : InventoryBase
             }
             else
             {
+                currentSnappable = null;
                 targetPosition = hitInfo.point;
                 targetRotation = Quaternion.identity;
             }
         }
         else
         {
+            currentSnappable = null;
             targetPosition = Camera.main.transform.position + Camera.main.transform.forward * dropRaycastDistance;
             targetRotation = Quaternion.identity;
         }

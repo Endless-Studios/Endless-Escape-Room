@@ -67,7 +67,7 @@ public class ItemInspector : MonoBehaviour
             pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && CanPickupItem(currentPickupable);
         }
         if(backPressed)
-        {//Todo maybe move some of this into inspectable?
+        {//TODO maybe move some of this into inspectable?
             currentInspectable.RestoreVisualsRoot();
             currentInspectable.SetToNormalLayer();
             currentInspectable.IsInteractable = true;
