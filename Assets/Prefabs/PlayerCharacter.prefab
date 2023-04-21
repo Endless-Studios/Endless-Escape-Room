@@ -167,9 +167,10 @@ MonoBehaviour:
   dropRaycastDistance: 5
   dropRaycastMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 3071
   dropIndicatorMaterial: {fileID: 2100000, guid: e7abce1faa398224a99ca8781d612dd7,
     type: 2}
+  projectionSpeed: 10
 --- !u!1 &5845523689269721828
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +354,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 0.83815026, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -15,8 +15,8 @@ TagManager:
   - RenderOnTop
   - InteractableNoOutline
   - InspectedItem
-  - 
-  - 
+  - EditorOnly
+  - SnappableVolumes
   - 
   - 
   - 
