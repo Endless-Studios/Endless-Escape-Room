@@ -145,7 +145,7 @@ MonoBehaviour:
   interactor: {fileID: 6719100988358395642}
   playerInput: {fileID: 8377813685331739176}
   inventory: {fileID: 6419312489086153408}
-  attachOffset: 2
+  attachOffset: 0.3
   inspectMoveTime: 0.5
   rotationSpeed: 30
 --- !u!114 &6419312489086153408
@@ -353,7 +353,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3859112, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

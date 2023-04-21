@@ -8,8 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlacementIndicator
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a8d9f41a9006ce94aaeeeb38f4c842df,
+    type: 3}
   m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -19,8 +21,8 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - DepthOnly
   - SHADOWCASTER
+  - DepthOnly
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -82,9 +84,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Rim_Power: 0.57
     - _AlphaClip: 0
-    - _Blend: 0
+    - _Alpha_Clip: 0
+    - _Blend: 1
     - _BumpScale: 1
+    - _CastShadows: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -92,27 +97,39 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
+    - _Emission_Multiplier: 1.79
     - _EnvironmentReflections: 1
+    - _Fade_Out: 0.159
+    - _Fresnel_Power: 0.92
+    - _Glitch_Strength: 0.005
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Outline_Thickness: 0.0001
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0.625
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _Surface: 1
     - _WorkflowMode: 1
+    - _ZTest: 2
     - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors:
+    - Selection_Color: {r: 0, g: 1.562762, b: 10.68063, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.84313726}
     - _Color: {r: 1, g: 1, b: 1, a: 0.84313726}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Hologram_Color: {r: 5.647059, g: 11.231373, b: 11.984314, a: 0}
+    - _Outline_Color: {r: 0, g: 0.9221513, b: 0.4345216, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8744468232336133135
 MonoBehaviour:

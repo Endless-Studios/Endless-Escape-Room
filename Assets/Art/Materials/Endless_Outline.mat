@@ -89,7 +89,7 @@ Material:
     - _Fresnel_Power: 1
     - _Glitch_Strength: 0.1
     - _Height_Intensity: 0
-    - _Outline_Thickness: 0.006
+    - _Outline_Thickness: 0.001
     - _PS_Add: 0.5
     - _PS_Multiply: 0.5
     - _QueueControl: 0
@@ -97,7 +97,7 @@ Material:
     - _ReceiveShadows: 1
     - _Rim_Intensity: 1
     - _Rim_Power: 5
-    - _Smoothness: 0.131
+    - _Smoothness: 0.707
     - _SrcBlend: 1
     - _Surface: 0
     - _Wind_Speed: 0.1
