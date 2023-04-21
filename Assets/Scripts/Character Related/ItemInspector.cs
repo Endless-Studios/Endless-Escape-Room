@@ -40,6 +40,7 @@ public class ItemInspector : MonoBehaviour
         currentInspectable.IsInteractable = false;
         playerInput.SetLookControlsActive(false);
         playerInput.SetMoveCotrolsActive(false);
+        currentInspectable.SetToHeldLayer();
         Vector3 startPosition = currentInspectable.VisualsRoot.transform.position;
         Quaternion startRotation = currentInspectable.VisualsRoot.transform.localRotation;
         currentInspectable.VisualsRoot.transform.SetParent(Camera.main.transform, true);
@@ -66,15 +67,17 @@ public class ItemInspector : MonoBehaviour
             pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && CanPickupItem(currentPickupable);
         }
         if(backPressed)
-        {
+        {//Todo maybe move some of this into inspectable?
             currentInspectable.RestoreVisualsRoot();
+            currentInspectable.SetToNormalLayer();
             currentInspectable.IsInteractable = true;
         }
         else if (pickupPressed)
         {
-            currentInspectable.RestoreVisualsRoot();
             inventory.PickupItem(currentPickupable);
         }
+
+        yield return null;
         currentInspectable = null;
         playerInput.SetLookControlsActive(true);
         playerInput.SetMoveCotrolsActive(true);

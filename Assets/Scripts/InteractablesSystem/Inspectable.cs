@@ -11,6 +11,8 @@ public class Inspectable : Interactable
     Vector3 initialPosition;
     Transform initialParent;
 
+    const string inspectedLayer = "InspectedItem";
+
     private void Awake()
     {
         CacheTransform();
@@ -18,15 +20,20 @@ public class Inspectable : Interactable
 
     protected void CacheTransform()
     {
-        initialRotation = visualsRoot.rotation;
-        initialPosition = visualsRoot.position;
+        initialPosition = visualsRoot.localPosition;
+        initialRotation = visualsRoot.localRotation;
         initialParent = visualsRoot.transform.parent;
     }
 
     public void RestoreVisualsRoot()
     {
-        visualsRoot.transform.position = initialPosition;
-        visualsRoot.transform.rotation = initialRotation;
         visualsRoot.transform.SetParent(initialParent, true);
+        visualsRoot.transform.localPosition = initialPosition;
+        visualsRoot.transform.localRotation = initialRotation;
+    }
+
+    public void SetToHeldLayer()
+    {
+        SetLayerRecursive(transform, LayerMask.NameToLayer(inspectedLayer));
     }
 }

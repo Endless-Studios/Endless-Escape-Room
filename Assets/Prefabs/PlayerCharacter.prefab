@@ -164,6 +164,12 @@ MonoBehaviour:
   controller: {fileID: 2419621909708617996}
   holdLocalPosition: {x: 0.2, y: -0.2, z: 0.5}
   holdLocalRotation: {x: 0, y: 20, z: 0}
+  dropRaycastDistance: 5
+  dropRaycastMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  dropIndicatorMaterial: {fileID: 2100000, guid: e7abce1faa398224a99ca8781d612dd7,
+    type: 2}
 --- !u!1 &5845523689269721828
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +353,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.9788054, y: 1}
+    m_SensorSize: {x: 1.3859112, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

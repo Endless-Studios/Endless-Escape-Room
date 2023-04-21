@@ -32,8 +32,13 @@ public class Interactable : MonoBehaviour
 
     internal void Unhighlight()
     {
-        SetLayerRecursive(transform, LayerMask.NameToLayer(normalLayer));
+        SetToNormalLayer();
         isHighlighted = false;
+    }
+
+    public void SetToNormalLayer()
+    {
+        SetLayerRecursive(transform, LayerMask.NameToLayer(normalLayer));
     }
 
     internal void Highlight()
@@ -42,7 +47,7 @@ public class Interactable : MonoBehaviour
         isHighlighted = true;
     }
 
-    static void SetLayerRecursive(Transform transform, int layer)
+    protected static void SetLayerRecursive(Transform transform, int layer)
     {
         transform.gameObject.layer = layer;
         int childCount = transform.childCount;
