@@ -218,9 +218,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157168082}
-  m_LocalRotation: {x: -0, y: -0.13052624, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: -0.0139763355, y: 0.0771, z: 0.052160025}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
+  m_LocalRotation: {x: -0, y: -0.17364827, z: -0, w: 0.9848078}
+  m_LocalPosition: {x: -0.024846792, y: 0.07709998, z: 0.06829435}
+  m_LocalScale: {x: 0.050000004, y: 0.05, z: 0.20000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 325114410}
@@ -1452,9 +1452,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031978139}
-  m_LocalRotation: {x: -0, y: -0.13052624, z: -0, w: 0.9914449}
+  m_LocalRotation: {x: -0, y: -0.17364827, z: -0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.2, z: 0.05}
+  m_LocalScale: {x: 0.050000004, y: 0.2, z: 0.050000004}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 325114410}
@@ -2043,9 +2043,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428899759}
-  m_LocalRotation: {x: 0.70105743, y: -0.092296, z: 0.092296, w: 0.70105743}
-  m_LocalPosition: {x: -0.03770995, y: 0.07709998, z: 0.14073539}
-  m_LocalScale: {x: 0.025, y: 0.025000015, z: 0.025000013}
+  m_LocalRotation: {x: 0.6963643, y: -0.12278785, z: 0.12278785, w: 0.6963643}
+  m_LocalPosition: {x: -0.055775166, y: 0.07709998, z: 0.15332234}
+  m_LocalScale: {x: 0.025000002, y: 0.039360046, z: 0.025000028}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 325114410}
@@ -3005,8 +3005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTime: 0.05
-  finalLocalPosition: {x: -0.0085, y: 0.0771, z: 0.0316}
-  finalLocalRotation: {x: 0, y: -15, z: 0}
+  finalLocalPosition: {x: -0.0078, y: 0.07709998, z: 0.0216}
+  finalLocalRotation: {x: 0, y: -20, z: 0}
   finalLocalScale: {x: 0.05, y: 0.05, z: 0.2}
   targetTransform: {fileID: 157168083}
   OnAnimationFinished:
