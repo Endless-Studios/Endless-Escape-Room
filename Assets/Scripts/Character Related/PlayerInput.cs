@@ -63,7 +63,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetJumpRequested()
     {
-        return moveEnabled && Input.GetButton("Jump");
+        return moveEnabled && Input.GetButtonDown("Jump");
     }
 
     internal bool GetInteractPressed()
