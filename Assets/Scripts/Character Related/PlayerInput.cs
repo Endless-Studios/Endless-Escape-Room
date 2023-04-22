@@ -113,4 +113,9 @@ public class PlayerInput : MonoBehaviour
     {
         return Input.GetButtonDown("Fire2");
     }
+
+    public bool GetSprintHeld()
+    {
+        return Input.GetButton("Sprint");
+    }
 }

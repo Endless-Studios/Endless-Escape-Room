@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private PlayerInput playerInput = null;
 
     [SerializeField] private float walkSpeed = 1f;
+    [SerializeField] private float runSpeed = 3f;
     [SerializeField] private float accelerationTime = 1f;
     [SerializeField] private float terminalVelocity = -60;
     [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
@@ -16,6 +17,8 @@ public class CharacterMovement : MonoBehaviour
     //private bool isGrounded; //may need this later
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
+
+    float MoveSpeed => playerInput.GetSprintHeld() ? runSpeed : walkSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +67,7 @@ public class CharacterMovement : MonoBehaviour
             //--
 
         }
-        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * walkSpeed, ref movementDampVelocity, accelerationTime);
+        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * MoveSpeed, ref movementDampVelocity, accelerationTime);
         motion.y = yVelocity;
         characterController.Move(motion * Time.deltaTime);
     }
