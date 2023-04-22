@@ -13,10 +13,13 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] private float rotationSpeed = 30;
 
     Inspectable currentInspectable = null;
-    Coroutine inspectMoveCoroutine = null;
+    Coroutine inspectCoroutine = null;
+
+    public bool IsInspecting => currentInspectable != false;
 
     private void Start()
     {
+        //Maybe instead switch to a notification?
         interactor.OnItemInteracted.AddListener(HandleItemInteracted);
     }
 
@@ -24,19 +27,26 @@ public class ItemInspector : MonoBehaviour
     {
         if(interactable is Inspectable)
         {
-            if(currentInspectable != null)
-            {
-                Debug.LogError("Cannot interact with another inspectable while inspecting!");
-                return;
-            }
-            Inspectable inspectable = interactable as Inspectable;
-            currentInspectable = inspectable;
-            inspectMoveCoroutine = StartCoroutine(InspectInspectable());
+            InspectItem(interactable as Inspectable);
         }
+    }
+
+    internal void InspectItem(Inspectable inspectable)
+    {
+        if(currentInspectable != null)
+        {
+            Debug.LogError("Cannot interact with another inspectable while inspecting!");
+            return;
+        }
+        currentInspectable = inspectable;
+        inspectCoroutine = StartCoroutine(InspectInspectable());
     }
 
     IEnumerator InspectInspectable()
     {
+        Pickupable currentPickupable = currentInspectable as Pickupable;
+        bool inspectingHeldItem = currentPickupable && inventory.HeldItem == currentPickupable;
+
         currentInspectable.IsInteractable = false;
         playerInput.SetLookControlsActive(false);
         playerInput.SetMoveCotrolsActive(false);
@@ -56,7 +66,6 @@ public class ItemInspector : MonoBehaviour
         bool backPressed = false;
         bool pickupPressed = false;
 
-        Pickupable currentPickupable = currentInspectable as Pickupable;
         while(backPressed == false && pickupPressed == false)
         {
             Vector2 mouseInput = playerInput.GetMouseInput();
@@ -64,24 +73,38 @@ public class ItemInspector : MonoBehaviour
             currentInspectable.VisualsRoot.transform.Rotate(Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
             yield return null;
             backPressed = playerInput.GetBackPressed();
-            pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && CanPickupItem(currentPickupable);
+            pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && (CanPickupItem(currentPickupable) || inspectingHeldItem);
         }
-        if(backPressed)
-        {//TODO maybe move some of this into inspectable?
-            currentInspectable.RestoreVisualsRoot();
-            currentInspectable.SetToNormalLayer();
-            currentInspectable.IsInteractable = true;
-        }
-        else if (pickupPressed)
+        if(inspectingHeldItem)
         {
-            inventory.PickupItem(currentPickupable);
+            currentInspectable.RestoreVisualsRoot();
+            if(backPressed)
+                inventory.ActivateDropMode();
+            else if(pickupPressed)
+            {
+                //enter use mode if usable, otherwise, drop mode
+                if(currentPickupable is Useable == false)
+                    inventory.ActivateDropMode();
+            }
         }
-
+        else
+        {
+            if(backPressed)
+            {//TODO maybe move some of this into inspectable?
+                currentInspectable.RestoreVisualsRoot();
+                currentInspectable.SetToNormalLayer();
+                currentInspectable.IsInteractable = true;
+            }
+            else if(pickupPressed)
+            {
+                inventory.PickupItem(currentPickupable);
+            }
+        }
         yield return null;
         currentInspectable = null;
         playerInput.SetLookControlsActive(true);
         playerInput.SetMoveCotrolsActive(true);
-        inspectMoveCoroutine = null;
+        inspectCoroutine = null;
     }
 
     bool CanPickupItem(Pickupable pickupable)

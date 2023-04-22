@@ -8,45 +8,40 @@ using UnityEngine;
 /// </summary>
 public class SimpleInventory : InventoryBase
 {
+    //TODO move all the held item stuff into a new class for holding an item
+    //This "simple inventory" should just on pickup, store the single item, and tell the new class about the thing held, let it handle the rest. 
+    //Keep this about storage, not holding/using/inspecting/dropping!
+
     [SerializeField] PlayerInput playerInput;
     [SerializeField] CharacterController controller;
     [SerializeField] Vector3 holdLocalPosition = Vector3.forward;
     [SerializeField] Vector3 holdLocalRotation = Vector3.zero;
     [SerializeField] float dropRaycastDistance = 5;
     [SerializeField] LayerMask dropRaycastMask;
-    [SerializeField] Material dropIndicatorMaterial;
+    [SerializeField] ItemInspector itemInspector = null;
     [SerializeField] private float projectionSpeed = 1;
 
-    Pickupable currentPickupable = null;
-    GameObject projectedVisuals = null;
     Snappable currentSnappable = null;
 
-    public override Pickupable HeldItem => currentPickupable;
+    public override Pickupable HeldItem => heldPickupable;
 
     public override bool CanPickupItem(Pickupable pickupable)
     {
-        return currentPickupable == null;
+        return heldPickupable == null;
     }
 
     public override bool PickupItem(Pickupable pickupable)
     {
         if(CanPickupItem(pickupable))
         {
-            currentPickupable = pickupable;
-            currentPickupable.HandlePickedUp();
-            currentPickupable.transform.SetParent(Camera.main.transform, true);
-            currentPickupable.transform.localPosition = holdLocalPosition;
-            currentPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
-
-            //TODO is there a better way to clone the object? We really only want renderers
-            projectedVisuals = Instantiate(currentPickupable.VisualsRoot.gameObject);
-            Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
-            foreach(Renderer renderer in projectedRenderers)
-            {
-                //TODO Modify layers to not draw on special camera (we want to see it in world space)
-                renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                renderer.material = dropIndicatorMaterial;
-            }
+            heldPickupable = pickupable;
+            heldUseable = pickupable as Useable;
+            heldPickupable.HandlePickedUp();
+            heldPickupable.transform.SetParent(Camera.main.transform, true);
+            heldPickupable.transform.localPosition = holdLocalPosition;
+            heldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
+            if(pickupable is Useable == false)
+                ActivateDropMode();
             return true;
         }
         return false;
@@ -54,30 +49,40 @@ public class SimpleInventory : InventoryBase
 
     private void Update()
     {
-        if(currentPickupable)
+        if(heldPickupable)
         {
-            ProjectHeldItem();
+            if(projectedVisuals)
+                ProjectHeldItem();
             if(playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
-                currentPickupable.SetToNormalLayer();
+                heldPickupable.SetToNormalLayer();
                 if(currentSnappable)
                 {
-                    currentSnappable.SnapPickupable(currentPickupable);
+                    currentSnappable.SnapPickupable(heldPickupable);
                     currentSnappable = null;
                 }
                 else
                 {
-                    currentPickupable.transform.parent = null;
-                    currentPickupable.IsInteractable = true;
+                    heldPickupable.transform.parent = null;
+                    heldPickupable.IsInteractable = true;
                     //TODO account for transform from visualRoot to parent
-                    currentPickupable.transform.position = projectedVisuals.transform.position;
-                    currentPickupable.transform.rotation = Quaternion.identity;
-                    currentPickupable.HandleDropped();
+                    heldPickupable.transform.position = projectedVisuals.transform.position;
+                    heldPickupable.transform.rotation = Quaternion.identity;
+                    heldPickupable.HandleDropped();
                 }
 
-                Destroy(projectedVisuals);
-                currentPickupable = null;
+                ClearProjectedVisuals();
+                heldPickupable = null;
+                heldUseable = null;
+            }
+            else if(itemInspector.IsInspecting == false && HeldItem != null && playerInput.GetInspectPressed())
+            {
+                itemInspector.InspectItem(HeldItem);
+            }
+            else if (heldUseable && playerInput.GetInteractPressed())
+            {
+                heldUseable.Use();
             }
         }
     }
@@ -92,7 +97,7 @@ public class SimpleInventory : InventoryBase
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, dropRaycastDistance, dropRaycastMask))
         {
             Snappable snappable = hitInfo.collider.GetComponent<Snappable>();
-            if(snappable && snappable.AcceptsPickupable(currentPickupable))
+            if(snappable && snappable.AcceptsPickupable(heldPickupable))
             {
                 currentSnappable = snappable;
                 targetPosition = snappable.SnapTransform.position;

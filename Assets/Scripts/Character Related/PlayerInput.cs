@@ -55,6 +55,12 @@ public class PlayerInput : MonoBehaviour
             return Vector3.zero;
     }
 
+    internal bool GetInspectPressed()
+    {
+        //TODO switch to button
+        return Input.GetKeyDown(KeyCode.Tab);
+    }
+
     public bool GetJumpRequested()
     {
         return moveEnabled && Input.GetButton("Jump");

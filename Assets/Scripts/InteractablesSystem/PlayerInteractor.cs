@@ -28,7 +28,7 @@ public class PlayerInteractor : MonoBehaviour
         int hits = Physics.RaycastNonAlloc(interactRay, interactHits, interactDistance, interactLayerMask);
         if(hits > 0)
         {
-            hoveredInteractable = interactHits[0].collider.gameObject.GetComponent<Interactable>();
+            hoveredInteractable = interactHits[0].collider.gameObject.GetComponentInParent<Interactable>();
             if(hoveredInteractable != null && hoveredInteractable.IsInteractable == false)
                 hoveredInteractable = null;
         }

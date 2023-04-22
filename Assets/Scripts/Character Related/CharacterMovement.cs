@@ -45,26 +45,27 @@ public class CharacterMovement : MonoBehaviour
         }
 
         Vector3 moveInput = playerInput.GetMovementInput();
+        if(moveInput != Vector3.zero)
+        {
+            //--Could go either way on this. Does playerInput communicate direction it intends to move? Or just wrapping input and letting character movement determine how to utilize that input?
+            Vector3 forward = Camera.main.transform.forward;
+            Vector3 right = Camera.main.transform.right;
 
-        //--Could go either way on this. Does playerInput communicate direction it intends to move? Or just wrapping input and letting character movement determine how to utilize that input?
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
+            forward.y = 0;
+            right.y = 0;
+            forward = forward.normalized;
+            right = right.normalized;
 
-        forward.y = 0;
-        right.y = 0;
-        forward = forward.normalized;
-        right = right.normalized;
+            Vector3 forwardRelativeMovement = moveInput.z * forward;
+            Vector3 rightRelativeMovement = moveInput.x * right;
 
-        Vector3 forwardRelativeMovement = moveInput.z * forward;
-        Vector3 rightRelativeMovement = moveInput.x * right;
+            Vector3 cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
+            moveInput = cameraRelativeMovement;
+            //--
 
-        Vector3 cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
-        moveInput = cameraRelativeMovement;
-        //--
-
+        }
         motion = Vector3.SmoothDamp(characterController.velocity, moveInput * walkSpeed, ref movementDampVelocity, accelerationTime);
         motion.y = yVelocity;
-
         characterController.Move(motion * Time.deltaTime);
     }
 }
