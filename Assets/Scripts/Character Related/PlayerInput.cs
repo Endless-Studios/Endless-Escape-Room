@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] float jumpBufferTime = 0.25f;
     //TODO convert all axis to be SerializedFields
 
     bool lookEnabled = true;
     bool moveEnabled = true;
+    float lastJumpPressTime = -1;
 
     private void Awake()
     {
@@ -40,6 +42,10 @@ public class PlayerInput : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+        if(moveEnabled && Input.GetButtonDown("Jump"))
+        {
+            lastJumpPressTime = Time.time;
+        }
     }
 
     internal Vector3 GetMovementInput()
@@ -63,7 +69,14 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetJumpRequested()
     {
-        return moveEnabled && Input.GetButtonDown("Jump");
+        if(moveEnabled)
+        {
+            bool timingValid = lastJumpPressTime + jumpBufferTime >= Time.time;
+            lastJumpPressTime = -1;
+            return timingValid;
+        }
+        else
+            return false;
     }
 
     internal bool GetInteractPressed()
