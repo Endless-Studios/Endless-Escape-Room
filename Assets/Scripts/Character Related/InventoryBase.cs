@@ -16,6 +16,8 @@ public abstract class InventoryBase : MonoBehaviour
     protected Useable heldUseable = null;
     protected GameObject projectedVisuals = null;
 
+    protected bool IsDropMode => projectedVisuals != null;
+
     public void ActivateDropMode()
     {
         ClearProjectedVisuals();

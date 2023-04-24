@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d1fe037bec4584abefeff80dc46179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpBufferTime: 0.25
 --- !u!114 &5685148041957440190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +108,7 @@ MonoBehaviour:
   characterController: {fileID: 2419621909708617996}
   playerInput: {fileID: 8377813685331739176}
   walkSpeed: 1
+  runSpeed: 3
   accelerationTime: 0.15
   terminalVelocity: -60
   jumpForce: 5
@@ -127,7 +129,7 @@ MonoBehaviour:
   debug: 0
   interactLayerMask:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 265
   OnItemInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -372,7 +374,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83815026, y: 1}
+    m_SensorSize: {x: 1.6683761, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

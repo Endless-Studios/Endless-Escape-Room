@@ -53,7 +53,7 @@ public class SimpleInventory : InventoryBase
         {
             if(projectedVisuals)
                 ProjectHeldItem();
-            if(playerInput.GetDropPressed())
+            if(IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
                 heldPickupable.SetToNormalLayer();

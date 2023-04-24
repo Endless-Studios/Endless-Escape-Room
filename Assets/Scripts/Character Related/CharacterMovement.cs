@@ -18,6 +18,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
 
+    //TODO move into function, not as ternary operator
     float MoveSpeed => playerInput.GetSprintHeld() ? runSpeed : walkSpeed;
 
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TODO move to circle of raycasts
         Ray groundedRay = new Ray(transform.position + characterController.center + Vector3.up * (0.01f - characterController.height / 2f), Vector3.down);
         Debug.DrawLine(groundedRay.origin, groundedRay.origin + groundedRay.direction * 0.02f, Color.red);
         if(Physics.Raycast(groundedRay, 0.02f))
