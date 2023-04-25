@@ -21,6 +21,7 @@ public abstract class InventoryBase : MonoBehaviour
     public void ActivateDropMode()
     {
         ClearProjectedVisuals();
+        PlayerHUD.Instance.SetHeldScreenActive(true, true);
         //TODO is there a better way to clone the object? We really only want renderers
         projectedVisuals = Instantiate(heldPickupable.VisualsRoot.gameObject);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
@@ -37,5 +38,10 @@ public abstract class InventoryBase : MonoBehaviour
         if(projectedVisuals)
             Destroy(projectedVisuals);
         projectedVisuals = null;
+    }
+
+    internal void ReenterInspect()
+    {
+        PlayerHUD.Instance.SetHeldScreenActive(true, false);
     }
 }

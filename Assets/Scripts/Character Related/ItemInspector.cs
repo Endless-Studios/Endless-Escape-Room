@@ -65,7 +65,7 @@ public class ItemInspector : MonoBehaviour
         currentInspectable.VisualsRoot.transform.SetParent(null, true);
         bool backPressed = false;
         bool pickupPressed = false;
-
+        PlayerHUD.Instance.SetInspectScreenActive(true, currentPickupable != null);
         while(backPressed == false && pickupPressed == false)
         {
             Vector2 mouseInput = playerInput.GetMouseInput();
@@ -85,6 +85,8 @@ public class ItemInspector : MonoBehaviour
                 //enter use mode if usable, otherwise, drop mode
                 if(currentPickupable is Useable == false)
                     inventory.ActivateDropMode();
+                else
+                    inventory.ReenterInspect();
             }
         }
         else
@@ -100,6 +102,8 @@ public class ItemInspector : MonoBehaviour
                 inventory.PickupItem(currentPickupable);
             }
         }
+        PlayerHUD.Instance.SetInspectScreenActive(false);
+
         yield return null;
         currentInspectable = null;
         playerInput.SetLookControlsActive(true);

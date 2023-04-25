@@ -7,7 +7,11 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] bool isInteractable = true;
+    [SerializeField] string interactPromptText = string.Empty;
+    [SerializeField] string itemName = string.Empty;
     [SerializeField] UnityEvent OnInteracted = new UnityEvent();
+
+    protected virtual string DefaultInterationText => "Interact";
 
     public bool IsInteractable 
     { 
@@ -17,6 +21,26 @@ public class Interactable : MonoBehaviour
             if(value == false && isHighlighted)
                 Unhighlight();
             isInteractable = value;
+        }
+    }
+
+    public string InteractPrompt
+    {
+        get
+        {
+            if(string.IsNullOrWhiteSpace(interactPromptText))
+            {
+                if(string.IsNullOrWhiteSpace(itemName))
+                    return DefaultInterationText;
+                else
+                    return DefaultInterationText + " " + itemName;
+            }
+            else
+                return interactPromptText;
+        }
+        set
+        {
+            interactPromptText = value;
         }
     }
 

@@ -9,6 +9,8 @@ public class Pickupable : Inspectable
     [SerializeField] Rigidbody dropRigidbody;
     [SerializeField] Identifier[] identifiers;
 
+    protected override string DefaultInterationText => "Pickup";
+
     public UnityEvent OnPickedUp = new UnityEvent();
 
     public Identifier[] Identifiers { get => identifiers; }

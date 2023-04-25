@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Discus
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -418,6 +420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Discus
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -726,6 +730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Discus
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -1454,6 +1460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: Push Button
+  itemName: 
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -1597,6 +1605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Poster
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -1637,6 +1647,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
+        type: 3}
+      propertyPath: itemName
+      value: Tape
+      objectReference: {fileID: 0}
     - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
         type: 3}
       propertyPath: identifiers.Array.size
@@ -1758,6 +1773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Discus
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -2745,6 +2762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 0
+  interactPromptText: Eject Tape
+  itemName: 
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -3044,6 +3063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: Open/Close Door
+  itemName: 
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -3155,6 +3176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Gun
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []

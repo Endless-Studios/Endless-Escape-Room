@@ -40,8 +40,11 @@ public class SimpleInventory : InventoryBase
             heldPickupable.transform.SetParent(Camera.main.transform, true);
             heldPickupable.transform.localPosition = holdLocalPosition;
             heldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
-            if(pickupable is Useable == false)
+            if(pickupable is Useable)
+                PlayerHUD.Instance.SetHeldScreenActive(true, false);
+            else
                 ActivateDropMode();
+
             return true;
         }
         return false;
@@ -73,14 +76,16 @@ public class SimpleInventory : InventoryBase
                 }
 
                 ClearProjectedVisuals();
+                PlayerHUD.Instance.SetHeldScreenActive(false);
                 heldPickupable = null;
                 heldUseable = null;
             }
             else if(itemInspector.IsInspecting == false && HeldItem != null && playerInput.GetInspectPressed())
             {
+                PlayerHUD.Instance.SetHeldScreenActive(false);
                 itemInspector.InspectItem(HeldItem);
             }
-            else if (heldUseable && playerInput.GetInteractPressed())
+            else if (!IsDropMode && heldUseable && playerInput.GetInteractPressed())
             {
                 heldUseable.Use();
             }

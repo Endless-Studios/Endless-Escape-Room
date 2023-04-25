@@ -7,6 +7,8 @@ public class Inspectable : Interactable
     [SerializeField] Transform visualsRoot = null;
     public Transform VisualsRoot => visualsRoot;
 
+    protected override string DefaultInterationText => "Inspect";
+
     Quaternion initialRotation;
     Vector3 initialPosition;
     Transform initialParent;

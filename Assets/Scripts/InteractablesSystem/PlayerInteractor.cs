@@ -41,7 +41,12 @@ public class PlayerInteractor : MonoBehaviour
                 lastHoveredInteractable.Unhighlight();
             lastHoveredInteractable = hoveredInteractable;
             if(hoveredInteractable)
+            {
                 hoveredInteractable.Highlight();
+                PlayerHUD.Instance.SetInteractText(hoveredInteractable.InteractPrompt);
+            }
+            else
+                PlayerHUD.Instance.SetInteractText(string.Empty);
         }
         if (lastHoveredInteractable && playerInput.GetInteractPressed())
         {

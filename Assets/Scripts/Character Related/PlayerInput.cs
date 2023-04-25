@@ -82,7 +82,7 @@ public class PlayerInput : MonoBehaviour
 
     internal bool GetInteractPressed()
     {
-        return Input.GetButtonDown("Fire1");
+        return Input.GetButtonDown("Interact") || Input.GetButtonDown("Pickup");
     }
 
     public void SetLookControlsActive(bool active)
@@ -102,17 +102,17 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetBackPressed()
     {
-        return Input.GetButtonDown("Cancel");
+        return Input.GetButtonDown("Cancel") || Input.GetButton("Drop");
     }
 
     public bool GetPickupPressed()
     {
-        return Input.GetButtonDown("Submit");
+        return Input.GetButtonDown("Pickup");
     }
 
     public bool GetDropPressed()
     {
-        return Input.GetButtonDown("Fire2");
+        return Input.GetButtonDown("Drop");
     }
 
     public bool GetSprintHeld()
