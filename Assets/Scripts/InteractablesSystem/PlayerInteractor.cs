@@ -13,7 +13,7 @@ public class PlayerInteractor : MonoBehaviour
 
     public UnityEvent<Interactable> OnItemInteracted = new UnityEvent<Interactable>();
 
-    RaycastHit[] interactHits = new RaycastHit[1];
+    RaycastHit interactHit;
 
     Interactable lastHoveredInteractable = null;
 
@@ -25,10 +25,11 @@ public class PlayerInteractor : MonoBehaviour
             Debug.DrawLine(interactRay.origin, interactRay.origin + interactRay.direction * interactDistance, Color.blue);
 
         Interactable hoveredInteractable = null;
-        int hits = Physics.RaycastNonAlloc(interactRay, interactHits, interactDistance, interactLayerMask);
-        if(hits > 0)
+        if(Physics.Raycast(interactRay, out interactHit, interactDistance, interactLayerMask))
         {
-            hoveredInteractable = interactHits[0].collider.gameObject.GetComponentInParent<Interactable>();
+            hoveredInteractable = interactHit.collider.gameObject.GetComponentInParent<Interactable>();
+            if(debug)
+                Debug.Log(interactHit.collider.gameObject.name);
             if(hoveredInteractable != null && hoveredInteractable.IsInteractable == false)
                 hoveredInteractable = null;
         }
