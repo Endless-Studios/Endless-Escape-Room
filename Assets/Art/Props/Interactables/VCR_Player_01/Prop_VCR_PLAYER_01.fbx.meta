@@ -3,7 +3,12 @@ guid: 230fd3c899051da4ebcedabe36d46bfc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VCR
+    second: {fileID: 2100000, guid: 9e2d3928eb4e44649bcb0fa28c644a48, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
