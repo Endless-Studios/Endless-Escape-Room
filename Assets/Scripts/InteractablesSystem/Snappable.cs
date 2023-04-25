@@ -82,8 +82,13 @@ public class Snappable : MonoBehaviour
         OnObjectSnapped.Invoke(currentPickupable);
         if(isObjectUnsnappble)
         {
-            currentPickupable.IsInteractable = true;
-            currentPickupable.OnPickedUp.AddListener(HandleCurrentPickupableRemoved);
+            MakeObjectUnsnappable();
         }
+    }
+
+    public void MakeObjectUnsnappable()
+    {
+        currentPickupable.IsInteractable = true;
+        currentPickupable.OnPickedUp.AddListener(HandleCurrentPickupableRemoved);
     }
 }

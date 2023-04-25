@@ -831,7 +831,19 @@ MonoBehaviour:
         m_CallState: 2
   OnReverseAnimationFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1640638044}
+        m_TargetAssemblyTypeName: Snappable, Assembly-CSharp
+        m_MethodName: MakeObjectUnsnappable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &541024697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1714,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4528828411e8fa4d9b5fff762d70673, type: 3}
+--- !u!65 &1152758774
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440608386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27, y: 0.0877471, z: 0.4289544}
+  m_Center: {x: 0.005, y: 0.04387095, z: -0.000000059604645}
 --- !u!1 &1184250171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,6 +2190,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 2.0000007, z: 1.0000006}
   m_Center: {x: 0.000000059604645, y: 1.4131893e-15, z: -0.000000089406996}
+--- !u!1 &1440608386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 230fd3c899051da4ebcedabe36d46bfc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1787877639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1443001194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2455,7 @@ MonoBehaviour:
   requirementType: 0
   snapMoveTime: 0.25
   attachTransform: {fileID: 530663002}
-  isObjectUnsnappble: 1
+  isObjectUnsnappble: 0
   OnObjectSnapped:
     m_PersistentCalls:
       m_Calls:
@@ -2432,6 +2463,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1787877642}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: set_IsInteractable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2701,7 +2744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInteractable: 1
+  isInteractable: 0
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -2729,6 +2772,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1787877642}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: set_IsInteractable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &1787877646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787877641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005, y: 0.06, z: 0.08}
+  m_Center: {x: -0.1383999, y: 0.055753253, z: -0.15111698}
 --- !u!1 &1917980244
 GameObject:
   m_ObjectHideFlags: 0
