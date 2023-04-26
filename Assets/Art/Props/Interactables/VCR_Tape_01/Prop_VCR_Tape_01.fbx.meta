@@ -2,8 +2,21 @@ fileFormatVersion: 2
 guid: 32c63086f5ebceb4bb814314d754fe12
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
-  externalObjects: {}
+  internalIDToNameTable:
+  - first:
+      74: -623603649343465320
+    second: Scene
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic Clear
+    second: {fileID: 2100000, guid: 79caadd66b24cfb4d96d19b35e1cf212, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VHS_Tape_01
+    second: {fileID: 2100000, guid: 372a988a394c7eb40b7ab4e1cee37b05, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

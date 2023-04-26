@@ -69,8 +69,8 @@ public class ItemInspector : MonoBehaviour
         while(backPressed == false && pickupPressed == false)
         {
             Vector2 mouseInput = playerInput.GetMouseInput();
-            currentInspectable.VisualsRoot.transform.Rotate(Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
-            currentInspectable.VisualsRoot.transform.Rotate(Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
+            currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
+            currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
             yield return null;
             backPressed = playerInput.GetBackPressed();
             pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && (CanPickupItem(currentPickupable) || inspectingHeldItem);

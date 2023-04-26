@@ -150,7 +150,7 @@ MonoBehaviour:
   inventory: {fileID: 6419312489086153408}
   attachOffset: 0.3
   inspectMoveTime: 0.5
-  rotationSpeed: 30
+  rotationSpeed: 240
 --- !u!114 &6419312489086153408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6683761, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
