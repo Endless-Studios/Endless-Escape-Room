@@ -33,6 +33,7 @@ public class HeldItemManager : MonoBehaviour
         {
             PlayerHUD.Instance.SetHeldScreenActive(true, false);
             playerInput.InteractEnabled = false;
+            playerInput.HeldControlsEnabled = true;
         }
         else
             ActivateDropMode();

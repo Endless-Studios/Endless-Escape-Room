@@ -70,7 +70,8 @@ public class ItemInspector : MonoBehaviour
         bool pickupPressed = false;
         MouseLockHandler.Instance.ClaimMouseCursor(this);
         PlayerHUD.Instance.SetHeldScreenActive(false);
-        PlayerHUD.Instance.SetInspectScreenActive(true, currentPickupable != null && inventory.CanPickupItem(currentPickupable));
+        bool canPickup = currentPickupable != null && (inventory.CanPickupItem(currentPickupable) || heldItemManager.HeldPickupable == currentPickupable);
+        PlayerHUD.Instance.SetInspectScreenActive(true, canPickup);
         bool rotationHeld = false;
         while(backPressed == false && pickupPressed == false)
         {
