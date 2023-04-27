@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class InventoryBase : MonoBehaviour
 {
     [SerializeField] Material dropIndicatorMaterial;
+    [SerializeField] protected PlayerInput playerInput;
 
     public abstract Pickupable HeldItem { get; }
 
@@ -20,9 +21,10 @@ public abstract class InventoryBase : MonoBehaviour
 
     public void ActivateDropMode()
     {
+        playerInput.InteractEnabled = true;
         ClearProjectedVisuals();
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
-        //TODO is there a better way to clone the object? We really only want renderers
+        //TODO is there a better way to clone the object? We really only want renderers getting colliders actually causes bugs
         projectedVisuals = Instantiate(heldPickupable.VisualsRoot.gameObject);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in projectedRenderers)

@@ -9,8 +9,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] float jumpBufferTime = 0.25f;
     //TODO convert all axis to be SerializedFields
 
-    bool lookEnabled = true;
-    bool moveEnabled = true;
+    public bool InteractEnabled { get; set; } = true;
+    public bool LookEnabled { get; set; } = true;
+    public bool MoveEnabled { get; set; } = true;
     float lastJumpPressTime = -1;
 
     private void Awake()
@@ -20,30 +21,15 @@ public class PlayerInput : MonoBehaviour
 
     private float GetInputAxis(string axisName)
     {
-        if(lookEnabled)
+        if(LookEnabled)
             return Input.GetAxis(axisName);
         return 0;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TODO move elsewhere
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        if(moveEnabled && Input.GetButtonDown("Jump"))
+        if(MoveEnabled && Input.GetButtonDown("Jump"))
         {
             lastJumpPressTime = Time.time;
         }
@@ -51,7 +37,7 @@ public class PlayerInput : MonoBehaviour
 
     internal Vector3 GetMovementInput()
     {
-        if(moveEnabled)
+        if(MoveEnabled)
         {
             Vector3 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             moveDirection.Normalize();
@@ -70,7 +56,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetJumpRequested()
     {
-        if(moveEnabled)
+        if(MoveEnabled)
         {
             bool timingValid = lastJumpPressTime + jumpBufferTime >= Time.time;
             lastJumpPressTime = -1;
@@ -82,17 +68,7 @@ public class PlayerInput : MonoBehaviour
 
     internal bool GetInteractPressed()
     {
-        return Input.GetButtonDown("Interact") || Input.GetButtonDown("Pickup");
-    }
-
-    public void SetLookControlsActive(bool active)
-    {
-        lookEnabled = active;
-    }
-
-    public void SetMoveCotrolsActive(bool active)
-    {
-        moveEnabled = active;
+        return InteractEnabled && (Input.GetButtonDown("Interact") || Input.GetButtonDown("Pickup"));
     }
 
     public Vector2 GetMouseInput()
@@ -118,5 +94,20 @@ public class PlayerInput : MonoBehaviour
     public bool GetSprintHeld()
     {
         return Input.GetButton("Sprint");
+    }
+
+    internal bool GetRotationButtonUp()
+    {
+        return Input.GetButtonUp("Interact");
+    }
+
+    internal bool GetRotationButtonDown()
+    {
+        return Input.GetButtonDown("Interact");
+    }
+
+    public bool GetUseButtonDown()
+    {
+        return Input.GetButtonDown("Interact");
     }
 }

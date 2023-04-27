@@ -25,7 +25,7 @@ public class PlayerInteractor : MonoBehaviour
             Debug.DrawLine(interactRay.origin, interactRay.origin + interactRay.direction * interactDistance, Color.blue);
 
         Interactable hoveredInteractable = null;
-        if(Physics.Raycast(interactRay, out interactHit, interactDistance, interactLayerMask))
+        if(playerInput.InteractEnabled && Physics.Raycast(interactRay, out interactHit, interactDistance, interactLayerMask))
         {
             hoveredInteractable = interactHit.collider.gameObject.GetComponentInParent<Interactable>();
             if(debug)

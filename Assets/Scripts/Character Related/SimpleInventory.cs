@@ -12,7 +12,6 @@ public class SimpleInventory : InventoryBase
     //This "simple inventory" should just on pickup, store the single item, and tell the new class about the thing held, let it handle the rest. 
     //Keep this about storage, not holding/using/inspecting/dropping!
 
-    [SerializeField] PlayerInput playerInput;
     [SerializeField] CharacterController controller;
     [SerializeField] Vector3 holdLocalPosition = Vector3.forward;
     [SerializeField] Vector3 holdLocalRotation = Vector3.zero;
@@ -41,7 +40,10 @@ public class SimpleInventory : InventoryBase
             heldPickupable.transform.localPosition = holdLocalPosition;
             heldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
             if(pickupable is Useable)
+            {
                 PlayerHUD.Instance.SetHeldScreenActive(true, false);
+                playerInput.InteractEnabled = false;
+            }
             else
                 ActivateDropMode();
 
@@ -85,7 +87,7 @@ public class SimpleInventory : InventoryBase
                 PlayerHUD.Instance.SetHeldScreenActive(false);
                 itemInspector.InspectItem(HeldItem);
             }
-            else if (!IsDropMode && heldUseable && playerInput.GetInteractPressed())
+            else if (!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
             {
                 heldUseable.Use();
             }

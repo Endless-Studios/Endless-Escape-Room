@@ -48,8 +48,9 @@ public class ItemInspector : MonoBehaviour
         bool inspectingHeldItem = currentPickupable && inventory.HeldItem == currentPickupable;
 
         currentInspectable.IsInteractable = false;
-        playerInput.SetLookControlsActive(false);
-        playerInput.SetMoveCotrolsActive(false);
+        playerInput.InteractEnabled = false;
+        playerInput.LookEnabled = false;
+        playerInput.MoveEnabled = false;
         currentInspectable.SetToHeldLayer();
         Vector3 startPosition = currentInspectable.VisualsRoot.transform.position;
         Quaternion startRotation = currentInspectable.VisualsRoot.transform.localRotation;
@@ -65,12 +66,27 @@ public class ItemInspector : MonoBehaviour
         currentInspectable.VisualsRoot.transform.SetParent(null, true);
         bool backPressed = false;
         bool pickupPressed = false;
+        MouseLockHandler.Instance.ClaimMouseCursor(this);
         PlayerHUD.Instance.SetInspectScreenActive(true, currentPickupable != null);
+        bool rotationHeld = false;
         while(backPressed == false && pickupPressed == false)
         {
-            Vector2 mouseInput = playerInput.GetMouseInput();
-            currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
-            currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
+            if(playerInput.GetRotationButtonDown())
+            {
+                rotationHeld = true;
+                MouseLockHandler.Instance.ReleaseMouseCursor(this);
+            }
+            else if (playerInput.GetRotationButtonUp())
+            {
+                rotationHeld = false;
+                MouseLockHandler.Instance.ClaimMouseCursor(this);
+            }
+            if(rotationHeld)
+            {
+                Vector2 mouseInput = playerInput.GetMouseInput();
+                currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
+                currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
+            }
             yield return null;
             backPressed = playerInput.GetBackPressed();
             pickupPressed = currentPickupable != null && playerInput.GetPickupPressed() && (CanPickupItem(currentPickupable) || inspectingHeldItem);
@@ -91,6 +107,7 @@ public class ItemInspector : MonoBehaviour
         }
         else
         {
+            playerInput.InteractEnabled = true;
             if(backPressed)
             {//TODO maybe move some of this into inspectable?
                 currentInspectable.RestoreVisualsRoot();
@@ -103,11 +120,12 @@ public class ItemInspector : MonoBehaviour
             }
         }
         PlayerHUD.Instance.SetInspectScreenActive(false);
+        MouseLockHandler.Instance.ReleaseMouseCursor(this);
 
         yield return null;
         currentInspectable = null;
-        playerInput.SetLookControlsActive(true);
-        playerInput.SetMoveCotrolsActive(true);
+        playerInput.LookEnabled = true;
+        playerInput.MoveEnabled = true;
         inspectCoroutine = null;
     }
 
