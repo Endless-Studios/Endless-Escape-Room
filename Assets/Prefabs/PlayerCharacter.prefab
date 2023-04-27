@@ -113,6 +113,9 @@ MonoBehaviour:
   accelerationTime: 0.15
   terminalVelocity: -60
   jumpForce: 5
+  groundedLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &6719100988358395642
 MonoBehaviour:
   m_ObjectHideFlags: 0

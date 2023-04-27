@@ -12,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float accelerationTime = 1f;
     [SerializeField] private float terminalVelocity = -60;
     [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
+    [SerializeField] private LayerMask groundedLayerMask;
 
     private float yVelocity = 0;
     //private bool isGrounded; //may need this later
@@ -35,7 +36,7 @@ public class CharacterMovement : MonoBehaviour
         //TODO move to circle of raycasts
         Ray groundedRay = new Ray(transform.position + characterController.center + Vector3.up * (0.01f - characterController.height / 2f), Vector3.down);
         Debug.DrawLine(groundedRay.origin, groundedRay.origin + groundedRay.direction * 0.02f, Color.red);
-        if(Physics.Raycast(groundedRay, 0.02f))
+        if(Physics.Raycast(groundedRay, 0.02f, groundedLayerMask))
         {
             //isGrounded = true;
             yVelocity = 0;
