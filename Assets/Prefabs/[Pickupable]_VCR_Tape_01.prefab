@@ -93,12 +93,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactPromptText: 
+  itemName: Tape
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
   visualsRoot: {fileID: 4283165232734335160}
   dropRigidbody: {fileID: 4283165234517753015}
-  identifiers: []
+  identifiers:
+  - identifier: VCR Tape
+  OnPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &4283165234517753015
 Rigidbody:
   m_ObjectHideFlags: 0

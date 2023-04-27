@@ -577,6 +577,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7307238664253114075, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7846154
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bd0166003eb95042908a281e57794c0, type: 3}
 --- !u!1 &410087039
@@ -1045,26 +1050,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: itemName
-      value: Tape
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: identifiers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: identifiers.Array.data[0].identifier
-      value: VCR Tape
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283165234517753009, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4283165234517753010, guid: b4528828411e8fa4d9b5fff762d70673,
         type: 3}
       propertyPath: m_RootOrder
@@ -1736,26 +1721,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: itemName
-      value: Tape
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: identifiers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283165234517753008, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: identifiers.Array.data[0].identifier
-      value: VCR Tape
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283165234517753009, guid: b4528828411e8fa4d9b5fff762d70673,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4283165234517753010, guid: b4528828411e8fa4d9b5fff762d70673,
         type: 3}
       propertyPath: m_RootOrder
