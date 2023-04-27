@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6419312489086153408}
   - component: {fileID: 4157247682571816759}
   - component: {fileID: 2350323757107018741}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 0.6195286, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 1656773749985587249}
   - component: {fileID: 5880069507874810064}
   - component: {fileID: 6428004838303394808}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerVisualTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8976405063962876992}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: VisualsRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88013906174402261}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CameraRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
