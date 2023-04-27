@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7485675807474701852}
   - component: {fileID: 6419312489086153408}
   - component: {fileID: 4157247682571816759}
+  - component: {fileID: 2350323757107018741}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   interactor: {fileID: 6719100988358395642}
   playerInput: {fileID: 8377813685331739176}
   inventory: {fileID: 6419312489086153408}
+  heldItemManager: {fileID: 2350323757107018741}
   attachOffset: 0.3
   inspectMoveTime: 0.5
   rotationSpeed: 240
@@ -163,18 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0045beb93075b42ad0e978a56da72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropIndicatorMaterial: {fileID: 2100000, guid: e7abce1faa398224a99ca8781d612dd7,
-    type: 2}
-  playerInput: {fileID: 8377813685331739176}
-  controller: {fileID: 2419621909708617996}
-  holdLocalPosition: {x: 0.2, y: -0.2, z: 0.5}
-  holdLocalRotation: {x: 0, y: 20, z: 0}
-  dropRaycastDistance: 5
-  dropRaycastMask:
-    serializedVersion: 2
-    m_Bits: 3071
-  itemInspector: {fileID: 7485675807474701852}
-  projectionSpeed: 10
+  heldItemManager: {fileID: 2350323757107018741}
 --- !u!54 &4157247682571816759
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,6 +182,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2350323757107018741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419621909708617998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7532276ed0da0ae4aaebcb74a7bc4a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropIndicatorMaterial: {fileID: 2100000, guid: e7abce1faa398224a99ca8781d612dd7,
+    type: 2}
+  playerInput: {fileID: 8377813685331739176}
+  holdLocalPosition: {x: 0.2, y: -0.5, z: 0.7}
+  holdLocalRotation: {x: 0, y: 20, z: 0}
+  dropRaycastDistance: 5
+  dropRaycastMask:
+    serializedVersion: 2
+    m_Bits: 2817
+  itemInspector: {fileID: 7485675807474701852}
+  projectionSpeed: 10
 --- !u!1 &5845523689269721828
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +388,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.0390625, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

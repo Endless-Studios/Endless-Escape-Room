@@ -8,6 +8,7 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] private PlayerInteractor interactor = null;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InventoryBase inventory;
+    [SerializeField] private HeldItemManager heldItemManager;
     [SerializeField] private float attachOffset = 2;
     [SerializeField] private float inspectMoveTime = 0.5f;
     [SerializeField] private float rotationSpeed = 30;
@@ -45,12 +46,13 @@ public class ItemInspector : MonoBehaviour
     IEnumerator InspectInspectable()
     {
         Pickupable currentPickupable = currentInspectable as Pickupable;
-        bool inspectingHeldItem = currentPickupable && inventory.HeldItem == currentPickupable;
+        bool inspectingHeldItem = currentPickupable && heldItemManager.HeldPickupable == currentPickupable;
 
         currentInspectable.IsInteractable = false;
         playerInput.InteractEnabled = false;
         playerInput.LookEnabled = false;
         playerInput.MoveEnabled = false;
+        playerInput.HeldControlsEnabled = false;
         currentInspectable.SetToHeldLayer();
         Vector3 startPosition = currentInspectable.VisualsRoot.transform.position;
         Quaternion startRotation = currentInspectable.VisualsRoot.transform.localRotation;
@@ -67,7 +69,8 @@ public class ItemInspector : MonoBehaviour
         bool backPressed = false;
         bool pickupPressed = false;
         MouseLockHandler.Instance.ClaimMouseCursor(this);
-        PlayerHUD.Instance.SetInspectScreenActive(true, currentPickupable != null);
+        PlayerHUD.Instance.SetHeldScreenActive(false);
+        PlayerHUD.Instance.SetInspectScreenActive(true, currentPickupable != null && inventory.CanPickupItem(currentPickupable));
         bool rotationHeld = false;
         while(backPressed == false && pickupPressed == false)
         {
@@ -95,18 +98,20 @@ public class ItemInspector : MonoBehaviour
         {
             currentInspectable.RestoreVisualsRoot();
             if(backPressed)
-                inventory.ActivateDropMode();
+                heldItemManager.ActivateDropMode();
             else if(pickupPressed)
             {
                 //enter use mode if usable, otherwise, drop mode
                 if(currentPickupable is Useable == false)
-                    inventory.ActivateDropMode();
+                    heldItemManager.ActivateDropMode();
                 else
-                    inventory.ReenterInspect();
+                    heldItemManager.ReenterHeld();
             }
         }
         else
         {
+            if(heldItemManager.HeldPickupable)
+                heldItemManager.ReenterHeld();
             playerInput.InteractEnabled = true;
             if(backPressed)
             {//TODO maybe move some of this into inspectable?

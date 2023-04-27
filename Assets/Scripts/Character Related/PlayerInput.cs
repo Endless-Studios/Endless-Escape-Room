@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     public bool InteractEnabled { get; set; } = true;
     public bool LookEnabled { get; set; } = true;
     public bool MoveEnabled { get; set; } = true;
+    public bool HeldControlsEnabled { get; set; } = true;
     float lastJumpPressTime = -1;
 
     private void Awake()
@@ -88,7 +89,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetDropPressed()
     {
-        return Input.GetButtonDown("Drop");
+        return HeldControlsEnabled && Input.GetButtonDown("Drop");
     }
 
     public bool GetSprintHeld()
@@ -108,6 +109,6 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetUseButtonDown()
     {
-        return Input.GetButtonDown("Interact");
+        return HeldControlsEnabled && Input.GetButtonDown("Interact");
     }
 }
