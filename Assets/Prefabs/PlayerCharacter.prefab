@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2419621909708618035}
   - component: {fileID: 2419621909708617996}
   - component: {fileID: 82908347484867682}
+  - component: {fileID: 761649984126699673}
   - component: {fileID: 8377813685331739176}
   - component: {fileID: 5685148041957440190}
   - component: {fileID: 6719100988358395642}
@@ -81,6 +82,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &761649984126699673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419621909708617998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72d00566ca5eeb49a0f66a5f7002519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assignLocalPlayer: 1
+  playerInput: {fileID: 8377813685331739176}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +406,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.6195286, y: 1}
+    m_SensorSize: {x: 1.7575758, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

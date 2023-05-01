@@ -20,6 +20,8 @@ public class CameraFocus : MonoBehaviour
     {
         if(isFocused == false)
         {
+            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = false;
+            
             isFocused = true;
             focusCamera.Priority = FOCUSED_PRIORITY;
             OnFocused.Invoke();
@@ -32,6 +34,7 @@ public class CameraFocus : MonoBehaviour
     {
         if(isFocused)
         {
+            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = true;
             isFocused = false;
             focusCamera.Priority = UNFOCUSED_PRIORITY;
             OnUnfocused.Invoke();
