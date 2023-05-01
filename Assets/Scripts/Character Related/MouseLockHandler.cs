@@ -6,6 +6,8 @@ public class MouseLockHandler : MonoBehaviourSingleton<MouseLockHandler>
 {
     List<object> reservedList = new List<object>();
 
+    public bool IsMouseLocked => reservedList.Count == 0;
+
     protected override void Awake()
     {
         base.Awake();

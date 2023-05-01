@@ -72,6 +72,11 @@ public class PlayerInput : MonoBehaviour
         return InteractEnabled && (Input.GetButtonDown("Interact") || Input.GetButtonDown("Pickup"));
     }
 
+    internal bool GetInteractReleased()
+    {
+        return Input.GetButtonUp("Interact") || Input.GetButtonUp("Pickup");
+    }
+
     public Vector2 GetMouseInput()
     {
         return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
