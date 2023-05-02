@@ -16,6 +16,8 @@ public class HeldItemManager : MonoBehaviour
 
     Useable heldUseable = null;
     GameObject projectedVisuals = null;
+    Bounds projectedVisualsBounds;
+    Vector3 projectedVisualsBoundsOffset;
     Snappable currentSnappable = null;
 
     public Pickupable HeldPickupable { get; private set; }
@@ -29,7 +31,7 @@ public class HeldItemManager : MonoBehaviour
         HeldPickupable.transform.SetParent(Camera.main.transform, true);
         HeldPickupable.transform.localPosition = holdLocalPosition;
         HeldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
-        if(pickupable is Useable)
+        if (pickupable is Useable)
         {
             PlayerHUD.Instance.SetHeldScreenActive(true, false);
             playerInput.InteractEnabled = false;
@@ -47,18 +49,29 @@ public class HeldItemManager : MonoBehaviour
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
         //TODO is there a better way to clone the object? We really only want renderers getting colliders actually causes bugs
         projectedVisuals = Instantiate(HeldPickupable.VisualsRoot.gameObject);
+        projectedVisualsBoundsOffset = projectedVisualsBounds.center - projectedVisuals.transform.position;
+
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
-        foreach(Renderer renderer in projectedRenderers)
+
+        projectedVisualsBounds = CalculateBounds(projectedRenderers);
+
+        foreach (Renderer renderer in projectedRenderers)
         {
             //TODO Modify layers to not draw on special camera (we want to see it in world space)
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             renderer.material = dropIndicatorMaterial;
         }
+
+        Collider[] projectedColliders = projectedVisuals.GetComponentsInChildren<Collider>();
+        foreach (Collider collider in projectedColliders)
+        {
+            collider.enabled = false;
+        }
     }
 
     protected void ClearProjectedVisuals()
     {
-        if(projectedVisuals)
+        if (projectedVisuals)
             Destroy(projectedVisuals);
         projectedVisuals = null;
     }
@@ -71,15 +84,15 @@ public class HeldItemManager : MonoBehaviour
 
     private void Update()
     {
-        if(HeldPickupable)
+        if (HeldPickupable)
         {
-            if(projectedVisuals)
+            if (projectedVisuals)
                 ProjectHeldItem();
-            if(IsDropMode && playerInput.GetDropPressed())
+            if (IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
                 HeldPickupable.SetToNormalLayer();
-                if(currentSnappable)
+                if (currentSnappable)
                 {
                     currentSnappable.SnapPickupable(HeldPickupable);
                     currentSnappable = null;
@@ -99,12 +112,12 @@ public class HeldItemManager : MonoBehaviour
                 HeldPickupable = null;
                 heldUseable = null;
             }
-            else if(itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
+            else if (itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
             {
                 PlayerHUD.Instance.SetHeldScreenActive(false);
                 itemInspector.InspectItem(HeldPickupable);
             }
-            else if(!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
+            else if (!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
             {
                 heldUseable.Use();
             }
@@ -117,11 +130,13 @@ public class HeldItemManager : MonoBehaviour
         Vector3 targetPosition;
         Quaternion targetRotation;
 
-        //TODO Move to a bounds projection maybe?
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, dropRaycastDistance, dropRaycastMask))
+
+        if (Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out hitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask))
         {
+            Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance));
+
             Snappable snappable = hitInfo.collider.GetComponent<Snappable>();
-            if(snappable && snappable.AcceptsPickupable(HeldPickupable))
+            if (snappable && snappable.AcceptsPickupable(HeldPickupable))
             {
                 currentSnappable = snappable;
                 targetPosition = snappable.SnapTransform.position;
@@ -130,7 +145,8 @@ public class HeldItemManager : MonoBehaviour
             else
             {
                 currentSnappable = null;
-                targetPosition = hitInfo.point;
+                // targetPosition = hitInfo.point;
+                targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance) - projectedVisualsBoundsOffset;
                 targetRotation = Quaternion.identity;
             }
         }
@@ -142,5 +158,31 @@ public class HeldItemManager : MonoBehaviour
         }
         projectedVisuals.transform.position = Vector3.Lerp(projectedVisuals.transform.position, targetPosition, Time.deltaTime * projectionSpeed);
         projectedVisuals.transform.rotation = Quaternion.Lerp(projectedVisuals.transform.rotation, targetRotation, Time.deltaTime * projectionSpeed);
+    }
+
+    internal Bounds CalculateBounds(Renderer[] renderers)
+    {
+        if (renderers.Length == 0)
+        {
+            Debug.LogError("No renderers to calculate bounds for.");
+            return new Bounds();
+        }
+
+        Bounds resultingBounds = renderers[0].bounds;
+
+        foreach (Renderer renderer in renderers)
+        {
+            resultingBounds.Encapsulate(renderer.bounds);
+        }
+
+        return resultingBounds;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (projectedVisuals != null)
+        {
+            Gizmos.DrawWireCube(projectedVisuals.transform.position + projectedVisualsBoundsOffset, projectedVisualsBounds.extents * 2f);
+        }
     }
 }
