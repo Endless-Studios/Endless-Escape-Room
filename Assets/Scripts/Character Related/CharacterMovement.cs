@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    private const int RADIUS_GROUNDING_RAY_COUNT = 8;
+
     [SerializeField] private CharacterController characterController = null;
     [SerializeField] private PlayerInput playerInput = null;
 
@@ -15,7 +17,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private LayerMask groundedLayerMask;
 
     private float yVelocity = 0;
-    //private bool isGrounded; //may need this later
+    private bool isGrounded;
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
 
@@ -33,25 +35,22 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TODO move to circle of raycasts
-        Ray groundedRay = new Ray(transform.position + characterController.center + Vector3.up * (0.01f - characterController.height / 2f), Vector3.down);
-        Debug.DrawLine(groundedRay.origin, groundedRay.origin + groundedRay.direction * 0.02f, Color.red);
-        if(Physics.Raycast(groundedRay, 0.02f, groundedLayerMask))
+        isGrounded = CheckGrounding();
+
+        if (isGrounded)
         {
-            //isGrounded = true;
             yVelocity = 0;
-            if(playerInput.GetJumpRequested())
+            if (playerInput.GetJumpRequested())
                 yVelocity = jumpForce;//Temp simple jump
         }
         else
-        { 
-            //isGrounded = false;
+        {
             yVelocity += Physics.gravity.y * Time.deltaTime;
             yVelocity = Mathf.Max(yVelocity, terminalVelocity);
         }
 
         Vector3 moveInput = playerInput.GetMovementInput();
-        if(moveInput != Vector3.zero)
+        if (moveInput != Vector3.zero)
         {
             //--Could go either way on this. Does playerInput communicate direction it intends to move? Or just wrapping input and letting character movement determine how to utilize that input?
             Vector3 forward = Camera.main.transform.forward;
@@ -73,5 +72,38 @@ public class CharacterMovement : MonoBehaviour
         motion = Vector3.SmoothDamp(characterController.velocity, moveInput * MoveSpeed, ref movementDampVelocity, accelerationTime);
         motion.y = yVelocity;
         characterController.Move(motion * Time.deltaTime);
+    }
+
+    private bool CheckGrounding()
+    {
+        Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (0.01f - characterController.height / 2f);
+
+        //Center grounding ray check
+        Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
+        Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * 0.02f, Color.red);
+
+        bool groundHit = false;
+
+        if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask))
+        {
+            groundHit = true;
+        }
+
+        //Radius grounding rays check
+        for (int i = 0; i < RADIUS_GROUNDING_RAY_COUNT; i++)
+        {
+            float angle = i * Mathf.PI * 2f / (float)RADIUS_GROUNDING_RAY_COUNT;
+            Vector3 radiusRayOffset = new Vector3(Mathf.Cos(angle) * characterController.radius, 0, Mathf.Sin(angle) * characterController.radius);
+
+            Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
+            Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * 0.02f, Color.red);
+
+            if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask))
+            {
+                groundHit = true;
+            }
+        }
+
+        return groundHit;
     }
 }
