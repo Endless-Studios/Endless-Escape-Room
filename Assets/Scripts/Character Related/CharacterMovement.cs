@@ -82,28 +82,27 @@ public class CharacterMovement : MonoBehaviour
         Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
         Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * 0.02f, Color.red);
 
-        bool groundHit = false;
-
         if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask))
         {
-            groundHit = true;
+            return true;
         }
 
         //Radius grounding rays check
         for (int i = 0; i < RADIUS_GROUNDING_RAY_COUNT; i++)
         {
-            float angle = i * Mathf.PI * 2f / (float)RADIUS_GROUNDING_RAY_COUNT;
-            Vector3 radiusRayOffset = new Vector3(Mathf.Cos(angle) * characterController.radius, 0, Mathf.Sin(angle) * characterController.radius);
+            //Calculate the XZ offsets for each of the 8 points in a circle: 
+            float angleRadian = i * Mathf.PI * 2f / (float)RADIUS_GROUNDING_RAY_COUNT; //Get the radian value of each angle (0-2π) 
+            Vector3 radiusRayOffset = new Vector3(Mathf.Cos(angleRadian) * characterController.radius, 0, Mathf.Sin(angleRadian) * characterController.radius); //Get point on the circumference at that angle
 
             Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
             Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * 0.02f, Color.red);
 
             if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask))
             {
-                groundHit = true;
+                return true;
             }
         }
 
-        return groundHit;
+        return false;
     }
 }
