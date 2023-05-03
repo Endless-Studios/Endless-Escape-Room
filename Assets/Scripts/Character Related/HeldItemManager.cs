@@ -16,9 +16,10 @@ public class HeldItemManager : MonoBehaviour
 
     Useable heldUseable = null;
     GameObject projectedVisuals = null;
-    Bounds projectedVisualsBounds;
+    Bounds projectedVisualsBounds = new Bounds();
     Vector3 projectedVisualsBoundsOffset;
     Snappable currentSnappable = null;
+    Renderer[] projectedRenderers;
 
     public Pickupable HeldPickupable { get; private set; }
     bool IsDropMode => projectedVisuals != null;
@@ -49,11 +50,7 @@ public class HeldItemManager : MonoBehaviour
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
         //TODO is there a better way to clone the object? We really only want renderers getting colliders actually causes bugs
         projectedVisuals = Instantiate(HeldPickupable.VisualsRoot.gameObject);
-        projectedVisualsBoundsOffset = projectedVisualsBounds.center - projectedVisuals.transform.position;
-
-        Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
-
-        projectedVisualsBounds = CalculateBounds(projectedRenderers);
+        projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
 
         foreach (Renderer renderer in projectedRenderers)
         {
@@ -130,6 +127,15 @@ public class HeldItemManager : MonoBehaviour
         Vector3 targetPosition;
         Quaternion targetRotation;
 
+        projectedVisualsBounds.size = Vector3.zero;
+        projectedVisualsBounds.center = projectedRenderers[0].bounds.center;
+
+        foreach (Renderer renderer in projectedRenderers)
+        {
+            projectedVisualsBounds.Encapsulate(renderer.bounds);
+        }
+
+        projectedVisualsBoundsOffset = projectedVisualsBoundsOffset = projectedVisualsBounds.center - projectedVisuals.transform.position;
 
         if (Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out hitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask))
         {
@@ -145,7 +151,6 @@ public class HeldItemManager : MonoBehaviour
             else
             {
                 currentSnappable = null;
-                // targetPosition = hitInfo.point;
                 targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance) - projectedVisualsBoundsOffset;
                 targetRotation = Quaternion.identity;
             }
@@ -158,24 +163,6 @@ public class HeldItemManager : MonoBehaviour
         }
         projectedVisuals.transform.position = Vector3.Lerp(projectedVisuals.transform.position, targetPosition, Time.deltaTime * projectionSpeed);
         projectedVisuals.transform.rotation = Quaternion.Lerp(projectedVisuals.transform.rotation, targetRotation, Time.deltaTime * projectionSpeed);
-    }
-
-    internal Bounds CalculateBounds(Renderer[] renderers)
-    {
-        if (renderers.Length == 0)
-        {
-            Debug.LogError("No renderers to calculate bounds for.");
-            return new Bounds();
-        }
-
-        Bounds resultingBounds = renderers[0].bounds;
-
-        foreach (Renderer renderer in renderers)
-        {
-            resultingBounds.Encapsulate(renderer.bounds);
-        }
-
-        return resultingBounds;
     }
 
     private void OnDrawGizmos()
