@@ -85,10 +85,21 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  OnInspectionStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInspectionEnded:
+    m_PersistentCalls:
+      m_Calls: []
   visualsRoot: {fileID: 7141164750151285616}
   dropRigidbody: {fileID: 7899455050967448876}
   identifiers: []
+  visualsPrefab: {fileID: 919132149155446097, guid: e84badb080b818d41bfbda52fcb2fb57,
+    type: 3}
   OnPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDropped:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &7899455050967448876
