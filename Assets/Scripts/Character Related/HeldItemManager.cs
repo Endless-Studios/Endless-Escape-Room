@@ -18,8 +18,8 @@ public class HeldItemManager : MonoBehaviour
     Useable heldUseable = null;
     GameObject projectedVisuals = null;
     Bounds projectedVisualsBounds = new Bounds();
+    Vector3 projectedVisualsBoundsOffset;
     Snappable currentSnappable = null;
-
 
     public Pickupable HeldPickupable { get; private set; }
     bool IsDropMode => projectedVisuals != null;
@@ -81,15 +81,9 @@ public class HeldItemManager : MonoBehaviour
                 projectedVisualsBounds.Encapsulate(collider.bounds);
         }
 
+        projectedVisualsBoundsOffset = projectedVisualsBounds.center - HeldPickupable.transform.position;
+
         HeldPickupable.transform.rotation = heldPickupableCachedRotation;
-
-        Collider[] projectedColliders = projectedVisuals.GetComponentsInChildren<Collider>();
-
-        foreach (Collider collider in projectedColliders)
-        {
-
-            collider.enabled = false;
-        }
     }
 
     static GameObject GetVisuals(Pickupable pickupable)
@@ -195,7 +189,7 @@ public class HeldItemManager : MonoBehaviour
             else
             {
                 currentSnappable = null;
-                targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance);
+                targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance) - projectedVisualsBoundsOffset;
                 targetRotation = Quaternion.identity;
             }
         }
@@ -214,7 +208,7 @@ public class HeldItemManager : MonoBehaviour
     {
         if (projectedVisuals != null)
         {
-            Gizmos.DrawWireCube(projectedVisuals.transform.position, projectedVisualsBounds.extents * 2f);
+            Gizmos.DrawWireCube(projectedVisuals.transform.position + projectedVisualsBoundsOffset, projectedVisualsBounds.extents * 2f);
         }
     }
 }
