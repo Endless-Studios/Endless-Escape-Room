@@ -11,8 +11,8 @@ public class TransformAnimator : MonoBehaviour
     [SerializeField] Vector3 finalLocalScale = Vector3.one;
     [SerializeField] Transform targetTransform;
 
-    [SerializeField] UnityEvent OnAnimationFinished = new UnityEvent();
-    [SerializeField] UnityEvent OnReverseAnimationFinished = new UnityEvent();
+    public UnityEvent OnAnimationFinished = new UnityEvent();
+    public UnityEvent OnReverseAnimationFinished = new UnityEvent();
 
     bool isAnimatedOrAnimating = false;
     bool desiresEndState = false;

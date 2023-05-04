@@ -6,10 +6,11 @@ using UnityEngine.Events;
 public class CameraFocus : MonoBehaviour
 {
     [SerializeField] Cinemachine.CinemachineVirtualCamera focusCamera;
-    [SerializeField] UnityEvent OnFocused = new UnityEvent();
-    [SerializeField] UnityEvent OnUnfocused = new UnityEvent();
     [SerializeField] bool showMouseWhileFocused = true;
     [SerializeField] bool allowUnfocusKey = true;
+
+    public UnityEvent OnFocused = new UnityEvent();
+    public UnityEvent OnUnfocused = new UnityEvent();
 
     const int FOCUSED_PRIORITY = 20;
     const int UNFOCUSED_PRIORITY = 0;

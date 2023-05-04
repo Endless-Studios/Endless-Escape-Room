@@ -7,7 +7,8 @@ public class PlayerHUD : MonoBehaviourSingleton<PlayerHUD>
 {
     [Header("Interact Screen")]
     [SerializeField] GameObject interactScreen;
-    [SerializeField] TextMeshProUGUI interactPrompt;
+    [SerializeField] GameObject interactPrompt;
+    [SerializeField] TextMeshProUGUI interactText;
 
     [Header("Inspect Screen")]
     [SerializeField] GameObject inspectScreen;
@@ -24,20 +25,24 @@ public class PlayerHUD : MonoBehaviourSingleton<PlayerHUD>
     {
         base.Awake();
         SetInteractText(string.Empty);
-        //SetInteractScreenActive(true);
+        SetInteractScreenActive(true);
         SetInspectScreenActive(false);
         SetHeldScreenActive(false);
     }
 
     public void SetInteractText(string newText)
     {
-        interactPrompt.SetText(newText);
+        interactText.SetText(newText);
+        if(string.IsNullOrEmpty(newText))
+            interactPrompt.SetActive(false);
+        else
+            interactPrompt.SetActive(true);
     }
 
-    //public void SetInteractScreenActive(bool active)
-    //{
-    //    interactScreen.SetActive(active);
-    //}
+    public void SetInteractScreenActive(bool active)
+    {
+        interactScreen.SetActive(active);
+    }
 
     public void SetInspectScreenActive(bool active, bool canPickup = true)
     {
