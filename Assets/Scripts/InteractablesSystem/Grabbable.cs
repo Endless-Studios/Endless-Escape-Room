@@ -8,7 +8,8 @@ public abstract class Grabbable : Interactable
 {
     [SerializeField] UnityEvent OnInteratStopped;
 
-    protected override string DefaultInterationText => "Grab";
+    protected override string DefaultInteractionText => "Grab";
+    public abstract void HandleUpdate();
 
     internal void StopInteract()
     {
