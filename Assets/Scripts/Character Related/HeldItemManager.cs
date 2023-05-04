@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HeldItemManager : MonoBehaviour
@@ -23,22 +24,30 @@ public class HeldItemManager : MonoBehaviour
     public Pickupable HeldPickupable { get; private set; }
     bool IsDropMode => projectedVisuals != null;
 
-    public void HoldItem(Pickupable pickupable)
+    public void HoldItem(Pickupable pickupable, bool isInspecting)
     {
         HeldPickupable = pickupable;
         heldUseable = pickupable as Useable;
         HeldPickupable.HandlePickedUp();
         HeldPickupable.transform.SetParent(Camera.main.transform, true);
+        if (isInspecting == false)
+        {
+            MoveHeldItemToProperPosition();
+            if (pickupable is Useable)
+            {
+                PlayerHUD.Instance.SetHeldScreenActive(true, false);
+                playerInput.InteractEnabled = false;
+                playerInput.HeldControlsEnabled = true;
+            }
+            else
+                ActivateDropMode();
+        }
+    }
+
+    public void MoveHeldItemToProperPosition()
+    {
         HeldPickupable.transform.localPosition = holdLocalPosition;
         HeldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
-        if (pickupable is Useable)
-        {
-            PlayerHUD.Instance.SetHeldScreenActive(true, false);
-            playerInput.InteractEnabled = false;
-            playerInput.HeldControlsEnabled = true;
-        }
-        else
-            ActivateDropMode();
     }
 
     public void ActivateDropMode()
@@ -47,8 +56,7 @@ public class HeldItemManager : MonoBehaviour
         playerInput.InteractEnabled = true;
         ClearProjectedVisuals();
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
-        //TODO is there a better way to clone the object? We really only want renderers getting colliders actually causes bugs
-        projectedVisuals = Instantiate(HeldPickupable.VisualsRoot.gameObject);
+        projectedVisuals = GetVisuals(HeldPickupable);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
 
         foreach (Renderer renderer in projectedRenderers)
@@ -58,30 +66,58 @@ public class HeldItemManager : MonoBehaviour
             renderer.material = dropIndicatorMaterial;
         }
 
-        Collider[] boundsColliders = HeldPickupable.GetComponentsInChildren<Collider>();        
+        Collider[] boundsColliders = HeldPickupable.GetComponentsInChildren<Collider>();
 
-        Quaternion heldPickupableCachedRotation = HeldPickupable.transform.rotation;        
+        Quaternion heldPickupableCachedRotation = HeldPickupable.transform.rotation;
         HeldPickupable.transform.rotation = Quaternion.identity;
         Physics.SyncTransforms();
 
-        projectedVisualsBounds.size = Vector3.zero;        
+        projectedVisualsBounds.size = Vector3.zero;
         projectedVisualsBounds.center = boundsColliders[0].bounds.center;
 
-        foreach(Collider collider in boundsColliders)
+        foreach (Collider collider in boundsColliders)
         {
-            if(!collider.isTrigger)
+            if (!collider.isTrigger)
                 projectedVisualsBounds.Encapsulate(collider.bounds);
         }
- 
+
         HeldPickupable.transform.rotation = heldPickupableCachedRotation;
 
         Collider[] projectedColliders = projectedVisuals.GetComponentsInChildren<Collider>();
 
         foreach (Collider collider in projectedColliders)
         {
-            
+
             collider.enabled = false;
         }
+    }
+
+    static GameObject GetVisuals(Pickupable pickupable)
+    {
+        if (pickupable.VisualsPrefab != null)
+            return Instantiate(pickupable.VisualsPrefab, pickupable.transform.position, pickupable.transform.rotation);
+        else
+        {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
+            GameObject manufacturedPrefab = Instantiate(pickupable.gameObject, pickupable.transform.position, pickupable.transform.rotation);
+            StripInvalidComponents(manufacturedPrefab.transform);
+            return manufacturedPrefab;
+        }
+    }
+
+    static void StripInvalidComponents(Transform currentTransform)
+    {
+        Component[] components = currentTransform.GetComponents<Component>();
+        System.Type[] validTypes = new System.Type[] { typeof(Transform), typeof(SkinnedMeshRenderer), typeof(MeshRenderer), typeof(MeshFilter) };
+        foreach (Component component in components)
+        {
+            System.Type type = component.GetType();
+            if (validTypes.Contains(type) == false)
+                Destroy(component);
+        }
+
+        int childCount = currentTransform.childCount;
+        for (int childIndex = 0; childIndex < childCount; childIndex++)
+            StripInvalidComponents(currentTransform.GetChild(childIndex));
     }
 
     protected void ClearProjectedVisuals()
@@ -106,11 +142,11 @@ public class HeldItemManager : MonoBehaviour
             if (IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
-                HeldPickupable.SetToNormalLayer();
                 if (currentSnappable)
                 {
                     currentSnappable.SnapPickupable(HeldPickupable);
                     currentSnappable = null;
+                    HeldPickupable.HandleDropped(false);
                 }
                 else
                 {
@@ -169,7 +205,7 @@ public class HeldItemManager : MonoBehaviour
             targetPosition = Camera.main.transform.position + Camera.main.transform.forward * dropRaycastDistance;
             targetRotation = Quaternion.identity;
         }
-        
+
         projectedVisuals.transform.position = Vector3.Lerp(projectedVisuals.transform.position, targetPosition, Time.deltaTime * projectionSpeed);
         projectedVisuals.transform.rotation = Quaternion.Lerp(projectedVisuals.transform.rotation, targetRotation, Time.deltaTime * projectionSpeed);
     }

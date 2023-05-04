@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Useable : Pickupable
 {
-    [SerializeField] UnityEvent OnUsed = new UnityEvent();
+    public UnityEvent OnUsed = new UnityEvent();
 
     public void Use()
     {

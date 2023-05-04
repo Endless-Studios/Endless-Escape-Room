@@ -19,8 +19,10 @@ public class Snappable : MonoBehaviour
 
     [SerializeField] Transform attachTransform;
     [SerializeField] bool isObjectUnsnappble = true;
-    [SerializeField] UnityEvent<Pickupable> OnObjectSnapped = new UnityEvent<Pickupable>();
-    [SerializeField] UnityEvent OnObjectRemoved = new UnityEvent();
+
+    public UnityEvent<Pickupable> OnObjectSnapped = new UnityEvent<Pickupable>();
+    public UnityEvent OnObjectRemoved = new UnityEvent();
+
     public Transform SnapTransform => attachTransform ?? transform;
 
     Pickupable currentPickupable = null;
