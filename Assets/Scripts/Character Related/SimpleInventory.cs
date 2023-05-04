@@ -9,7 +9,9 @@ using UnityEngine;
 public class SimpleInventory : InventoryBase
 {
     [SerializeField] HeldItemManager heldItemManager;
+    [SerializeField] ItemInspector itemInspector;
     [SerializeField] PlayerInteractor interactor;
+    [SerializeField] bool inspectOnPickup = true;
 
     private void Start()
     {
@@ -35,7 +37,9 @@ public class SimpleInventory : InventoryBase
         if(CanPickupItem(pickupable))
         {
             pickupable.HandlePickedUp();
-            heldItemManager.HoldItem(pickupable);
+            heldItemManager.HoldItem(pickupable, inspectOnPickup);
+            if(inspectOnPickup)
+                itemInspector.InspectItem(pickupable);
             return true;
         }
         return false;

@@ -22,21 +22,24 @@ public class HeldItemManager : MonoBehaviour
     public Pickupable HeldPickupable { get; private set; }
     bool IsDropMode => projectedVisuals != null;
 
-    public void HoldItem(Pickupable pickupable)
+    public void HoldItem(Pickupable pickupable, bool isInspecting)
     {
         HeldPickupable = pickupable;
         heldUseable = pickupable as Useable;
         HeldPickupable.HandlePickedUp();
         HeldPickupable.transform.SetParent(Camera.main.transform, true);
-        MoveHeldItemToProperPosition();
-        if(pickupable is Useable)
+        if(isInspecting == false)
         {
-            PlayerHUD.Instance.SetHeldScreenActive(true, false);
-            playerInput.InteractEnabled = false;
-            playerInput.HeldControlsEnabled = true;
+            MoveHeldItemToProperPosition();
+            if(pickupable is Useable)
+            {
+                PlayerHUD.Instance.SetHeldScreenActive(true, false);
+                playerInput.InteractEnabled = false;
+                playerInput.HeldControlsEnabled = true;
+            }
+            else
+                ActivateDropMode();
         }
-        else
-            ActivateDropMode();
     }
 
     public void MoveHeldItemToProperPosition()
@@ -61,19 +64,19 @@ public class HeldItemManager : MonoBehaviour
         }
     }
 
-    GameObject GetVisuals(Pickupable pickupable)
+    static GameObject GetVisuals(Pickupable pickupable)
     {
         if(pickupable.VisualsPrefab != null)
-            return Instantiate(HeldPickupable.VisualsPrefab);
+            return Instantiate(pickupable.VisualsPrefab, pickupable.transform.position, pickupable.transform.rotation);
         else
         {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
-            GameObject manufacturedPrefab = Instantiate(HeldPickupable.gameObject);
+            GameObject manufacturedPrefab = Instantiate(pickupable.gameObject, pickupable.transform.position, pickupable.transform.rotation);
             StripInvalidComponents(manufacturedPrefab.transform);
             return manufacturedPrefab;
         }
     }
 
-    void StripInvalidComponents(Transform currentTransform)
+    static void StripInvalidComponents(Transform currentTransform)
     {
         Component[] components = currentTransform.GetComponents<Component>();
         System.Type[] validTypes = new System.Type[] { typeof(Transform), typeof(SkinnedMeshRenderer), typeof(MeshRenderer), typeof(MeshFilter) };
