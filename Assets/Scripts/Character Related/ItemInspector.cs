@@ -13,59 +13,58 @@ public class ItemInspector : MonoBehaviour
     [SerializeField] private float inspectMoveTime = 0.5f;
     [SerializeField] private float rotationSpeed = 30;
 
-    Inspectable currentInspectable = null;
     Coroutine inspectCoroutine = null;
 
-    public bool IsInspecting => currentInspectable != false;
+    public Inspectable CurrentInspectable { get; private set; }
+    public bool IsInspecting => CurrentInspectable != false;
 
-    private void Start()
-    {
-        //Maybe instead switch to a notification?
-        interactor.OnItemInteracted.AddListener(HandleItemInteracted);
-    }
+    //private void Start()
+    //{
+    //    //Maybe instead switch to a notification?
+    //    interactor.OnItemInteracted.AddListener(HandleItemInteracted);
+    //}
 
-    private void HandleItemInteracted(Interactable interactable)
-    {
-        if(interactable is Inspectable)
-        {
-            InspectItem(interactable as Inspectable);
-        }
-    }
+    //private void HandleItemInteracted(Interactable interactable)
+    //{
+    //    if(interactable is Inspectable)
+    //    {
+    //        InspectItem(interactable as Inspectable);
+    //    }
+    //}
 
     internal void InspectItem(Inspectable inspectable)
     {
-        if(currentInspectable != null)
+        if(CurrentInspectable != null)
         {
             Debug.LogError("Cannot interact with another inspectable while inspecting!");
             return;
         }
-        currentInspectable = inspectable;
+        CurrentInspectable = inspectable;
         inspectCoroutine = StartCoroutine(InspectInspectable());
     }
 
     IEnumerator InspectInspectable()
     {
-        Pickupable currentPickupable = currentInspectable as Pickupable;
+        CurrentInspectable.HandleInspectionStarted();
+        Pickupable currentPickupable = CurrentInspectable as Pickupable;
         bool inspectingHeldItem = currentPickupable && heldItemManager.HeldPickupable == currentPickupable;
 
-        currentInspectable.IsInteractable = false;
-        playerInput.InteractEnabled = false;
+        CurrentInspectable.IsInteractable = false;
+        playerInput.InteractEnabled = true;
         playerInput.LookEnabled = false;
         playerInput.MoveEnabled = false;
         playerInput.HeldControlsEnabled = false;
-        currentInspectable.SetToHeldLayer();
-        Vector3 startPosition = currentInspectable.VisualsRoot.transform.position;
-        Quaternion startRotation = currentInspectable.VisualsRoot.transform.localRotation;
-        currentInspectable.VisualsRoot.transform.SetParent(Camera.main.transform, true);
+        CurrentInspectable.SetToNormalLayer(true);
+        Vector3 startPosition = CurrentInspectable.transform.position;
+        Quaternion startRotation = CurrentInspectable.transform.localRotation;
         for(float elapsedTime = 0; elapsedTime < inspectMoveTime; elapsedTime += Time.deltaTime)
         {
-            currentInspectable.VisualsRoot.transform.position = Vector3.Slerp(startPosition, Camera.main.transform.position + Camera.main.transform.forward * attachOffset, elapsedTime / inspectMoveTime);
-            currentInspectable.VisualsRoot.transform.localRotation = Quaternion.Slerp(startRotation, Quaternion.identity, elapsedTime / inspectMoveTime);
+            CurrentInspectable.transform.position = Vector3.Slerp(startPosition, Camera.main.transform.position + Camera.main.transform.forward * attachOffset, elapsedTime / inspectMoveTime);
+            CurrentInspectable.transform.localRotation = Quaternion.Slerp(startRotation, Quaternion.identity, elapsedTime / inspectMoveTime);
             yield return null;
         }
-        currentInspectable.VisualsRoot.transform.position = Camera.main.transform.position + Camera.main.transform.forward * attachOffset;
-        currentInspectable.VisualsRoot.transform.localRotation = Quaternion.identity;
-        currentInspectable.VisualsRoot.transform.SetParent(null, true);
+        CurrentInspectable.transform.position = Camera.main.transform.position + Camera.main.transform.forward * attachOffset;
+        CurrentInspectable.transform.localRotation = Quaternion.identity;
         bool backPressed = false;
         bool pickupPressed = false;
         MouseLockHandler.Instance.ClaimMouseCursor(this);
@@ -75,21 +74,23 @@ public class ItemInspector : MonoBehaviour
         bool rotationHeld = false;
         while(backPressed == false && pickupPressed == false)
         {
-            if(playerInput.GetRotationButtonDown())
+            if(rotationHeld == false && playerInput.GetRotationButtonDown() && interactor.HasTarget == false)
             {
                 rotationHeld = true;
-                MouseLockHandler.Instance.ReleaseMouseCursor(this);
+                playerInput.InteractEnabled = false;
+                //MouseLockHandler.Instance.ReleaseMouseCursor(this);
             }
-            else if (playerInput.GetRotationButtonUp())
+            else if (rotationHeld && playerInput.GetRotationButtonUp())
             {
                 rotationHeld = false;
-                MouseLockHandler.Instance.ClaimMouseCursor(this);
+                playerInput.InteractEnabled = true;
+                //MouseLockHandler.Instance.ClaimMouseCursor(this);
             }
             if(rotationHeld)
             {
                 Vector2 mouseInput = playerInput.GetMouseInput();
-                currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
-                currentInspectable.VisualsRoot.transform.RotateAround(currentInspectable.VisualsRoot.transform.position, Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
+                CurrentInspectable.transform.RotateAround(CurrentInspectable.transform.position, Camera.main.transform.up, -mouseInput.x * Time.deltaTime * rotationSpeed);
+                CurrentInspectable.transform.RotateAround(CurrentInspectable.transform.position, Camera.main.transform.right, mouseInput.y * Time.deltaTime * rotationSpeed);
             }
             yield return null;
             backPressed = playerInput.GetBackPressed();
@@ -97,7 +98,8 @@ public class ItemInspector : MonoBehaviour
         }
         if(inspectingHeldItem)
         {
-            currentInspectable.RestoreVisualsRoot();
+            heldItemManager.MoveHeldItemToProperPosition();
+            //CurrentInspectable.RestoreVisualsRoot();
             if(backPressed)
                 heldItemManager.ActivateDropMode();
             else if(pickupPressed)
@@ -116,9 +118,9 @@ public class ItemInspector : MonoBehaviour
             playerInput.InteractEnabled = true;
             if(backPressed)
             {//TODO maybe move some of this into inspectable?
-                currentInspectable.RestoreVisualsRoot();
-                currentInspectable.SetToNormalLayer();
-                currentInspectable.IsInteractable = true;
+                //CurrentInspectable.RestoreVisualsRoot();
+                CurrentInspectable.SetToNormalLayer();
+                CurrentInspectable.IsInteractable = true;
             }
             else if(pickupPressed)
             {
@@ -127,9 +129,10 @@ public class ItemInspector : MonoBehaviour
         }
         PlayerHUD.Instance.SetInspectScreenActive(false);
         MouseLockHandler.Instance.ReleaseMouseCursor(this);
+        CurrentInspectable.HandleInspectionStopped();
 
         yield return null;
-        currentInspectable = null;
+        CurrentInspectable = null;
         playerInput.LookEnabled = true;
         playerInput.MoveEnabled = true;
         inspectCoroutine = null;

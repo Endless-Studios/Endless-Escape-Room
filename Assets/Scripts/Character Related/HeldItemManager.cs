@@ -27,8 +27,7 @@ public class HeldItemManager : MonoBehaviour
         heldUseable = pickupable as Useable;
         HeldPickupable.HandlePickedUp();
         HeldPickupable.transform.SetParent(Camera.main.transform, true);
-        HeldPickupable.transform.localPosition = holdLocalPosition;
-        HeldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
+        MoveHeldItemToProperPosition();
         if(pickupable is Useable)
         {
             PlayerHUD.Instance.SetHeldScreenActive(true, false);
@@ -39,6 +38,12 @@ public class HeldItemManager : MonoBehaviour
             ActivateDropMode();
     }
 
+    public void MoveHeldItemToProperPosition()
+    {
+        HeldPickupable.transform.localPosition = holdLocalPosition;
+        HeldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
+    }
+
     public void ActivateDropMode()
     {
         playerInput.HeldControlsEnabled = true;
@@ -46,7 +51,7 @@ public class HeldItemManager : MonoBehaviour
         ClearProjectedVisuals();
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
         //TODO is there a better way to clone the object? We really only want renderers getting colliders actually causes bugs
-        projectedVisuals = Instantiate(HeldPickupable.VisualsRoot.gameObject);
+        projectedVisuals = Instantiate(HeldPickupable.VisualsPrefab);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in projectedRenderers)
         {
@@ -78,11 +83,11 @@ public class HeldItemManager : MonoBehaviour
             if(IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
-                HeldPickupable.SetToNormalLayer();
                 if(currentSnappable)
                 {
                     currentSnappable.SnapPickupable(HeldPickupable);
                     currentSnappable = null;
+                    HeldPickupable.HandleDropped(false);
                 }
                 else
                 {

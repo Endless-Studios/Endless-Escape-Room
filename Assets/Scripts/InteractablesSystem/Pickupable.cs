@@ -8,17 +8,20 @@ public class Pickupable : Inspectable
 {
     [SerializeField] Rigidbody dropRigidbody;
     [SerializeField] Identifier[] identifiers;
+    [SerializeField] GameObject visualsPrefab;
 
     protected override string DefaultInterationText => "Pick up";
 
     public UnityEvent OnPickedUp = new UnityEvent();
+    [SerializeField] UnityEvent OnDropped = new UnityEvent();
 
-    public Identifier[] Identifiers { get => identifiers; }
+    public Identifier[] Identifiers => identifiers;
+    public GameObject VisualsPrefab => visualsPrefab;
 
     internal void HandlePickedUp()
     {
-        RestoreVisualsRoot();
-        SetToHeldLayer();
+        //RestoreVisualsRoot();
+        SetToNormalLayer(true);
         if(dropRigidbody)
         {
             dropRigidbody.isKinematic = true;
@@ -28,10 +31,11 @@ public class Pickupable : Inspectable
         OnPickedUp.Invoke();
     }
 
-    internal void HandleDropped()
+    internal void HandleDropped(bool enableRigidbody = true)
     {
-        if(dropRigidbody)
+        if(enableRigidbody && dropRigidbody)
             dropRigidbody.isKinematic = false;
         SetToNormalLayer();
+        OnDropped.Invoke();
     }
 }

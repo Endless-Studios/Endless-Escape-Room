@@ -9,10 +9,25 @@ using UnityEngine;
 public class SimpleInventory : InventoryBase
 {
     [SerializeField] HeldItemManager heldItemManager;
+    [SerializeField] PlayerInteractor interactor;
+
+    private void Start()
+    {
+        //Maybe instead switch to a notification?
+        interactor.OnItemInteracted.AddListener(HandleItemInteracted);
+    }
+
+    private void HandleItemInteracted(Interactable interactable)
+    {
+        if(interactable is Inspectable)
+        {
+            PickupItem(interactable as Pickupable);
+        }
+    }
 
     public override bool CanPickupItem(Pickupable pickupable)
     {
-        return heldItemManager.HeldPickupable == null;
+        return heldItemManager.HeldPickupable == null && pickupable != null;
     }
 
     public override bool PickupItem(Pickupable pickupable)

@@ -144,11 +144,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8377813685331739176}
+  itemInspector: {fileID: 7485675807474701852}
   interactDistance: 2
   debug: 0
   interactLayerMask:
     serializedVersion: 2
-    m_Bits: 265
+    m_Bits: 8969
   OnItemInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldItemManager: {fileID: 2350323757107018741}
+  interactor: {fileID: 6719100988358395642}
 --- !u!54 &4157247682571816759
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,7 +222,7 @@ MonoBehaviour:
   dropRaycastDistance: 5
   dropRaycastMask:
     serializedVersion: 2
-    m_Bits: 2817
+    m_Bits: 2313
   itemInspector: {fileID: 7485675807474701852}
   projectionSpeed: 10
 --- !u!1 &5845523689269721828
@@ -406,7 +408,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7575758, y: 1}
+    m_SensorSize: {x: 1.2996633, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
