@@ -6,14 +6,14 @@ using UnityEngine.Events;
 
 public abstract class Grabbable : Interactable
 {
-    [SerializeField] UnityEvent OnInteratStopped;
+    public UnityEvent OnInteractStopped = new UnityEvent();
 
     protected override string DefaultInterationText => "Grab";
 
     internal void StopInteract()
     {
         HandleStopInteract();
-        OnInteratStopped.Invoke();
+        OnInteractStopped.Invoke();
     }
 
     protected abstract void HandleStopInteract();

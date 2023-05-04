@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HeldItemManager : MonoBehaviour
@@ -50,8 +51,7 @@ public class HeldItemManager : MonoBehaviour
         playerInput.InteractEnabled = true;
         ClearProjectedVisuals();
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
-        //TODO is there a better way to clone the object? We really only want renderers getting colliders actually causes bugs
-        projectedVisuals = Instantiate(HeldPickupable.VisualsPrefab);
+        projectedVisuals = GetVisuals(HeldPickupable);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in projectedRenderers)
         {
@@ -59,6 +59,34 @@ public class HeldItemManager : MonoBehaviour
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             renderer.material = dropIndicatorMaterial;
         }
+    }
+
+    GameObject GetVisuals(Pickupable pickupable)
+    {
+        if(pickupable.VisualsPrefab != null)
+            return Instantiate(HeldPickupable.VisualsPrefab);
+        else
+        {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
+            GameObject manufacturedPrefab = Instantiate(HeldPickupable.gameObject);
+            StripInvalidComponents(manufacturedPrefab.transform);
+            return manufacturedPrefab;
+        }
+    }
+
+    void StripInvalidComponents(Transform currentTransform)
+    {
+        Component[] components = currentTransform.GetComponents<Component>();
+        System.Type[] validTypes = new System.Type[] { typeof(Transform), typeof(SkinnedMeshRenderer), typeof(MeshRenderer), typeof(MeshFilter) };
+        foreach(Component component in components)
+        {
+            System.Type type = component.GetType();
+            if(validTypes.Contains(type) == false)
+                Destroy(component);
+        }
+
+        int childCount = currentTransform.childCount;
+        for(int childIndex = 0; childIndex < childCount; childIndex++)
+            StripInvalidComponents(currentTransform.GetChild(childIndex));
     }
 
     protected void ClearProjectedVisuals()

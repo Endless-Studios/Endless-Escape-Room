@@ -5,11 +5,8 @@ using UnityEngine.Events;
 
 public class Inspectable : Interactable
 {
-    [SerializeField] UnityEvent OnInspectionStarted = new UnityEvent();
-    [SerializeField] UnityEvent OnInspectionEnded = new UnityEvent();
-
-    [SerializeField] Transform visualsRoot = null;
-    public Transform VisualsRoot => visualsRoot;
+    public UnityEvent OnInspectionStarted = new UnityEvent();
+    public UnityEvent OnInspectionEnded = new UnityEvent();
 
     protected override string DefaultInterationText => "Inspect";
 
@@ -36,15 +33,15 @@ public class Inspectable : Interactable
 
     protected void CacheTransform()
     {
-        initialPosition = visualsRoot.localPosition;
-        initialRotation = visualsRoot.localRotation;
-        initialParent = visualsRoot.transform.parent;
+        initialPosition = transform.localPosition;
+        initialRotation = transform.localRotation;
+        initialParent = transform.parent;
     }
 
-    public void RestoreVisualsRoot()
+    public void RestoreTransform()
     {
-        visualsRoot.transform.SetParent(initialParent, true);
-        visualsRoot.transform.localPosition = initialPosition;
-        visualsRoot.transform.localRotation = initialRotation;
+        transform.SetParent(initialParent, true);
+        transform.localPosition = initialPosition;
+        transform.localRotation = initialRotation;
     }
 }

@@ -18,19 +18,19 @@ public class ItemInspector : MonoBehaviour
     public Inspectable CurrentInspectable { get; private set; }
     public bool IsInspecting => CurrentInspectable != false;
 
-    //private void Start()
-    //{
-    //    //Maybe instead switch to a notification?
-    //    interactor.OnItemInteracted.AddListener(HandleItemInteracted);
-    //}
+    private void Start()
+    {
+        //Maybe instead switch to a notification?
+        interactor.OnItemInteracted.AddListener(HandleItemInteracted);
+    }
 
-    //private void HandleItemInteracted(Interactable interactable)
-    //{
-    //    if(interactable is Inspectable)
-    //    {
-    //        InspectItem(interactable as Inspectable);
-    //    }
-    //}
+    private void HandleItemInteracted(Interactable interactable)
+    {
+        if(interactable is Inspectable && interactable is not Pickupable)
+        {
+            InspectItem(interactable as Inspectable);
+        }
+    }
 
     internal void InspectItem(Inspectable inspectable)
     {
@@ -118,7 +118,7 @@ public class ItemInspector : MonoBehaviour
             playerInput.InteractEnabled = true;
             if(backPressed)
             {//TODO maybe move some of this into inspectable?
-                //CurrentInspectable.RestoreVisualsRoot();
+                CurrentInspectable.RestoreTransform();
                 CurrentInspectable.SetToNormalLayer();
                 CurrentInspectable.IsInteractable = true;
             }

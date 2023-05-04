@@ -6,14 +6,17 @@ using UnityEngine.Events;
 
 public class Pickupable : Inspectable
 {
+    [Tooltip("Optional, does this object use physics?")]
     [SerializeField] Rigidbody dropRigidbody;
+    [Tooltip("What type of object is this?")]
     [SerializeField] Identifier[] identifiers;
+    [Tooltip("Optional, but more efficient when projecting the dropped visuals if it is prebuilt")]
     [SerializeField] GameObject visualsPrefab;
 
     protected override string DefaultInterationText => "Pick up";
 
     public UnityEvent OnPickedUp = new UnityEvent();
-    [SerializeField] UnityEvent OnDropped = new UnityEvent();
+    public UnityEvent OnDropped = new UnityEvent();
 
     public Identifier[] Identifiers => identifiers;
     public GameObject VisualsPrefab => visualsPrefab;
@@ -37,5 +40,11 @@ public class Pickupable : Inspectable
             dropRigidbody.isKinematic = false;
         SetToNormalLayer();
         OnDropped.Invoke();
+    }
+
+    protected virtual void OnValidate()
+    {
+        if(dropRigidbody == null)
+            dropRigidbody = GetComponent<Rigidbody>();
     }
 }

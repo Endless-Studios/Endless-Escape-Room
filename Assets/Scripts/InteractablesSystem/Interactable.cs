@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool isInteractable = true;
     [SerializeField] string interactPromptText = string.Empty;
     [SerializeField] string itemName = string.Empty;
-    [SerializeField] UnityEvent OnInteracted = new UnityEvent();
+    public UnityEvent OnInteracted = new UnityEvent();
 
     protected virtual string DefaultInterationText => "Interact";
 
