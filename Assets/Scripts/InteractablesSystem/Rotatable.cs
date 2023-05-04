@@ -8,7 +8,7 @@ public class Rotatable : Grabbable
     const float SMOOTH_SNAP_TIME = .1f;
     //Event: rotation finished float
     //Event: rotation finished snap index
-    
+
     protected override string DefaultInteractionText => "Rotate";
 
     [SerializeField] private Transform targetTransform;
@@ -19,12 +19,22 @@ public class Rotatable : Grabbable
     private Coroutine activeSnapCoroutine;
     private Quaternion startingRotation;
 
+    private Vector3 rotationAxisVector
+    {
+        get
+        {
+            if (rotationAxis == RotationAxis.X) return Vector3.right;
+            else if (rotationAxis == RotationAxis.Y) return Vector3.up;
+            else return Vector3.forward;
+        }
+    }
+
     private void Awake()
     {
         if (targetTransform == null)
             targetTransform = transform;
 
-        startingRotation = targetTransform.rotation; //should snap happen on awake?
+        startingRotation = targetTransform.rotation;        
     }
 
     protected override void InternalHandleInteract()
@@ -50,11 +60,6 @@ public class Rotatable : Grabbable
     public override void HandleUpdate()
     {
         Vector2 mouseInput = PlayerCore.LocalPlayer.PlayerInput.GetMouseInput();
-        Vector3 rotationAxisVector;
-
-        if (rotationAxis == RotationAxis.X) rotationAxisVector = Vector3.right;
-        else if (rotationAxis == RotationAxis.Y) rotationAxisVector = Vector3.up;
-        else rotationAxisVector = Vector3.forward;
 
         Vector3 vertRotAxis = targetTransform.InverseTransformDirection(Camera.main.transform.TransformDirection(Vector3.right)).normalized;
         Vector3 horRotAxis = targetTransform.InverseTransformDirection(Camera.main.transform.TransformDirection(Vector3.up)).normalized;
@@ -71,12 +76,6 @@ public class Rotatable : Grabbable
 
     internal Quaternion CalculateNearestSnapAngle()
     {
-        Vector3 rotationAxisVector;
-
-        if (rotationAxis == RotationAxis.X) rotationAxisVector = Vector3.right;
-        else if (rotationAxis == RotationAxis.Y) rotationAxisVector = Vector3.up;
-        else rotationAxisVector = Vector3.forward;
-
         Vector3 start = startingRotation * Vector3.forward;
 
         float currentAxisRotation = Vector3.SignedAngle(start, targetTransform.rotation * Vector3.forward, startingRotation * rotationAxisVector);
@@ -84,9 +83,7 @@ public class Rotatable : Grabbable
 
         float snapAngleDelta = Mathf.DeltaAngle(currentAxisRotation, targetAxisRotation);
 
-        Debug.Log("SAD: " + snapAngleDelta);
-
-        return targetTransform.rotation * Quaternion.Euler(rotationAxisVector * snapAngleDelta);
+        return  startingRotation * Quaternion.Euler(rotationAxisVector * targetAxisRotation);
     }
 
     internal float CalculateNearestSnapAngle(float value)
@@ -97,11 +94,9 @@ public class Rotatable : Grabbable
         float rawValue = value;
 
         value = Mathf.Repeat(value, 360);
-
         int snapDelta = 360 / (int)axisSnappingPositions;
-        float result = Mathf.Round(value / snapDelta) * snapDelta;
-        Debug.Log($" Raw {rawValue} | Result {result}");
-        return result;
+
+        return Mathf.Round(value / snapDelta) * snapDelta;
     }
 
     IEnumerator SmoothToRotation(Quaternion targetRotation)
@@ -122,7 +117,7 @@ public class Rotatable : Grabbable
         activeSnapCoroutine = null;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (targetTransform != null)
         {
