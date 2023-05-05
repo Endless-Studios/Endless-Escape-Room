@@ -33,12 +33,22 @@ public class Rotatable : Grabbable
         }
     }
 
+    private Vector3 rotationForwardAxisVector
+    {
+        get
+        {
+            if (rotationAxis == RotationAxis.X) return Vector3.forward;
+            else if (rotationAxis == RotationAxis.Y) return Vector3.left;
+            else return Vector3.up;
+        }
+    }
+
     private void Awake()
     {
         if (targetTransform == null)
             targetTransform = transform;
 
-        startingRotation = targetTransform.rotation;
+        startingRotation = targetTransform.localRotation;
     }
 
     protected override void InternalHandleInteract()
@@ -55,19 +65,19 @@ public class Rotatable : Grabbable
     protected override void HandleStopInteract()
     {
         //the angle between starting forward direction and current forward direction
-        float currentAxisRotation = Vector3.SignedAngle(startingRotation * Vector3.forward, targetTransform.rotation * Vector3.forward, startingRotation * rotationAxisVector);
+        float currentAxisRotation = Vector3.SignedAngle(startingRotation * rotationForwardAxisVector, targetTransform.localRotation * rotationForwardAxisVector, startingRotation * rotationAxisVector);
         currentAxisRotation = Mathf.Repeat(currentAxisRotation, 360); //0 - 360
-
         OnFinishedRotation.Invoke(currentAxisRotation);
 
         if (axisSnappingPositions > 0)
         {
             int snapDelta = 360 / (int)axisSnappingPositions;
             int snapIndex = Mathf.RoundToInt(currentAxisRotation / snapDelta); //the index where the snap is landing            
-            snapIndex = (int) Mathf.Repeat(snapIndex, axisSnappingPositions); // 0 - positionCount
+            snapIndex = (int)Mathf.Repeat(snapIndex, axisSnappingPositions); // 0 - positionCount
             float targetAxisRotation = snapIndex * snapDelta; //the desired rotation to snap to
             Quaternion targetRotation = startingRotation * Quaternion.Euler(rotationAxisVector * targetAxisRotation); //rotate on the target axis from starting rotation            
-            activeSnapCoroutine = StartCoroutine(SmoothToRotation(targetRotation, snapIndex)); 
+            activeSnapCoroutine = StartCoroutine(SmoothToRotation(targetRotation, snapIndex));
+            Debug.Log($" Rot: {currentAxisRotation} | Ind: {snapIndex} ");
         }
     }
 
@@ -89,18 +99,18 @@ public class Rotatable : Grabbable
 
     IEnumerator SmoothToRotation(Quaternion targetRotation, int snapIndex)
     {
-        Quaternion smoothStartingRotion = targetTransform.rotation;
+        Quaternion smoothStartingRotion = targetTransform.localRotation;
         float elapsedTime = 0;
 
         while (elapsedTime < smoothSnapTime)
         {
             elapsedTime += Time.deltaTime;
             float lerpT = elapsedTime / smoothSnapTime;
-            targetTransform.rotation = Quaternion.Lerp(smoothStartingRotion, targetRotation, lerpT);
+            targetTransform.localRotation = Quaternion.Lerp(smoothStartingRotion, targetRotation, lerpT);
             yield return null;
         }
 
-        targetTransform.rotation = targetRotation;
+        targetTransform.localRotation = targetRotation;
         OnFinishedRotationSnap.Invoke(snapIndex);
 
         activeSnapCoroutine = null;
