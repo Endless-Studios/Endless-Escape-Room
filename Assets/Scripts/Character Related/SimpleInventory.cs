@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -43,5 +44,18 @@ public class SimpleInventory : InventoryBase
             return true;
         }
         return false;
+    }
+
+    public override Pickupable[] GetHeldItems(Pickupable[] skipList = null)
+    {//We're only every have 0 or 1 items in this simple inventory. Just check it the skip list contains the held item or not
+        if(heldItemManager.HeldPickupable != null)
+        {
+            if(skipList != null && skipList.Contains(heldItemManager.HeldPickupable))
+                return new Pickupable[0];
+            else
+                return new Pickupable[] { heldItemManager.HeldPickupable };
+        }
+        else
+            return new Pickupable[0];
     }
 }
