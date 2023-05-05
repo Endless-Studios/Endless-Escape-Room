@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SightSensor : MonoBehaviour
+namespace Ai
 {
-    // Start is called before the first frame update
-    void Start()
+    internal class SightSensor : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HearingSensor : MonoBehaviour
+namespace Ai
 {
-    // Start is called before the first frame update
-    void Start()
+    internal class HearingSensor : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
