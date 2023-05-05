@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -26,14 +27,16 @@ public class InventoryUI : MonoBehaviour
             Hide();
         }
 
+        inventoryCanvas.enabled = true;
+
         Pickupable[] items = inventoryBase.GetHeldItems(null);
         foreach(Pickupable item in items)
         {
             UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
             newEntry.Initialize(item);
             currentEntries.Add(newEntry);
         }
-        inventoryCanvas.enabled = true;
     }
 
     public void Hide()
@@ -80,6 +83,7 @@ public class InventoryUI : MonoBehaviour
                 else
                 {//We have released the button
                     //Did we do something with the pickupable because of our drop? (probably hit a snappable)
+                    if(false)
                     {
                         currentEntries.Remove(originalElement);
                         Destroy(originalElement.gameObject);

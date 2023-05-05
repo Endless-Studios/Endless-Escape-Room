@@ -56,7 +56,7 @@ public class HeldItemManager : MonoBehaviour
         playerInput.InteractEnabled = true;
         ClearProjectedVisuals();
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
-        projectedVisuals = GetVisuals(HeldPickupable);
+        projectedVisuals = HeldPickupable.GetVisualClone(HeldPickupable.transform.position, HeldPickupable.transform.rotation);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
 
         foreach (Renderer renderer in projectedRenderers)
@@ -84,34 +84,6 @@ public class HeldItemManager : MonoBehaviour
         projectedVisualsBoundsOffset = projectedVisualsBounds.center - HeldPickupable.transform.position;
 
         HeldPickupable.transform.rotation = heldPickupableCachedRotation;
-    }
-
-    static GameObject GetVisuals(Pickupable pickupable)
-    {
-        if (pickupable.VisualsPrefab != null)
-            return Instantiate(pickupable.VisualsPrefab, pickupable.transform.position, pickupable.transform.rotation);
-        else
-        {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
-            GameObject manufacturedPrefab = Instantiate(pickupable.gameObject, pickupable.transform.position, pickupable.transform.rotation);
-            StripInvalidComponents(manufacturedPrefab.transform);
-            return manufacturedPrefab;
-        }
-    }
-
-    static void StripInvalidComponents(Transform currentTransform)
-    {
-        Component[] components = currentTransform.GetComponents<Component>();
-        System.Type[] validTypes = new System.Type[] { typeof(Transform), typeof(SkinnedMeshRenderer), typeof(MeshRenderer), typeof(MeshFilter) };
-        foreach (Component component in components)
-        {
-            System.Type type = component.GetType();
-            if (validTypes.Contains(type) == false)
-                Destroy(component);
-        }
-
-        int childCount = currentTransform.childCount;
-        for (int childIndex = 0; childIndex < childCount; childIndex++)
-            StripInvalidComponents(currentTransform.GetChild(childIndex));
     }
 
     protected void ClearProjectedVisuals()
