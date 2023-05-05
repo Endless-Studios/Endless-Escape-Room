@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[SelectionBase]
 public class Interactable : MonoBehaviour
 {
     [SerializeField] bool isInteractable = true;
     [SerializeField] string interactPromptText = string.Empty;
     [SerializeField] string itemName = string.Empty;
-    [SerializeField] UnityEvent OnInteracted = new UnityEvent();
+    public UnityEvent OnInteracted = new UnityEvent();
 
     protected virtual string DefaultInteractionText => "Interact";
 
@@ -18,8 +19,8 @@ public class Interactable : MonoBehaviour
         get => isInteractable; 
         set
         {
-            if(value == false && isHighlighted)
-                Unhighlight();
+            //if(value == false && gameObject.layer == LayerMask.NameToLayer(highlightLayer))
+                //Unhighlight(false);//Could cause issues with held items.
             isInteractable = value;
         }
     }
@@ -46,29 +47,24 @@ public class Interactable : MonoBehaviour
 
     const string highlightLayer = "InteractableOutline";
     const string normalLayer = "InteractableNoOutline";
+    const string inspectingHighlightLayer = "InspectedOutline";
+    const string inspectingNormalLayer = "InspectedItem";
 
-    bool isHighlighted = false;
-
-    private void Awake()
+    public void Unhighlight(bool isInspecting)
     {
-        Unhighlight();
+        SetToNormalLayer(isInspecting);
     }
 
-    internal void Unhighlight()
+    public void SetToNormalLayer(bool isInspecting = false)
     {
-        SetToNormalLayer();
-        isHighlighted = false;
+        //Debug.Log($"setting {gameObject.name} to a normal layer");
+        SetLayerRecursive(transform, LayerMask.NameToLayer(isInspecting ? inspectingNormalLayer : normalLayer));
     }
 
-    public void SetToNormalLayer()
+    public void Highlight(bool isInspecting)
     {
-        SetLayerRecursive(transform, LayerMask.NameToLayer(normalLayer));
-    }
-
-    internal void Highlight()
-    {
-        SetLayerRecursive(transform, LayerMask.NameToLayer(highlightLayer));
-        isHighlighted = true;
+        //Debug.Log($"setting {gameObject.name} to a highlight layer");
+        SetLayerRecursive(transform, LayerMask.NameToLayer(isInspecting ? inspectingHighlightLayer : highlightLayer));
     }
 
     protected static void SetLayerRecursive(Transform transform, int layer)
@@ -87,6 +83,5 @@ public class Interactable : MonoBehaviour
 
     protected virtual void InternalHandleInteract()
     {
-
     }
 }

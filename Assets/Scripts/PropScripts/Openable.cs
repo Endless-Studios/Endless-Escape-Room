@@ -8,11 +8,11 @@ public class Openable : MonoBehaviour
     [SerializeField] bool isOpen = false;
     [SerializeField] bool isLocked = false;
 
-    [SerializeField] UnityEvent OnOpened = new UnityEvent();
-    [SerializeField] UnityEvent OnOpenFailed = new UnityEvent();
-    [SerializeField] UnityEvent OnClosed = new UnityEvent();
-    [SerializeField] UnityEvent OnLocked = new UnityEvent();
-    [SerializeField] UnityEvent OnUnlocked = new UnityEvent();
+    public UnityEvent OnOpened = new UnityEvent();
+    public UnityEvent OnOpenFailed = new UnityEvent();
+    public UnityEvent OnClosed = new UnityEvent();
+    public UnityEvent OnLocked = new UnityEvent();
+    public UnityEvent OnUnlocked = new UnityEvent();
 
     public bool IsLocked { get => isLocked; }
 

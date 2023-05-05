@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inspectable : Interactable
 {
-    [SerializeField] Transform visualsRoot = null;
-    public Transform VisualsRoot => visualsRoot;
+    public UnityEvent OnInspectionStarted = new UnityEvent();
+    public UnityEvent OnInspectionEnded = new UnityEvent();
 
     protected override string DefaultInteractionText => "Inspect";
 
@@ -20,22 +21,27 @@ public class Inspectable : Interactable
         CacheTransform();
     }
 
+    public void HandleInspectionStarted()
+    {
+        OnInspectionStarted.Invoke();
+    }
+
+    public void HandleInspectionStopped()
+    {
+        OnInspectionEnded.Invoke();
+    }
+
     protected void CacheTransform()
     {
-        initialPosition = visualsRoot.localPosition;
-        initialRotation = visualsRoot.localRotation;
-        initialParent = visualsRoot.transform.parent;
+        initialPosition = transform.localPosition;
+        initialRotation = transform.localRotation;
+        initialParent = transform.parent;
     }
 
-    public void RestoreVisualsRoot()
+    public void RestoreTransform()
     {
-        visualsRoot.transform.SetParent(initialParent, true);
-        visualsRoot.transform.localPosition = initialPosition;
-        visualsRoot.transform.localRotation = initialRotation;
-    }
-
-    public void SetToHeldLayer()
-    {
-        SetLayerRecursive(transform, LayerMask.NameToLayer(inspectedLayer));
+        transform.SetParent(initialParent, true);
+        transform.localPosition = initialPosition;
+        transform.localRotation = initialRotation;
     }
 }

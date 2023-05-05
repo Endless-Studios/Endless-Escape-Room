@@ -6,19 +6,25 @@ using UnityEngine.Events;
 
 public class Pickupable : Inspectable
 {
+    [Tooltip("Optional, does this object use physics?")]
     [SerializeField] Rigidbody dropRigidbody;
+    [Tooltip("What type of object is this?")]
     [SerializeField] Identifier[] identifiers;
+    [Tooltip("Optional, but more efficient when projecting the dropped visuals if it is prebuilt")]
+    [SerializeField] GameObject visualsPrefab;
 
     protected override string DefaultInteractionText => "Pick up";
 
     public UnityEvent OnPickedUp = new UnityEvent();
+    public UnityEvent OnDropped = new UnityEvent();
 
-    public Identifier[] Identifiers { get => identifiers; }
+    public Identifier[] Identifiers => identifiers;
+    public GameObject VisualsPrefab => visualsPrefab;
 
     internal void HandlePickedUp()
     {
-        RestoreVisualsRoot();
-        SetToHeldLayer();
+        //RestoreVisualsRoot();
+        SetToNormalLayer(true);
         if(dropRigidbody)
         {
             dropRigidbody.isKinematic = true;
@@ -28,10 +34,17 @@ public class Pickupable : Inspectable
         OnPickedUp.Invoke();
     }
 
-    internal void HandleDropped()
+    internal void HandleDropped(bool enableRigidbody = true)
     {
-        if(dropRigidbody)
+        if(enableRigidbody && dropRigidbody)
             dropRigidbody.isKinematic = false;
         SetToNormalLayer();
+        OnDropped.Invoke();
+    }
+
+    protected virtual void OnValidate()
+    {
+        if(dropRigidbody == null)
+            dropRigidbody = GetComponent<Rigidbody>();
     }
 }
