@@ -17,6 +17,8 @@ public class HeldItemManager : MonoBehaviour
 
     Useable heldUseable = null;
     GameObject projectedVisuals = null;
+    Bounds projectedVisualsBounds = new Bounds();
+    Vector3 projectedVisualsBoundsOffset;
     Snappable currentSnappable = null;
 
     public Pickupable HeldPickupable { get; private set; }
@@ -28,10 +30,10 @@ public class HeldItemManager : MonoBehaviour
         heldUseable = pickupable as Useable;
         HeldPickupable.HandlePickedUp();
         HeldPickupable.transform.SetParent(Camera.main.transform, true);
-        if(isInspecting == false)
+        if (isInspecting == false)
         {
             MoveHeldItemToProperPosition();
-            if(pickupable is Useable)
+            if (pickupable is Useable)
             {
                 PlayerHUD.Instance.SetHeldScreenActive(true, false);
                 playerInput.InteractEnabled = false;
@@ -56,17 +58,37 @@ public class HeldItemManager : MonoBehaviour
         PlayerHUD.Instance.SetHeldScreenActive(true, true);
         projectedVisuals = GetVisuals(HeldPickupable);
         Renderer[] projectedRenderers = projectedVisuals.GetComponentsInChildren<Renderer>();
-        foreach(Renderer renderer in projectedRenderers)
+
+        foreach (Renderer renderer in projectedRenderers)
         {
             //TODO Modify layers to not draw on special camera (we want to see it in world space)
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             renderer.material = dropIndicatorMaterial;
         }
+
+        Collider[] boundsColliders = HeldPickupable.GetComponentsInChildren<Collider>();
+
+        Quaternion heldPickupableCachedRotation = HeldPickupable.transform.rotation;
+        HeldPickupable.transform.rotation = Quaternion.identity;
+        Physics.SyncTransforms();
+
+        projectedVisualsBounds.size = Vector3.zero;
+        projectedVisualsBounds.center = boundsColliders[0].bounds.center;
+
+        foreach (Collider collider in boundsColliders)
+        {
+            if (!collider.isTrigger)
+                projectedVisualsBounds.Encapsulate(collider.bounds);
+        }
+
+        projectedVisualsBoundsOffset = projectedVisualsBounds.center - HeldPickupable.transform.position;
+
+        HeldPickupable.transform.rotation = heldPickupableCachedRotation;
     }
 
     static GameObject GetVisuals(Pickupable pickupable)
     {
-        if(pickupable.VisualsPrefab != null)
+        if (pickupable.VisualsPrefab != null)
             return Instantiate(pickupable.VisualsPrefab, pickupable.transform.position, pickupable.transform.rotation);
         else
         {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
@@ -80,21 +102,21 @@ public class HeldItemManager : MonoBehaviour
     {
         Component[] components = currentTransform.GetComponents<Component>();
         System.Type[] validTypes = new System.Type[] { typeof(Transform), typeof(SkinnedMeshRenderer), typeof(MeshRenderer), typeof(MeshFilter) };
-        foreach(Component component in components)
+        foreach (Component component in components)
         {
             System.Type type = component.GetType();
-            if(validTypes.Contains(type) == false)
+            if (validTypes.Contains(type) == false)
                 Destroy(component);
         }
 
         int childCount = currentTransform.childCount;
-        for(int childIndex = 0; childIndex < childCount; childIndex++)
+        for (int childIndex = 0; childIndex < childCount; childIndex++)
             StripInvalidComponents(currentTransform.GetChild(childIndex));
     }
 
     protected void ClearProjectedVisuals()
     {
-        if(projectedVisuals)
+        if (projectedVisuals)
             Destroy(projectedVisuals);
         projectedVisuals = null;
     }
@@ -107,14 +129,14 @@ public class HeldItemManager : MonoBehaviour
 
     private void Update()
     {
-        if(HeldPickupable)
+        if (HeldPickupable)
         {
-            if(projectedVisuals)
+            if (projectedVisuals)
                 ProjectHeldItem();
-            if(IsDropMode && playerInput.GetDropPressed())
+            if (IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
-                if(currentSnappable)
+                if (currentSnappable)
                 {
                     currentSnappable.SnapPickupable(HeldPickupable);
                     currentSnappable = null;
@@ -135,12 +157,12 @@ public class HeldItemManager : MonoBehaviour
                 HeldPickupable = null;
                 heldUseable = null;
             }
-            else if(itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
+            else if (itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
             {
                 PlayerHUD.Instance.SetHeldScreenActive(false);
                 itemInspector.InspectItem(HeldPickupable);
             }
-            else if(!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
+            else if (!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
             {
                 heldUseable.Use();
             }
@@ -153,11 +175,12 @@ public class HeldItemManager : MonoBehaviour
         Vector3 targetPosition;
         Quaternion targetRotation;
 
-        //TODO Move to a bounds projection maybe?
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, dropRaycastDistance, dropRaycastMask))
+        if (Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out hitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask))
         {
+            Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance));
+
             Snappable snappable = hitInfo.collider.GetComponent<Snappable>();
-            if(snappable && snappable.AcceptsPickupable(HeldPickupable))
+            if (snappable && snappable.AcceptsPickupable(HeldPickupable))
             {
                 currentSnappable = snappable;
                 targetPosition = snappable.SnapTransform.position;
@@ -166,7 +189,7 @@ public class HeldItemManager : MonoBehaviour
             else
             {
                 currentSnappable = null;
-                targetPosition = hitInfo.point;
+                targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance) - projectedVisualsBoundsOffset;
                 targetRotation = Quaternion.identity;
             }
         }
@@ -176,7 +199,16 @@ public class HeldItemManager : MonoBehaviour
             targetPosition = Camera.main.transform.position + Camera.main.transform.forward * dropRaycastDistance;
             targetRotation = Quaternion.identity;
         }
+
         projectedVisuals.transform.position = Vector3.Lerp(projectedVisuals.transform.position, targetPosition, Time.deltaTime * projectionSpeed);
         projectedVisuals.transform.rotation = Quaternion.Lerp(projectedVisuals.transform.rotation, targetRotation, Time.deltaTime * projectionSpeed);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (projectedVisuals != null)
+        {
+            Gizmos.DrawWireCube(projectedVisuals.transform.position + projectedVisualsBoundsOffset, projectedVisualsBounds.extents * 2f);
+        }
     }
 }
