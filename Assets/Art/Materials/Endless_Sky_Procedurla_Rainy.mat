@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3268090472048810696
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Endless_Sky_Procedurla_Rainy
+  m_Shader: {fileID: -6465566751694194690, guid: 8e36117eedf594140bf800937f512ce0,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ParallaxOcclusionMapping_8456f81c3a4f4efab167e7653563a6fc_Heightmap_2:
+        m_Texture: {fileID: 2800000, guid: dea05996c7d584501989f6093ea6a978, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxOcclusionMapping_c57a6d79f0324c6da3b9b04a77ce1c27_Heightmap_2:
+        m_Texture: {fileID: 2800000, guid: dea05996c7d584501989f6093ea6a978, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Cloud_Contrast: 2.36
+    - _Cloud_Distance_Fade_Power: 1.03
+    - _Cloud_Height: 1.13
+    - _Cloud_Size: 0.3
+    - _Distance_Fade_Power: 1.46
+    - _Float: 1
+    - _Nadir_Blend_Power: 0.487
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Scale: 3.31
+    - _Zenith_Blend_Power: 0.881
+    m_Colors:
+    - _Cloud_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
+    - _Cloud_Speed: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Horizon_Color: {r: 0.34247062, g: 0.3679245, b: 0.36009255, a: 0}
+    - _Nadir_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Zenith_Color: {r: 0.70250386, g: 0.754717, b: 0.73098373, a: 0}
+  m_BuildTextureStacks: []
