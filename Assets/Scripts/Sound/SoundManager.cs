@@ -5,14 +5,14 @@ namespace Sound
 {
     public class SoundManager : MonoBehaviourSingleton<SoundManager>
     {
+        [field: SerializeField] public float DefaultObjectStc { get; private set; }
+        [field: SerializeField] public LayerMask SoundBlockerMask { get; private set; }
         public static event Action<EmittedSoundData> OnSoundEmitted;
-
-        private static void SoundEmitted(EmittedSoundData soundData) => OnSoundEmitted?.Invoke(soundData);
 
         public void EmitSoundAtPosition(EmittedSoundData soundData, AudioClip clip)
         {
             //PlayClip from pooled audiosource
-            SoundEmitted(soundData);
+            OnSoundEmitted?.Invoke(soundData);
         }
 
         public readonly struct EmittedSoundData

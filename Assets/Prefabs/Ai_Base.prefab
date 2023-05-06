@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8005709079450138725}
   - component: {fileID: 913367526216134575}
   - component: {fileID: 758338748543762705}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPerceivedDB: 0
 --- !u!114 &8005709079450138725
 MonoBehaviour:
   m_ObjectHideFlags: 0
