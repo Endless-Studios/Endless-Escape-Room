@@ -277,7 +277,7 @@ MonoBehaviour:
   sightBlockingMask:
     serializedVersion: 2
     m_Bits: 4097
-  maxViewConeHalfAngle: 30
+  maxViewConeHalfAngle: 60
 --- !u!114 &4769800100488525422
 MonoBehaviour:
   m_ObjectHideFlags: 0
