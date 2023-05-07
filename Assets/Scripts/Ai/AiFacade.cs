@@ -44,5 +44,10 @@ namespace Ai
         public void EnableCollision() => collisionComponent.EnableCollision();
 
         public void SetHealthToMax() => healthComponent.SetHealthToMax();
+
+        public void UpdateSenses()
+        {
+            sightSensor.CheckLos();
+        }
     }
 }

@@ -16,8 +16,6 @@ GameObject:
   - component: {fileID: 3801687987798645566}
   - component: {fileID: 75287004308826072}
   - component: {fileID: 5708969744281638855}
-  - component: {fileID: 5563087467506744110}
-  - component: {fileID: 8005709079450138725}
   - component: {fileID: 913367526216134575}
   - component: {fileID: 758338748543762705}
   m_Layer: 14
@@ -40,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2163962243967004280}
+  - {fileID: 4935126840799936727}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,8 +59,8 @@ MonoBehaviour:
   visualComponent: {fileID: 75287004308826072}
   collisionComponent: {fileID: 5708969744281638855}
   navigationComponent: {fileID: 758338748543762705}
-  hearingSensor: {fileID: 5563087467506744110}
-  sightSensor: {fileID: 8005709079450138725}
+  hearingSensor: {fileID: 4769800100488525422}
+  sightSensor: {fileID: 4870086894081962781}
   awarenessComponent: {fileID: 913367526216134575}
   navMeshAgent: {fileID: 8683445511247982297}
   OnDied:
@@ -206,31 +205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders:
   - {fileID: 3075204411924913249}
---- !u!114 &5563087467506744110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minPerceivedDB: 0
---- !u!114 &8005709079450138725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70cdc418f316a30439865e141c061320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &913367526216134575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +229,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5008231cb44023806515e3b0c14753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4903535583582025397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4935126840799936727}
+  - component: {fileID: 4870086894081962781}
+  - component: {fileID: 4769800100488525422}
+  m_Layer: 0
+  m_Name: SensorObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4935126840799936727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903535583582025397}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626646627048455303}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4870086894081962781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903535583582025397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cdc418f316a30439865e141c061320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightBlockingMask:
+    serializedVersion: 2
+    m_Bits: 4097
+  maxViewConeHalfAngle: 30
+--- !u!114 &4769800100488525422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903535583582025397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPerceivedDB: 0
 --- !u!1 &4907320702761549570
 GameObject:
   m_ObjectHideFlags: 0
