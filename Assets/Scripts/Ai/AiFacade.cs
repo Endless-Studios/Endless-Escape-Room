@@ -18,8 +18,9 @@ namespace Ai
         [SerializeField] private SightSensor sightSensor;
         [SerializeField] private AwarenessComponent awarenessComponent;
         [SerializeField] private NavMeshAgent navMeshAgent;
-        [SerializeField] private AiWanderComponent aiWanderComponent;
-        [SerializeField] private AiFidgetComponent aiFidgetComponent;
+        [SerializeField] private WanderComponent wanderComponent;
+        [SerializeField] private FidgetComponent fidgetComponent;
+        [SerializeField] private PatrolComponent patrolComponent;
 
         public float Health => healthComponent.Health;
         public float MaxHealth => healthComponent.MaxHealth;
@@ -49,34 +50,47 @@ namespace Ai
 
         public void SetHealthToMax() => healthComponent.SetHealthToMax();
 
+        public float NavigationTolerance => navigationComponent.NavigationTolerance;
+        
         public bool HasDestination => navigationComponent.HasDestination;
 
         public Vector3 Destination => navigationComponent.Destination;
 
         public void UpdateSenses() => sightSensor.CheckLos();
 
-        public float WanderThreshold => aiWanderComponent.WanderThreshold;
+        public float WanderThreshold => wanderComponent.WanderThreshold;
 
-        public float TimeSinceLastWander => aiWanderComponent.TimeSinceLastWander;
+        public void StartWandering() => wanderComponent.StartWandering();
+
+        public float TimeSinceLastWander => wanderComponent.TimeSinceLastWander;
         
-        public void ResetLastWanderTime() => aiWanderComponent.ResetLastWanderTime();
+        public void ResetLastWanderTime() => wanderComponent.ResetLastWanderTime();
 
-        public float FidgetThreshold => aiFidgetComponent.FidgetThreshold;
+        public float FidgetThreshold => fidgetComponent.FidgetThreshold;
 
-        public float TimeSinceLastFidget => aiFidgetComponent.TimeSinceLastFidget;
+        public float TimeSinceLastFidget => fidgetComponent.TimeSinceLastFidget;
         
-        public void ResetLastFidgetTime() => aiFidgetComponent.ResetLastFidgetTime();
+        public void ResetLastFidgetTime() => fidgetComponent.ResetLastFidgetTime();
 
-        public void StartFidgeting() => aiFidgetComponent.StartFidgeting();
+        public void StartFidgeting() => fidgetComponent.StartFidgeting();
 
-        public bool IsFidgeting => aiFidgetComponent.IsFidgeting;
+        public bool IsFidgeting => fidgetComponent.IsFidgeting;
 
-        public void FidgetInterrupted() => aiFidgetComponent.StopFidgeting();
+        public void FidgetInterrupted() => fidgetComponent.StopFidgeting();
+
+        public float PatrolThreshold => patrolComponent.PatrolThreshold;
+
+        public float TimeSinceLastPatrol => patrolComponent.TimeSinceLastPatrol;
+
+        public void ResetLastPatrolTime() => patrolComponent.ResetLastPatrolTime();
+
+        public void StartPatrolling() => patrolComponent.StartPatrolling();
 
         public void UpdateBoredom(float deltaTime)
         {
-            aiWanderComponent.UpdateLastWanderTime(deltaTime);
-            aiFidgetComponent.UpdateLastFidgetTime(deltaTime);
+            wanderComponent.UpdateLastWanderTime(deltaTime);
+            fidgetComponent.UpdateLastFidgetTime(deltaTime);
+            patrolComponent.UpdateLastPatrolTime(deltaTime);
         }
     }
 }

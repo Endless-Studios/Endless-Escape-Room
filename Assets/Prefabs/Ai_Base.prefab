@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 5708969744281638855}
   - component: {fileID: 913367526216134575}
   - component: {fileID: 758338748543762705}
+  - component: {fileID: 3274762608564594551}
+  - component: {fileID: 1816274818776610447}
+  - component: {fileID: 4357895078427991714}
   m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
@@ -63,6 +66,9 @@ MonoBehaviour:
   sightSensor: {fileID: 4870086894081962781}
   awarenessComponent: {fileID: 913367526216134575}
   navMeshAgent: {fileID: 8683445511247982297}
+  wanderComponent: {fileID: 1816274818776610447}
+  fidgetComponent: {fileID: 3274762608564594551}
+  patrolComponent: {fileID: 4357895078427991714}
   OnDied:
     m_PersistentCalls:
       m_Calls:
@@ -120,7 +126,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3417203797340643467}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -229,6 +235,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5008231cb44023806515e3b0c14753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <NavigationTolerance>k__BackingField: 0.2
+--- !u!114 &3274762608564594551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d636e8675144ae895b77dd8e6a58037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <FidgetThreshold>k__BackingField: 200000
+--- !u!114 &1816274818776610447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0159c08b05ee4bad9fbce1978c184795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <WanderThreshold>k__BackingField: 200000
+--- !u!114 &4357895078427991714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70da0457a4a42489991bcde3f3253c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PatrolThreshold>k__BackingField: 200000
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0

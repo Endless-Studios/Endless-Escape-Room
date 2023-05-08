@@ -2,7 +2,7 @@
 
 namespace Ai
 {
-    internal class AiFidgetComponent : MonoBehaviour
+    internal class FidgetComponent : MonoBehaviour
     {
         [field: SerializeField] public float FidgetThreshold { get; private set; }
         public float TimeSinceLastFidget { get; private set; }
