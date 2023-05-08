@@ -1620,6 +1620,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &273850052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1700,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &277446000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,6 +2168,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &325114409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,6 +2476,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &350211505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2685,6 +2709,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &369325357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3212,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &440699204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3256,6 +3292,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &459695552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,6 +3583,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &505299576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,6 +3663,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &516783637
 GameObject:
   m_ObjectHideFlags: 0
@@ -4106,6 +4160,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &571841425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,6 +4420,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &577579184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5896,6 +5962,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6611,6 +6683,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1013729222
 GameObject:
   m_ObjectHideFlags: 0
@@ -7051,6 +7129,12 @@ MonoBehaviour:
   sliderContext: {fileID: 131812074}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1073968813
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7512,6 +7596,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1184250171
 GameObject:
   m_ObjectHideFlags: 0
@@ -7879,6 +7969,12 @@ MonoBehaviour:
   sliderContext: {fileID: 92145820}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1280034263
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8129,6 +8225,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1357480381
 GameObject:
   m_ObjectHideFlags: 0
@@ -9155,6 +9257,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1481961791
 GameObject:
   m_ObjectHideFlags: 0
@@ -9281,6 +9389,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1532711843
 GameObject:
   m_ObjectHideFlags: 0
@@ -9952,6 +10066,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1606441857
 GameObject:
   m_ObjectHideFlags: 0
@@ -11406,6 +11526,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1838059296
 GameObject:
   m_ObjectHideFlags: 0
@@ -11577,6 +11703,12 @@ MonoBehaviour:
   sliderContext: {fileID: 1587152944}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1853366750
 GameObject:
   m_ObjectHideFlags: 0
@@ -11925,6 +12057,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1917980244
 GameObject:
   m_ObjectHideFlags: 0
@@ -12032,6 +12170,12 @@ MonoBehaviour:
   sliderContext: {fileID: 459695553}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1936229521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12985,6 +13129,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2028083726
 GameObject:
   m_ObjectHideFlags: 0
@@ -13334,6 +13484,12 @@ MonoBehaviour:
   sliderContext: {fileID: 131812074}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &2072078432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14041,6 +14197,12 @@ MonoBehaviour:
   sliderContext: {fileID: 917705101}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
+  OnPositionMoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPositionSnapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &185668553557446485
 PrefabInstance:
   m_ObjectHideFlags: 0
