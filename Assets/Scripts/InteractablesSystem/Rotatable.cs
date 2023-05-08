@@ -77,7 +77,6 @@ public class Rotatable : Grabbable
             float targetAxisRotation = snapIndex * snapDelta; //the desired rotation to snap to
             Quaternion targetRotation = startingRotation * Quaternion.Euler(rotationAxisVector * targetAxisRotation); //rotate on the target axis from starting rotation            
             activeSnapCoroutine = StartCoroutine(SmoothToRotation(targetRotation, snapIndex));
-            Debug.Log($" Rot: {currentAxisRotation} | Ind: {snapIndex} ");
         }
     }
 
