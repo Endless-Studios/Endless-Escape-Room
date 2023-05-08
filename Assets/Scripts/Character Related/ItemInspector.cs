@@ -53,7 +53,10 @@ public class ItemInspector : MonoBehaviour
         playerInput.InteractEnabled = true;
         playerInput.LookEnabled = false;
         playerInput.MoveEnabled = false;
-        playerInput.HeldControlsEnabled = false;
+        heldItemManager.HideProjectedVisualsAndControls();
+        if(currentPickupable)
+            currentPickupable.gameObject.SetActive(true);
+
         CurrentInspectable.SetToNormalLayer(true);
         Vector3 startPosition = CurrentInspectable.transform.position;
         Quaternion startRotation = CurrentInspectable.transform.localRotation;
@@ -63,12 +66,14 @@ public class ItemInspector : MonoBehaviour
             CurrentInspectable.transform.localRotation = Quaternion.Slerp(startRotation, Quaternion.identity, elapsedTime / inspectMoveTime);
             yield return null;
         }
+
+        PlayerHUD.Instance.InventoryUi.Show();
+
         CurrentInspectable.transform.position = Camera.main.transform.position + Camera.main.transform.forward * attachOffset;
         CurrentInspectable.transform.localRotation = Quaternion.identity;
         bool backPressed = false;
         bool pickupPressed = false;
         MouseLockHandler.Instance.ClaimMouseCursor(this);
-        PlayerHUD.Instance.SetHeldScreenActive(false);
         bool canPickup = currentPickupable != null && (inventory.CanPickupItem(currentPickupable) || heldItemManager.HeldPickupable == currentPickupable);
         PlayerHUD.Instance.SetInspectScreenActive(true, canPickup);
         bool rotationHeld = false;
@@ -127,6 +132,9 @@ public class ItemInspector : MonoBehaviour
                 inventory.PickupItem(currentPickupable);
             }
         }
+
+        PlayerHUD.Instance.InventoryUi.Hide();
+
         PlayerHUD.Instance.SetInspectScreenActive(false);
         MouseLockHandler.Instance.ReleaseMouseCursor(this);
         CurrentInspectable.HandleInspectionStopped();

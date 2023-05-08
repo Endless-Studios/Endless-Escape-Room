@@ -1,3 +1,5 @@
+using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,44 +14,27 @@ public class CameraFocus : MonoBehaviour
     public UnityEvent OnFocused = new UnityEvent();
     public UnityEvent OnUnfocused = new UnityEvent();
 
-    const int FOCUSED_PRIORITY = 20;
-    const int UNFOCUSED_PRIORITY = 0;
+    public CinemachineVirtualCamera CameraTarget => focusCamera;
+    public bool ShowMouseWhileFocused => showMouseWhileFocused;
+    public bool AllowUnfocusKey => allowUnfocusKey;
 
-    bool isFocused = false;
+    internal void HandledFocused()
+    {
+        OnFocused.Invoke();
+    }
+
+    internal void HandledUnfocused()
+    {
+        OnUnfocused.Invoke();
+    }
 
     public void Focus()
     {
-        if(isFocused == false)
-        {
-            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = false;
-            
-            isFocused = true;
-            focusCamera.Priority = FOCUSED_PRIORITY;
-            OnFocused.Invoke();
-            if(showMouseWhileFocused)
-                MouseLockHandler.Instance.ClaimMouseCursor(this);
-        }
+        PlayerCore.LocalPlayer.CameraManager.FocusCamera(this);
     }
 
     public void Unfocus()
     {
-        if(isFocused)
-        {
-            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = true;
-            isFocused = false;
-            focusCamera.Priority = UNFOCUSED_PRIORITY;
-            OnUnfocused.Invoke();
-            if(showMouseWhileFocused)
-                MouseLockHandler.Instance.ReleaseMouseCursor(this);
-        }
-    }
-
-    private void Update()
-    {
-        //TODO move input elsewhere, keep centralized
-        if(isFocused && allowUnfocusKey && Input.GetKeyDown(KeyCode.Escape))
-        {
-            Unfocus();
-        }
+        PlayerCore.LocalPlayer.CameraManager.UnfocusCamera(this);
     }
 }

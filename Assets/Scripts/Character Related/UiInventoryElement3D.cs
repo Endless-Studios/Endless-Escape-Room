@@ -18,19 +18,19 @@ public class UiInventoryElement3D : UiInventoryElement
         PositionVisuals();
         AdjustSize();
 
-        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedItem"));//TODO centralize layer management functions
+        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedItem"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
     }
 
     void AdjustSize() //TODO this is slightly innacurate depending on rotation
     {
-        Bounds[] bounds = visuals.GetComponents<Renderer>().Select(r => r.bounds).ToArray();
+        Bounds[] bounds = visuals.GetComponentsInChildren<Renderer>().Select(r => r.bounds).ToArray();
         finalBounds = bounds[0];
-        Debug.Log(bounds.Length);
+        //Debug.Log(bounds.Length);
         for(int index = 1; index < bounds.Length; index++)
         {
             finalBounds.Encapsulate(bounds[index]);
         }
-        Debug.Log(finalBounds.center);
+        //Debug.Log(finalBounds.center);
 
         Vector3 center = finalBounds.center;
         Vector3 extents = finalBounds.extents;
@@ -59,7 +59,7 @@ public class UiInventoryElement3D : UiInventoryElement
         float width = max.x - min.x;
         float height = max.y - min.y;
         float largestDimension = Mathf.Max(width, height);
-        float scale = rectTransform.sizeDelta.x * rectTransform.root.localScale.x / largestDimension;
+        float scale = rectTransform.sizeDelta.x * PlayerHUD.Instance.transform.localScale.x / largestDimension;
         visuals.transform.localScale *= scale;
     }
 

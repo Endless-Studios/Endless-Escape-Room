@@ -19,7 +19,7 @@ public class InventoryUI : MonoBehaviour
         inventoryCanvas.enabled = false;
     }
 
-    public void Show(InventoryBase inventoryBase)
+    public void Show()
     {
         if(inventoryCanvas.enabled)
         {
@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
 
         inventoryCanvas.enabled = true;
 
-        Pickupable[] items = inventoryBase.GetHeldItems(null);
+        Pickupable[] items = PlayerCore.LocalPlayer.Inventory.GetItems(null);//TODO ignore the one in your hand actively, if inspecting
         foreach(Pickupable item in items)
         {
             UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
@@ -95,14 +95,6 @@ public class InventoryUI : MonoBehaviour
                     originalElement = null;
                 }
             }
-            if(Input.GetKeyDown(KeyCode.F2)) //TODO TEMP
-            {
-                Hide();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.F1)) //TODO TEMP
-        {
-            Show(GameObject.FindObjectOfType<SimpleInventory>());
         }
     }
 }
