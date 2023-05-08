@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+// ReSharper disable UnusedMember.Global
 
 namespace Ai
 {
@@ -16,6 +18,8 @@ namespace Ai
         [SerializeField] private SightSensor sightSensor;
         [SerializeField] private AwarenessComponent awarenessComponent;
         [SerializeField] private NavMeshAgent navMeshAgent;
+        [SerializeField] private AiWanderComponent aiWanderComponent;
+        [SerializeField] private AiFidgetComponent aiFidgetComponent;
 
         public float Health => healthComponent.Health;
         public float MaxHealth => healthComponent.MaxHealth;
@@ -45,9 +49,34 @@ namespace Ai
 
         public void SetHealthToMax() => healthComponent.SetHealthToMax();
 
-        public void UpdateSenses()
+        public bool HasDestination => navigationComponent.HasDestination;
+
+        public Vector3 Destination => navigationComponent.Destination;
+
+        public void UpdateSenses() => sightSensor.CheckLos();
+
+        public float WanderThreshold => aiWanderComponent.WanderThreshold;
+
+        public float TimeSinceLastWander => aiWanderComponent.TimeSinceLastWander;
+        
+        public void ResetLastWanderTime() => aiWanderComponent.ResetLastWanderTime();
+
+        public float FidgetThreshold => aiFidgetComponent.FidgetThreshold;
+
+        public float TimeSinceLastFidget => aiFidgetComponent.TimeSinceLastFidget;
+        
+        public void ResetLastFidgetTime() => aiFidgetComponent.ResetLastFidgetTime();
+
+        public void StartFidgeting() => aiFidgetComponent.StartFidgeting();
+
+        public bool IsFidgeting => aiFidgetComponent.IsFidgeting;
+
+        public void FidgetInterrupted() => aiFidgetComponent.StopFidgeting();
+
+        public void UpdateBoredom(float deltaTime)
         {
-            sightSensor.CheckLos();
+            aiWanderComponent.UpdateLastWanderTime(deltaTime);
+            aiFidgetComponent.UpdateLastFidgetTime(deltaTime);
         }
     }
 }

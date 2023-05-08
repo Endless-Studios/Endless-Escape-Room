@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ff53bac-4b1a-43a0-a950-39b8a885c6a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sight/LosProbe.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Sight/LosProbe.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFidgetComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFidgetComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiWanderComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiWanderComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/SightSensor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/SightSensor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sight/SightTarget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sight/SightTarget.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" afterDir="false" />
     </list>
@@ -80,10 +79,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17016">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17016" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -102,6 +101,7 @@
       <workItem from="1682963019348" duration="4771000" />
       <workItem from="1683211458701" duration="28763000" />
       <workItem from="1683394915616" duration="5235000" />
+      <workItem from="1683553408321" duration="5411000" />
     </task>
     <servers />
   </component>
