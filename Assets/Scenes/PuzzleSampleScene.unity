@@ -894,7 +894,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 92145821}
-  - component: {fileID: 92145820}
+  - component: {fileID: 92145822}
   m_Layer: 0
   m_Name: LockTest (2)
   m_TagString: Untagged
@@ -902,21 +902,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &92145820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92145819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa460815c77f884683e15b61158acbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds: {x: 0.07, y: 0.07}
-  snapEnabled: 1
-  snapPoints: {x: 2, y: 2}
 --- !u!4 &92145821
 Transform:
   m_ObjectHideFlags: 0
@@ -934,6 +919,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: -37.83, y: 0, z: -55.858}
+--- !u!114 &92145822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92145819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22163d92627f254438b45d2268f723f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 0.07, y: 0.07}
+  snapEnabled: 1
+  snapPoints: {x: 2, y: 2}
 --- !u!1 &97311679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131812075}
-  - component: {fileID: 131812074}
+  - component: {fileID: 131812076}
   m_Layer: 0
   m_Name: LockTest (1)
   m_TagString: Untagged
@@ -1177,21 +1177,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &131812074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131812073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa460815c77f884683e15b61158acbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds: {x: 0.08, y: 0.08}
-  snapEnabled: 0
-  snapPoints: {x: 3, y: 1}
 --- !u!4 &131812075
 Transform:
   m_ObjectHideFlags: 0
@@ -1210,6 +1195,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: -37.83, y: 0, z: 0}
+--- !u!114 &131812076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131812073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22163d92627f254438b45d2268f723f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 0.08, y: 0.08}
+  snapEnabled: 0
+  snapPoints: {x: 3, y: 1}
 --- !u!1 &156674461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1617,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -1697,7 +1697,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -2165,7 +2165,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -2473,7 +2473,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -2706,7 +2706,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -3209,7 +3209,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -3289,7 +3289,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -3307,7 +3307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 459695554}
-  - component: {fileID: 459695553}
+  - component: {fileID: 459695555}
   m_Layer: 0
   m_Name: SliderContextTest (1)
   m_TagString: Untagged
@@ -3315,21 +3315,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &459695553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459695552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa460815c77f884683e15b61158acbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds: {x: 0.051, y: 0.051}
-  snapEnabled: 1
-  snapPoints: {x: 3, y: 3}
 --- !u!4 &459695554
 Transform:
   m_ObjectHideFlags: 0
@@ -3353,6 +3338,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: -16.043, y: 219.861, z: 1.206}
+--- !u!114 &459695555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459695552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22163d92627f254438b45d2268f723f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 0.051, y: 0.051}
+  snapEnabled: 1
+  snapPoints: {x: 3, y: 3}
 --- !u!1 &487168519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,7 +3580,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -3660,7 +3660,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -4157,7 +4157,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -4417,7 +4417,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -5959,7 +5959,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -6383,7 +6383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917705102}
-  - component: {fileID: 917705101}
+  - component: {fileID: 917705103}
   m_Layer: 0
   m_Name: SliderContextTest (2)
   m_TagString: Untagged
@@ -6391,21 +6391,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &917705101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917705100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa460815c77f884683e15b61158acbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds: {x: 0.051, y: 0.051}
-  snapEnabled: 1
-  snapPoints: {x: 3, y: 3}
 --- !u!4 &917705102
 Transform:
   m_ObjectHideFlags: 0
@@ -6429,6 +6414,21 @@ Transform:
   m_Father: {fileID: 487168521}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -91.051, y: 0, z: 0}
+--- !u!114 &917705103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917705100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22163d92627f254438b45d2268f723f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 0.051, y: 0.051}
+  snapEnabled: 1
+  snapPoints: {x: 3, y: 3}
 --- !u!1 &933030249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,7 +6680,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -6809,7 +6809,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.2275164, y: 1}
+    m_SensorSize: {x: 0.74865997, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7126,7 +7126,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 131812074}
+  slidableContext: {fileID: 131812076}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -7593,7 +7593,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -7966,7 +7966,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 92145820}
+  slidableContext: {fileID: 92145822}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -8222,7 +8222,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -9254,7 +9254,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -9386,7 +9386,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -9849,7 +9849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587152945}
-  - component: {fileID: 1587152944}
+  - component: {fileID: 1587152946}
   m_Layer: 0
   m_Name: SliderContextTest (3)
   m_TagString: Untagged
@@ -9857,21 +9857,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1587152944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587152943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa460815c77f884683e15b61158acbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounds: {x: 0.051, y: 0.051}
-  snapEnabled: 1
-  snapPoints: {x: 3, y: 3}
 --- !u!4 &1587152945
 Transform:
   m_ObjectHideFlags: 0
@@ -9895,6 +9880,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 45.125, y: -23.38, z: 44.179}
+--- !u!114 &1587152946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587152943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22163d92627f254438b45d2268f723f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 0.051, y: 0.051}
+  snapEnabled: 1
+  snapPoints: {x: 3, y: 3}
 --- !u!1 &1587649292
 GameObject:
   m_ObjectHideFlags: 0
@@ -10063,7 +10063,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -11523,7 +11523,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -11700,7 +11700,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 1587152944}
+  slidableContext: {fileID: 1587152946}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -12054,7 +12054,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -12167,7 +12167,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 459695553}
+  slidableContext: {fileID: 459695555}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -13126,7 +13126,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -13481,7 +13481,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 131812074}
+  slidableContext: {fileID: 131812076}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -14194,7 +14194,7 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  sliderContext: {fileID: 917705101}
+  slidableContext: {fileID: 917705103}
   maxSlideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
@@ -14403,7 +14403,7 @@ PrefabInstance:
     - target: {fileID: 8693639748522270397, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79b1e1870f8a2a45af8a3fc0b98fec2, type: 3}

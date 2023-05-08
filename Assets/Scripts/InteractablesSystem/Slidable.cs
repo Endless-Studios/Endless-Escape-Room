@@ -8,7 +8,7 @@ public class Slidable : Grabbable
 {
     protected override string DefaultInteractionText => "Slide";
 
-    [SerializeField] private SliderContext sliderContext;
+    [SerializeField] private SlidableContext slidableContext;
     [SerializeField] private float maxSlideSpeed = 5f;
     [SerializeField, Min(.05f)] private float smoothSnapTime = .1f;
 
@@ -17,12 +17,12 @@ public class Slidable : Grabbable
 
     private Vector3 targetPosition;
     private bool interactionActive;
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
     private Coroutine activeSnapCoroutine;
 
     void Awake()
     {
-        if (sliderContext == null)
+        if (slidableContext == null)
         {
             Debug.LogWarning("Slider Context missing. Removing Slidable.");
             GameObject.Destroy((Slidable)this);
@@ -31,6 +31,10 @@ public class Slidable : Grabbable
 
         //setup the rigidbody to slide properly
         rigidbody = GetComponent<Rigidbody>();
+
+        if(rigidbody == null)
+            rigidbody = gameObject.AddComponent<Rigidbody>();
+
         rigidbody.isKinematic = true;
         rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidbody.useGravity = false;
@@ -57,7 +61,7 @@ public class Slidable : Grabbable
     public override void HandleUpdate()
     {
         //Plane based on the slidercontext's orientation
-        Plane dragPlane = new Plane(sliderContext.transform.forward, sliderContext.transform.position);
+        Plane dragPlane = new Plane(slidableContext.transform.forward, slidableContext.transform.position);
         Camera cam = Camera.main;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
@@ -65,7 +69,7 @@ public class Slidable : Grabbable
         if (dragPlane.Raycast(ray, out float hitDistance))
         {
             Vector3 hitPoint = ray.GetPoint(hitDistance);
-            targetPosition = sliderContext.ClampPosition(hitPoint); //Clamp the desired drag position to the context's bounds
+            targetPosition = slidableContext.ClampPosition(hitPoint); //Clamp the desired drag position to the context's bounds
         }
         else
         {
@@ -81,10 +85,10 @@ public class Slidable : Grabbable
         rigidbody.isKinematic = true;
         rigidbody.velocity = Vector3.zero;
 
-        activeSnapCoroutine = StartCoroutine(SmoothToPosition(sliderContext.EndSlide(transform.position))); //smooth to final position based on snap result
+        activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.EndSlide(transform.position))); //smooth to final position based on snap result
     }
 
-    IEnumerator SmoothToPosition(SliderContext.EndSlideResult snapResult)
+    IEnumerator SmoothToPosition(SlidableContext.EndSlideResult snapResult)
     {
         Vector3 startPosition = transform.position;
         float elapsedTime = 0;

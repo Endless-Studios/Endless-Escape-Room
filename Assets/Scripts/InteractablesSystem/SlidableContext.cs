@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SliderContext : MonoBehaviour
+public class SlidableContext : MonoBehaviour
 {
     [SerializeField, Min(0)] private Vector2 bounds;
     [SerializeField] private bool snapEnabled;
