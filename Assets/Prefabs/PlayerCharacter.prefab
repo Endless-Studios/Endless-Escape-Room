@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6419312489086153408}
   - component: {fileID: 4157247682571816759}
   - component: {fileID: 2350323757107018741}
+  - component: {fileID: 4597869270661111247}
   m_Layer: 12
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -96,6 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignLocalPlayer: 1
   playerInput: {fileID: 8377813685331739176}
+  cameraManager: {fileID: 4597869270661111247}
+  inventory: {fileID: 6419312489086153408}
+  heldItemManager: {fileID: 2350323757107018741}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +231,20 @@ MonoBehaviour:
     m_Bits: 2313
   itemInspector: {fileID: 7485675807474701852}
   projectionSpeed: 10
+--- !u!114 &4597869270661111247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419621909708617998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ae1656f1b54594dabc47374996af46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focusedPriority: 20
+  unfocusedPriority: 0
 --- !u!1 &5845523689269721828
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +428,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7799044, y: 1}
+    m_SensorSize: {x: 1.7785388, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

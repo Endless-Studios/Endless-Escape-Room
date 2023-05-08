@@ -67,7 +67,7 @@ public class Interactable : MonoBehaviour
         SetLayerRecursive(transform, LayerMask.NameToLayer(isInspecting ? inspectingHighlightLayer : highlightLayer));
     }
 
-    protected static void SetLayerRecursive(Transform transform, int layer)
+    public static void SetLayerRecursive(Transform transform, int layer)
     {
         transform.gameObject.layer = layer;
         int childCount = transform.childCount;

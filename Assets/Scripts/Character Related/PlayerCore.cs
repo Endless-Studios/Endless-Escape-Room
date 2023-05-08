@@ -9,9 +9,15 @@ public class PlayerCore : MonoBehaviour
 
     [SerializeField] bool assignLocalPlayer = true;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] CameraManager cameraManager;
+    [SerializeField] InventoryBase inventory;
+    [SerializeField] HeldItemManager heldItemManager;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
+    public CameraManager CameraManager => cameraManager;
+    public InventoryBase Inventory => inventory;
+    public HeldItemManager HeldItemManager => heldItemManager;
 
     private void Awake()
     {
