@@ -52,7 +52,7 @@ public class PlayerInput : MonoBehaviour
     internal bool GetInspectPressed()
     {
         //TODO switch to button
-        return Input.GetKeyDown(KeyCode.Tab);
+        return HeldControlsEnabled && Input.GetKeyDown(KeyCode.Tab);
     }
 
     public bool GetJumpRequested()

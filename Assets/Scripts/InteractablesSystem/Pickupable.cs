@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -46,5 +47,45 @@ public class Pickupable : Inspectable
     {
         if(dropRigidbody == null)
             dropRigidbody = GetComponent<Rigidbody>();
+    }
+
+    internal GameObject GetVisualClone(Vector3 position, Quaternion rotation)
+    {
+        if(VisualsPrefab != null)
+            return Instantiate(VisualsPrefab, position, rotation);
+        else
+        {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
+            GameObject manufacturedPrefab = Instantiate(gameObject, position, rotation);
+            StripInvalidComponents(manufacturedPrefab.transform);
+            return manufacturedPrefab;
+        }
+    }
+
+    internal GameObject GetVisualCloneNoRotation()
+    {
+        if(VisualsPrefab != null)
+            return Instantiate(VisualsPrefab, transform.position, Quaternion.identity);
+        else
+        {//If they didnt have one, we can duplciate it and strip components. Less efficient, but more learner friendly
+            GameObject manufacturedPrefab = Instantiate(gameObject, transform.position, Quaternion.identity);
+            StripInvalidComponents(manufacturedPrefab.transform);
+            return manufacturedPrefab;
+        }
+    }
+
+    static void StripInvalidComponents(Transform currentTransform)
+    {
+        Component[] components = currentTransform.GetComponents<Component>();
+        System.Type[] validTypes = new System.Type[] { typeof(Transform), typeof(SkinnedMeshRenderer), typeof(MeshRenderer), typeof(MeshFilter) };
+        foreach(Component component in components)
+        {
+            System.Type type = component.GetType();
+            if(validTypes.Contains(type) == false)
+                Destroy(component);
+        }
+
+        int childCount = currentTransform.childCount;
+        for(int childIndex = 0; childIndex < childCount; childIndex++)
+            StripInvalidComponents(currentTransform.GetChild(childIndex));
     }
 }
