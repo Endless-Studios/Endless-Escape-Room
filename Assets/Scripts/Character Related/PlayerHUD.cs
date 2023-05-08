@@ -21,6 +21,11 @@ public class PlayerHUD : MonoBehaviourSingleton<PlayerHUD>
     [SerializeField] GameObject helpDropPrompt;
     [SerializeField] GameObject heldUsePrompt;
 
+    [Header("UI Class References")]
+    [SerializeField] InventoryUI inventoryUi;
+
+    public InventoryUI InventoryUi => inventoryUi;
+
     protected override void Awake()
     {
         base.Awake();
