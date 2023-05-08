@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+
 // ReSharper disable UnusedMember.Global
 
 namespace Ai
@@ -18,16 +18,16 @@ namespace Ai
         [SerializeField] private SightSensor sightSensor;
         [SerializeField] private AwarenessComponent awarenessComponent;
         [SerializeField] private NavMeshAgent navMeshAgent;
-        [SerializeField] private WanderComponent wanderComponent;
+        [SerializeField] private WanderNearComponent wanderNearComponent;
         [SerializeField] private FidgetComponent fidgetComponent;
-        [SerializeField] private PatrolComponent patrolComponent;
-
-        public float Health => healthComponent.Health;
-        public float MaxHealth => healthComponent.MaxHealth;
-
+        [SerializeField] private WanderFarComponent wanderFarComponent;
+        
         public UnityEvent OnDied;
         public UnityEvent OnSpawn;
         public UnityEvent OnDespawn;
+
+        public float Health => healthComponent.Health;
+        public float MaxHealth => healthComponent.MaxHealth;
 
         public void Awake()
         {
@@ -58,13 +58,13 @@ namespace Ai
 
         public void UpdateSenses() => sightSensor.CheckLos();
 
-        public float WanderThreshold => wanderComponent.WanderThreshold;
+        public float WanderThreshold => wanderNearComponent.WanderThreshold;
 
-        public void StartWandering() => wanderComponent.StartWandering();
+        public void StartWandering() => wanderNearComponent.StartWandering();
 
-        public float TimeSinceLastWander => wanderComponent.TimeSinceLastWander;
+        public float TimeSinceLastWander => wanderNearComponent.TimeSinceLastWander;
         
-        public void ResetLastWanderTime() => wanderComponent.ResetLastWanderTime();
+        public void ResetLastWanderTime() => wanderNearComponent.ResetLastWanderTime();
 
         public float FidgetThreshold => fidgetComponent.FidgetThreshold;
 
@@ -78,19 +78,21 @@ namespace Ai
 
         public void FidgetInterrupted() => fidgetComponent.StopFidgeting();
 
-        public float PatrolThreshold => patrolComponent.PatrolThreshold;
+        public float PatrolThreshold => wanderFarComponent.PatrolThreshold;
 
-        public float TimeSinceLastPatrol => patrolComponent.TimeSinceLastPatrol;
+        public float TimeSinceLastPatrol => wanderFarComponent.TimeSinceLastPatrol;
 
-        public void ResetLastPatrolTime() => patrolComponent.ResetLastPatrolTime();
+        public void ResetLastPatrolTime() => wanderFarComponent.ResetLastPatrolTime();
 
-        public void StartPatrolling() => patrolComponent.StartPatrolling();
+        public void StartPatrolling() => wanderFarComponent.StartPatrolling();
 
         public void UpdateBoredom(float deltaTime)
         {
-            wanderComponent.UpdateLastWanderTime(deltaTime);
+            wanderNearComponent.UpdateLastWanderTime(deltaTime);
             fidgetComponent.UpdateLastFidgetTime(deltaTime);
-            patrolComponent.UpdateLastPatrolTime(deltaTime);
+            wanderFarComponent.UpdateLastPatrolTime(deltaTime);
         }
+        
+        private Room currentRoom;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Ai
 {
-    internal class PatrolComponent : MonoBehaviour
+    internal class WanderFarComponent : MonoBehaviour
     {
         [field: SerializeField] public float PatrolThreshold { get; private set; }
         

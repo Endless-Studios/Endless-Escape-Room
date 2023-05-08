@@ -52,13 +52,13 @@ namespace Ai
             for (var i = 0; i < numHits; i++)
             {
                 RaycastHit hit = hits[i];
-                var modifier = hit.transform.GetComponent<StcModifier>();
-                float barrierStc = SoundManager.Instance.DefaultObjectStc;
+                var modifier = hit.transform.GetComponent<SoundBlockingModifier>();
+                float barrierStc = SoundManager.Instance.DefaultSoundBlockingValue;
                 float distanceToBarrier = Vector3.Distance(currentSoundOrigin, hit.point);
                 
                 if (modifier)
                 {
-                    barrierStc = modifier.StcValue;
+                    barrierStc = modifier.SoundBlockingValue;
                 }
 
                 float dBAtBarrier = CalculateDBAfterDistanceFalloff(currentDB, distanceToBarrier);

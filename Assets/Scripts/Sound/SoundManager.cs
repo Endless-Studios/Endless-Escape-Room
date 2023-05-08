@@ -5,7 +5,7 @@ namespace Sound
 {
     public class SoundManager : MonoBehaviourSingleton<SoundManager>
     {
-        [field: SerializeField] public float DefaultObjectStc { get; private set; }
+        [field: SerializeField] public float DefaultSoundBlockingValue { get; private set; }
         [field: SerializeField] public LayerMask SoundBlockerMask { get; private set; }
         public static event Action<EmittedSoundData> OnSoundEmitted;
 

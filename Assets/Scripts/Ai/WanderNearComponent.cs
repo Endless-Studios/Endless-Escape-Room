@@ -2,7 +2,7 @@
 
 namespace Ai
 {
-    internal class WanderComponent : MonoBehaviour
+    internal class WanderNearComponent : MonoBehaviour
     {
         [field: SerializeField] public float WanderThreshold { get; private set; }
         public float TimeSinceLastWander { get; private set; }

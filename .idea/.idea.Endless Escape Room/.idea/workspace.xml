@@ -5,23 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ff53bac-4b1a-43a0-a950-39b8a885c6a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/PatrolComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/PatrolComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Room.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Room.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fsm.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fsm.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/IfNearDestination.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/IfNearDestination.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene/NavMesh.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene/NavMesh.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene/NavMesh.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFidgetComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/FidgetComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFidgetComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/FidgetComponent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiWanderComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiWanderComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderComponent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/HearingSensor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/HearingSensor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/PatrolComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderFarComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/PatrolComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderFarComponent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderNearComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderNearComponent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound/StcModifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/SoundBlockingModifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound/StcModifier.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/SoundBlockingModifier.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +108,7 @@
       <workItem from="1682963019348" duration="4771000" />
       <workItem from="1683211458701" duration="28763000" />
       <workItem from="1683394915616" duration="5235000" />
-      <workItem from="1683553408321" duration="7863000" />
+      <workItem from="1683553408321" duration="13512000" />
     </task>
     <servers />
   </component>
