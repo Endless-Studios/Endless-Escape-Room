@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
 
 // ReSharper disable UnusedMember.Global
@@ -17,14 +17,22 @@ namespace Ai
         [SerializeField] private HearingSensor hearingSensor;
         [SerializeField] private SightSensor sightSensor;
         [SerializeField] private AwarenessComponent awarenessComponent;
-        [SerializeField] private NavMeshAgent navMeshAgent;
         [SerializeField] private WanderNearComponent wanderNearComponent;
         [SerializeField] private FidgetComponent fidgetComponent;
         [SerializeField] private WanderFarComponent wanderFarComponent;
+        [SerializeField] private AnimationComponent animationComponent;
         
         public UnityEvent OnDied;
         public UnityEvent OnSpawn;
         public UnityEvent OnDespawn;
+
+        public event Action OnWalkingThroughDoorway;
+
+        public event Action OnWalkedThroughDoorway;
+
+        public void WalkingThroughDoorway() => OnWalkingThroughDoorway?.Invoke();
+
+        public void WalkedThroughDoorway() => OnWalkedThroughDoorway?.Invoke();
 
         public float Health => healthComponent.Health;
         public float MaxHealth => healthComponent.MaxHealth;
@@ -85,6 +93,8 @@ namespace Ai
         public void ResetLastPatrolTime() => wanderFarComponent.ResetLastPatrolTime();
 
         public void StartWanderingFar() => wanderFarComponent.StartWandering();
+
+        public bool IsMoving => navigationComponent.IsMoving;
 
         public void UpdateBoredom(float deltaTime)
         {
