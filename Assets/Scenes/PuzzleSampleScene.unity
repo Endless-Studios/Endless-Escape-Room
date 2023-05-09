@@ -1617,8 +1617,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 262868435}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -1697,8 +1698,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 273850054}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -2165,8 +2167,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 321855292}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -2473,8 +2476,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 340450242}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -2706,8 +2710,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 365131806}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -3209,8 +3214,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 435037091}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -3289,8 +3295,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 440699206}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -3580,8 +3587,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 497640828}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -3660,8 +3668,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 505299578}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -4157,8 +4166,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 560447057}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -4417,8 +4427,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 574993529}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -5959,8 +5970,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 827329396}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -6680,8 +6692,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 975863119}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -6809,7 +6822,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.74865997, y: 1}
+    m_SensorSize: {x: 1.4919595, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7126,8 +7139,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1073968813}
   slidableContext: {fileID: 131812076}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -7593,8 +7607,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1172113366}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -7966,8 +7981,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1280034263}
   slidableContext: {fileID: 92145822}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -8222,8 +8238,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1331543562}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -9254,8 +9271,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1462753143}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -9386,8 +9404,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1514881569}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -10063,8 +10082,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1599069159}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -11523,8 +11543,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1826788670}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -11700,8 +11721,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1852481068}
   slidableContext: {fileID: 1587152946}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -12054,8 +12076,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1907366257}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -12167,8 +12190,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 1930959586}
   slidableContext: {fileID: 459695555}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -13126,8 +13150,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 2018456471}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -13481,8 +13506,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 2072078432}
   slidableContext: {fileID: 131812076}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
@@ -14194,8 +14220,9 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
+  rigidbody: {fileID: 2145620823}
   slidableContext: {fileID: 917705103}
-  maxSlideSpeed: 10
+  slideSpeed: 10
   smoothSnapTime: 0.1
   OnPositionMoved:
     m_PersistentCalls:
