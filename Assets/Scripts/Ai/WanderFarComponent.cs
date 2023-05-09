@@ -12,7 +12,7 @@ namespace Ai
 
         public void ResetLastPatrolTime() => TimeSinceLastPatrol = 0;
 
-        public void StartPatrolling()
+        public void StartWandering()
         {
             
         }

@@ -84,7 +84,7 @@ namespace Ai
 
         public void ResetLastPatrolTime() => wanderFarComponent.ResetLastPatrolTime();
 
-        public void StartPatrolling() => wanderFarComponent.StartPatrolling();
+        public void StartWanderingFar() => wanderFarComponent.StartWandering();
 
         public void UpdateBoredom(float deltaTime)
         {
