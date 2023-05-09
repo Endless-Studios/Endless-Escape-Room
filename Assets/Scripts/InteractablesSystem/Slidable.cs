@@ -8,39 +8,31 @@ public class Slidable : Grabbable
 {
     protected override string DefaultInteractionText => "Slide";
 
+    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private SlidableContext slidableContext;
-    [SerializeField] private float maxSlideSpeed = 5f;
+    [SerializeField] private float slideSpeed = 10f;
     [SerializeField, Min(.05f)] private float smoothSnapTime = .1f;
 
     [SerializeField] private UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space
     [SerializeField] private UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
 
     private Vector3 targetPosition;
-    private bool interactionActive;
-    private new Rigidbody rigidbody;
+    private bool interactionActive;    
     private Coroutine activeSnapCoroutine;
 
     void Awake()
     {
         if (slidableContext == null)
         {
-            Debug.LogWarning("Slider Context missing. Removing Slidable.");
-            GameObject.Destroy((Slidable)this);
+            Debug.LogWarning("Slidable Context missing. Removing Slidable.");
+            Destroy(this);
             return;
-        }
+        }        
 
         //setup the rigidbody to slide properly
-        rigidbody = GetComponent<Rigidbody>();
-
-        if(rigidbody == null)
-            rigidbody = gameObject.AddComponent<Rigidbody>();
-
         rigidbody.isKinematic = true;
-        rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-        rigidbody.useGravity = false;
-        rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
-        rigidbody.mass = 0;
-        rigidbody.drag = 0;
+        rigidbody.useGravity = false;       
+        rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; 
     }
 
     protected override void InternalHandleInteract()
@@ -116,11 +108,12 @@ public class Slidable : Grabbable
         if (interactionActive)
         {
             Vector3 moveDirection = targetPosition - rigidbody.position;
-            Vector3 moveVelocity = moveDirection.normalized * maxSlideSpeed * Time.fixedDeltaTime;
+            Vector3 moveVelocity = moveDirection.normalized * slideSpeed * Time.fixedDeltaTime;
 
-            if ((moveVelocity.magnitude * Time.fixedDeltaTime) > moveDirection.magnitude) //check to see if the drag will overshoot the target position
+            if ((moveVelocity * Time.fixedDeltaTime).sqrMagnitude > moveDirection.sqrMagnitude) //check to see if the drag will overshoot the target position
             {
                 rigidbody.velocity = Vector3.zero;
+                rigidbody.MovePosition(targetPosition);
                 return;
             }
 

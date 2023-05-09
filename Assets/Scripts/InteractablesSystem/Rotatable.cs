@@ -23,7 +23,7 @@ public class Rotatable : Grabbable
     private Coroutine activeSnapCoroutine;
     private Quaternion startingRotation; //all rotations and snapping are relative to starting rotation
 
-    private Vector3 rotationAxisVector //rotation axis for mathematical calculations
+    private Vector3 RotationAxisVector //rotation axis for mathematical calculations
     {
         get
         {
@@ -33,7 +33,7 @@ public class Rotatable : Grabbable
         }
     }
 
-    private Vector3 rotationForwardAxisVector
+    private Vector3 RotationForwardAxisVector
     {
         get
         {
@@ -65,7 +65,7 @@ public class Rotatable : Grabbable
     protected override void HandleStopInteract()
     {
         //the angle between starting forward direction and current forward direction
-        float currentAxisRotation = Vector3.SignedAngle(startingRotation * rotationForwardAxisVector, targetTransform.localRotation * rotationForwardAxisVector, startingRotation * rotationAxisVector);
+        float currentAxisRotation = Vector3.SignedAngle(startingRotation * RotationForwardAxisVector, targetTransform.localRotation * RotationForwardAxisVector, startingRotation * RotationAxisVector);
         currentAxisRotation = Mathf.Repeat(currentAxisRotation, 360); //0 - 360
         OnFinishedRotation.Invoke(currentAxisRotation);
 
@@ -75,7 +75,7 @@ public class Rotatable : Grabbable
             int snapIndex = Mathf.RoundToInt(currentAxisRotation / snapDelta); //the index where the snap is landing            
             snapIndex = (int)Mathf.Repeat(snapIndex, axisSnappingPositions); // 0 - positionCount
             float targetAxisRotation = snapIndex * snapDelta; //the desired rotation to snap to
-            Quaternion targetRotation = startingRotation * Quaternion.Euler(rotationAxisVector * targetAxisRotation); //rotate on the target axis from starting rotation            
+            Quaternion targetRotation = startingRotation * Quaternion.Euler(RotationAxisVector * targetAxisRotation); //rotate on the target axis from starting rotation            
             activeSnapCoroutine = StartCoroutine(SmoothToRotation(targetRotation, snapIndex));
         }
     }
@@ -85,15 +85,15 @@ public class Rotatable : Grabbable
         Vector2 mouseInput = PlayerCore.LocalPlayer.PlayerInput.GetMouseInput();
 
         //Use Inverse Transfrom Direction to rotate axis so when we use mouse input to rotate it will  behave based on camera's realtive position to the object
-        Vector3 vertRotAxis = targetTransform.InverseTransformDirection(Camera.main.transform.TransformDirection(Vector3.right)).normalized;
-        Vector3 horRotAxis = targetTransform.InverseTransformDirection(Camera.main.transform.TransformDirection(Vector3.up)).normalized;
+        Vector3 vertrticalRotataionAxis = targetTransform.InverseTransformDirection(Camera.main.transform.TransformDirection(Vector3.right)).normalized;
+        Vector3 horizontalRotationAxis = targetTransform.InverseTransformDirection(Camera.main.transform.TransformDirection(Vector3.up)).normalized;
 
         //zero out vectors that we arent rotating on
-        vertRotAxis = Vector3.Scale(vertRotAxis, rotationAxisVector);
-        horRotAxis = Vector3.Scale(horRotAxis, rotationAxisVector);
+        vertrticalRotataionAxis = Vector3.Scale(vertrticalRotataionAxis, RotationAxisVector);
+        horizontalRotationAxis = Vector3.Scale(horizontalRotationAxis, RotationAxisVector);
 
-        targetTransform.Rotate(vertRotAxis, mouseInput.y * rotationSpeed);
-        targetTransform.Rotate(horRotAxis, mouseInput.x * -rotationSpeed);
+        targetTransform.Rotate(vertrticalRotataionAxis, mouseInput.y * rotationSpeed);
+        targetTransform.Rotate(horizontalRotationAxis, mouseInput.x * -rotationSpeed);
     }
 
     IEnumerator SmoothToRotation(Quaternion targetRotation, int snapIndex)
@@ -104,8 +104,8 @@ public class Rotatable : Grabbable
         while (elapsedTime < smoothSnapTime)
         {
             elapsedTime += Time.deltaTime;
-            float lerpT = elapsedTime / smoothSnapTime;
-            targetTransform.localRotation = Quaternion.Lerp(smoothStartingRotion, targetRotation, lerpT);
+            float interpolationPoint = elapsedTime / smoothSnapTime;
+            targetTransform.localRotation = Quaternion.Lerp(smoothStartingRotion, targetRotation, interpolationPoint);
             yield return null;
         }
 
