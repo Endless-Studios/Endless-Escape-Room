@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlidableContext : MonoBehaviour
 {
-    [SerializeField, Min(0)] private Vector2 bounds;
+    [SerializeField, Min(0)] private Vector2 size;
     [SerializeField] private bool snapEnabled;
     [SerializeField, Min(0)] private Vector2Int snapPoints;
 
@@ -14,14 +14,14 @@ public class SlidableContext : MonoBehaviour
     public class EndSlideResult
     {
         public bool snap;
-        public Vector2Int snapIndex;
+        public Vector2Int snapID;
         public Vector3 localPosition;
         public Vector3 worldPosition;
     }
 
-    internal class SnapAxisResult
+    private class SnapAxisResult
     {
-        public int snapIndex;
+        public int snapID;
         public float snapPosition;
     }
 
@@ -37,22 +37,22 @@ public class SlidableContext : MonoBehaviour
 
         foreach (Slidable slidable in allslidables)
         {
-            slidable.transform.position = EndSlide(slidable.transform.position).worldPosition;
+            slidable.transform.position = GetEndSlideResult(slidable.transform.position).worldPosition;
         }
     }
 
     /// <summary>
-    /// Clamps the given position vector to be within the bounds of the SliderContext.
+    /// Clamps the given position vector to be within the boundary of the SliderContext.
     /// </summary>
-    /// <param name="position">The unclamped position.</param>
-    /// <returns>The clamped position on the SliderContext's plane.</returns>
-    public Vector3 ClampPosition(Vector3 position)
+    /// <param name="currentWorldPosition">The current unclamped world position.</param>
+    /// <returns>The clamped position on the SliderContext's plane in world space.</returns>
+    public Vector3 ClampPosition(Vector3 currentWorldPosition)
     {
-        Vector3 relativePosition = transform.InverseTransformPoint(position);// Transform the position into the object's local space
+        Vector3 relativePosition = transform.InverseTransformPoint(currentWorldPosition);// Transform the position into the object's local space
 
-        // Clamp the position within bounds
-        relativePosition.x = Mathf.Clamp(relativePosition.x, -bounds.x, bounds.x);
-        relativePosition.y = Mathf.Clamp(relativePosition.y, -bounds.y, bounds.y);
+        // Clamp the position within boundary
+        relativePosition.x = Mathf.Clamp(relativePosition.x, -size.x / 2f, size.x / 2f);
+        relativePosition.y = Mathf.Clamp(relativePosition.y, -size.y / 2f, size.y / 2f);
         relativePosition.z = 0;
 
         return transform.TransformPoint(relativePosition);// Result in World Space
@@ -61,28 +61,28 @@ public class SlidableContext : MonoBehaviour
     /// <summary>
     /// Processes a slidables end position and provides resulting information after snap & local plane corrections. 
     /// </summary>
-    /// <param name="position">The current position of the Slidable.</param>
+    /// <param name="currentWorldPosition">The current position of the Slidable.</param>
     /// <returns>EndSlideResult with position & snap info.</returns>
-    public EndSlideResult EndSlide(Vector3 position)
+    public EndSlideResult GetEndSlideResult(Vector3 currentWorldPosition)
     {
         EndSlideResult result = new EndSlideResult();
         result.snap = snapEnabled;
-        result.localPosition = transform.InverseTransformPoint(position);
+        result.localPosition = transform.InverseTransformPoint(currentWorldPosition);
 
         if (snapEnabled)
         {
             //get snap results for x and y axis
             if (snapPoints.x > 0)
             {
-                SnapAxisResult xSnapResult = RoundToNearestSnapPoint(result.localPosition.x, bounds.x, snapPoints.x);
-                result.snapIndex.x = xSnapResult.snapIndex;
+                SnapAxisResult xSnapResult = GetSnapAxisResult(result.localPosition.x, size.x, snapPoints.x);
+                result.snapID.x = xSnapResult.snapID;
                 result.localPosition.x = xSnapResult.snapPosition;
             }
 
             if (snapPoints.y > 0)
             {
-                SnapAxisResult ySnapResult = RoundToNearestSnapPoint(result.localPosition.y, bounds.y, snapPoints.y);
-                result.snapIndex.y = ySnapResult.snapIndex;
+                SnapAxisResult ySnapResult = GetSnapAxisResult(result.localPosition.y, size.y, snapPoints.y);
+                result.snapID.y = ySnapResult.snapID;
                 result.localPosition.y = ySnapResult.snapPosition;
             }
         }
@@ -93,35 +93,38 @@ public class SlidableContext : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the snap result of a specific axis.
+    /// Get the snap result by rounding to the nearest snap point of a specific axis.
     /// </summary>
-    /// <param name="value">The current relative position on the corresponding axis.</param>
-    /// <param name="bounds">The contexts bounds of the corresponding axis.</param>
+    /// <param name="currentLocalPosition">The current relative position on the corresponding axis.</param>
+    /// <param name="axisSize">The contexts boundary of the corresponding axis.</param>
     /// <param name="pointCount">The contexts snap point count of the corresponding axis.</param>
     /// <returns>SnapAxisResult with  resulting local position & snap index.</returns>
-    internal static SnapAxisResult RoundToNearestSnapPoint(float value, float bounds, int pointCount)
+    private static SnapAxisResult GetSnapAxisResult(float currentLocalPosition, float axisSize, int pointCount)
     {
         SnapAxisResult result = new SnapAxisResult();
 
         if (pointCount == 1)
         {
-            result.snapIndex = 0;
+            result.snapID = 0;
             result.snapPosition = 0; //snap to center
             return result;
         }
 
-        float snapDelta = 2 * bounds / (pointCount - 1); // Calculate the size of each snap point
-        result.snapIndex = Mathf.RoundToInt((value + bounds) / snapDelta); // Calculate the index of the nearest snap point      
-        result.snapPosition = result.snapIndex * snapDelta - bounds; // Calculate the position of of the nearest snap point
+        float snapDistance = axisSize / (pointCount - 1); // Calculate the size of each snap point
+        result.snapID = Mathf.RoundToInt((currentLocalPosition + axisSize / 2f) / snapDistance); // Calculate the index of the nearest snap point      
+        result.snapPosition = result.snapID * snapDistance - axisSize / 2f; // Calculate the position of of the nearest snap point
         return result;
     }
 
     void OnDrawGizmos()
     {
-        Vector3 corner1 = transform.TransformPoint(new Vector3(-bounds.x, bounds.y));
-        Vector3 corner2 = transform.TransformPoint(new Vector3(bounds.x, bounds.y));
-        Vector3 corner3 = transform.TransformPoint(new Vector3(bounds.x, -bounds.y));
-        Vector3 corner4 = transform.TransformPoint(new Vector3(-bounds.x, -bounds.y));
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Vector2 extents = size / 2f;
+
+        Vector3 corner1 = new Vector3(-extents.x, extents.y);
+        Vector3 corner2 = new Vector3(extents.x, extents.y);
+        Vector3 corner3 = new Vector3(extents.x, -extents.y);
+        Vector3 corner4 = new Vector3(-extents.x, -extents.y);
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(corner1, corner2);
@@ -129,9 +132,10 @@ public class SlidableContext : MonoBehaviour
         Gizmos.DrawLine(corner3, corner4);
         Gizmos.DrawLine(corner4, corner1);
 
-        if (snapEnabled)
+        if (snapEnabled && (snapPoints.x > 0 || snapPoints.y > 0))
         {
             Gizmos.color = Color.red;
+            float gizmosSphereSize = (extents.x + extents.y) / 20f;
             int virtualSnapPointsX = snapPoints.x > 1 ? snapPoints.x - 1 : 1;
             int virtualSnapPointsY = snapPoints.y > 1 ? snapPoints.y - 1 : 1;
 
@@ -139,9 +143,21 @@ public class SlidableContext : MonoBehaviour
             {
                 for (int y = 0; y < virtualSnapPointsY + 1; y++)
                 {
-                    float xOffset = virtualSnapPointsX > 1 ? (x * ((bounds.x * 2) / virtualSnapPointsX)) - bounds.x : 0;
-                    float yOffset = virtualSnapPointsY > 1 ? (y * ((bounds.y * 2) / virtualSnapPointsY)) - bounds.y : 0;
-                    Gizmos.DrawSphere(transform.TransformPoint(new Vector3(xOffset, yOffset, 0)), .0025f);
+                    float xOffset = snapPoints.x > 1 ? (x * ((size.x) / virtualSnapPointsX)) - extents.x : 0;
+                    float yOffset = snapPoints.y > 1 ? (y * ((size.y) / virtualSnapPointsY)) - extents.y : 0;
+
+                    if (snapPoints.x == 0)
+                    {
+                        Gizmos.DrawCube(new Vector3(xOffset, yOffset, 0), new Vector3(size.x, gizmosSphereSize, gizmosSphereSize));
+                    }
+                    else if (snapPoints.y == 0)
+                    {
+                        Gizmos.DrawCube(new Vector3(xOffset, yOffset, 0), new Vector3(gizmosSphereSize, size.y, gizmosSphereSize));
+                    }
+                    else
+                    {
+                        Gizmos.DrawSphere(new Vector3(xOffset, yOffset, 0), gizmosSphereSize);
+                    }
                 }
             }
         }

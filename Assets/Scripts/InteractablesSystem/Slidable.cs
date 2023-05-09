@@ -13,11 +13,11 @@ public class Slidable : Grabbable
     [SerializeField] private float slideSpeed = 10f;
     [SerializeField, Min(.05f)] private float smoothSnapTime = .1f;
 
-    [SerializeField] private UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space
-    [SerializeField] private UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
+    [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space
+    [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
 
     private Vector3 targetPosition;
-    private bool interactionActive;    
+    private bool interactionActive;
     private Coroutine activeSnapCoroutine;
 
     void Awake()
@@ -27,12 +27,18 @@ public class Slidable : Grabbable
             Debug.LogWarning("Slidable Context missing. Removing Slidable.");
             Destroy(this);
             return;
-        }        
+        }
 
         //setup the rigidbody to slide properly
         rigidbody.isKinematic = true;
-        rigidbody.useGravity = false;       
-        rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; 
+        rigidbody.useGravity = false;
+        rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
+    }
+
+    protected virtual void OnValidate()
+    {
+        if (rigidbody == null)
+            rigidbody = GetComponent<Rigidbody>();
     }
 
     protected override void InternalHandleInteract()
@@ -77,17 +83,15 @@ public class Slidable : Grabbable
         rigidbody.isKinematic = true;
         rigidbody.velocity = Vector3.zero;
 
-        activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.EndSlide(transform.position))); //smooth to final position based on snap result
+        activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
     }
 
     IEnumerator SmoothToPosition(SlidableContext.EndSlideResult snapResult)
     {
         Vector3 startPosition = transform.position;
-        float elapsedTime = 0;
 
-        while (elapsedTime < smoothSnapTime)
+        for(float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
         {
-            elapsedTime += Time.deltaTime;
             float lerpT = elapsedTime / smoothSnapTime;
             transform.position = (Vector3.Lerp(startPosition, snapResult.worldPosition, lerpT));
             yield return null;
@@ -96,7 +100,7 @@ public class Slidable : Grabbable
         transform.position = snapResult.worldPosition;
 
         if (snapResult.snap)
-            OnPositionSnapped.Invoke(snapResult.snapIndex);
+            OnPositionSnapped.Invoke(snapResult.snapID);
 
         OnPositionMoved.Invoke(snapResult.localPosition);
         // Debug.Log($"Snap: { snapResult.snapIndex } , Pos: { snapResult.localPosition }");
@@ -109,17 +113,17 @@ public class Slidable : Grabbable
         {
             Vector3 moveDirection = targetPosition - rigidbody.position;
             Vector3 moveVelocity = moveDirection.normalized * slideSpeed * Time.fixedDeltaTime;
+            Debug.DrawLine(rigidbody.position, rigidbody.position + moveDirection, Color.green);
 
             if ((moveVelocity * Time.fixedDeltaTime).sqrMagnitude > moveDirection.sqrMagnitude) //check to see if the drag will overshoot the target position
             {
                 rigidbody.velocity = Vector3.zero;
                 rigidbody.MovePosition(targetPosition);
-                return;
             }
-
-            rigidbody.velocity = moveVelocity; //move the slidable respecting physics
-
-            Debug.DrawLine(rigidbody.position, rigidbody.position + moveDirection, Color.green);
+            else
+            {
+                rigidbody.velocity = moveVelocity; //move the slidable respecting physics
+            }
         }
     }
 }

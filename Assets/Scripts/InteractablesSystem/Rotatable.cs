@@ -7,8 +7,8 @@ public class Rotatable : Grabbable
 {
     public enum RotationAxis { X, Y, Z }
 
-    [SerializeField] UnityEvent<float> OnFinishedRotation = new UnityEvent<float>(); //rotation finished event sends resulting rotation delta from starting rotation (0 - 360)
-    [SerializeField] UnityEvent<int> OnFinishedRotationSnap = new UnityEvent<int>(); //rotation finished event sends resulting snap index
+    [HideInInspector] public UnityEvent<float> OnFinishedRotation = new UnityEvent<float>(); //rotation finished event sends resulting rotation delta from starting rotation (0 - 360)
+    [HideInInspector] public  UnityEvent<int> OnFinishedRotationSnap = new UnityEvent<int>(); //rotation finished event sends resulting snap position id
 
     protected override string DefaultInteractionText => "Rotate";
 
@@ -27,9 +27,12 @@ public class Rotatable : Grabbable
     {
         get
         {
-            if (rotationAxis == RotationAxis.X) return Vector3.right;
-            else if (rotationAxis == RotationAxis.Y) return Vector3.up;
-            else return Vector3.forward;
+            if (rotationAxis == RotationAxis.X)
+                return Vector3.right;
+            else if (rotationAxis == RotationAxis.Y)
+                return Vector3.up;
+            else
+                return Vector3.forward;
         }
     }
 
@@ -37,9 +40,12 @@ public class Rotatable : Grabbable
     {
         get
         {
-            if (rotationAxis == RotationAxis.X) return Vector3.forward;
-            else if (rotationAxis == RotationAxis.Y) return Vector3.left;
-            else return Vector3.up;
+            if (rotationAxis == RotationAxis.X)
+                return Vector3.forward;
+            else if (rotationAxis == RotationAxis.Y)
+                return Vector3.left;
+            else
+                return Vector3.up;
         }
     }
 
@@ -71,12 +77,12 @@ public class Rotatable : Grabbable
 
         if (axisSnappingPositions > 0)
         {
-            int snapDelta = 360 / (int)axisSnappingPositions;
-            int snapIndex = Mathf.RoundToInt(currentAxisRotation / snapDelta); //the index where the snap is landing            
-            snapIndex = (int)Mathf.Repeat(snapIndex, axisSnappingPositions); // 0 - positionCount
-            float targetAxisRotation = snapIndex * snapDelta; //the desired rotation to snap to
+            int snapDistance = 360 / (int)axisSnappingPositions;
+            int snapPositionID = Mathf.RoundToInt(currentAxisRotation / snapDistance); //the id where the snap is landing            
+            snapPositionID = (int)Mathf.Repeat(snapPositionID, axisSnappingPositions); // 0 - positionCount
+            float targetAxisRotation = snapPositionID * snapDistance; //the desired rotation to snap to
             Quaternion targetRotation = startingRotation * Quaternion.Euler(RotationAxisVector * targetAxisRotation); //rotate on the target axis from starting rotation            
-            activeSnapCoroutine = StartCoroutine(SmoothToRotation(targetRotation, snapIndex));
+            activeSnapCoroutine = StartCoroutine(SmoothToRotation(targetRotation, snapPositionID));
         }
     }
 
@@ -96,7 +102,7 @@ public class Rotatable : Grabbable
         targetTransform.Rotate(horizontalRotationAxis, mouseInput.x * -rotationSpeed);
     }
 
-    IEnumerator SmoothToRotation(Quaternion targetRotation, int snapIndex)
+    IEnumerator SmoothToRotation(Quaternion targetRotation, int snapPositionID)
     {
         Quaternion smoothStartingRotion = targetTransform.localRotation;
         float elapsedTime = 0;
@@ -110,7 +116,7 @@ public class Rotatable : Grabbable
         }
 
         targetTransform.localRotation = targetRotation;
-        OnFinishedRotationSnap.Invoke(snapIndex);
+        OnFinishedRotationSnap.Invoke(snapPositionID);
 
         activeSnapCoroutine = null;
     }
