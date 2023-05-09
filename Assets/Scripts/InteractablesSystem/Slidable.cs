@@ -20,6 +20,8 @@ public class Slidable : Grabbable
     private bool interactionActive;
     private Coroutine activeSnapCoroutine;
 
+    private bool cachedRigidbodyIsKinematic;
+
     void Awake()
     {
         if (slidableContext == null)
@@ -29,10 +31,10 @@ public class Slidable : Grabbable
             return;
         }
 
-        //setup the rigidbody to slide properly
-        rigidbody.isKinematic = true;
-        rigidbody.useGravity = false;
-        rigidbody.interpolation = RigidbodyInterpolation.Extrapolate;
+        cachedRigidbodyIsKinematic = rigidbody.isKinematic;
+
+        if(rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
+            rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; //RigidbodyInterpolation.Interpolate doesnt work properly on child rigidbodies
     }
 
     protected virtual void OnValidate()
@@ -80,7 +82,7 @@ public class Slidable : Grabbable
     protected override void HandleStopInteract()
     {
         interactionActive = false;
-        rigidbody.isKinematic = true;
+        rigidbody.isKinematic = cachedRigidbodyIsKinematic;
         rigidbody.velocity = Vector3.zero;
 
         activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
