@@ -11,9 +11,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] RectTransform inventoryEntriesParent = null;
     [SerializeField] float dropRaycastDistance = 5;
     [SerializeField] LayerMask dropRaycastMask;
-    
+
+    Snappable currentSnappable = null;
     UiInventoryElement originalElement = null;
-    RectTransform draggingElement = null;
+    UiInventoryElement draggingElement = null;
     List<UiInventoryElement> currentEntries = new List<UiInventoryElement>();
 
     private void Awake()
@@ -69,39 +70,53 @@ public class InventoryUI : MonoBehaviour
                         if(inventoryElement)
                         {
                             originalElement = inventoryElement;
-                            UiInventoryElement newDragElement = Instantiate(inventoryElement, inventoryElement.transform.position, inventoryElement.transform.rotation, inventoryCanvas.transform);
-                            newDragElement.Initialize(originalElement.Pickupable);
-                            draggingElement = newDragElement.GetComponent<RectTransform>();
+                            draggingElement = Instantiate(itemUiPrefab, inventoryElement.transform.position, inventoryElement.transform.rotation, inventoryCanvas.transform);
+                            draggingElement.GetComponent<Image>().enabled = false; //TODO remove this. Maybe have the initial prefabs in an off state, and then have initialize take an argument for dragging and let them handle it?
+                            draggingElement.Initialize(originalElement.Pickupable);
                         }
                     }
                 }
             }
             else
             {
+                Ray interactRay;
+                if(MouseLockHandler.Instance.IsMouseLocked)
+                    interactRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+                else
+                    interactRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                Snappable hitSnappable = null;
+                RaycastHit hitInfo;
+                bool didHit = Physics.Raycast(interactRay, out hitInfo, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Collide);
+                if(didHit)
+                {
+                    hitSnappable = hitInfo.collider.GetComponentInParent<Snappable>();
+                    if(hitSnappable && hitSnappable.AcceptsPickupable(originalElement.Pickupable) == false)
+                    {//If we hit one, but it wont accept our object, ignore it.
+                        hitSnappable = null;
+                    }
+                }
                 if(Input.GetMouseButton(0))
                 {//Button is held, this is a drag
-                    draggingElement.position = Input.mousePosition;
+                    draggingElement.transform.position = Input.mousePosition;
+
+                    if(currentSnappable != hitSnappable)
+                    {
+                        if(hitSnappable == null)
+                        {
+                            draggingElement.Unhighlight();
+                        }
+                        else
+                        {
+                            draggingElement.Highlight();
+                        }
+                        currentSnappable = hitSnappable;
+                    }
                 }
                 else
                 {//We have released the button
                  //Did we do something with the pickupable because of our drop? (probably hit a snappable)
-                    Ray interactRay;
-                    if(MouseLockHandler.Instance.IsMouseLocked)
-                        interactRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-                    else
-                        interactRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                    Snappable snappable = null;
-                    RaycastHit hitInfo;
-                    if(Physics.Raycast(interactRay, out hitInfo, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Collide))
-                    {
-                        snappable = hitInfo.collider.GetComponentInParent<Snappable>();
-                        if(snappable && snappable.AcceptsPickupable(originalElement.Pickupable) == false)
-                        {//If we hit one, but it wont accept our object, ignore it.
-                            snappable = null;
-                        }
-                    }
-                    if(snappable != null)
+                    if(hitSnappable != null)
                     {
                         if(PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable == originalElement.Pickupable)
                         {
@@ -110,7 +125,7 @@ public class InventoryUI : MonoBehaviour
 
                         originalElement.Pickupable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0.5f));//TODO dont magic number?
                         originalElement.Pickupable.gameObject.SetActive(true);
-                        snappable.SnapPickupable(originalElement.Pickupable);
+                        hitSnappable.SnapPickupable(originalElement.Pickupable);
                         originalElement.Pickupable.HandleDropped(false);
 
                         currentEntries.Remove(originalElement);
@@ -121,6 +136,7 @@ public class InventoryUI : MonoBehaviour
                     Destroy(draggingElement.gameObject);
                     draggingElement = null;
                     originalElement = null;
+                    currentSnappable = null;    
                 }
             }
         }
