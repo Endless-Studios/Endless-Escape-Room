@@ -80,6 +80,10 @@ public class PlayerInteractor : MonoBehaviour
             currentGrabbable.StopInteract();
             currentGrabbable = null;
         }
+        else
+        {
+            currentGrabbable.HandleUpdate();
+        }
     }
 
     private void Interact(Interactable interactable)
