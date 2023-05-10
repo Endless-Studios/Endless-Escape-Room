@@ -61,7 +61,7 @@ public class Slidable : Grabbable
     public override void HandleUpdate()
     {
         //Plane based on the slidercontext's orientation
-        Plane dragPlane = new Plane(slidableContext.transform.forward, slidableContext.transform.position);
+        Plane dragPlane = slidableContext.GetContextPlane(this);
         Camera cam = Camera.main;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
@@ -105,7 +105,6 @@ public class Slidable : Grabbable
             OnPositionSnapped.Invoke(snapResult.snapID);
 
         OnPositionMoved.Invoke(snapResult.localPosition);
-        // Debug.Log($"Snap: { snapResult.snapIndex } , Pos: { snapResult.localPosition }");
         activeSnapCoroutine = null;
     }
 
@@ -127,5 +126,11 @@ public class Slidable : Grabbable
                 rigidbody.velocity = moveVelocity; //move the slidable respecting physics
             }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if(slidableContext != null)
+            slidableContext.DrawGizmosPlaneAtPosition(transform.position);
     }
 }
