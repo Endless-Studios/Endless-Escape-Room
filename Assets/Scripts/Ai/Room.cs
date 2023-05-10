@@ -56,9 +56,9 @@ namespace Ai
 
             Vector2 flatVector = Random.insideUnitCircle.normalized;
             Vector3 samplePoint = new Vector3(flatVector.x, 0, flatVector.y) + floor.transform.position;
-            var col = floor.GetComponent<Collider>();
+            var col = floor.GetComponentInChildren<Collider>();
             samplePoint = col.ClosestPoint(samplePoint);
-            if (!NavMesh.SamplePosition(samplePoint, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            if (!NavMesh.SamplePosition(samplePoint, out NavMeshHit hit, 2f, NavMesh.AllAreas))
             {
                 Debug.LogWarning("Malformed nav mesh", floor);
                 return samplePoint;

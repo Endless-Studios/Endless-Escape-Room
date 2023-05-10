@@ -38,6 +38,11 @@ namespace Ai
 
             List<GameObject> floorList = new(floorObjects);
 
+            foreach (GameObject floorObject in floorObjects)
+            {
+                floorObject.AddComponent<Floor>();
+            }
+
             while (floorList.Count > 0)
             {
                 GameObject roomSeed = floorList[0];
@@ -82,7 +87,10 @@ namespace Ai
 
             foreach (GameObject floorObject in floorObjects)
             {
-                floorObject.layer = LayerMask.NameToLayer("Floor");
+                foreach (Transform tform in floorObject.GetComponentsInChildren<Transform>())
+                {
+                    tform.gameObject.layer = LayerMask.NameToLayer("Floor");
+                }
             }
 
             foreach (NavMeshLink navMeshLink in links)
@@ -98,7 +106,9 @@ namespace Ai
                 Room room1;
                 Room room2;
 
-                if (Room.FloorMap.TryGetValue(overlappedColliders[0].gameObject, out Room room))
+                var floorObject = overlappedColliders[0].GetComponentInParent<Floor>();
+                
+                if (Room.FloorMap.TryGetValue(floorObject.gameObject, out Room room))
                 {
                     room1 = room;
                 }
@@ -115,8 +125,10 @@ namespace Ai
                     Debug.LogError("Malformed link", navMeshLink);
                     continue;
                 }
+                
+                floorObject = overlappedColliders[0].GetComponentInParent<Floor>();
 
-                if (Room.FloorMap.TryGetValue(overlappedColliders[0].gameObject, out room))
+                if (Room.FloorMap.TryGetValue(floorObject.gameObject, out room))
                 {
                     room2 = room;
                 }
@@ -137,9 +149,11 @@ namespace Ai
 
             foreach (GameObject floorObject in floorObjects)
             {
-                floorObject.layer = LayerMask.NameToLayer("Default");
+                foreach (Transform tform in floorObject.GetComponentsInChildren<Transform>())
+                {
+                    tform.gameObject.layer = LayerMask.NameToLayer("Default");
+                }
             }
-            
         }
 
         private void ReparentObjects(IEnumerable<GameObject> collection)

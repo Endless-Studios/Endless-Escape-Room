@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8312026018747972705}
   m_Layer: 0
   m_Name: Building Interior Stairs 2 Stack 4x4m Repeater
-  m_TagString: Untagged
+  m_TagString: Stair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
