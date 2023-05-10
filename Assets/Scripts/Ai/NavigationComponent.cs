@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Runtime.InteropServices;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +12,30 @@ namespace Ai
         public bool IsMoving { get; private set; }
         public bool HasDestination { get; private set; }
 
-        public Vector3 Destination { get; private set; }
+        public Vector3 Destination { get; set; }
+
+        public Room CurrentRoom
+        {
+            get => currentRoom;
+            
+            private set
+            {
+                if (value == currentRoom)
+                    return;
+
+                LastRoom = currentRoom;
+                currentRoom = value;
+            }
+        }
+
+        private Room currentRoom;
+        
+        public Room LastRoom { get; private set; }
+
+        private void Start()
+        {
+            CurrentRoom = GetCurrentRoom();
+        }
 
         private void Update()
         {
@@ -55,11 +76,34 @@ namespace Ai
             agent.transform.position = agent.transform.TransformPoint(animator.transform.localPosition);
             animator.transform.position = Vector3.zero;
             agent.CompleteOffMeshLink();
+            CurrentRoom = GetCurrentRoom();
             facade.OnWalkedThroughDoorway -= HandleOnWalkedThroughDoorway;
+        }
+
+        public Room GetCurrentRoom()
+        {
+            int size = Physics.OverlapSphereNonAlloc(transform.position, .2f, results, LayerMask.GetMask("Default"));
+            if (size == 0)
+            {
+                Debug.Log("Overlapped no colliders, this shouldn't be possible", this);
+                return null;
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                Collider col = results[i];
+                
+                if (Room.FloorMap.TryGetValue(col.gameObject, out Room room))
+                    return room;
+            }
+            
+            Debug.Log("Overlapped no floor objects, this shouldn't be possible", this);
+            return null;
         }
 
         private bool isTraversingLink;
         private Vector3 deltaPosition;
+        private readonly Collider[] results = new Collider[5];
     }
 
     public abstract class AiComponent : MonoBehaviour

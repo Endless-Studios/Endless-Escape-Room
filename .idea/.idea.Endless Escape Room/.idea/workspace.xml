@@ -5,34 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ff53bac-4b1a-43a0-a950-39b8a885c6a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/NavigationTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/NavigationTest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AnimationComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AnimationComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Creatures/Creature_Warden_01/Anims/Warden_Doorway_Enter_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Creatures/Creature_Warden_01/Anims/Warden_Doorway_Enter_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Creatures/Creature_Warden_01/Warden_AnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Creatures/Creature_Warden_01/Warden_AnimatorController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Ceiling_2x4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Ceiling_2x4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Ceiling_4x4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Ceiling_4x4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Floor_2x4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Floor_2x4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Floor_4x4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Floor_4x4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_2M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_2M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_Doorway_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_Doorway_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_Doorway_2M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_Doorway_2M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_Doorway_Double_4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_Wall_Piece_Doorway_Double_4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fsm.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fsm.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene/NavMesh.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene/NavMesh.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Room.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,10 +81,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3600">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2588">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3600" />
+      <option name="pid" value="2588" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -128,6 +105,7 @@
       <workItem from="1683394915616" duration="5235000" />
       <workItem from="1683553408321" duration="14183000" />
       <workItem from="1683641044145" duration="21514000" />
+      <workItem from="1683726510831" duration="4163000" />
     </task>
     <servers />
   </component>
@@ -149,5 +127,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs</url>
+          <line>125</line>
+          <properties documentPath="C:\Users\jc133\Documents\EndlessStudios\Endless Escape Room\Assets\Scripts\Ai\Navigation.cs" initialLine="124" containingFunctionPresentation="Method 'BuildNavigation'">
+            <startOffsets>
+              <option value="4485" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4526" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

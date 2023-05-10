@@ -62,7 +62,15 @@ namespace Ai
         
         public bool HasDestination => navigationComponent.HasDestination;
 
-        public Vector3 Destination => navigationComponent.Destination;
+        public Vector3 Destination
+        {
+            get => navigationComponent.Destination;
+            set => navigationComponent.Destination = value;
+        }
+
+        public Room CurrentRoom => navigationComponent.CurrentRoom;
+
+        public Room LastRoom => navigationComponent.LastRoom;
 
         public void UpdateSenses() => sightSensor.CheckLos();
 

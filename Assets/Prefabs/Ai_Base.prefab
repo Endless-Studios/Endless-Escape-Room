@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70da0457a4a42489991bcde3f3253c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PatrolThreshold>k__BackingField: 200000
+  <PatrolThreshold>k__BackingField: 10
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1727435511707494434}
-  rootTransform: {fileID: 0}
 --- !u!137 &7606774132491417518 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5835767784289656291, guid: 78fc400961e3968428243a300eb8ea2f,

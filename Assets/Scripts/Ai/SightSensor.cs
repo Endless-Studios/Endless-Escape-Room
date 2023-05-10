@@ -25,7 +25,7 @@ namespace Ai
                     {
                         if (hit.collider == losProbe.LosCollider)
                         {
-                            Debug.Log($"I can see your {losProbe.ProbeKind}");
+                            //Debug.Log($"I can see your {losProbe.ProbeKind}");
                         }
                     }
                 }
