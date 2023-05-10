@@ -108,6 +108,7 @@ public class InventoryUI : MonoBehaviour
                             PlayerCore.LocalPlayer.HeldItemManager.ClearHeldItem();
                         }
 
+                        originalElement.Pickupable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0.5f));//TODO dont magic number?
                         originalElement.Pickupable.gameObject.SetActive(true);
                         snappable.SnapPickupable(originalElement.Pickupable);
                         originalElement.Pickupable.HandleDropped(false);
