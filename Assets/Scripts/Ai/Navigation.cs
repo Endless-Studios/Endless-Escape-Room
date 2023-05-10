@@ -40,7 +40,9 @@ namespace Ai
 
             foreach (GameObject floorObject in floorObjects)
             {
-                floorObject.AddComponent<Floor>();
+                var floor = floorObject.AddComponent<Floor>();
+                Collider[] colliders = floorObject.GetComponentsInChildren<Collider>();
+                floor.InitializeFloorObject(colliders);
             }
 
             while (floorList.Count > 0)
@@ -106,9 +108,13 @@ namespace Ai
                 Room room1;
                 Room room2;
 
-                var floorObject = overlappedColliders[0].GetComponentInParent<Floor>();
+                if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedColliders[0], out Floor floor))
+                {
+                    Debug.LogError("Malformed link", navMeshLink);
+                    continue;
+                }
                 
-                if (Room.FloorMap.TryGetValue(floorObject.gameObject, out Room room))
+                if (Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
                 {
                     room1 = room;
                 }
@@ -126,9 +132,13 @@ namespace Ai
                     continue;
                 }
                 
-                floorObject = overlappedColliders[0].GetComponentInParent<Floor>();
+                if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedColliders[0], out floor))
+                {
+                    Debug.LogError("Malformed link", navMeshLink);
+                    continue;
+                }
 
-                if (Room.FloorMap.TryGetValue(floorObject.gameObject, out room))
+                if (Room.FloorMap.TryGetValue(floor.gameObject, out room))
                 {
                     room2 = room;
                 }

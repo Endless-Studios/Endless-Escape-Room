@@ -5,40 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ff53bac-4b1a-43a0-a950-39b8a885c6a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Floor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Floor.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_FloorPlate_1x4M.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Building_Interior/Building_Interior_FloorPlate_1x4M.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Props/Interactables/Door_Standard_01/Door_Standard_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Props/Interactables/Door_Standard_01/Door_Standard_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Props/Interactables/Door_Standard_01/Doorframe_Double_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Props/Interactables/Door_Standard_01/Doorframe_Double_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Props/Interactables/Door_Standard_01/Doorframe_Standard_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Props/Interactables/Door_Standard_01/Doorframe_Standard_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Corner Column.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Corner Column.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Solid 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Solid 4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Window 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Window 4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Window 4m - Reversed.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Window 4m - Reversed.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Double 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Double 4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 2m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 2m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Floor 2x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Floor 2x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Floor 4x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Floor 4x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorCeilingCombo 1x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorCeilingCombo 1x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorCeilingCombo 2x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorCeilingCombo 2x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorCeilingCombo 4x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorCeilingCombo 4x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorPlate 0.5x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorPlate 0.5x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorPlate 1x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior FloorPlate 1x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Stairs 2 Stack 4x4m Repeater.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Stairs 2 Stack 4x4m Repeater.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Stairs 2 Stack 4x4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Stairs 2 Stack 4x4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Column.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Column.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Piece 2m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Piece 2m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Window 2m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Window 2m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Window 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Wall Window 4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior_Wall Piece 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior_Wall Piece 4m.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Master Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Master Prefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SoundManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SoundManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EscapeRoom_TestScene_01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/EscapeRoom_TestScene_01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Floor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Floor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +103,7 @@
       <workItem from="1683394915616" duration="5235000" />
       <workItem from="1683553408321" duration="14183000" />
       <workItem from="1683641044145" duration="21514000" />
-      <workItem from="1683726510831" duration="12658000" />
+      <workItem from="1683726510831" duration="15160000" />
     </task>
     <servers />
   </component>
@@ -172,6 +141,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs</url>
+          <line>110</line>
+          <properties documentPath="C:\Users\jc133\Documents\EndlessStudios\Endless Escape Room\Assets\Scripts\Ai\Navigation.cs" initialLine="110" containingFunctionPresentation="Method 'BuildNavigation'">
+            <startOffsets>
+              <option value="4135" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4224" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

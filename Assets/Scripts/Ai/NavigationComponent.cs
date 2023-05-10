@@ -92,11 +92,12 @@ namespace Ai
             for (int i = 0; i < size; i++)
             {
                 Collider col = results[i];
-                var floor = col.GetComponentInParent<Floor>();
-                
-                if(floor is null)
+
+                if (!Floor.FloorObjectByColliderKey.TryGetValue(col, out Floor floor))
+                {
                     continue;
-                
+                }
+
                 if (Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
                     return room;
             }
