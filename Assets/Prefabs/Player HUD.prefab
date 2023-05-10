@@ -1891,6 +1891,10 @@ MonoBehaviour:
   itemUiPrefab: {fileID: 3378287294870355446}
   inventoryCanvas: {fileID: 7264573507807139567}
   inventoryEntriesParent: {fileID: 1540160734863961679}
+  dropRaycastDistance: 5
+  dropRaycastMask:
+    serializedVersion: 2
+    m_Bits: 2049
 --- !u!1 &3940880234102015573
 GameObject:
   m_ObjectHideFlags: 0

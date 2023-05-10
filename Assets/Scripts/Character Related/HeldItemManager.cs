@@ -122,7 +122,7 @@ public class HeldItemManager : MonoBehaviour
             if (IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
-                if (currentSnappable)
+                if(currentSnappable)
                 {
                     currentSnappable.SnapPickupable(HeldPickupable);
                     currentSnappable = null;
@@ -138,10 +138,7 @@ public class HeldItemManager : MonoBehaviour
                     HeldPickupable.HandleDropped();
                 }
 
-                ClearProjectedVisuals();
-                PlayerHUD.Instance.SetHeldScreenActive(false);
-                HeldPickupable = null;
-                heldUseable = null;
+                ClearHeldItem();
             }
             else if (itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
             {
@@ -155,13 +152,21 @@ public class HeldItemManager : MonoBehaviour
         }
     }
 
+    public void ClearHeldItem()
+    {
+        ClearProjectedVisuals();
+        PlayerHUD.Instance.SetHeldScreenActive(false);
+        HeldPickupable = null;
+        heldUseable = null;
+    }
+
     private void ProjectHeldItem()
     {
         RaycastHit hitInfo;
         Vector3 targetPosition;
         Quaternion targetRotation;
 
-        if (Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out hitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Ignore))
+        if (Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out hitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Collide))
         {
             Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance));
 

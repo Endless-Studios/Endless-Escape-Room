@@ -9,6 +9,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] UiInventoryElement itemUiPrefab = null;
     [SerializeField] Canvas inventoryCanvas = null;
     [SerializeField] RectTransform inventoryEntriesParent = null;
+    [SerializeField] float dropRaycastDistance = 5;
+    [SerializeField] LayerMask dropRaycastMask;
     
     UiInventoryElement originalElement = null;
     RectTransform draggingElement = null;
@@ -82,9 +84,34 @@ public class InventoryUI : MonoBehaviour
                 }
                 else
                 {//We have released the button
-                    //Did we do something with the pickupable because of our drop? (probably hit a snappable)
-                    if(false)
+                 //Did we do something with the pickupable because of our drop? (probably hit a snappable)
+                    Ray interactRay;
+                    if(MouseLockHandler.Instance.IsMouseLocked)
+                        interactRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+                    else
+                        interactRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                    Snappable snappable = null;
+                    RaycastHit hitInfo;
+                    if(Physics.Raycast(interactRay, out hitInfo, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Collide))
                     {
+                        snappable = hitInfo.collider.GetComponentInParent<Snappable>();
+                        if(snappable && snappable.AcceptsPickupable(originalElement.Pickupable) == false)
+                        {//If we hit one, but it wont accept our object, ignore it.
+                            snappable = null;
+                        }
+                    }
+                    if(snappable != null)
+                    {
+                        if(PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable == originalElement.Pickupable)
+                        {
+                            PlayerCore.LocalPlayer.HeldItemManager.ClearHeldItem();
+                        }
+
+                        originalElement.Pickupable.gameObject.SetActive(true);
+                        snappable.SnapPickupable(originalElement.Pickupable);
+                        originalElement.Pickupable.HandleDropped(false);
+
                         currentEntries.Remove(originalElement);
                         Destroy(originalElement.gameObject);
                     }
