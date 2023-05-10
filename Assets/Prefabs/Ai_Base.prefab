@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0159c08b05ee4bad9fbce1978c184795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WanderThreshold>k__BackingField: 200000
+  <WanderThreshold>k__BackingField: 10
 --- !u!114 &4357895078427991714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70da0457a4a42489991bcde3f3253c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PatrolThreshold>k__BackingField: 10
+  <PatrolThreshold>k__BackingField: 30
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0
