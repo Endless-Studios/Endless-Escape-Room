@@ -8,7 +8,7 @@ public class Inspectable : Interactable
     public UnityEvent OnInspectionStarted = new UnityEvent();
     public UnityEvent OnInspectionEnded = new UnityEvent();
 
-    protected override string DefaultInterationText => "Inspect";
+    protected override string DefaultInteractionText => "Inspect";
 
     Quaternion initialRotation;
     Vector3 initialPosition;

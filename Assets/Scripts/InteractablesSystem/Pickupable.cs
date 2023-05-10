@@ -14,7 +14,7 @@ public class Pickupable : Inspectable
     [Tooltip("Optional, but more efficient when projecting the dropped visuals if it is prebuilt")]
     [SerializeField] GameObject visualsPrefab;
 
-    protected override string DefaultInterationText => "Pick up";
+    protected override string DefaultInteractionText => "Pick up";
 
     public UnityEvent OnPickedUp = new UnityEvent();
     public UnityEvent OnDropped = new UnityEvent();
