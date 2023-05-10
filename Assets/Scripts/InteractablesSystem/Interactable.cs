@@ -12,7 +12,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] string itemName = string.Empty;
     public UnityEvent OnInteracted = new UnityEvent();
 
-    protected virtual string DefaultInterationText => "Interact";
+    protected virtual string DefaultInteractionText => "Interact";
 
     public bool IsInteractable 
     { 
@@ -32,9 +32,9 @@ public class Interactable : MonoBehaviour
             if(string.IsNullOrWhiteSpace(interactPromptText))
             {
                 if(string.IsNullOrWhiteSpace(itemName))
-                    return DefaultInterationText;
+                    return DefaultInteractionText;
                 else
-                    return DefaultInterationText + " " + itemName;
+                    return DefaultInteractionText + " " + itemName;
             }
             else
                 return interactPromptText;
