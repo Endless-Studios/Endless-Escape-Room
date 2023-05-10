@@ -94,8 +94,8 @@ public class Slidable : Grabbable
 
         for(float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
         {
-            float lerpT = elapsedTime / smoothSnapTime;
-            transform.position = (Vector3.Lerp(startPosition, snapResult.worldPosition, lerpT));
+            float interpolationPoint = elapsedTime / smoothSnapTime;
+            transform.position = (Vector3.Lerp(startPosition, snapResult.worldPosition, interpolationPoint));
             yield return null;
         }
 

@@ -105,11 +105,9 @@ public class Rotatable : Grabbable
     IEnumerator SmoothToRotation(Quaternion targetRotation, int snapPositionID)
     {
         Quaternion smoothStartingRotion = targetTransform.localRotation;
-        float elapsedTime = 0;
 
-        while (elapsedTime < smoothSnapTime)
+        for(float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
         {
-            elapsedTime += Time.deltaTime;
             float interpolationPoint = elapsedTime / smoothSnapTime;
             targetTransform.localRotation = Quaternion.Lerp(smoothStartingRotion, targetRotation, interpolationPoint);
             yield return null;
