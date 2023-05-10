@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 3451118302482216456, guid: eb67bc938691d5540ab64706d0a728c2,
         type: 3}
       propertyPath: m_Convex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb67bc938691d5540ab64706d0a728c2, type: 3}
