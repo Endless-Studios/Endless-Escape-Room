@@ -14,6 +14,7 @@ public class UiInventoryElement3D : UiInventoryElement
     protected override void Setup()
     {
         visuals = Pickupable.GetVisualClone(Pickupable.transform.position, Quaternion.identity);
+        visuals.transform.SetParent(Camera.main.transform, true);
         PositionVisuals();
         AdjustSize();
         Unhighlight();

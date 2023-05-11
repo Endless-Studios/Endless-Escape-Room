@@ -73,6 +73,7 @@ public class InventoryUI : MonoBehaviour
                             originalElement = inventoryElement;
                             draggingElement = Instantiate(draggedUiPrefab, inventoryElement.transform.position, inventoryElement.transform.rotation, inventoryCanvas.transform);
                             draggingElement.Initialize(originalElement.Pickupable);
+                            PlayerCore.LocalPlayer.PlayerInput.InspectControlsEnabled = false;
                         }
                     }
                 }
@@ -134,6 +135,8 @@ public class InventoryUI : MonoBehaviour
 
                     //We're no longer dragging anything, lets clean up
                     Destroy(draggingElement.gameObject);
+                    PlayerCore.LocalPlayer.PlayerInput.InspectControlsEnabled = true;
+
                     draggingElement = null;
                     originalElement = null;
                     currentSnappable = null;    
