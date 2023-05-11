@@ -13,6 +13,7 @@ public class PlayerInput : MonoBehaviour
     public bool LookEnabled { get; set; } = true;
     public bool MoveEnabled { get; set; } = true;
     public bool HeldControlsEnabled { get; set; } = true;
+    public bool InspectControlsEnabled { get; set; } = true;
     float lastJumpPressTime = -1;
 
     private void Awake()
@@ -109,7 +110,7 @@ public class PlayerInput : MonoBehaviour
 
     internal bool GetRotationButtonDown()
     {
-        return Input.GetButtonDown("Interact");
+        return InspectControlsEnabled && Input.GetButtonDown("Interact");
     }
 
     public bool GetUseButtonDown()

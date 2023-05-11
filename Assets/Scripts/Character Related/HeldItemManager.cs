@@ -30,10 +30,10 @@ public class HeldItemManager : MonoBehaviour
         heldUseable = pickupable as Useable;
         HeldPickupable.HandlePickedUp();
         HeldPickupable.transform.SetParent(Camera.main.transform, true);
-        if (isInspecting == false)
+        if(isInspecting == false)
         {
             MoveHeldItemToProperPosition();
-            if (pickupable is Useable)
+            if(pickupable is Useable)
             {
                 PlayerHUD.Instance.SetHeldScreenActive(true, false);
                 playerInput.InteractEnabled = false;
@@ -95,7 +95,7 @@ public class HeldItemManager : MonoBehaviour
 
     protected void ClearProjectedVisuals()
     {
-        if (projectedVisuals)
+        if(projectedVisuals)
             Destroy(projectedVisuals);
         projectedVisuals = null;
     }
@@ -115,14 +115,14 @@ public class HeldItemManager : MonoBehaviour
 
     private void Update()
     {
-        if (HeldPickupable)
+        if(HeldPickupable)
         {
-            if (projectedVisuals)
+            if(projectedVisuals)
                 ProjectHeldItem();
-            if (IsDropMode && playerInput.GetDropPressed())
+            if(IsDropMode && playerInput.GetDropPressed())
             {
                 //TODO only for visuals, not collisions until we're done maybe?
-                if (currentSnappable)
+                if(currentSnappable)
                 {
                     currentSnappable.SnapPickupable(HeldPickupable);
                     currentSnappable = null;
@@ -138,35 +138,79 @@ public class HeldItemManager : MonoBehaviour
                     HeldPickupable.HandleDropped();
                 }
 
-                ClearProjectedVisuals();
-                PlayerHUD.Instance.SetHeldScreenActive(false);
-                HeldPickupable = null;
-                heldUseable = null;
+                ClearHeldItem();
             }
-            else if (itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
+            else if(itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
             {
                 PlayerHUD.Instance.SetHeldScreenActive(false);
                 itemInspector.InspectItem(HeldPickupable);
             }
-            else if (!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
+            else if(!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
             {
                 heldUseable.Use();
             }
         }
     }
 
+    public void ClearHeldItem()
+    {
+        ClearProjectedVisuals();
+        PlayerHUD.Instance.SetHeldScreenActive(false);
+        HeldPickupable = null;
+        heldUseable = null;
+    }
+
     private void ProjectHeldItem()
     {
-        RaycastHit hitInfo;
+        RaycastHit triggerHitInfo;
+        RaycastHit colliderHitInfo;
+
         Vector3 targetPosition;
         Quaternion targetRotation;
 
-        if (Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out hitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Ignore))
+        Snappable snappable = null;
+        bool triggerHit = Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out triggerHitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Collide);
+        if(triggerHit)
         {
-            Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance));
+            snappable = triggerHitInfo.collider.GetComponent<Snappable>();
+            if(snappable == false || snappable.AcceptsPickupable(HeldPickupable) == false)
+            {//Make sure the trigger we hit was valid, otherwise, discard it
+                triggerHit = false;
+                snappable = null;
+            }
+        }
+        RaycastHit hitInfoToUse = default;
 
-            Snappable snappable = hitInfo.collider.GetComponent<Snappable>();
-            if (snappable && snappable.AcceptsPickupable(HeldPickupable))
+        bool physicsHit = Physics.BoxCast(Camera.main.transform.position, projectedVisualsBounds.extents, Camera.main.transform.forward, out colliderHitInfo, Quaternion.identity, dropRaycastDistance, dropRaycastMask, QueryTriggerInteraction.Ignore);
+
+        if(triggerHit || physicsHit)
+        {
+            if(triggerHit && physicsHit)
+            {
+                float colliderDistance = Vector3.Distance(colliderHitInfo.point, Camera.main.transform.position);
+                float triggerDistance = Vector3.Distance(triggerHitInfo.point, Camera.main.transform.position);
+
+                if(colliderDistance < triggerDistance)
+                {
+                    snappable = null;
+                    hitInfoToUse = colliderHitInfo;
+                }
+                else
+                    hitInfoToUse = triggerHitInfo;
+            }
+            else if(triggerHit)
+            {
+                hitInfoToUse = triggerHitInfo;
+            }
+            else if(physicsHit)
+            {
+                snappable = null;
+                hitInfoToUse = colliderHitInfo;
+            }
+
+            Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (Camera.main.transform.forward * hitInfoToUse.distance));
+
+            if(snappable)
             {
                 currentSnappable = snappable;
                 targetPosition = snappable.SnapTransform.position;
@@ -175,7 +219,7 @@ public class HeldItemManager : MonoBehaviour
             else
             {
                 currentSnappable = null;
-                targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfo.distance) - projectedVisualsBoundsOffset;
+                targetPosition = Camera.main.transform.position + (Camera.main.transform.forward * hitInfoToUse.distance) - projectedVisualsBoundsOffset;
                 targetRotation = Quaternion.identity;
             }
         }

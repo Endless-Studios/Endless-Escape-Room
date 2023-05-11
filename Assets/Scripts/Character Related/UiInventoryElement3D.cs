@@ -13,12 +13,11 @@ public class UiInventoryElement3D : UiInventoryElement
 
     protected override void Setup()
     {
-        base.Setup();
         visuals = Pickupable.GetVisualClone(Pickupable.transform.position, Quaternion.identity);
+        visuals.transform.SetParent(Camera.main.transform, true);
         PositionVisuals();
         AdjustSize();
-
-        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedItem"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
+        Unhighlight();
     }
 
     void AdjustSize() //TODO this is slightly innacurate depending on rotation
@@ -83,5 +82,15 @@ public class UiInventoryElement3D : UiInventoryElement
         Gizmos.color = Color.red;
         //Gizmos.matrix = visuals.transform.localToWorldMatrix;
         Gizmos.DrawWireCube(finalBounds.center, finalBounds.size);
+    }
+
+    public override void Highlight()
+    {
+        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedOutline"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
+    }
+
+    public override void Unhighlight()
+    {
+        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedItem"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
     }
 }
