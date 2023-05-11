@@ -43,6 +43,28 @@ namespace Ai
                 var floor = floorObject.AddComponent<Floor>();
                 Collider[] colliders = floorObject.GetComponentsInChildren<Collider>();
                 floor.InitializeFloorObject(colliders);
+                if (NavMesh.SamplePosition(floorObject.transform.position, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+                {
+                    var foundPosition = false;
+                    foreach (Collider col in colliders)
+                    {
+                        if (Vector3.Distance(col.ClosestPoint(hit.position), hit.position) < .2f)
+                        {
+                            floor.NavigationSamplePosition = hit.position;
+                            foundPosition = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundPosition)
+                        floor.NavigationSamplePosition = floorObject.transform.position;
+                }
+                else
+                {
+                    floor.NavigationSamplePosition = floorObject.transform.position;
+                }
+
+                Debug.DrawLine(floor.NavigationSamplePosition, floor.NavigationSamplePosition + Vector3.up * 2, Color.cyan, 60f);
             }
 
             while (floorList.Count > 0)
@@ -52,21 +74,11 @@ namespace Ai
                 var room = roomSeed.AddComponent<Room>();
                 List<GameObject> reachableFloors = new();
 
-                Vector3 roomSamplePosition = roomSeed.transform.position;
-                
-                if (NavMesh.SamplePosition(roomSamplePosition, out NavMeshHit hit, 2f, NavMesh.AllAreas))
-                {
-                    roomSamplePosition = hit.position;
-                }
+                Vector3 roomSamplePosition = roomSeed.GetComponent<Floor>().NavigationSamplePosition;
                 
                 foreach (GameObject floorObject in floorList)
                 {
-                    Vector3 floorSamplePosition = floorObject.transform.position;
-                    
-                    if (NavMesh.SamplePosition(floorObject.transform.position, out NavMeshHit floorHit, 2f, NavMesh.AllAreas))
-                    {
-                        floorSamplePosition = floorHit.position;
-                    }
+                    Vector3 floorSamplePosition = floorObject.GetComponent<Floor>().NavigationSamplePosition;
 
                     NavMeshPath path = new ();
                     NavMesh.CalculatePath(roomSamplePosition, floorSamplePosition, NavMesh.AllAreas, path);
@@ -81,6 +93,7 @@ namespace Ai
                 foreach (GameObject floorObject in reachableFloors)
                 {
                     floorList.Remove(floorObject);
+                    floorObject.GetComponent<Floor>().Room = room;
                 }
             }
 
@@ -109,63 +122,33 @@ namespace Ai
 
             foreach (NavMeshLink navMeshLink in links)
             {
-                Room room1;
-                Room room2;
-                int numCol = Physics.OverlapSphereNonAlloc(navMeshLink.gameObject.transform.position + navMeshLink.startPoint, .1f, overlappedColliders, LayerMask.GetMask("Floor"));
-                
-                if (numCol == 0)
+                int numCol = Physics.OverlapSphereNonAlloc(navMeshLink.transform.position, .5f, overlappedColliders, LayerMask.GetMask("Floor"));
+                List<Room> hitRooms = new();
+                for (int i = 0; i < numCol; i++)
                 {
-                    Debug.LogError("Malformed link", navMeshLink);
-                    continue;
+                    Collider col = overlappedColliders[i];
+                    if (Floor.FloorObjectByColliderKey.TryGetValue(col, out Floor floor) && Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
+                    {
+                        if(!hitRooms.Contains(room))
+                            hitRooms.Add(room);
+                    }
                 }
 
-                if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedColliders[0], out Floor floor))
+                switch (hitRooms.Count)
                 {
-                    Debug.LogError("Malformed link", navMeshLink);
-                    continue;
+                    case 0 or 1:
+                        Debug.LogWarning("No room connection", navMeshLink);
+                        break;
+                    case 2:
+                        if(!hitRooms[0].ConnectedRooms.Contains(hitRooms[1]))
+                            hitRooms[0].ConnectedRooms.Add(hitRooms[1]);
+                        if(!hitRooms[1].ConnectedRooms.Contains(hitRooms[0]))
+                            hitRooms[1].ConnectedRooms.Add(hitRooms[0]);
+                        break;
+                    case > 2:
+                        Debug.Log("Hit too many rooms", navMeshLink);
+                        break;
                 }
-                
-                if (Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
-                {
-                    room1 = room;
-                }
-                else
-                {
-                    Debug.LogError("Malformed link", navMeshLink);
-                    continue;
-                }
-                
-                numCol = Physics.OverlapSphereNonAlloc(navMeshLink.gameObject.transform.position + navMeshLink.endPoint, .1f, overlappedColliders, LayerMask.GetMask("Floor"));
-                
-                if (numCol == 0)
-                {
-                    Debug.LogError("Malformed link", navMeshLink);
-                    continue;
-                }
-                
-                if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedColliders[0], out floor))
-                {
-                    Debug.LogError("Malformed link", navMeshLink);
-                    continue;
-                }
-
-                if (Room.FloorMap.TryGetValue(floor.gameObject, out room))
-                {
-                    room2 = room;
-                }
-                else
-                {
-                    Debug.LogError("Malformed link", navMeshLink);
-                    continue;
-                }
-                
-                if(room1 == room2)
-                    continue;
-
-                if(!room1.ConnectedRooms.Contains(room2))
-                    room1.ConnectedRooms.Add(room2);
-                if(!room2.ConnectedRooms.Contains(room1))
-                    room2.ConnectedRooms.Add(room1);
             }
 
             foreach (GameObject floorObject in floorObjects)

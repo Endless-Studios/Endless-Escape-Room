@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ai
 {
+    [SelectionBase]
     public class Floor : MonoBehaviour
     {
-        public readonly static Dictionary<Collider, Floor> FloorObjectByColliderKey = new();
+        public static readonly Dictionary<Collider, Floor> FloorObjectByColliderKey = new();
+        public Room Room;
+        public Vector3 NavigationSamplePosition;
 
         public void InitializeFloorObject(IEnumerable<Collider> colliders)
         {

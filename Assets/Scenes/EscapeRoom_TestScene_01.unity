@@ -3080,7 +3080,7 @@ PrefabInstance:
     - target: {fileID: 8312026018747972705, guid: c61c999b1d3e80c49bbcdf48186eacad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.750351
+      value: -15.500351
       objectReference: {fileID: 0}
     - target: {fileID: 8312026018747972705, guid: c61c999b1d3e80c49bbcdf48186eacad,
         type: 3}
@@ -3090,7 +3090,7 @@ PrefabInstance:
     - target: {fileID: 8312026018747972705, guid: c61c999b1d3e80c49bbcdf48186eacad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.50022
+      value: -10.500221
       objectReference: {fileID: 0}
     - target: {fileID: 8312026018747972705, guid: c61c999b1d3e80c49bbcdf48186eacad,
         type: 3}
@@ -4650,7 +4650,7 @@ PrefabInstance:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.499912
+      value: -10.499913
       objectReference: {fileID: 0}
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
         type: 3}
@@ -5481,7 +5481,7 @@ PrefabInstance:
     - target: {fileID: 4076123989046317857, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
       propertyPath: m_Name
-      value: Building Interior Doorway Double 4m (5)
+      value: TopStairThreshold
       objectReference: {fileID: 0}
     - target: {fileID: 4076123989046317870, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
@@ -6994,7 +6994,7 @@ PrefabInstance:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.5000906
+      value: -6.5000916
       objectReference: {fileID: 0}
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
         type: 3}
@@ -10511,7 +10511,7 @@ PrefabInstance:
     - target: {fileID: 5656180163975635454, guid: 65074c6a9ebc8df4e9e2ac2e8b9369c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.999918
+      value: -12.999919
       objectReference: {fileID: 0}
     - target: {fileID: 5656180163975635454, guid: 65074c6a9ebc8df4e9e2ac2e8b9369c7,
         type: 3}
@@ -11612,7 +11612,7 @@ PrefabInstance:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.499912
+      value: -15.499913
       objectReference: {fileID: 0}
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
         type: 3}
@@ -11672,7 +11672,7 @@ PrefabInstance:
     - target: {fileID: 4076123989046317857, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
       propertyPath: m_Name
-      value: Building Interior Doorway Double 4m (4)
+      value: MiddleStairThreshold
       objectReference: {fileID: 0}
     - target: {fileID: 4076123989046317870, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
@@ -11902,7 +11902,7 @@ PrefabInstance:
     - target: {fileID: 7322921351055576712, guid: 4ac503e5c08a0b64e967ea9558e767c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.75
+      value: -15.5
       objectReference: {fileID: 0}
     - target: {fileID: 7322921351055576712, guid: 4ac503e5c08a0b64e967ea9558e767c0,
         type: 3}
@@ -11912,7 +11912,7 @@ PrefabInstance:
     - target: {fileID: 7322921351055576712, guid: 4ac503e5c08a0b64e967ea9558e767c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.5
+      value: -10.500001
       objectReference: {fileID: 0}
     - target: {fileID: 7322921351055576712, guid: 4ac503e5c08a0b64e967ea9558e767c0,
         type: 3}
@@ -15043,7 +15043,7 @@ PrefabInstance:
     - target: {fileID: 4076123989046317857, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
       propertyPath: m_Name
-      value: Building Interior Doorway Double 4m (9)
+      value: TopVoidThreshold
       objectReference: {fileID: 0}
     - target: {fileID: 4076123989046317870, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
@@ -18729,7 +18729,7 @@ PrefabInstance:
     - target: {fileID: 4076123989046317857, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
       propertyPath: m_Name
-      value: Building Interior Doorway Double 4m (2)
+      value: BottomStairThreshold
       objectReference: {fileID: 0}
     - target: {fileID: 4076123989046317870, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
@@ -19218,7 +19218,7 @@ PrefabInstance:
     - target: {fileID: 4076123989046317857, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
       propertyPath: m_Name
-      value: Building Interior Doorway Double 4m (3)
+      value: VoidThreshold
       objectReference: {fileID: 0}
     - target: {fileID: 4076123989046317870, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
