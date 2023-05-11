@@ -50,15 +50,26 @@ namespace Ai
                 GameObject roomSeed = floorList[0];
                 floorList.RemoveAt(0);
                 var room = roomSeed.AddComponent<Room>();
-                List<GameObject> reachableFloors = new(); 
+                List<GameObject> reachableFloors = new();
+
+                Vector3 roomSamplePosition = roomSeed.transform.position;
+                
+                if (NavMesh.SamplePosition(roomSamplePosition, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+                {
+                    roomSamplePosition = hit.position;
+                }
                 
                 foreach (GameObject floorObject in floorList)
                 {
-                    if(floorObject == roomSeed)
-                        continue;
+                    Vector3 floorSamplePosition = floorObject.transform.position;
+                    
+                    if (NavMesh.SamplePosition(floorObject.transform.position, out NavMeshHit floorHit, 2f, NavMesh.AllAreas))
+                    {
+                        floorSamplePosition = floorHit.position;
+                    }
 
                     NavMeshPath path = new ();
-                    NavMesh.CalculatePath(roomSeed.transform.position, floorObject.transform.position, NavMesh.AllAreas, path);
+                    NavMesh.CalculatePath(roomSamplePosition, floorSamplePosition, NavMesh.AllAreas, path);
                     
                     if(path.status == NavMeshPathStatus.PathComplete)
                         reachableFloors.Add(floorObject);
@@ -94,9 +105,12 @@ namespace Ai
                     tform.gameObject.layer = LayerMask.NameToLayer("Floor");
                 }
             }
+            
 
             foreach (NavMeshLink navMeshLink in links)
             {
+                Room room1;
+                Room room2;
                 int numCol = Physics.OverlapSphereNonAlloc(navMeshLink.gameObject.transform.position + navMeshLink.startPoint, .1f, overlappedColliders, LayerMask.GetMask("Floor"));
                 
                 if (numCol == 0)
@@ -104,9 +118,6 @@ namespace Ai
                     Debug.LogError("Malformed link", navMeshLink);
                     continue;
                 }
-                
-                Room room1;
-                Room room2;
 
                 if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedColliders[0], out Floor floor))
                 {
