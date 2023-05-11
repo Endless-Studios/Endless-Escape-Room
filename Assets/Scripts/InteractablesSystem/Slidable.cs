@@ -24,16 +24,9 @@ public class Slidable : Grabbable
 
     void Awake()
     {
-        if (slidableContext == null)
-        {
-            Debug.LogWarning("Slidable Context missing. Removing Slidable.");
-            Destroy(this);
-            return;
-        }
-
         cachedRigidbodyIsKinematic = rigidbody.isKinematic;
 
-        if(rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
+        if (rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
             rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; //RigidbodyInterpolation.Interpolate doesnt work properly on child rigidbodies
     }
 
@@ -61,7 +54,13 @@ public class Slidable : Grabbable
     public override void HandleUpdate()
     {
         //Plane based on the slidercontext's orientation
-        Plane dragPlane = slidableContext.GetContextPlane(this);
+        Plane dragPlane;
+
+        if (slidableContext != null)
+            dragPlane = slidableContext.GetContextPlane(this);
+        else
+            dragPlane = SlidableContext.GetDefaultPlaneAtPosition(transform.position);
+
         Camera cam = Camera.main;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
@@ -69,7 +68,11 @@ public class Slidable : Grabbable
         if (dragPlane.Raycast(ray, out float hitDistance))
         {
             Vector3 hitPoint = ray.GetPoint(hitDistance);
-            targetPosition = slidableContext.ClampPosition(hitPoint); //Clamp the desired drag position to the context's bounds
+
+            if (slidableContext != null)
+                targetPosition = slidableContext.ClampPosition(hitPoint); //Clamp the desired drag position to the context's bounds
+            else
+                targetPosition = hitPoint;
         }
         else
         {
@@ -85,14 +88,17 @@ public class Slidable : Grabbable
         rigidbody.isKinematic = cachedRigidbodyIsKinematic;
         rigidbody.velocity = Vector3.zero;
 
-        activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
+        if (slidableContext != null)
+            activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
+        else
+            OnPositionMoved.Invoke(transform.position);
     }
 
     IEnumerator SmoothToPosition(SlidableContext.EndSlideResult snapResult)
     {
         Vector3 startPosition = transform.position;
 
-        for(float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
+        for (float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
         {
             float interpolationPoint = elapsedTime / smoothSnapTime;
             transform.position = (Vector3.Lerp(startPosition, snapResult.worldPosition, interpolationPoint));
@@ -130,7 +136,7 @@ public class Slidable : Grabbable
 
     void OnDrawGizmosSelected()
     {
-        if(slidableContext != null)
-            slidableContext.DrawGizmosPlaneAtPosition(transform.position);
+        if (slidableContext != null)
+            slidableContext.DrawGizmosForSelectedSlidable(this);
     }
 }

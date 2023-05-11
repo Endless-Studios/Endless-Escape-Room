@@ -83,9 +83,17 @@ public class SlidableContext : MonoBehaviour
         return result;
     }
 
-    public virtual void DrawGizmosPlaneAtPosition(Vector3 targetPosition)
+    /// <summary>
+    /// If no context is provided, this default plane can be used. 
+    /// </summary>
+    public static Plane GetDefaultPlaneAtPosition(Vector3 targetPosition) => new Plane(Vector3.up, targetPosition);
+
+    public virtual void DrawGizmosForSelectedSlidable(Slidable slidable) => DrawGizmosPlaneAtPosition(slidable.transform.position);
+    private void OnDrawGizmosSelected() => DrawGizmosPlaneAtPosition(transform.position);
+
+    private void DrawGizmosPlaneAtPosition(Vector3 targetPosition)
     {
-        Gizmos.matrix = Matrix4x4.TRS(targetPosition,  Quaternion.LookRotation(transform.up, transform.forward), Vector3.one);      
+        Gizmos.matrix = Matrix4x4.TRS(targetPosition, Quaternion.LookRotation(transform.up, transform.forward), Vector3.one);
         Vector3 extents = new Vector3(1f, .0025f, 1f);
         Color drawColor = Color.green;
         drawColor.a = .2f;
@@ -96,5 +104,5 @@ public class SlidableContext : MonoBehaviour
         Gizmos.color = Color.white;
     }
 
-    private void OnDrawGizmosSelected() => DrawGizmosPlaneAtPosition(transform.position);
+
 }

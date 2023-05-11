@@ -21,7 +21,9 @@ public class SlidableContextWithBoundary : SlidableContext
         return transform.TransformPoint(relativePosition);// Result in World Space
     }
 
-    public override void DrawGizmosPlaneAtPosition(Vector3 targetPosition) { }
+    public override void DrawGizmosForSelectedSlidable(Slidable targetSlidable) { }
+
+    void OnDrawGizmosSelected() { }
 
     void OnDrawGizmos()
     {
