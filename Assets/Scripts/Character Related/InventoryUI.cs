@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] UiInventoryElement itemUiPrefab = null;
+    [SerializeField] UiInventoryElement draggedUiPrefab = null;
     [SerializeField] Canvas inventoryCanvas = null;
     [SerializeField] RectTransform inventoryEntriesParent = null;
     [SerializeField] float dropRaycastDistance = 5;
@@ -70,8 +71,7 @@ public class InventoryUI : MonoBehaviour
                         if(inventoryElement)
                         {
                             originalElement = inventoryElement;
-                            draggingElement = Instantiate(itemUiPrefab, inventoryElement.transform.position, inventoryElement.transform.rotation, inventoryCanvas.transform);
-                            draggingElement.GetComponent<Image>().enabled = false; //TODO remove this. Maybe have the initial prefabs in an off state, and then have initialize take an argument for dragging and let them handle it?
+                            draggingElement = Instantiate(draggedUiPrefab, inventoryElement.transform.position, inventoryElement.transform.rotation, inventoryCanvas.transform);
                             draggingElement.Initialize(originalElement.Pickupable);
                         }
                     }
