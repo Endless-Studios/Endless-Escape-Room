@@ -15,10 +15,12 @@ public class SlidableContext : MonoBehaviour
         public Vector3 worldPosition;
     }
 
-    protected class SnapAxisResult
+    /// <summary>
+    /// If no context is provided, this default plane can be used. 
+    /// </summary>
+    public static Plane GetDefaultPlaneAtPosition(Vector3 targetPosition)
     {
-        public int snapID;
-        public float snapPosition;
+        return new Plane(Vector3.up, targetPosition);
     }
 
     private void Awake()
@@ -83,13 +85,15 @@ public class SlidableContext : MonoBehaviour
         return result;
     }
 
-    /// <summary>
-    /// If no context is provided, this default plane can be used. 
-    /// </summary>
-    public static Plane GetDefaultPlaneAtPosition(Vector3 targetPosition) => new Plane(Vector3.up, targetPosition);
+    public virtual void DrawGizmosForSelectedSlidable(Slidable slidable)
+    {
+        DrawGizmosPlaneAtPosition(slidable.transform.position);
+    }
 
-    public virtual void DrawGizmosForSelectedSlidable(Slidable slidable) => DrawGizmosPlaneAtPosition(slidable.transform.position);
-    private void OnDrawGizmosSelected() => DrawGizmosPlaneAtPosition(transform.position);
+    private void OnDrawGizmosSelected()
+    {
+        DrawGizmosPlaneAtPosition(transform.position);
+    }
 
     private void DrawGizmosPlaneAtPosition(Vector3 targetPosition)
     {
@@ -103,6 +107,4 @@ public class SlidableContext : MonoBehaviour
         Gizmos.DrawWireCube(Vector3.zero, extents);
         Gizmos.color = Color.white;
     }
-
-
 }

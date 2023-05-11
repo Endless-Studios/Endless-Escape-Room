@@ -5,7 +5,13 @@ using UnityEngine;
 public class SlidableContextWithBoundarySnappable : SlidableContextWithBoundary
 {
     [Header("Snapping")]
-    [SerializeField, Min(0)] private Vector2Int snapPoints = new Vector2Int(2,2);
+    [SerializeField, Min(0)] private Vector2Int snapPoints = new Vector2Int(2, 2);
+
+    protected class SnapAxisResult
+    {
+        public int snapID;
+        public float snapPosition;
+    }
 
     public override EndSlideResult GetEndSlideResult(Vector3 currentWorldPosition)
     {

@@ -12,8 +12,9 @@ public class Slidable : Grabbable
     [SerializeField] private SlidableContext slidableContext;
     [SerializeField] private float slideSpeed = 10f;
     [SerializeField, Min(.05f)] private float smoothSnapTime = .1f;
+    [SerializeField] private bool freezeRotationDuringSlide = false;
 
-    [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space
+    [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space (or [x,z] world space for slidables w/o a context)
     [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
 
     private Vector3 targetPosition;
@@ -21,10 +22,12 @@ public class Slidable : Grabbable
     private Coroutine activeSnapCoroutine;
 
     private bool cachedRigidbodyIsKinematic;
+    private RigidbodyConstraints cachedRigidbodyConstraints;
 
     void Awake()
     {
         cachedRigidbodyIsKinematic = rigidbody.isKinematic;
+        cachedRigidbodyConstraints = rigidbody.constraints;
 
         if (rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
             rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; //RigidbodyInterpolation.Interpolate doesnt work properly on child rigidbodies
@@ -49,6 +52,9 @@ public class Slidable : Grabbable
         interactionActive = true;
         rigidbody.isKinematic = false; //allow movement from the rigidbody's velocity
         targetPosition = rigidbody.position; //init target pos
+
+        if(freezeRotationDuringSlide)
+            rigidbody.freezeRotation = true;
     }
 
     public override void HandleUpdate()
@@ -87,6 +93,7 @@ public class Slidable : Grabbable
         interactionActive = false;
         rigidbody.isKinematic = cachedRigidbodyIsKinematic;
         rigidbody.velocity = Vector3.zero;
+        rigidbody.constraints = cachedRigidbodyConstraints;
 
         if (slidableContext != null)
             activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
