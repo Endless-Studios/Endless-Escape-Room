@@ -22,7 +22,6 @@ namespace Ai
 
         public void WalkedThroughDoor()
         {
-            Debug.Log("WalkedThroughDoor");
             facade.WalkedThroughDoorway();
             transform.localPosition = Vector3.zero;
         }

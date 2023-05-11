@@ -25,7 +25,7 @@ namespace Ai
             float perceivedDB = CalculatePerceivedDB(soundData);
             if (perceivedDB > minPerceivedDB)
             {
-                //Debug.Log($"Heard noise, it was {perceivedDB}:dB loud");
+                
             }
         }
 

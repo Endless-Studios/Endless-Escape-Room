@@ -10,7 +10,7 @@ namespace Ai
 
         public void UpdateLastPatrolTime(float deltaTime) => TimeSinceLastPatrol += deltaTime;
 
-        public void ResetLastPatrolTime() => TimeSinceLastPatrol = 0;
+        public void ResetLastWanderFarTime() => TimeSinceLastPatrol = 0;
 
         public void StartWandering()
         {

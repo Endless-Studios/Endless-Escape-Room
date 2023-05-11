@@ -73,14 +73,15 @@ namespace Ai
             isTraversingLink = false;
             agent.updateRotation = true;
             agent.updatePosition = true;
-            agent.transform.position = agent.transform.TransformPoint(animator.transform.localPosition);
+            Transform agentTransform = agent.transform;
+            agentTransform.position = agentTransform.TransformPoint(animator.transform.localPosition);
             animator.transform.position = Vector3.zero;
             agent.CompleteOffMeshLink();
             CurrentRoom = GetCurrentRoom();
             facade.OnWalkedThroughDoorway -= HandleOnWalkedThroughDoorway;
         }
 
-        public Room GetCurrentRoom()
+        private Room GetCurrentRoom()
         {
             int size = Physics.OverlapSphereNonAlloc(transform.position, .2f, results, LayerMask.GetMask("Default"));
             if (size == 0)

@@ -98,7 +98,7 @@ namespace Ai
 
         public float TimeSinceLastPatrol => wanderFarComponent.TimeSinceLastPatrol;
 
-        public void ResetLastPatrolTime() => wanderFarComponent.ResetLastPatrolTime();
+        public void ResetLastWanderFarTime() => wanderFarComponent.ResetLastWanderFarTime();
 
         public void StartWanderingFar() => wanderFarComponent.StartWandering();
 

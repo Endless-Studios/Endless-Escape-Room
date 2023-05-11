@@ -63,8 +63,6 @@ namespace Ai
                 {
                     floor.NavigationSamplePosition = floorObject.transform.position;
                 }
-
-                Debug.DrawLine(floor.NavigationSamplePosition, floor.NavigationSamplePosition + Vector3.up * 2, Color.cyan, 60f);
             }
 
             while (floorList.Count > 0)
