@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e66c6366d904e98bc83428217d4fd7, type: 3}
+  m_Name: VCR
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"VCR
+      Graph","summary":"Connects all the sub pieces of the VCR to make it easier
+      to understand.","pan":{"x":-27.43915,"y":-171.849},"zoom":1.0,"elements":[{"argumentCount":0,"coroutine":false,"defaultValues":{"target":null,"name":{"$content":"On
+      Body Interacted","$type":"System.String"}},"position":{"x":-401.0,"y":-296.0},"guid":"b5911850-e379-4277-853e-d4e4f1a60c85","$version":"A","$type":"Unity.VisualScripting.CustomEvent","$id":"9"},{"specifyFallback":false,"kind":"Object","defaultValues":{"name":{"$content":"ZoomCameraFocus","$type":"System.String"},"object":null},"position":{"x":-271.0,"y":-87.0},"guid":"48d15fc1-5bd7-4832-aab3-2130a99e118c","$version":"A","$type":"Unity.VisualScripting.GetVariable","$id":"11"},{"chainable":false,"member":{"name":"Focus","parameterTypes":[],"targetType":"CameraFocus","targetTypeName":"CameraFocus","$version":"A"},"defaultValues":{"target":null},"position":{"x":18.0,"y":-294.0},"guid":"fe0538ae-d28f-4746-b4d6-051e35d6081f","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"13"},{"member":{"name":"OnFocused","parameterTypes":null,"targetType":"CameraFocus","targetTypeName":"CameraFocus","$version":"A"},"defaultValues":{"target":null},"position":{"x":48.0,"y":10.0},"guid":"f1ebe69e-fb1e-459a-b522-973c8cbb8912","$version":"A","$type":"Unity.VisualScripting.GetMember","$id":"16"},{"chainable":false,"member":{"name":"Log","parameterTypes":["System.Object"],"targetType":"UnityEngine.Debug","targetTypeName":"UnityEngine.Debug","$version":"A"},"defaultValues":{},"position":{"x":-134.0,"y":-344.0},"guid":"51af7c2e-f28b-4b94-ae81-bc67a7264733","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"19"},{"type":"System.String","value":{"$content":"AHHHH","$type":"System.String"},"defaultValues":{},"position":{"x":-208.0,"y":-220.0},"guid":"42d29fad-1e43-44c3-b39a-2adedb30d246","$version":"A","$type":"Unity.VisualScripting.Literal","$id":"22"},{"sourceUnit":{"$ref":"9"},"sourceKey":"trigger","destinationUnit":{"$ref":"19"},"destinationKey":"enter","guid":"bf098661-bf6f-4875-b226-5b0c9d138fa7","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"exit","destinationUnit":{"$ref":"13"},"destinationKey":"enter","guid":"43ddd673-24ae-4a6c-b976-9951cc057751","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"value","destinationUnit":{"$ref":"13"},"destinationKey":"target","guid":"173519a9-4878-481f-add2-1fc340825c4b","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"value","destinationUnit":{"$ref":"16"},"destinationKey":"target","guid":"1cf66836-f2da-4cf6-9210-3cd767416a5d","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"22"},"sourceKey":"output","destinationUnit":{"$ref":"19"},"destinationKey":"%message","guid":"82132ae9-8eeb-4cec-9372-ea23de31df59","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}'
+    _objectReferences: []
