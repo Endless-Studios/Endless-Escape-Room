@@ -86,10 +86,13 @@ public class OnUnityEvent : EventUnit<EventParameters>
 
         if(data.Event != null)
         {
-            GraphReference stackRef = stack.ToReference();
-            UnityEventBase eventBase = Flow.FetchValue<UnityEventBase>(UnityEvent, stackRef);
-            MethodInfo method = type.GetMethod(nameof(UnityEngine.Events.UnityEvent.RemoveListener));
-            method?.Invoke(eventBase, new[] { data.Event });
+            if(UnityEvent != null)
+            {
+                GraphReference stackRef = stack.ToReference();
+                UnityEventBase eventBase = Flow.FetchValue<UnityEventBase>(UnityEvent, stackRef);
+                MethodInfo method = type.GetMethod(nameof(UnityEngine.Events.UnityEvent.RemoveListener));
+                method?.Invoke(eventBase, new[] { data.Event });
+            }
 
             data.Event = null;
         }
