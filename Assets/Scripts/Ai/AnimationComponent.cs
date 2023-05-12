@@ -2,6 +2,10 @@
 
 namespace Ai
 {
+    /// <summary>
+    /// This class should be attached to the same GameObject that has the Animator component and should be referenced by
+    /// the AiFacade. This class manages pushing information directly into the Animator for animating the ai.
+    /// </summary>
     internal class AnimationComponent : AiComponent
     {
         [SerializeField] private Animator animator;
@@ -9,9 +13,8 @@ namespace Ai
         private static readonly int EnterDoorway = Animator.StringToHash("EnterDoorway");
         private static readonly int Moving = Animator.StringToHash("Moving");
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             facade.OnWalkingThroughDoorway += WalkThroughDoor;
         }
 
@@ -20,13 +23,17 @@ namespace Ai
             animator.SetTrigger(EnterDoorway);
         }
 
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code. 
+        /// </summary>
         public void WalkedThroughDoor()
         {
             facade.WalkedThroughDoorway();
             transform.localPosition = Vector3.zero;
         }
 
-        public void Update()
+        
+        private void Update()
         {
             animator.SetBool(Moving, facade.IsMoving);
         }

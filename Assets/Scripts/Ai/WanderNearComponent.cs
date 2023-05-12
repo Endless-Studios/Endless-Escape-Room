@@ -2,18 +2,34 @@
 
 namespace Ai
 {
+    /// <summary>
+    /// This class should be attached to the Ai and referenced by the AiFacade. This class tracks the time since the Ai  
+    /// last "wandered near" and also contains the threshold for when an ai should "wander near".
+    /// </summary>
     internal class WanderNearComponent : MonoBehaviour
     {
-        [field: SerializeField] public float WanderThreshold { get; private set; }
+        [SerializeField] private float wanderThreshold;
+        
+        public float WanderThreshold => wanderThreshold;
         public float TimeSinceLastWander { get; private set; }
         
-        public void UpdateLastWanderTime(float deltaTime) => TimeSinceLastWander += deltaTime;
-
-        public void ResetLastWanderTime() => TimeSinceLastWander = 0f;
-
-        public void StartWandering()
+        /// <summary>
+        /// Increments TimeSinceLastWanderFar by the deltaTime parameter. Delta time should be the amount of time that has
+        /// passed since this update was called last. Likely Time.deltaTime if called during Update or Time.fixedDeltaTime
+        /// if called during FixedUpdate.
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        public void UpdateLastWanderTime(float deltaTime)
         {
-            
+            TimeSinceLastWander += deltaTime;
+        }
+
+        /// <summary>
+        /// Sets TimeSinceLastWander to zero
+        /// </summary>
+        public void ResetLastWanderTime()
+        {
+            TimeSinceLastWander = 0f;
         }
     }
 }

@@ -8,10 +8,14 @@ namespace Ai
     {
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Animator animator;
-        [field: SerializeField] public float NavigationTolerance { get; private set; }
+        [SerializeField] private float navigationTolerance;
+        [SerializeField] private float overlapRadius;
+        [SerializeField] private LayerMask overlapMask;
+
+        public float NavigationTolerance => navigationTolerance;
         public bool IsMoving { get; private set; }
         public bool HasDestination { get; private set; }
-
+        public Room LastRoom { get; private set; }
         public Vector3 Destination { get; set; }
 
         public Room CurrentRoom
@@ -27,10 +31,11 @@ namespace Ai
                 currentRoom = value;
             }
         }
-
-        private Room currentRoom;
         
-        public Room LastRoom { get; private set; }
+        private Room currentRoom;
+        private bool isTraversingLink;
+        private Vector3 deltaPosition;
+        private readonly Collider[] results = new Collider[5];
 
         private void Start()
         {
@@ -83,18 +88,19 @@ namespace Ai
 
         private Room GetCurrentRoom()
         {
-            int size = Physics.OverlapSphereNonAlloc(transform.position, .2f, results, LayerMask.GetMask("Default"));
-            if (size == 0)
+            int overlappedColliders = Physics.OverlapSphereNonAlloc(transform.position, overlapRadius, results, overlapMask);
+            
+            if (overlappedColliders == 0)
             {
                 Debug.Log("Overlapped no colliders, this shouldn't be possible", this);
                 return null;
             }
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < overlappedColliders; i++)
             {
-                Collider col = results[i];
+                Collider overlappedCollider = results[i];
 
-                if (!Floor.FloorObjectByColliderKey.TryGetValue(col, out Floor floor))
+                if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedCollider, out Floor floor))
                 {
                     continue;
                 }
@@ -106,27 +112,5 @@ namespace Ai
             Debug.Log("Overlapped no floor objects, this shouldn't be possible", this);
             return null;
         }
-
-        private bool isTraversingLink;
-        private Vector3 deltaPosition;
-        private readonly Collider[] results = new Collider[5];
-    }
-
-    public abstract class AiComponent : MonoBehaviour
-    {
-        protected virtual void Awake()
-        {
-            facade = GetComponentInParent<AiFacade>();
-        }
-
-        protected AiFacade facade;
-    }
-
-    public enum LinkTraversalType
-    {
-        Walk,
-        Run,
-        Jump,
-        Leap
     }
 }

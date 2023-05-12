@@ -5,7 +5,9 @@ namespace Ai
 {
     internal class HealthComponent : MonoBehaviour
     {
-        [field: SerializeField] public float MaxHealth { get; private set; }
+        [SerializeField] private float maxHealth;
+
+        public float MaxHealth => maxHealth;
         public float Health { get; private set; }
 
         public event Action OnDied; 

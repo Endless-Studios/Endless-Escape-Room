@@ -29,26 +29,26 @@ namespace Ai
 
             foreach (GameObject thresholdObject in thresholdObjects)
             {
-                var obstacle = thresholdObject.AddComponent<NavMeshObstacle>();
+                NavMeshObstacle obstacle = thresholdObject.AddComponent<NavMeshObstacle>();
                 obstacle.carving = true;
                 obstacle.center = new Vector3(0, obstacle.center.y, 0);
             }
             
             surface.BuildNavMesh();
 
-            List<GameObject> floorList = new(floorObjects);
+            List<GameObject> floorList = new List<GameObject>(floorObjects);
 
             foreach (GameObject floorObject in floorObjects)
             {
-                var floor = floorObject.AddComponent<Floor>();
-                Collider[] colliders = floorObject.GetComponentsInChildren<Collider>();
-                floor.InitializeFloorObject(colliders);
+                Floor floor = floorObject.AddComponent<Floor>();
+                Collider[] childColliders = floorObject.GetComponentsInChildren<Collider>();
+                floor.InitializeFloorObject(childColliders);
                 if (NavMesh.SamplePosition(floorObject.transform.position, out NavMeshHit hit, 2f, NavMesh.AllAreas))
                 {
-                    var foundPosition = false;
-                    foreach (Collider col in colliders)
+                    bool foundPosition = false;
+                    foreach (Collider childCollider in childColliders)
                     {
-                        if (Vector3.Distance(col.ClosestPoint(hit.position), hit.position) < .2f)
+                        if (Vector3.Distance(childCollider.ClosestPoint(hit.position), hit.position) < .2f)
                         {
                             floor.NavigationSamplePosition = hit.position;
                             foundPosition = true;
@@ -69,8 +69,8 @@ namespace Ai
             {
                 GameObject roomSeed = floorList[0];
                 floorList.RemoveAt(0);
-                var room = roomSeed.AddComponent<Room>();
-                List<GameObject> reachableFloors = new();
+                Room room = roomSeed.AddComponent<Room>();
+                List<GameObject> reachableFloors = new List<GameObject>();
 
                 Vector3 roomSamplePosition = roomSeed.GetComponent<Floor>().NavigationSamplePosition;
                 
@@ -78,7 +78,7 @@ namespace Ai
                 {
                     Vector3 floorSamplePosition = floorObject.GetComponent<Floor>().NavigationSamplePosition;
 
-                    NavMeshPath path = new ();
+                    NavMeshPath path = new NavMeshPath();
                     NavMesh.CalculatePath(roomSamplePosition, floorSamplePosition, NavMesh.AllAreas, path);
                     
                     if(path.status == NavMeshPathStatus.PathComplete)
@@ -95,37 +95,36 @@ namespace Ai
                 }
             }
 
-            List<NavMeshLink> links = new();
+            List<NavMeshLink> links = new List<NavMeshLink>();
 
             foreach (GameObject thresholdObject in thresholdObjects)
             {
-                var obstacle = thresholdObject.GetComponent<NavMeshObstacle>();
-                var link = thresholdObject.AddComponent<NavMeshLink>();
+                NavMeshObstacle obstacle = thresholdObject.GetComponent<NavMeshObstacle>();
+                NavMeshLink link = thresholdObject.AddComponent<NavMeshLink>();
                 links.Add(link);
                 Vector3 obstacleSize = obstacle.size;
                 link.startPoint = new Vector3(0, 0, obstacleSize.z + .5f);
                 link.endPoint = new Vector3(0, 0, -obstacleSize.z - .5f);
             }
 
-            var overlappedColliders = new Collider[5];
+            Collider[] overlappedColliders = new Collider[5];
 
             foreach (GameObject floorObject in floorObjects)
             {
-                foreach (Transform tform in floorObject.GetComponentsInChildren<Transform>())
+                foreach (Transform floorTransform in floorObject.GetComponentsInChildren<Transform>())
                 {
-                    tform.gameObject.layer = LayerMask.NameToLayer("Floor");
+                    floorTransform.gameObject.layer = LayerMask.NameToLayer("Floor");
                 }
             }
             
-
             foreach (NavMeshLink navMeshLink in links)
             {
-                int numCol = Physics.OverlapSphereNonAlloc(navMeshLink.transform.position, .5f, overlappedColliders, LayerMask.GetMask("Floor"));
-                List<Room> hitRooms = new();
-                for (int i = 0; i < numCol; i++)
+                int numberOfColliders = Physics.OverlapSphereNonAlloc(navMeshLink.transform.position, .5f, overlappedColliders, LayerMask.GetMask("Floor"));
+                List<Room> hitRooms = new List<Room>();
+                for (int i = 0; i < numberOfColliders; i++)
                 {
-                    Collider col = overlappedColliders[i];
-                    if (Floor.FloorObjectByColliderKey.TryGetValue(col, out Floor floor) && Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
+                    Collider overlappedCollider = overlappedColliders[i];
+                    if (Floor.FloorObjectByColliderKey.TryGetValue(overlappedCollider, out Floor floor) && Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
                     {
                         if(!hitRooms.Contains(room))
                             hitRooms.Add(room);
@@ -151,18 +150,18 @@ namespace Ai
 
             foreach (GameObject floorObject in floorObjects)
             {
-                foreach (Transform tform in floorObject.GetComponentsInChildren<Transform>())
+                foreach (Transform floorTransform in floorObject.GetComponentsInChildren<Transform>())
                 {
-                    tform.gameObject.layer = LayerMask.NameToLayer("Default");
+                    floorTransform.gameObject.layer = LayerMask.NameToLayer("Default");
                 }
             }
         }
 
         private void ReparentObjects(IEnumerable<GameObject> collection)
         {
-            foreach (GameObject obj in collection)
+            foreach (GameObject collectionElement in collection)
             {
-                obj.transform.parent = transform;
+                collectionElement.transform.parent = transform;
             }
         }
     }

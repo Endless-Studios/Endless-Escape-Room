@@ -6,13 +6,16 @@ namespace Ai
 {
     public class Room : MonoBehaviour
     {
-        public static readonly Dictionary<GameObject, Room> FloorMap = new();
-        [field: SerializeField] public List<Room> ConnectedRooms { get; private set; } = new();
-        [field: SerializeField] public List<GameObject> FloorObjects { get; private set; } = new();
+        public static readonly Dictionary<GameObject, Room> FloorMap = new Dictionary<GameObject, Room>();
+        public List<Room> ConnectedRooms => connectedRooms;
+        public List<GameObject> FloorObjects => floorObjects; 
 
-        public void InitializeFloorObjects(IEnumerable<GameObject> floorObjects)
+        [SerializeField, ShowOnly] private List<Room> connectedRooms;
+        [SerializeField, ShowOnly] private List<GameObject> floorObjects;
+
+        public void InitializeFloorObjects(IEnumerable<GameObject> newFloorObjects)
         {
-            FloorObjects = new List<GameObject>(floorObjects);
+            floorObjects = new List<GameObject>(newFloorObjects);
             
             foreach (GameObject floorObject in FloorObjects)
             {
@@ -35,7 +38,7 @@ namespace Ai
                 Debug.LogWarning("No connected rooms", this);
             }
 
-            List<Room> copyOfConnectedRooms = new(ConnectedRooms);
+            List<Room> copyOfConnectedRooms = new List<Room>(ConnectedRooms);
 
             if (lastRoom)
             {
@@ -56,8 +59,8 @@ namespace Ai
 
             Vector2 flatVector = Random.insideUnitCircle.normalized;
             Vector3 samplePoint = new Vector3(flatVector.x, 0, flatVector.y) + floor.transform.position;
-            var col = floor.GetComponentInChildren<Collider>();
-            samplePoint = col.ClosestPoint(samplePoint);
+            Collider floorCollider = floor.GetComponentInChildren<Collider>();
+            samplePoint = floorCollider.ClosestPoint(samplePoint);
             if (!NavMesh.SamplePosition(samplePoint, out NavMeshHit hit, 2f, NavMesh.AllAreas))
             {
                 Debug.LogWarning("Malformed nav mesh", floor);

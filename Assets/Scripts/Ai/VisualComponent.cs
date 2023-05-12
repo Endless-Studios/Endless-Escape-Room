@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+// ReSharper disable LocalVariableHidesMember
 
 namespace Ai
 {
@@ -9,17 +10,17 @@ namespace Ai
 
         internal void EnableRenderers()
         {
-            foreach (Renderer ren in renderers)
+            foreach (Renderer renderer in renderers)
             {
-                ren.enabled = true;
+                renderer.enabled = true;
             }
         }
 
         internal void DisableRenderers()
         {
-            foreach (Renderer ren in renderers)
+            foreach (Renderer renderer in renderers)
             {
-                ren.enabled = false;
+                renderer.enabled = false;
             }
         }
     }

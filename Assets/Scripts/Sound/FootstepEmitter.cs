@@ -7,6 +7,8 @@ namespace Sound
         [SerializeField] private CharacterController controller;
         [SerializeField] private SoundEmitter emitter;
         [SerializeField] private float strideTime;
+        
+        private float nextStepTime;
 
         public void Update()
         {
@@ -23,7 +25,5 @@ namespace Sound
             emitter.EmitSound(60 * (velocityMagnitude / 3));
             nextStepTime = Time.time + strideTime;
         }
-
-        private float nextStepTime;
     }
 }

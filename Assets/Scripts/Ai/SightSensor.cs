@@ -20,7 +20,7 @@ namespace Ai
                     if(Vector3.Angle(toVector, transform.forward) > maxViewConeHalfAngle)
                         continue;
                     
-                    Ray ray = new(transformPosition, toVector.normalized);
+                    Ray ray = new Ray(transformPosition, toVector.normalized);
                     if (Physics.Raycast(ray, out RaycastHit hit, toVector.magnitude, sightBlockingMask))
                     {
                         if (hit.collider == losProbe.LosCollider)

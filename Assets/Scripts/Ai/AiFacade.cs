@@ -8,8 +8,8 @@ namespace Ai
 {
     public class AiFacade : MonoBehaviour
     {
-        [field: SerializeField] public bool ShouldSpawnOnStart { get; private set; }
-    
+        public bool ShouldSpawnOnStart;
+
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] private VisualComponent visualComponent;
         [SerializeField] private CollisionComponent collisionComponent;
@@ -27,36 +27,67 @@ namespace Ai
         public UnityEvent OnDespawn;
 
         public event Action OnWalkingThroughDoorway;
-
         public event Action OnWalkedThroughDoorway;
 
-        public void WalkingThroughDoorway() => OnWalkingThroughDoorway?.Invoke();
+        public void WalkingThroughDoorway()
+        {
+            OnWalkingThroughDoorway?.Invoke();
+        }
 
-        public void WalkedThroughDoorway() => OnWalkedThroughDoorway?.Invoke();
+        public void WalkedThroughDoorway()
+        {
+            OnWalkedThroughDoorway?.Invoke();
+        }
 
         public float Health => healthComponent.Health;
         public float MaxHealth => healthComponent.MaxHealth;
 
         public void Awake()
         {
-            healthComponent.OnDied += () => OnDied?.Invoke();
+            healthComponent.OnDied += HandleOnDied;
+        }
+
+        private void HandleOnDied()
+        {
+            OnDied?.Invoke();
         }
 
         [ContextMenu("Spawn")]
-        public void Spawn() => OnSpawn?.Invoke();
+        public void Spawn()
+        {
+            OnSpawn?.Invoke();
+        }
 
         [ContextMenu("Despawn")]
-        public void Despawn() => OnDespawn?.Invoke();
+        public void Despawn()
+        {
+            OnDespawn?.Invoke();
+        }
 
-        public void EnableRenderers() => visualComponent.EnableRenderers();
+        public void EnableRenderers()
+        {
+            visualComponent.EnableRenderers();
+        }
 
-        public void DisableRenderers() => visualComponent.DisableRenderers();
+        public void DisableRenderers()
+        {
+            visualComponent.DisableRenderers();
+        }
 
-        public void DisableCollision() => collisionComponent.DisableCollision();
+        public void DisableCollision()
+        {
+            collisionComponent.DisableCollision();
+        }
 
-        public void EnableCollision() => collisionComponent.EnableCollision();
+        public void EnableCollision()
+        {
+            collisionComponent.EnableCollision();
+        }
 
-        public void SetHealthToMax() => healthComponent.SetHealthToMax();
+        public void SetHealthToMax()
+        {
+            healthComponent.SetHealthToMax();
+        }
 
         public float NavigationTolerance => navigationComponent.NavigationTolerance;
         
@@ -72,35 +103,44 @@ namespace Ai
 
         public Room LastRoom => navigationComponent.LastRoom;
 
-        public void UpdateSenses() => sightSensor.CheckLos();
+        public void UpdateSenses()
+        {
+            sightSensor.CheckLos();
+        }
 
         public float WanderThreshold => wanderNearComponent.WanderThreshold;
 
-        public void StartWandering() => wanderNearComponent.StartWandering();
-
         public float TimeSinceLastWander => wanderNearComponent.TimeSinceLastWander;
         
-        public void ResetLastWanderTime() => wanderNearComponent.ResetLastWanderTime();
+        public void ResetLastWanderTime()
+        {
+            wanderNearComponent.ResetLastWanderTime();
+        }
 
         public float FidgetThreshold => fidgetComponent.FidgetThreshold;
 
         public float TimeSinceLastFidget => fidgetComponent.TimeSinceLastFidget;
         
-        public void ResetLastFidgetTime() => fidgetComponent.ResetLastFidgetTime();
-
-        public void StartFidgeting() => fidgetComponent.StartFidgeting();
+        public void ResetLastFidgetTime()
+        {
+            fidgetComponent.ResetLastFidgetTime();
+        }
 
         public bool IsFidgeting => fidgetComponent.IsFidgeting;
 
-        public void FidgetInterrupted() => fidgetComponent.StopFidgeting();
+        public void FidgetInterrupted()
+        {
+            fidgetComponent.StopFidgeting();
+        }
 
-        public float PatrolThreshold => wanderFarComponent.PatrolThreshold;
+        public float PatrolThreshold => wanderFarComponent.WanderFarThreshold;
 
-        public float TimeSinceLastPatrol => wanderFarComponent.TimeSinceLastPatrol;
+        public float TimeSinceLastPatrol => wanderFarComponent.TimeSinceLastWander;
 
-        public void ResetLastWanderFarTime() => wanderFarComponent.ResetLastWanderFarTime();
-
-        public void StartWanderingFar() => wanderFarComponent.StartWandering();
+        public void ResetLastWanderFarTime()
+        {
+            wanderFarComponent.ResetLastWanderFarTime();
+        }
 
         public bool IsMoving => navigationComponent.IsMoving;
 
@@ -110,7 +150,5 @@ namespace Ai
             fidgetComponent.UpdateLastFidgetTime(deltaTime);
             wanderFarComponent.UpdateLastPatrolTime(deltaTime);
         }
-        
-        private Room currentRoom;
     }
 }

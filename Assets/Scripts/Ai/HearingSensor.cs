@@ -7,6 +7,8 @@ namespace Ai
     {
         [SerializeField] private float minPerceivedDB;
         
+        private readonly RaycastHit[] hits = new RaycastHit[10];
+        
         private void Awake()
         {
             SoundManager.OnSoundEmitted += HandleOnSoundEmitted;
@@ -17,9 +19,9 @@ namespace Ai
             SoundManager.OnSoundEmitted -= HandleOnSoundEmitted;
         }
 
-        private void HandleOnSoundEmitted(SoundManager.EmittedSoundData soundData)
+        private void HandleOnSoundEmitted(EmittedSoundData soundData)
         {
-            if (soundData.SoundKind == SoundManager.SoundEnum.AiGenerated)
+            if (soundData.SoundKind == SoundEnum.AiGenerated)
                 return;
 
             float perceivedDB = CalculatePerceivedDB(soundData);
@@ -29,7 +31,7 @@ namespace Ai
             }
         }
 
-        private float CalculatePerceivedDB(SoundManager.EmittedSoundData soundData)
+        private float CalculatePerceivedDB(EmittedSoundData soundData)
         {
             Vector3 position = transform.position;
             //Get the distance from the source of the sound to the sensor
@@ -48,20 +50,20 @@ namespace Ai
             float currentDB = soundData.DBAtSource;
             Vector3 currentSoundOrigin = soundData.Position;
             
-            for (var i = 0; i < numHits; i++)
+            for (int i = 0; i < numHits; i++)
             {
                 RaycastHit hit = hits[i];
-                var modifier = hit.transform.GetComponent<SoundBlockingModifier>();
-                float barrierStc = SoundManager.Instance.DefaultSoundBlockingValue;
+                SoundBlockingModifier modifier = hit.transform.GetComponent<SoundBlockingModifier>();
+                float soundBlockingValue = SoundManager.Instance.DefaultSoundBlockingValue;
                 float distanceToBarrier = Vector3.Distance(currentSoundOrigin, hit.point);
                 
                 if (modifier)
                 {
-                    barrierStc = modifier.SoundBlockingValue;
+                    soundBlockingValue = modifier.SoundBlockingValue;
                 }
 
                 float dBAtBarrier = CalculateDBAfterDistanceFalloff(currentDB, distanceToBarrier);
-                currentDB = dBAtBarrier - barrierStc;
+                currentDB = dBAtBarrier - soundBlockingValue;
                 
                 if (currentDB <= minPerceivedDB)
                     return currentDB;
@@ -70,7 +72,7 @@ namespace Ai
                 {
                     RaycastHit nextHit = hits[i + 1];
                     Vector3 toVector = hit.point - nextHit.point;
-                    Ray ray = new(nextHit.point, toVector.normalized);
+                    Ray ray = new Ray(nextHit.point, toVector.normalized);
                     if (hit.collider.Raycast(ray, out RaycastHit backSideHit, toVector.magnitude))
                     {
                         currentSoundOrigin = backSideHit.point;
@@ -80,7 +82,7 @@ namespace Ai
                 {
 
                     Vector3 toVector = hit.point - position;
-                    Ray ray = new(position, toVector.normalized);
+                    Ray ray = new Ray(position, toVector.normalized);
                     
                     if (hit.collider.Raycast(ray, out RaycastHit backsideHit, toVector.magnitude))
                     {
@@ -107,7 +109,5 @@ namespace Ai
 
             return dBAfterFalloff;
         }
-
-        private readonly RaycastHit[] hits = new RaycastHit[10];
     }
 }
