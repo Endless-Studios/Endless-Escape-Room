@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3274762608564594551}
   - component: {fileID: 1816274818776610447}
   - component: {fileID: 4357895078427991714}
+  - component: {fileID: 8686548554604012545}
   m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
@@ -41,7 +42,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4690843874338648664}
-  - {fileID: 4935126840799936727}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,18 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe09a6b185c61a4d9d812fe8f64ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ShouldSpawnOnStart>k__BackingField: 1
-  healthComponent: {fileID: 3801687987798645566}
-  visualComponent: {fileID: 75287004308826072}
-  collisionComponent: {fileID: 5708969744281638855}
-  navigationComponent: {fileID: 758338748543762705}
-  hearingSensor: {fileID: 4769800100488525422}
-  sightSensor: {fileID: 4870086894081962781}
-  awarenessComponent: {fileID: 913367526216134575}
-  wanderNearComponent: {fileID: 1816274818776610447}
-  fidgetComponent: {fileID: 3274762608564594551}
-  wanderFarComponent: {fileID: 4357895078427991714}
-  animationComponent: {fileID: 6678927175151319528}
+  ShouldSpawnOnStart: 0
   OnDied:
     m_PersistentCalls:
       m_Calls:
@@ -182,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ccb9ec2ab47b24faed2780fdd7a96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
+  maxHealth: 0
 --- !u!114 &75287004308826072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8683445511247982297}
   animator: {fileID: 1727435511707494434}
-  <NavigationTolerance>k__BackingField: 0.2
+  navigationTolerance: 0.2
 --- !u!114 &3274762608564594551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d636e8675144ae895b77dd8e6a58037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <FidgetThreshold>k__BackingField: 200000
+  fidgetThreshold: 5
 --- !u!114 &1816274818776610447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0159c08b05ee4bad9fbce1978c184795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WanderThreshold>k__BackingField: 10
+  wanderThreshold: 20
 --- !u!114 &4357895078427991714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +268,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70da0457a4a42489991bcde3f3253c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PatrolThreshold>k__BackingField: 30
+  wanderThreshold: 35
+--- !u!114 &8686548554604012545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d276800c4cd04327b74d40f0fe86e617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1727435511707494434}
+  agent: {fileID: 8683445511247982297}
+  navigationComponent: {fileID: 758338748543762705}
+  sightSensor: {fileID: 4870086894081962781}
+  hearingSensor: {fileID: 4769800100488525422}
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,12 +311,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4903535583582025397}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1626646627048455303}
+  m_Father: {fileID: 8520134032321937830}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4870086894081962781
@@ -341,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPerceivedDB: 0
+  minPerceivedDB: 20
 --- !u!1001 &5085550086419174835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -476,6 +482,12 @@ SkinnedMeshRenderer:
 --- !u!137 &7741471573416681282 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5909642200522568975, guid: 78fc400961e3968428243a300eb8ea2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5085550086419174835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8520134032321937830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3507767656348177429, guid: 78fc400961e3968428243a300eb8ea2f,
     type: 3}
   m_PrefabInstance: {fileID: 5085550086419174835}
   m_PrefabAsset: {fileID: 0}

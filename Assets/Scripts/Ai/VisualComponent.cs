@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Ai
 {
-    internal class VisualComponent : MonoBehaviour
+    public class VisualComponent : MonoBehaviour
     {
         [SerializeField] private List<Renderer> renderers;
 
-        internal void EnableRenderers()
+        public void EnableRenderers()
         {
             foreach (Renderer renderer in renderers)
             {
@@ -16,7 +16,7 @@ namespace Ai
             }
         }
 
-        internal void DisableRenderers()
+        public void DisableRenderers()
         {
             foreach (Renderer renderer in renderers)
             {

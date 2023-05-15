@@ -8,7 +8,7 @@ namespace Ai
     /// This class should be attached to the root GameObject and referenced by the Facade. This class manages all the
     /// Colliders the Ai uses.
     /// </summary>
-    internal class CollisionComponent : MonoBehaviour
+    public class CollisionComponent : MonoBehaviour
     {
         [SerializeField] private List<Collider> colliders;
         

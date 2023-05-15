@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ai
 {
-    internal class HearingSensor : MonoBehaviour
+    public class HearingSensor : MonoBehaviour
     {
         [SerializeField] private float minPerceivedDB;
         

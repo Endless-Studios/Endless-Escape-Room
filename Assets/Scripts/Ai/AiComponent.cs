@@ -6,9 +6,11 @@ namespace Ai
     {
         protected virtual void OnValidate()
         {
-            facade ??= GetComponentInParent<AiFacade>();
+            Entity ??= GetComponentInParent<AiEntity>();
+            references ??= GetComponentInParent<AiReferences>();
         }
 
-        protected AiFacade facade;
+        protected AiEntity Entity;
+        protected AiReferences references;
     }
 }

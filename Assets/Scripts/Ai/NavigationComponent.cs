@@ -4,43 +4,20 @@ using UnityEngine.AI;
 
 namespace Ai
 {
-    internal class NavigationComponent : AiComponent
+    public class NavigationComponent : AiComponent
     {
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Animator animator;
         [SerializeField] private float navigationTolerance;
-        [SerializeField] private float overlapRadius;
-        [SerializeField] private LayerMask overlapMask;
 
         public float NavigationTolerance => navigationTolerance;
+        
         public bool IsMoving { get; private set; }
         public bool HasDestination { get; private set; }
-        public Room LastRoom { get; private set; }
         public Vector3 Destination { get; set; }
-
-        public Room CurrentRoom
-        {
-            get => currentRoom;
-            
-            private set
-            {
-                if (value == currentRoom)
-                    return;
-
-                LastRoom = currentRoom;
-                currentRoom = value;
-            }
-        }
         
-        private Room currentRoom;
         private bool isTraversingLink;
         private Vector3 deltaPosition;
-        private readonly Collider[] results = new Collider[5];
-
-        private void Start()
-        {
-            CurrentRoom = GetCurrentRoom();
-        }
 
         private void Update()
         {
@@ -57,7 +34,7 @@ namespace Ai
 
         private IEnumerator TraverseLink()
         {
-            facade.OnWalkedThroughDoorway += HandleOnWalkedThroughDoorway;
+            Entity.OnWalkedThroughDoorway += HandleOnWalkedThroughDoorway;
             isTraversingLink = true;
             agent.updatePosition = false;
             agent.updateRotation = false;
@@ -70,7 +47,7 @@ namespace Ai
                 yield return null;
             }
 
-            facade.WalkingThroughDoorway();
+            Entity.WalkingThroughDoorway();
         }
 
         private void HandleOnWalkedThroughDoorway()
@@ -82,35 +59,7 @@ namespace Ai
             agentTransform.position = agentTransform.TransformPoint(animator.transform.localPosition);
             animator.transform.position = Vector3.zero;
             agent.CompleteOffMeshLink();
-            CurrentRoom = GetCurrentRoom();
-            facade.OnWalkedThroughDoorway -= HandleOnWalkedThroughDoorway;
-        }
-
-        private Room GetCurrentRoom()
-        {
-            int overlappedColliders = Physics.OverlapSphereNonAlloc(transform.position, overlapRadius, results, overlapMask);
-            
-            if (overlappedColliders == 0)
-            {
-                Debug.Log("Overlapped no colliders, this shouldn't be possible", this);
-                return null;
-            }
-
-            for (int i = 0; i < overlappedColliders; i++)
-            {
-                Collider overlappedCollider = results[i];
-
-                if (!Floor.FloorObjectByColliderKey.TryGetValue(overlappedCollider, out Floor floor))
-                {
-                    continue;
-                }
-
-                if (Room.FloorMap.TryGetValue(floor.gameObject, out Room room))
-                    return room;
-            }
-            
-            Debug.Log("Overlapped no floor objects, this shouldn't be possible", this);
-            return null;
+            Entity.OnWalkedThroughDoorway -= HandleOnWalkedThroughDoorway;
         }
     }
 }

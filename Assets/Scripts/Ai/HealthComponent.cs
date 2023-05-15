@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ai
 {
-    internal class HealthComponent : MonoBehaviour
+    public class HealthComponent : MonoBehaviour
     {
         [SerializeField] private float maxHealth;
 

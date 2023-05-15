@@ -6,7 +6,7 @@ namespace Ai
     /// This class should be attached to the Ai and referenced by the AiFacade. This class tracks the time since the Ai  
     /// last "wandered near" and also contains the threshold for when an ai should "wander near".
     /// </summary>
-    internal class WanderNearComponent : MonoBehaviour
+    public class WanderNearComponent : MonoBehaviour
     {
         [SerializeField] private float wanderThreshold;
         

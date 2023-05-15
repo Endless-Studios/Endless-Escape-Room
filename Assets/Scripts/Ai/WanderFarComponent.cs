@@ -6,11 +6,11 @@ namespace Ai
     /// This class should be attached to the Ai and referenced by the AiFacade. This class tracks the time since the Ai  
     /// last "wandered far" and also contains the threshold for when an ai should "wander far".
     /// </summary>
-    internal class WanderFarComponent : MonoBehaviour
+    public class WanderFarComponent : MonoBehaviour
     {
-        [SerializeField] private float wanderFarThreshold;
+        [SerializeField] private float wanderThreshold;
         
-        public float WanderFarThreshold => wanderFarThreshold;
+        public float WanderThreshold => wanderThreshold;
         public float TimeSinceLastWander { get; private set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Ai
         /// if called during FixedUpdate.
         /// </summary>
         /// <param name="deltaTime"></param>
-        public void UpdateLastPatrolTime(float deltaTime)
+        public void UpdateLastWanderTime(float deltaTime)
         {
             TimeSinceLastWander += deltaTime;
         }

@@ -7,6 +7,7 @@ public class NodeLibraryUpdater
     static NodeLibraryUpdater()
     {
         AssemblyReloadEvents.afterAssemblyReload += HandleAfterAssemblyReload;
+        //SerializedPropertyProviderProvider.instance.GenerateProviderScripts();
     }
 
     private static void HandleAfterAssemblyReload()

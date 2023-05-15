@@ -6,7 +6,7 @@ namespace Ai
     /// This class should be attached to the same GameObject that has the Animator component and should be referenced by
     /// the AiFacade. This class manages pushing information directly into the Animator for animating the ai.
     /// </summary>
-    internal class AnimationComponent : AiComponent
+    public class AnimationComponent : AiComponent
     {
         [SerializeField] private Animator animator;
         
@@ -15,7 +15,7 @@ namespace Ai
 
         protected void Awake()
         {
-            facade.OnWalkingThroughDoorway += WalkThroughDoor;
+            Entity.OnWalkingThroughDoorway += WalkThroughDoor;
         }
 
         private void WalkThroughDoor()
@@ -28,14 +28,14 @@ namespace Ai
         /// </summary>
         public void WalkedThroughDoor()
         {
-            facade.WalkedThroughDoorway();
+            Entity.WalkedThroughDoorway();
             transform.localPosition = Vector3.zero;
         }
 
         
         private void Update()
         {
-            animator.SetBool(Moving, facade.IsMoving);
+            animator.SetBool(Moving, references.NavigationComponent.IsMoving);
         }
     }
 }

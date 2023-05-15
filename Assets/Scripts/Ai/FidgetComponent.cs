@@ -6,7 +6,7 @@ namespace Ai
     /// This class should be attached to the Ai and referenced by the AiFacade. This class tracks the time since the Ai 
     /// Fidgeted and also contains the threshold for when an ai should fidget.
     /// </summary>
-    internal class FidgetComponent : MonoBehaviour
+    public class FidgetComponent : MonoBehaviour
     {
         [SerializeField] private float fidgetThreshold;
         
