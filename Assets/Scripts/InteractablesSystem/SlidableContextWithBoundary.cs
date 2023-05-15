@@ -7,6 +7,8 @@ public class SlidableContextWithBoundary : SlidableContext
     [Header("Boundary")]
     [SerializeField, Min(0)] protected Vector2 size = Vector2.one;
 
+    public Vector2 Size => size;
+
     public override Vector3 ClampPosition(Vector3 currentWorldPosition)
     {
         Vector3 relativePosition = transform.InverseTransformPoint(currentWorldPosition);// Transform the position into the object's local space
@@ -25,13 +27,8 @@ public class SlidableContextWithBoundary : SlidableContext
     {
         //left blank to override base behavior
     } 
-    
-    void OnDrawGizmosSelected()
-    {
-        //left blank to override base behavior
-    } 
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
         Vector2 extents = size / 2f;

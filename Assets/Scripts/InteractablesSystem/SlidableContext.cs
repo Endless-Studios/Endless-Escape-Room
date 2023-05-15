@@ -7,6 +7,8 @@ public class SlidableContext : MonoBehaviour
     [Header("Slidable Context")]
     [SerializeField] protected bool keepSlidablesOnZPlane = true;
 
+
+
     public class EndSlideResult
     {
         public bool snap;

@@ -7,6 +7,8 @@ public class SlidableContextWithBoundarySnappable : SlidableContextWithBoundary
     [Header("Snapping")]
     [SerializeField, Min(0)] private Vector2Int snapPoints = new Vector2Int(2, 2);
 
+    public Vector2Int SnapPoints => snapPoints;
+
     protected class SnapAxisResult
     {
         public int snapID;
@@ -66,7 +68,7 @@ public class SlidableContextWithBoundarySnappable : SlidableContextWithBoundary
         return result;
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
         Vector2 extents = size / 2f;
@@ -93,10 +95,10 @@ public class SlidableContextWithBoundarySnappable : SlidableContextWithBoundary
 
         if (snapPoints.x > 0 || snapPoints.y > 0)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = new Color(0, 1, 1,.8f);
             float gizmosSphereSize = (extents.x + extents.y) / 20f;
-            int virtualSnapPointsX = snapPoints.x > 1 ? snapPoints.x - 1 : 1;
-            int virtualSnapPointsY = snapPoints.y > 1 ? snapPoints.y - 1 : 1;
+            int virtualSnapPointsX = snapPoints.x > 1 ? snapPoints.x - 1 : 0;
+            int virtualSnapPointsY = snapPoints.y > 1 ? snapPoints.y - 1 : 0;
 
             for (int x = 0; x < virtualSnapPointsX + 1; x++)
             {
@@ -104,6 +106,11 @@ public class SlidableContextWithBoundarySnappable : SlidableContextWithBoundary
                 {
                     float xOffset = snapPoints.x > 1 ? (x * ((size.x) / virtualSnapPointsX)) - extents.x : 0;
                     float yOffset = snapPoints.y > 1 ? (y * ((size.y) / virtualSnapPointsY)) - extents.y : 0;
+
+#if UNITY_EDITOR
+                    UnityEditor.Handles.matrix = Gizmos.matrix;
+                    UnityEditor.Handles.Label(new Vector3(xOffset, yOffset, 0), $"({x},{y})");
+#endif
 
                     if (snapPoints.x == 0)
                     {

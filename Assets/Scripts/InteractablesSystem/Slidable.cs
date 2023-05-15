@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Slidable : Grabbable
 {
     protected override string DefaultInteractionText => "Slide";
+    public SlidableContext SlidableContext => slidableContext; 
 
     [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private SlidableContext slidableContext;
@@ -15,7 +16,8 @@ public class Slidable : Grabbable
     [SerializeField] private bool freezeRotationDuringSlide = false;
 
     [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space (or [x,z] world space for slidables w/o a context)
-    [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
+    // [HideInInspector] -------------- TEMP COMMENTED
+    public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
 
     private Vector3 targetPosition;
     private bool interactionActive;
@@ -98,7 +100,7 @@ public class Slidable : Grabbable
         if (slidableContext != null)
             activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
         else
-            OnPositionMoved.Invoke(transform.position);
+            OnPositionMoved.Invoke(new Vector2(transform.position.x, transform.position.z));
     }
 
     IEnumerator SmoothToPosition(SlidableContext.EndSlideResult snapResult)

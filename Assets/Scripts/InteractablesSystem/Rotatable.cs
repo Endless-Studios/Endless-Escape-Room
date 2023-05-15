@@ -8,9 +8,7 @@ public class Rotatable : Grabbable
     public enum RotationAxis { X, Y, Z }
 
     [HideInInspector] public UnityEvent<float> OnFinishedRotation = new UnityEvent<float>(); //rotation finished event sends resulting rotation delta from starting rotation (0 - 360)
-    [HideInInspector] public  UnityEvent<int> OnFinishedRotationSnap = new UnityEvent<int>(); //rotation finished event sends resulting snap position id
-
-    protected override string DefaultInteractionText => "Rotate";
+    [HideInInspector] public UnityEvent<int> OnFinishedRotationSnap = new UnityEvent<int>(); //rotation finished event sends resulting snap position id
 
     [SerializeField] private Transform targetTransform;
     [SerializeField] private float rotationSpeed = 5f;
@@ -22,6 +20,11 @@ public class Rotatable : Grabbable
 
     private Coroutine activeSnapCoroutine;
     private Quaternion startingRotation; //all rotations and snapping are relative to starting rotation
+
+    protected override string DefaultInteractionText => "Rotate";
+    public Transform TargetTransform => targetTransform;
+    public RotationAxis CurrentRotationAxis => rotationAxis;
+    public int AxisSnappingPositions => axisSnappingPositions;
 
     private Vector3 RotationAxisVector //rotation axis for mathematical calculations
     {
@@ -47,6 +50,12 @@ public class Rotatable : Grabbable
             else
                 return Vector3.up;
         }
+    }
+
+    private void OnValidate()
+    {
+        if (targetTransform == null)
+            targetTransform = transform;
     }
 
     private void Awake()
@@ -106,7 +115,7 @@ public class Rotatable : Grabbable
     {
         Quaternion smoothStartingRotion = targetTransform.localRotation;
 
-        for(float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
+        for (float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
         {
             float interpolationPoint = elapsedTime / smoothSnapTime;
             targetTransform.localRotation = Quaternion.Lerp(smoothStartingRotion, targetRotation, interpolationPoint);
@@ -121,14 +130,47 @@ public class Rotatable : Grabbable
 
     private void OnDrawGizmosSelected()
     {
-        if (targetTransform != null)
+#if UNITY_EDITOR
+        UnityEditor.Handles.color = Color.yellow;
+        UnityEditor.Handles.matrix = targetTransform.localToWorldMatrix;
+        Gizmos.matrix = UnityEditor.Handles.matrix;
+
+        Vector3 forwardVector = Vector3.forward;
+        Vector3 normalVector = Vector3.right;
+
+        if (rotationAxis == RotationAxis.Y)
         {
-            if (rotationAxis == RotationAxis.X)
-                Debug.DrawLine(targetTransform.position + targetTransform.right * .2f, targetTransform.position - targetTransform.right * .2f, Color.yellow);
-            else if (rotationAxis == RotationAxis.Y)
-                Debug.DrawLine(targetTransform.position + targetTransform.up * .2f, targetTransform.position - targetTransform.up * .2f, Color.yellow);
-            else
-                Debug.DrawLine(targetTransform.position + targetTransform.forward * .2f, targetTransform.position - targetTransform.forward * .2f, Color.yellow);
+            forwardVector = Vector3.right;
+            normalVector = Vector3.up;
         }
+        else if (rotationAxis == RotationAxis.Z)
+        {
+            forwardVector = Vector3.right;
+            normalVector = Vector3.forward;
+        }
+
+        UnityEditor.Handles.DrawWireDisc(Vector3.zero, normalVector, 1f);
+        UnityEditor.Handles.DrawLine(-normalVector / 2f, normalVector / 2f);
+
+        UnityEditor.Handles.color = Color.blue;
+        UnityEditor.Handles.DrawLine(Vector3.zero, forwardVector);
+
+        Gizmos.color = Color.cyan * .9f;
+        for (int i = 0; i < axisSnappingPositions; i++)
+        {
+            float angleRadian = i * Mathf.PI * 2f / (float)axisSnappingPositions;
+            Vector3 snapPositionIndicatorOffset;
+
+            if (rotationAxis == RotationAxis.X)
+                snapPositionIndicatorOffset = new Vector3(0, Mathf.Sin(angleRadian), Mathf.Cos(angleRadian));
+            else if (rotationAxis == RotationAxis.Y)
+                snapPositionIndicatorOffset = new Vector3(Mathf.Cos(angleRadian), 0, Mathf.Sin(angleRadian));
+            else
+                snapPositionIndicatorOffset = new Vector3(Mathf.Cos(angleRadian), Mathf.Sin(angleRadian), 0);
+
+            Gizmos.DrawSphere(snapPositionIndicatorOffset, .05f);
+            UnityEditor.Handles.Label(snapPositionIndicatorOffset * 1.15f, i.ToString());
+        }
+#endif
     }
 }
