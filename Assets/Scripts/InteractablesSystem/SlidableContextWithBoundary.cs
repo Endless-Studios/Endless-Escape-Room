@@ -25,13 +25,8 @@ public class SlidableContextWithBoundary : SlidableContext
     {
         //left blank to override base behavior
     } 
-    
-    void OnDrawGizmosSelected()
-    {
-        //left blank to override base behavior
-    } 
 
-    void OnDrawGizmos()
+    protected override void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
         Vector2 extents = size / 2f;

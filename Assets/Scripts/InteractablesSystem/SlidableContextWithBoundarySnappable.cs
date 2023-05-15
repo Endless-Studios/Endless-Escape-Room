@@ -66,7 +66,7 @@ public class SlidableContextWithBoundarySnappable : SlidableContextWithBoundary
         return result;
     }
 
-    void OnDrawGizmos()
+    protected override void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
         Vector2 extents = size / 2f;
