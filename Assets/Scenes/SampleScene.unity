@@ -6186,6 +6186,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9171734822279601787, guid: 4b6bf323616c18d48987feda0241ec80,
+        type: 3}
+      propertyPath: _data._json
+      value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"BodyInteractable","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Interactable,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"EjectButton","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Interactable,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"TapeSnappable","value":{"$content":2,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Snappable,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"ZoomCameraFocus","value":{"$content":3,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"CameraFocus,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"TapeAnimator","value":{"$content":4,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"TransformAnimator,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      objectReference: {fileID: 0}
     - target: {fileID: 9171734822279601789, guid: 4b6bf323616c18d48987feda0241ec80,
         type: 3}
       propertyPath: m_Name
