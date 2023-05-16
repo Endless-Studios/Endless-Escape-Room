@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Slidable : Grabbable
 {
     protected override string DefaultInteractionText => "Slide";
-    public SlidableContext SlidableContext => slidableContext; 
+    public SlidableContext SlidableContext => slidableContext;
 
     [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private SlidableContext slidableContext;
@@ -16,8 +16,7 @@ public class Slidable : Grabbable
     [SerializeField] private bool freezeRotationDuringSlide = false;
 
     [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space (or [x,z] world space for slidables w/o a context)
-    // [HideInInspector] -------------- TEMP COMMENTED
-    public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
+    [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
 
     private Vector3 targetPosition;
     private bool interactionActive;
@@ -55,7 +54,7 @@ public class Slidable : Grabbable
         rigidbody.isKinematic = false; //allow movement from the rigidbody's velocity
         targetPosition = rigidbody.position; //init target pos
 
-        if(freezeRotationDuringSlide)
+        if (freezeRotationDuringSlide)
             rigidbody.freezeRotation = true;
     }
 

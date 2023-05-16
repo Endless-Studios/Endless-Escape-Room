@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+///<summary>Interaction Goal for evaluating a Rotatable's snap point.</summary>
 [RequireComponent(typeof(Rotatable))]
 public class RotatableSnapGoal : InteractionGoal
 {

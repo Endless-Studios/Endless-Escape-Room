@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Interaction Goal for evaluating a Rotatable's end of interaction position within a tolerance range.</summary>
 [RequireComponent(typeof(Rotatable))]
 public class RotatableFreeGoal : InteractionGoal
 {

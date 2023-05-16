@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Puzzle for evaluating multiple Interaction Goals.</summary>
 public class InteractionPuzzle : Puzzle
 {
     [SerializeField] private List<InteractionGoal> interactionGoals;
@@ -15,17 +15,16 @@ public class InteractionPuzzle : Puzzle
         }
     }
 
-    public override void EvaluateSolution()
+    internal override bool EvaluateSolutionInternal()
     {
         foreach (InteractionGoal interactionGoal in interactionGoals)
         {
             if (interactionGoal.IsComplete == false)
             {
-                IsComplete = false;
-                return;
+                return false;
             }
         }
 
-        IsComplete = true;
+        return true;
     }
 }

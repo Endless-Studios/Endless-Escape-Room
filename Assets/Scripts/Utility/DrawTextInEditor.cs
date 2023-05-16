@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+///<summary>Utility component for writing debug text in scene view.</summary>
 public class DrawTextInEditor : MonoBehaviour
 {
     private enum DrawCondition { Selected, Always };

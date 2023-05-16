@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Events;
 
+///<summary>Interaction Goal for evaluating a Slidable's end of interaction position within a tolerance range.</summary>
 [RequireComponent(typeof(Slidable))]
 public class SlidableFreeGoal : InteractionGoal
 {

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-///<summary> A utility MonoBehaviour for debug logging results of UnityEvents.</summary>
+///<summary> Utility component for debug logging results of UnityEvents.</summary>
 public class LogResult : MonoBehaviour
 {
     [SerializeField] private string logLabel = "Log";

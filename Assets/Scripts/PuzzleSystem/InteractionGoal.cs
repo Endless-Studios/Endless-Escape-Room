@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+///<summary>Interaction Goal base class. Goals can fire off individual events, or be used in an Interaction Puzzle to combine multiple goals.</summary>
 public abstract class InteractionGoal : MonoBehaviour
 {
     public UnityEvent OnCompleted = new UnityEvent();

@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Events;
 
+///<summary>Interaction goal for evaluating a Slidable's snap point.</summary>
 [RequireComponent(typeof(Slidable))]
 public class SlidableSnapGoal : InteractionGoal
 {
@@ -51,21 +51,21 @@ public class SlidableSnapGoal : InteractionGoal
         float snapDistanceY = snappableContext.SnapPoints.y > 1 ? snappableContext.Size.y / (snappableContext.SnapPoints.y - 1) : 0;
 
         if (snapEvaluation == SnapEvaluation.BothXY)
-        {                   
+        {
             Gizmos.DrawWireSphere(new Vector3((snapDistanceX * snapGoal.x) - extents.x, (snapDistanceY * snapGoal.y) - extents.y, 0), gizmosSphereSize);
         }
         else if (snapEvaluation == SnapEvaluation.OnlyX && snappableContext.SnapPoints.x > 0)
         {
-            if(snappableContext.SnapPoints.x == 1)
+            if (snappableContext.SnapPoints.x == 1)
                 extents.x = 0;
 
             Gizmos.DrawWireCube(new Vector3((snapDistanceX * snapGoal.x) - extents.x, 0, 0), new Vector3(gizmosSphereSize, extents.y * 2, gizmosSphereSize));
         }
         else if (snapEvaluation == SnapEvaluation.OnlyY && snappableContext.SnapPoints.y > 0)
-        {            
-            if(snappableContext.SnapPoints.y == 1)
+        {
+            if (snappableContext.SnapPoints.y == 1)
                 extents.y = 0;
-            
+
             Gizmos.DrawWireCube(new Vector3(0, (snapDistanceY * snapGoal.y) - extents.y, 0), new Vector3(extents.x * 2, gizmosSphereSize, gizmosSphereSize));
         }
     }

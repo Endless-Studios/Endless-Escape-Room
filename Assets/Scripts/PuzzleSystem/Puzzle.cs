@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +15,7 @@ public abstract class Puzzle : MonoBehaviour
         set
         {
 
-            if(complete && puzzleStaysCompleted)
+            if (complete && puzzleStaysCompleted)
                 return;
 
             if (complete != value)
@@ -32,5 +30,11 @@ public abstract class Puzzle : MonoBehaviour
         }
     }
 
-    public abstract void EvaluateSolution();
+    /// <summary>Checks all puzzle conditions, applies IsComplete, and Invokes completed events based on result.</summary>
+    public void EvaluateSolution()
+    {
+        IsComplete = EvaluateSolutionInternal();
+    }
+
+    internal abstract bool EvaluateSolutionInternal();
 }
