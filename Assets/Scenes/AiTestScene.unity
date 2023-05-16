@@ -954,33 +954,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 913367526216134575, guid: 32429fcbf37a3404eb8b106dd18ad79a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32429fcbf37a3404eb8b106dd18ad79a, type: 3}
---- !u!1 &178753166 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3417203797340643467, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-    type: 3}
-  m_PrefabInstance: {fileID: 178753165}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &178753167 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 8683445511247982297, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-    type: 3}
-  m_PrefabInstance: {fileID: 178753165}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &178753168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178753166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41dd598961c95a4f905f8bd1a0ec09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 178753167}
 --- !u!1001 &194591040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8718,11 +8694,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2195026533683840211, guid: 275e507280d4f7f46a4dff8ae23045fb,
-        type: 3}
-      propertyPath: isLocked
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4076123989046317857, guid: 275e507280d4f7f46a4dff8ae23045fb,
         type: 3}
       propertyPath: m_Name

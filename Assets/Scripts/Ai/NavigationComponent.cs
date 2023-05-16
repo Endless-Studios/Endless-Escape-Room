@@ -49,9 +49,9 @@ namespace Ai
             references.Agent.updateRotation = false;
             
             //While we are not aligned with the navMeshLink or not close enough too it we move and rotate towards the appropriate values 
-            while (Vector3.Angle(transform.forward, linkDirection) > doorApproachAngleTolerance || Vector3.Distance(transform.position, linkData.startPos) > doorApproachDistanceTolerance)
+            while (Quaternion.Angle(transform.rotation, lookRotation) > doorApproachAngleTolerance || Vector3.Distance(transform.position, linkData.startPos) > doorApproachDistanceTolerance)
             {
-                float angle = Vector3.Angle(transform.forward, linkDirection);
+                float angle = Quaternion.Angle(transform.rotation, lookRotation);
                 if(angle > doorApproachAngleTolerance)
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, doorApproachRotationSpeed * Time.deltaTime);
                 float distance = Vector3.Distance(transform.position, linkData.startPos);

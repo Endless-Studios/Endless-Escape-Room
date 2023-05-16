@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3801687987798645566}
   - component: {fileID: 75287004308826072}
   - component: {fileID: 5708969744281638855}
-  - component: {fileID: 913367526216134575}
   - component: {fileID: 758338748543762705}
   - component: {fileID: 3274762608564594551}
   - component: {fileID: 1816274818776610447}
@@ -115,7 +114,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3417203797340643467}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.75
+  m_Radius: 0.5
   m_Speed: 2.5
   m_Acceleration: 4
   avoidancePriority: 50
@@ -172,6 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &75287004308826072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,18 +205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders:
   - {fileID: 4825368707310099378}
---- !u!114 &913367526216134575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a2859705394861bb99b9e63a6d77b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &758338748543762705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,11 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5008231cb44023806515e3b0c14753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 8683445511247982297}
-  animator: {fileID: 1727435511707494434}
   navigationTolerance: 0.2
   doorApproachRotationSpeed: 180
+  doorApproachAngleTolerance: 3
   doorApproachMovementSpeed: 1
+  doorApproachDistanceTolerance: 0.1
 --- !u!114 &3274762608564594551
 MonoBehaviour:
   m_ObjectHideFlags: 0
