@@ -7,8 +7,6 @@ public class SlidableContext : MonoBehaviour
     [Header("Slidable Context")]
     [SerializeField] protected bool keepSlidablesOnZPlane = true;
 
-
-
     public class EndSlideResult
     {
         public bool snap;
@@ -92,7 +90,7 @@ public class SlidableContext : MonoBehaviour
         DrawGizmosPlaneAtPosition(slidable.transform.position);
     }
 
-    private void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
         DrawGizmosPlaneAtPosition(transform.position);
     }

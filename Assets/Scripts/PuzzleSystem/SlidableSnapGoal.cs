@@ -43,17 +43,30 @@ public class SlidableSnapGoal : InteractionGoal
             return;
 
         Gizmos.matrix = snappableContext.transform.localToWorldMatrix;
+        Gizmos.color = Color.red;
+        Vector2 extents = snappableContext.Size / 2f;
+        float gizmosSphereSize = (extents.x + extents.y) / 15f;
+
+        float snapDistanceX = snappableContext.SnapPoints.x > 1 ? snappableContext.Size.x / (snappableContext.SnapPoints.x - 1) : 0;
+        float snapDistanceY = snappableContext.SnapPoints.y > 1 ? snappableContext.Size.y / (snappableContext.SnapPoints.y - 1) : 0;
 
         if (snapEvaluation == SnapEvaluation.BothXY)
-        {
-            Vector2 extents = snappableContext.Size / 2f;
-            float gizmosSphereSize = (extents.x + extents.y) / 15f;
-            float snapDistanceX = snappableContext.SnapPoints.x > 1 ? snappableContext.Size.x / (snappableContext.SnapPoints.x - 1) : 0;
-            float snapDistanceY = snappableContext.SnapPoints.y > 1 ? snappableContext.Size.y / (snappableContext.SnapPoints.y - 1) : 0;
-
-            Gizmos.color = Color.red;
+        {                   
             Gizmos.DrawWireSphere(new Vector3((snapDistanceX * snapGoal.x) - extents.x, (snapDistanceY * snapGoal.y) - extents.y, 0), gizmosSphereSize);
         }
-        //box gizmos support
+        else if (snapEvaluation == SnapEvaluation.OnlyX && snappableContext.SnapPoints.x > 0)
+        {
+            if(snappableContext.SnapPoints.x == 1)
+                extents.x = 0;
+
+            Gizmos.DrawWireCube(new Vector3((snapDistanceX * snapGoal.x) - extents.x, 0, 0), new Vector3(gizmosSphereSize, extents.y * 2, gizmosSphereSize));
+        }
+        else if (snapEvaluation == SnapEvaluation.OnlyY && snappableContext.SnapPoints.y > 0)
+        {            
+            if(snappableContext.SnapPoints.y == 1)
+                extents.y = 0;
+            
+            Gizmos.DrawWireCube(new Vector3(0, (snapDistanceY * snapGoal.y) - extents.y, 0), new Vector3(extents.x * 2, gizmosSphereSize, gizmosSphereSize));
+        }
     }
 }

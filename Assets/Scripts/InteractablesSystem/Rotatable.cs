@@ -152,6 +152,16 @@ public class Rotatable : Grabbable
         UnityEditor.Handles.DrawWireDisc(Vector3.zero, normalVector, 1f);
         UnityEditor.Handles.DrawLine(-normalVector / 2f, normalVector / 2f);
 
+        if (Application.isPlaying)
+        {
+            if (rotationAxis == RotationAxis.X)
+                Debug.DrawLine(targetTransform.position, targetTransform.position + (startingRotation * Vector3.forward), Color.blue);
+            else if (rotationAxis == RotationAxis.Y)
+                Debug.DrawLine(targetTransform.position, targetTransform.position + (startingRotation * Vector3.right), Color.blue);
+            else
+                Debug.DrawLine(targetTransform.position, targetTransform.position + (startingRotation * Vector3.right), Color.blue);
+        }
+
         UnityEditor.Handles.color = Color.blue;
         UnityEditor.Handles.DrawLine(Vector3.zero, forwardVector);
 

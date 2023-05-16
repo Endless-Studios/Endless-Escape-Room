@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class SlidableFreeGoal : InteractionGoal
 {
     [SerializeField] private Slidable slidable;
-    [SerializeField] private bool freeMoveGoalActive = true;
     [SerializeField] private Vector2 goalPosition;
     [SerializeField, Min(0)] private float distanceTolerance = .1f;
 
@@ -34,7 +33,6 @@ public class SlidableFreeGoal : InteractionGoal
 
         Vector3 goalWorldPosition;
         Vector3 contextNormal;
-
 
         if (slidable.SlidableContext != null)
         {
