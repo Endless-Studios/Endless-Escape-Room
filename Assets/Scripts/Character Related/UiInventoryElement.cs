@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiInventoryElement : MonoBehaviour
+public abstract class UiInventoryElement : MonoBehaviour
 {
     public Pickupable Pickupable { get; private set; }
     protected RectTransform rectTransform;
@@ -14,8 +14,7 @@ public class UiInventoryElement : MonoBehaviour
         Setup();
     }
 
-    protected virtual void Setup()
-    {
-
-    }
+    protected abstract void Setup();
+    public abstract void Highlight();
+    public abstract void Unhighlight();
 }

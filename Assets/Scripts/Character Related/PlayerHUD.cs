@@ -8,6 +8,7 @@ public class PlayerHUD : MonoBehaviourSingleton<PlayerHUD>
     [Header("Interact Screen")]
     [SerializeField] GameObject interactScreen;
     [SerializeField] GameObject interactPrompt;
+    [SerializeField] GameObject reticleObject;
     [SerializeField] TextMeshProUGUI interactText;
 
     [Header("Inspect Screen")]
@@ -60,5 +61,10 @@ public class PlayerHUD : MonoBehaviourSingleton<PlayerHUD>
         heldScreen.SetActive(active);
         heldUsePrompt.SetActive(!drop);
         helpDropPrompt.SetActive(drop);
+    }
+
+    public void SetReticleActive(bool active)
+    {
+        reticleObject.SetActive(active);
     }
 }

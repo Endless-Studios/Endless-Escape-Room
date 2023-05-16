@@ -18,11 +18,12 @@ public class CameraManager : MonoBehaviour
         {
             if(currentlyFocusedCamera != null)
             {
-                UnfocusCamera();
+                StartCoroutine(UnfocusCameraCoroutine());
             }
             currentlyFocusedCamera = cameraFocus;
             if(currentlyFocusedCamera != null)
             {
+                PlayerHUD.Instance.SetReticleActive(false);
                 PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = false;
                 currentlyFocusedCamera.CameraTarget.Priority = focusedPriority;
 
@@ -35,25 +36,34 @@ public class CameraManager : MonoBehaviour
 
                 currentlyFocusedCamera.HandledFocused();
             }
+            else
+            {
+                PlayerHUD.Instance.SetReticleActive(true);
+            }
         }
     }
 
-    private void UnfocusCamera()
+    IEnumerator UnfocusCameraCoroutine()
     {
         if(currentlyFocusedCamera != null)
         {
-            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = true;
-            currentlyFocusedCamera.CameraTarget.Priority = unfocusedPriority;
+            CameraFocus targetCamera = currentlyFocusedCamera;
+            currentlyFocusedCamera = null;
 
-            if(currentlyFocusedCamera.ShowMouseWhileFocused)
+            targetCamera.CameraTarget.Priority = unfocusedPriority;
+
+            yield return null; //Maybe base off of camera transition time?
+            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = true;
+
+            if(targetCamera.ShowMouseWhileFocused)
             {
                 MouseLockHandler.Instance.ReleaseMouseCursor(this);
                 PlayerHUD.Instance.InventoryUi.Hide();
                 PlayerCore.LocalPlayer.HeldItemManager.ReenterHeld();
             }
 
-            currentlyFocusedCamera.HandledUnfocused();
-            currentlyFocusedCamera = null;
+            targetCamera.HandledUnfocused();
+            targetCamera = null;
         }
     }
 
@@ -69,7 +79,7 @@ public class CameraManager : MonoBehaviour
     {
         if(IsFocused && currentlyFocusedCamera.AllowUnfocusKey && PlayerCore.LocalPlayer.PlayerInput.GetBackPressed())
         {
-            UnfocusCamera();
+            StartCoroutine(UnfocusCameraCoroutine());
         }
     }
 }
