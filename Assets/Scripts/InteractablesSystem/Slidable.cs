@@ -32,6 +32,8 @@ public class Slidable : Grabbable
 
         if (rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
             rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; //RigidbodyInterpolation.Interpolate doesnt work properly on child rigidbodies
+    
+        HandleStopInteract(); //Setup initial state
     }
 
     protected virtual void OnValidate()

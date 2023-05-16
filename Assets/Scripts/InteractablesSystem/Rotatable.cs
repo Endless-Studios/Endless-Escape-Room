@@ -64,6 +64,8 @@ public class Rotatable : Grabbable
             targetTransform = transform;
 
         startingRotation = targetTransform.localRotation;
+
+        HandleStopInteract(); // setup initial state
     }
 
     protected override void InternalHandleInteract()
