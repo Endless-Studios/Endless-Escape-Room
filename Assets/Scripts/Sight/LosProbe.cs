@@ -2,6 +2,9 @@
 
 namespace Sight
 {
+    /// <summary>
+    /// This class allows for each portion of the player's body to produce a different amount of awareness on each raycast.
+    /// </summary>
     public class LosProbe : MonoBehaviour
     {
         [field: SerializeField] public ProbeEnum ProbeKind { get; private set; }

@@ -5,53 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ff53bac-4b1a-43a0-a950-39b8a885c6a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiReferences.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiReferences.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkTraversalEnum.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkTraversalEnum.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/MoveToClickPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Endless Escape Room/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ai_Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Corner Column.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Corner Column.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Solid 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Solid 4m.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Window 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Piece Window 4m.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Window 4m - Reversed.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Exterior Wall Window 4m - Reversed.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Double 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Double 4m.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 2m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 2m.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 4m.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConstructionKit/ResearchStationEnvironmentPieces/Building Interior Doorway Single 4m.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Navigation.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Navigation.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EscapeRoom_TestScene_01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/EscapeRoom_TestScene_01.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AiFacade.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AiEntity.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AnimationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AnimationComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/AwarenessComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/AwarenessComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/CollisionComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/CollisionComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/FidgetComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/FidgetComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Floor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Floor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/HearingSensor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/HearingSensor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkTraversalType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkTraversalType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AiTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/LinkController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/Navigation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/NavigationComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Room.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/Room.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/VisualComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/VisualComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderFarComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderFarComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderNearComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ai/WanderNearComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/NodeLibraryUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/NodeLibraryUpdater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PropScripts/Openable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PropScripts/Openable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/VisualScripting/Fsm.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VisualScripting/Fsm.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VisualScripting/IfNearDestination.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VisualScripting/IfNearDestination.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86acb61e0d2b4b36bc20af11093be9a5157e00/1d/b63f0a5a/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86acb61e0d2b4b36bc20af11093be9a5157e00/26/f75e72c3/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/da6a1787df247a0274ec8fc4840f41df092ee13874f55f87a9db568acab1bd2/System.Reflection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ai/HealthComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ai/MoveToClickPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/NodeLibraryUpdater.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/ShowOnlyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.recorder@3.0.3/Editor/Sources/RecordersInventory.cs" root0="SKIP_HIGHLIGHTING" />
@@ -73,28 +74,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jc133/Documents/EndlessStudios/Endless Escape Room/Assets/Scripts/Ai&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.6363636",
+    "git-widget-placeholder": "feature/JH__AI",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/jc133/Documents/EndlessStudios/Endless Escape Room/Assets/Scripts/Ai",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\jc133\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\jc133\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\jc133\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\jc133\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\jc133\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\jc133\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Unity.exe" />
@@ -122,10 +125,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8800">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="8800" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -151,7 +154,7 @@
       <workItem from="1683844602400" duration="6355000" />
       <workItem from="1683902342159" duration="3963000" />
       <workItem from="1684012270900" duration="7267000" />
-      <workItem from="1684155456449" duration="650000" />
+      <workItem from="1684155456449" duration="20346000" />
     </task>
     <servers />
   </component>

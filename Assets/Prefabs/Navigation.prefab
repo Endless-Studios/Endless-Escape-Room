@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surface: {fileID: 2680393381384891731}
+  linkDisableTime: 15
+  meshSampleTolerance: 5
+  maxNavigationSamples: 50
+  minDistanceToEdge: 1
 --- !u!114 &2680393381384891731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +76,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.11666667
+  m_VoxelSize: 0.25
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0

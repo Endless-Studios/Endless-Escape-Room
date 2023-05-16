@@ -3,8 +3,8 @@
 namespace Ai
 {
     /// <summary>
-    /// This class should be attached to the Ai and referenced by the AiFacade. This class tracks the time since the Ai 
-    /// Fidgeted and also contains the threshold for when an ai should fidget.
+    /// This class tracks the time since the Ai fidgeted and also contains the threshold for when an ai should fidget.
+    /// This component should be attached to the Ai prefab root game object.
     /// </summary>
     public class FidgetComponent : MonoBehaviour
     {

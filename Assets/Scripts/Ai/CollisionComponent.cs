@@ -5,13 +5,21 @@ using UnityEngine;
 namespace Ai
 {
     /// <summary>
-    /// This class should be attached to the root GameObject and referenced by the Facade. This class manages all the
-    /// Colliders the Ai uses.
+    /// This class manages all the Colliders the Ai uses. This class should be attached to the root GameObject and
+    /// referenced by the AiReferences component.
     /// </summary>
     public class CollisionComponent : MonoBehaviour
     {
         [SerializeField] private List<Collider> colliders;
-        
+
+        private void OnValidate()
+        {
+            if (colliders.Count == 0)
+            {
+                colliders = new List<Collider>(GetComponentsInChildren<Collider>());
+            }
+        }
+
         /// <summary>
         /// Disables all the colliders referenced by the colliders list.
         /// </summary>

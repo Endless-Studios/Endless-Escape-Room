@@ -3,15 +3,16 @@
 namespace Ai
 {
     /// <summary>
-    /// This class should be attached to the same GameObject that has the Animator component and should be referenced by
-    /// the AiFacade. This class manages pushing information directly into the Animator for animating the ai.
+    /// This class manages pushing information directly into the Animator for animating the ai. This class should be
+    /// attached to the same GameObject that has the Animator component and should be referenced by the AiReferences
+    /// component.
     /// </summary>
     public class AnimationComponent : AiComponent
     {
         [SerializeField] private Animator animator;
         
-        private static readonly int EnterDoorway = Animator.StringToHash("EnterDoorway");
-        private static readonly int Moving = Animator.StringToHash("Moving");
+        private static readonly int enterDoorway = Animator.StringToHash("EnterDoorway");
+        private static readonly int moving = Animator.StringToHash("Moving");
 
         protected void Awake()
         {
@@ -20,7 +21,7 @@ namespace Ai
 
         private void WalkThroughDoor()
         {
-            animator.SetTrigger(EnterDoorway);
+            animator.SetTrigger(enterDoorway);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Ai
         
         private void Update()
         {
-            animator.SetBool(Moving, references.NavigationComponent.IsMoving);
+            animator.SetBool(moving, references.NavigationComponent.IsMoving);
         }
     }
 }

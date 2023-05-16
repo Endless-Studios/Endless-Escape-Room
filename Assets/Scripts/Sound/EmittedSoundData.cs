@@ -2,6 +2,9 @@
 
 namespace Sound
 {
+    /// <summary>
+    /// This struct defines the information associated with the animation clip being played.
+    /// </summary>
     public readonly struct EmittedSoundData
     {
         public readonly Vector3 Position;

@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe09a6b185c61a4d9d812fe8f64ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldSpawnOnStart: 0
+  ShouldSpawnOnStart: 1
   OnDied:
     m_PersistentCalls:
       m_Calls:
@@ -115,8 +115,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 3417203797340643467}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3
+  m_Radius: 0.75
+  m_Speed: 2.5
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -230,6 +230,8 @@ MonoBehaviour:
   agent: {fileID: 8683445511247982297}
   animator: {fileID: 1727435511707494434}
   navigationTolerance: 0.2
+  doorApproachRotationSpeed: 180
+  doorApproachMovementSpeed: 1
 --- !u!114 &3274762608564594551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d636e8675144ae895b77dd8e6a58037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fidgetThreshold: 5
+  fidgetThreshold: 2e+11
 --- !u!114 &1816274818776610447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0159c08b05ee4bad9fbce1978c184795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderThreshold: 20
+  wanderThreshold: 10
+  maxWanderDistance: 5
 --- !u!114 &4357895078427991714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderThreshold: 35
+  maxWanderDistance: 20
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +460,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.65
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}

@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Sight
 {
+    
     public class SightTarget : MonoBehaviour
     {
-        public static readonly List<SightTarget> SightTargets = new();
+        public static readonly List<SightTarget> SightTargets = new List<SightTarget>();
         
         [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
 

@@ -9,8 +9,10 @@ namespace Ai
     public class WanderFarComponent : MonoBehaviour
     {
         [SerializeField] private float wanderThreshold;
-        
+        [SerializeField] private float maxWanderDistance;
+
         public float WanderThreshold => wanderThreshold;
+        public float MaxWanderDistance => maxWanderDistance;
         public float TimeSinceLastWander { get; private set; }
 
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace Sound
 {
+    /// <summary>
+    /// Simple implementation that emits sound based on the CharacterController's movement to emulate footfalls.
+    /// </summary>
     public class FootstepEmitter : MonoBehaviour
     {
         [SerializeField] private CharacterController controller;

@@ -1,8 +1,11 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ai
 {
+    /// <summary>
+    /// This component manages the Health of the object it is placed on. 
+    /// </summary>
     public class HealthComponent : MonoBehaviour
     {
         [SerializeField] private float maxHealth;
@@ -10,15 +13,23 @@ namespace Ai
         public float MaxHealth => maxHealth;
         public float Health { get; private set; }
 
-        public event Action OnDied; 
+        public UnityEvent OnDied;
 
+        /// <summary>
+        /// Context menu method for testing only.
+        /// </summary>
         [ContextMenu("Take 10 Damage")]
-        internal void TakeDamage10()
+        public void TakeDamage10()
         {
             TakeDamage(10);
         }
     
-        internal void TakeDamage(float amount)
+        /// <summary>
+        /// Sets the value of Health to its current value minus the amount of damage. Will invoke the OnDied event if
+        /// the value of Health zero or less. 
+        /// </summary>
+        /// <param name="amount"></param>
+        public void TakeDamage(float amount)
         {
             Health -= amount;
             if (Health <= 0)
@@ -27,6 +38,9 @@ namespace Ai
             }
         }
 
+        /// <summary>
+        /// Set the value of Health to MaxHealth.
+        /// </summary>
         public void SetHealthToMax()
         {
             Health = MaxHealth;

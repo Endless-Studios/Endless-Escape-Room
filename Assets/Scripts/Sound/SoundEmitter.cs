@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Sound
 {
+    /// <summary>
+    /// This component interacts the with the SoundManager to play clips at the attached GameObject's position
+    /// </summary>
     public class SoundEmitter : MonoBehaviour
     {
         [SerializeField] private AudioClip clip;
