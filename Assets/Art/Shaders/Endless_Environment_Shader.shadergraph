@@ -2226,7 +2226,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Steps",
     "m_StageCapability": 2,
-    "m_Value": 22.0,
+    "m_Value": 55.0,
     "m_DefaultValue": 5.0,
     "m_Labels": []
 }
