@@ -24,6 +24,9 @@ public class CharacterMovement : MonoBehaviour
     //TODO move into function, not as ternary operator
     float MoveSpeed => playerInput.GetSprintHeld() ? runSpeed : walkSpeed;
 
+    Transform connectedMovingPlatform;
+    Vector3 connectedMovingPlatformPreviousPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,9 +72,18 @@ public class CharacterMovement : MonoBehaviour
             //--
 
         }
-        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * MoveSpeed, ref movementDampVelocity, accelerationTime);
+        motion = Vector3.SmoothDamp(motion, moveInput * MoveSpeed, ref movementDampVelocity, accelerationTime);
         motion.y = yVelocity;
-        characterController.Move(motion * Time.deltaTime);
+
+        Vector3 movingGroundMotion = Vector3.zero;
+
+        if (connectedMovingPlatform)
+        {
+            movingGroundMotion = connectedMovingPlatform.position - connectedMovingPlatformPreviousPosition;
+            connectedMovingPlatformPreviousPosition = connectedMovingPlatform.position;
+        }
+
+        characterController.Move((motion * Time.deltaTime) + (movingGroundMotion));
     }
 
     private bool CheckGrounding()
@@ -82,7 +94,7 @@ public class CharacterMovement : MonoBehaviour
         Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
         Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * 0.02f, Color.red);
 
-        if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask))
+        if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask, QueryTriggerInteraction.Ignore))
         {
             return true;
         }
@@ -97,12 +109,24 @@ public class CharacterMovement : MonoBehaviour
             Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
             Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * 0.02f, Color.red);
 
-            if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask))
+            if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask, QueryTriggerInteraction.Ignore))
             {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void SetMovingSurface(Transform movingSurfaceTransform)
+    {
+        connectedMovingPlatform = movingSurfaceTransform;
+        connectedMovingPlatformPreviousPosition = movingSurfaceTransform.position;
+    }
+
+    public void UnsetMovingSurface(Transform movingSurfaceTransform)
+    {
+        if(connectedMovingPlatform == movingSurfaceTransform)
+            connectedMovingPlatform = null;
     }
 }

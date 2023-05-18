@@ -9,6 +9,7 @@ public class Rotatable : Grabbable
 
     [HideInInspector] public UnityEvent<float> OnFinishedRotation = new UnityEvent<float>(); //rotation finished event sends resulting rotation delta from starting rotation (0 - 360)
     [HideInInspector] public UnityEvent<int> OnFinishedRotationSnap = new UnityEvent<int>(); //rotation finished event sends resulting snap position id
+    public UnityEvent<float> OnRotationChangeDelta = new UnityEvent<float>();
 
     [SerializeField] private Transform targetTransform;
     [SerializeField] private float rotationSpeed = 5f;
@@ -108,10 +109,15 @@ public class Rotatable : Grabbable
         //zero out vectors that we arent rotating on
         vertrticalRotataionAxis = Vector3.Scale(vertrticalRotataionAxis, RotationAxisVector);
         horizontalRotationAxis = Vector3.Scale(horizontalRotationAxis, RotationAxisVector);
+  
+        Quaternion fromRotation = targetTransform.localRotation;  
 
         targetTransform.Rotate(vertrticalRotataionAxis, mouseInput.y * rotationSpeed);
         targetTransform.Rotate(horizontalRotationAxis, mouseInput.x * -rotationSpeed);
+        
+        OnRotationChangeDelta.Invoke(Vector3.SignedAngle(fromRotation * RotationForwardAxisVector, targetTransform.localRotation * RotationForwardAxisVector, targetTransform.localRotation * RotationAxisVector));
     }
+
 
     IEnumerator SmoothToRotation(Quaternion targetRotation, int snapPositionID)
     {
