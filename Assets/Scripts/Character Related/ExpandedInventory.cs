@@ -39,9 +39,9 @@ public class ExpandedInventory : InventoryBase
         public override int GetHashCode()
         {
             if(pickupable != null)
-                return pickupable.GetHashCode()
+                return pickupable.GetHashCode();
             else
-                return identifiers.GetHashCode();
+                return ((IStructuralEquatable)identifiers).GetHashCode(EqualityComparer<Identifier>.Default);
         }
     }
 
@@ -58,26 +58,49 @@ public class ExpandedInventory : InventoryBase
 
     public override bool CanPickupItem(Pickupable pickupable)
     {
-        if(heldItems.ContainsKey(new PickupableKey(pickupable)))
-        {
-
-        }
-        throw new System.NotImplementedException();
+        PickupableKey key = new PickupableKey(pickupable);
+        if(heldItems.ContainsKey(key))
+            return heldItems[key].itemsHeld.Count < maxStackSize;
+        else
+            return heldItems.Count < maxInventorySlots;
     }
 
     //Convert to InventorySlot? Maybe an interface that has a count, and pickupable?
     public override Pickupable[] GetItems(Pickupable[] skipList = null)
     {
-        throw new System.NotImplementedException();
+        List<PickupableKey> skippedKeys = new List<PickupableKey>();
+        foreach(Pickupable pickupable in skipList)
+        {
+            skippedKeys.Add(new PickupableKey(pickupable));
+        }
+        //TODO use more friendly syntax.
+        PickupableKey[] keys = heldItems.Keys.Except(skippedKeys).ToArray();
+        return keys.Select(key => heldItems[key].itemsHeld[0]).ToArray();
     }
 
     public override bool PickupItem(Pickupable pickupable)
     {
         if(CanPickupItem(pickupable))
         {
+            PickupableKey key = new PickupableKey(pickupable);
+            if(heldItems.ContainsKey(key) == false)
+                heldItems[key] = new InventorySlot();
+            heldItems[key].itemsHeld.Add(pickupable);
             //TODO subscribe to pickupable OnIdentifiersChanged to move to a new slot/update current slot
             return true;
         }
         return false;
+    }
+
+    private void Update()
+    {
+        int startKey = (int)KeyCode.Alpha1;
+        for(int keyValue = startKey; keyValue < startKey + 9; keyValue++)
+        {
+            if(Input.GetKeyDown((KeyCode)keyValue))
+            {
+                Debug.Log($"Key {(KeyCode)keyValue} Pressed");
+            }
+        }
     }
 }
