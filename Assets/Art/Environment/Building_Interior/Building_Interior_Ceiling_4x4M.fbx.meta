@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Ceiling
     second: {fileID: 2100000, guid: 6f92c226f5018fa48a4485bda99ca0fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrimFrame
+    second: {fileID: 2100000, guid: dc583ceb6a6a9c24f94e6909a209c806, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
