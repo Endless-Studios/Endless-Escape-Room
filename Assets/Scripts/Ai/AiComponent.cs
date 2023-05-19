@@ -12,8 +12,15 @@ namespace Ai
         
         protected virtual void OnValidate()
         {
-            Entity ??= GetComponentInParent<AiEntity>();
-            references ??= GetComponentInParent<AiReferences>();
+            if (!Entity)
+            {
+                Entity = GetComponentInParent<AiEntity>();
+            }
+
+            if (!references)
+            {
+                references = GetComponentInParent<AiReferences>();
+            }
         }
     }
 }

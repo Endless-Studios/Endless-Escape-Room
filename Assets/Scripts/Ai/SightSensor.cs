@@ -15,7 +15,7 @@ namespace Ai
         /// <summary>
         /// Checks los against each SightTarget in the scene.
         /// </summary>
-        public void CheckLos()
+        public void CheckLineOfSight()
         {
             foreach (SightTarget sightTarget in SightTarget.SightTargets)
             {

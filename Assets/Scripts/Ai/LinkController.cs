@@ -36,15 +36,15 @@ namespace Ai
         /// Disables the link for an amount of time equal to linkDisableTime.
         /// </summary>
         /// <param name="linkDisableTime"></param>
-        public void TempDisableLink(float linkDisableTime)
+        public void DisableLink(float linkDisableTime)
         {
             NavMeshLink.enabled = false;
             if (reEnableLinkRoutine is not null) 
                 StopCoroutine(reEnableLinkRoutine);
-            reEnableLinkRoutine = StartCoroutine(ReEnableLinkRoutine(linkDisableTime));
+            reEnableLinkRoutine = StartCoroutine(ReenableLinkRoutine(linkDisableTime));
         }
         
-        private IEnumerator ReEnableLinkRoutine(float linkDisableTime)
+        private IEnumerator ReenableLinkRoutine(float linkDisableTime)
         {
             yield return new WaitForSeconds(linkDisableTime);
             NavMeshLink.enabled = true;

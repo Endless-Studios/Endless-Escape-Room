@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-// ReSharper disable LocalVariableHidesMember
+﻿using UnityEngine;
 
 namespace Ai
 {
@@ -10,13 +8,13 @@ namespace Ai
     /// </summary>
     public class CollisionComponent : MonoBehaviour
     {
-        [SerializeField] private List<Collider> colliders;
+        [SerializeField] private Collider[] colliders;
 
         private void OnValidate()
         {
-            if (colliders.Count == 0)
+            if (colliders.Length == 0)
             {
-                colliders = new List<Collider>(GetComponentsInChildren<Collider>());
+                colliders = GetComponentsInChildren<Collider>();
             }
         }
 

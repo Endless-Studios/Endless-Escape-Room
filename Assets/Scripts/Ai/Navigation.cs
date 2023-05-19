@@ -12,18 +12,22 @@ namespace Ai
     public class Navigation : MonoBehaviourSingleton<Navigation>
     {
         [SerializeField] private NavMeshSurface surface;
+        [SerializeField] private bool buildNavigationOnGameStart;
         [SerializeField] private float linkDisableTime;
         [SerializeField] private float meshSampleTolerance;
         [SerializeField] private int maxNavigationSamples;
+        [SerializeField] private bool shouldDebugNavigation;
 
         public float LinkDisableTime => linkDisableTime;
         public float MeshSampleTolerance => meshSampleTolerance;
         public int MaxNavigationSamples => maxNavigationSamples;
+        private static bool ShouldDebugNavigation => Instance && Instance.shouldDebugNavigation;
 
         protected override void Awake()
         {
             base.Awake();
-            surface.BuildNavMesh();
+            if(buildNavigationOnGameStart)
+                surface.BuildNavMesh();
         }
 
         /// <summary>
@@ -40,7 +44,8 @@ namespace Ai
                     Debug.LogWarning("Invalid path, returning float.MaxValue");
                     return float.MaxValue;
                 case NavMeshPathStatus.PathPartial:
-                    Debug.LogWarning("Returning value for partial path distance");
+                    if(ShouldDebugNavigation)
+                        Debug.Log("Returning value for partial path distance");
                     goto case NavMeshPathStatus.PathComplete;
                 case NavMeshPathStatus.PathComplete:
                     float totalDistance = 0f;
