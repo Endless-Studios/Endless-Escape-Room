@@ -1,7 +1,8 @@
 using UnityEngine;
 
-///<summary>Interaction Goal for evaluating a Rotatable's snap point.</summary>
-[RequireComponent(typeof(Rotatable))]
+/// <summary>
+/// Interaction Goal for evaluating a Rotatable's snap point.
+/// </summary>
 public class RotatableSnapGoal : InteractionGoal
 {
     [SerializeField] private Rotatable rotatable;
@@ -12,12 +13,25 @@ public class RotatableSnapGoal : InteractionGoal
         if (rotatable == null)
             rotatable = GetComponent<Rotatable>();
 
+        //Keep snap goal within valid range
         snapGoal = (int)Mathf.Repeat(snapGoal, rotatable.AxisSnappingPositions);
     }
 
     private void Awake()
     {
-        rotatable.OnFinishedRotationSnap.AddListener(HandleRotationSnapChanged);
+        if (rotatable == null)
+        {
+            Debug.LogWarning("Rotatable missing from goal, removing goal.");
+            GameObject.Destroy(this);
+        }
+        else
+            rotatable.OnFinishedRotationSnap.AddListener(HandleRotationSnapChanged);
+    }
+
+    private void OnDestroy()
+    {
+        if (rotatable != null)
+            rotatable.OnFinishedRotationSnap.RemoveListener(HandleRotationSnapChanged);
     }
 
     private void HandleRotationSnapChanged(int snapResult)

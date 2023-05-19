@@ -1,7 +1,8 @@
 using UnityEngine;
 
-///<summary>Interaction Goal for evaluating a Slidable's end of interaction position within a tolerance range.</summary>
-[RequireComponent(typeof(Slidable))]
+/// <summary>
+/// Interaction Goal for evaluating a Slidable's end of interaction position within a tolerance range.
+/// </summary>
 public class SlidableFreeGoal : InteractionGoal
 {
     [SerializeField] private Slidable slidable;
@@ -16,7 +17,19 @@ public class SlidableFreeGoal : InteractionGoal
 
     private void Awake()
     {
-        slidable.OnPositionMoved.AddListener(HandleSlidablePositionMoved);
+        if (slidable == null)
+        {
+            Debug.LogWarning("Slidable missing from goal, removing goal.");
+            GameObject.Destroy(this);
+        }
+        else
+            slidable.OnPositionMoved.AddListener(HandleSlidablePositionMoved);
+    }
+
+    private void OnDestroy()
+    {
+        if(slidable != null)
+            slidable.OnPositionMoved.RemoveListener(HandleSlidablePositionMoved);
     }
 
     private void HandleSlidablePositionMoved(Vector2 movePosition)
@@ -44,7 +57,7 @@ public class SlidableFreeGoal : InteractionGoal
             goalWorldPosition = new Vector3(goalPosition.x, 0, goalPosition.y);
             contextNormal = Vector3.up;
         }
- 
+
 #if UNITY_EDITOR
         UnityEditor.Handles.color = Color.yellow;
         UnityEditor.Handles.DrawWireDisc(goalWorldPosition, contextNormal, distanceTolerance);

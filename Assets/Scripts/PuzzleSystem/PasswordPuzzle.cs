@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Puzzle for storing and evaluating a password string.
+/// </summary>
 public class PasswordPuzzle : Puzzle
 {
     public UnityEvent<string> OnInputStringUpdated;
@@ -8,11 +11,10 @@ public class PasswordPuzzle : Puzzle
 
     [Tooltip("Clamp input character count. (0 is unclamped)")]
     [SerializeField, Min(0)] private int inputClamp = 0;
-    [SerializeField] private bool evaluateOnChange = false;
 
     public string SolutionString => solutionString;
 
-    private string currentInputString;
+    private string currentInputString = string.Empty;
     public string CurrentInputString
     {
         get

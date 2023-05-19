@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>Puzzle for evaluating multiple Interaction Goals.</summary>
+/// <summary>
+/// Puzzle for evaluating multiple Interaction Goals.
+/// </summary>
 public class InteractionPuzzle : Puzzle
 {
     [SerializeField] private List<InteractionGoal> interactionGoals;
@@ -10,8 +12,20 @@ public class InteractionPuzzle : Puzzle
     {
         foreach (InteractionGoal interactionGoal in interactionGoals)
         {
-            interactionGoal.OnCompleted.AddListener(EvaluateSolution);
-            interactionGoal.OnUncompleted.AddListener(EvaluateSolution);
+            interactionGoal.OnCompleted.AddListener(SolutionChanged);
+            interactionGoal.OnUncompleted.AddListener(SolutionChanged);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (InteractionGoal interactionGoal in interactionGoals)
+        {
+            if (interactionGoal != null)
+            {
+                interactionGoal.OnCompleted.RemoveListener(SolutionChanged);
+                interactionGoal.OnUncompleted.RemoveListener(SolutionChanged);
+            }
         }
     }
 
@@ -19,7 +33,7 @@ public class InteractionPuzzle : Puzzle
     {
         foreach (InteractionGoal interactionGoal in interactionGoals)
         {
-            if (interactionGoal.IsComplete == false)
+            if (interactionGoal != null && interactionGoal.IsComplete == false)
             {
                 return false;
             }
