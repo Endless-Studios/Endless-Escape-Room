@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1816274818776610447}
   - component: {fileID: 4357895078427991714}
   - component: {fileID: 8686548554604012545}
+  - component: {fileID: 2871788024795322273}
   m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
@@ -280,6 +281,30 @@ MonoBehaviour:
   navigationComponent: {fileID: 758338748543762705}
   sightSensor: {fileID: 4870086894081962781}
   hearingSensor: {fileID: 4769800100488525422}
+--- !u!114 &2871788024795322273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b31faa57494921b4edd8aa6a6548c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noticeThreshold: 25
+  visibilityThreshold: 50
+  stimuliDeclineRate: 20
+  GainedNewStimulus:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGainedTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLostTarget:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +353,16 @@ MonoBehaviour:
   sightBlockingMask:
     serializedVersion: 2
     m_Bits: 4097
-  maxViewConeHalfAngle: 60
+  centralVisionScalar: 1
+  nearPeripheralThreshold: 30
+  nearPeripheralScalar: 0.5
+  farPeripheralThreshold: 60
+  farPeripheralScalar: 0.15
+  maxViewConeHalfAngle: 90
+  maxViewDistance: 1000
+  closeViewThreshold: 50
+  closeViewDistanceScalar: 1
+  losProbeBaseValue: 30
 --- !u!114 &4769800100488525422
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using Sound;
 using UnityEngine;
 
@@ -7,9 +8,11 @@ namespace Ai
     /// This component is analogous to the human ear. It listens for sounds to be emitted and checks if the sound reaches
     /// the sensor with enough volume to be heard.
     /// </summary>
-    public class HearingSensor : MonoBehaviour
+    public class HearingSensor : MonoBehaviour, ISense
     {
         [SerializeField] private float minPerceivedDB;
+        
+        public event Action<Stimulus> OnSensedStimulus;
         
         private readonly RaycastHit[] hits = new RaycastHit[10];
         
@@ -31,7 +34,14 @@ namespace Ai
             float perceivedDB = CalculatePerceivedDB(soundData);
             if (perceivedDB > minPerceivedDB)
             {
-                
+                Stimulus stimulus = new Stimulus
+                (
+                    soundData.Position,
+                    Time.time,
+                    Mathf.Clamp(perceivedDB, 0, 60), 
+                    SenseKind.Hearing
+                );
+                OnSensedStimulus?.Invoke(stimulus);
             }
         }
 
