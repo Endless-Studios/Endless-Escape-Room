@@ -16,12 +16,16 @@ namespace Ai
         [SerializeField] private float doorApproachAngleTolerance;
         [SerializeField] private float doorApproachMovementSpeed;
         [SerializeField] private float doorApproachDistanceTolerance;
+        [SerializeField] private float maxAttackDistance;
+        [SerializeField] private float approachDistance;
 
         // ReSharper disable once MemberCanBePrivate.Global
         public float NavigationTolerance => navigationTolerance;
         public bool IsMoving { get; private set; }
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         public Vector3 Destination { get; set; }
+        public float MaxAttackDistance => maxAttackDistance;
+        public float ApproachDistance => approachDistance;
         
         private bool isTraversingLink;
         

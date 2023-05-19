@@ -12,10 +12,10 @@ namespace Ai
         [SerializeField] private float visibilityThreshold;
         [SerializeField] private float stimuliDeclineRate;
         private readonly Dictionary<SightTarget, float> visibilityBySightTarget = new Dictionary<SightTarget, float>();
-        private SightTarget target;
         private List<ISense> senses;
 
         public Stimulus CurrentStimulus { get; private set; }
+        public SightTarget Target { get; private set; }
 
         public UnityEvent GainedNewStimulus;
         public UnityEvent OnGainedTarget;
@@ -60,15 +60,15 @@ namespace Ai
 
         public void ProcessStimuli()
         {
-            if (target)
+            if (Target)
             {
-                if (visibilityBySightTarget.ContainsKey(target)) 
+                if (visibilityBySightTarget.ContainsKey(Target)) 
                     return;
                 
-                Stimulus lastKnowLocation = new Stimulus(target.transform.position, Time.time, 100, SenseKind.Undefined);
+                Stimulus lastKnowLocation = new Stimulus(Target.transform.position, Time.time, 100, SenseKind.Undefined);
                 OnLostTarget?.Invoke();
                 CurrentStimulus = lastKnowLocation;
-                target = null;
+                Target = null;
                 GainedNewStimulus?.Invoke();
             }
             else
@@ -87,7 +87,7 @@ namespace Ai
                 
                 if (mostVisibleTarget.value > visibilityThreshold)
                 {
-                    target = mostVisibleTarget.sightTarget;
+                    Target = mostVisibleTarget.sightTarget;
                     OnGainedTarget?.Invoke();
                 }
                 else if (mostVisibleTarget.value > noticeThreshold)

@@ -60,52 +60,13 @@ MonoBehaviour:
   ShouldSpawnOnStart: 1
   OnDied:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3278828093606095786}
-        m_TargetAssemblyTypeName: Unity.VisualScripting.EventMachine`2[[Unity.VisualScripting.StateGraph,
-          Unity.VisualScripting.State
-        m_MethodName: TriggerUnityEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnDied
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSpawn:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3278828093606095786}
-        m_TargetAssemblyTypeName: Unity.VisualScripting.EventMachine`2[[Unity.VisualScripting.StateGraph,
-          Unity.VisualScripting.State
-        m_MethodName: TriggerUnityEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnSpawn
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnDespawn:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3278828093606095786}
-        m_TargetAssemblyTypeName: Unity.VisualScripting.EventMachine`2[[Unity.VisualScripting.StateGraph,
-          Unity.VisualScripting.State
-        m_MethodName: TriggerUnityEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnDespawn
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -223,6 +184,8 @@ MonoBehaviour:
   doorApproachAngleTolerance: 3
   doorApproachMovementSpeed: 1
   doorApproachDistanceTolerance: 0.1
+  maxAttackDistance: 2
+  approachDistance: 1.5
 --- !u!114 &3274762608564594551
 MonoBehaviour:
   m_ObjectHideFlags: 0
