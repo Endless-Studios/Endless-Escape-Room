@@ -13,9 +13,9 @@ namespace Ai
     {
         public bool ShouldSpawnOnStart;
 
-        public UnityEvent OnDied;
-        public UnityEvent OnSpawn;
-        public UnityEvent OnDespawn;
+        public UnityEvent OnDied = new UnityEvent();
+        public UnityEvent OnSpawn = new UnityEvent();
+        public UnityEvent OnDespawn = new UnityEvent();
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
@@ -41,7 +41,7 @@ namespace Ai
         /// </summary>
         public void Spawn()
         {
-            OnSpawn?.Invoke();
+            OnSpawn.Invoke();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Ai
         /// </summary>
         public void Despawn()
         {
-            OnDespawn?.Invoke();
+            OnDespawn.Invoke();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Ai
         /// </summary>
         public void Died()
         {
-            OnDied?.Invoke();
+            OnDied.Invoke();
         }
         
     }

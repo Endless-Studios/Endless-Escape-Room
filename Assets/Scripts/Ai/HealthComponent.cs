@@ -13,7 +13,7 @@ namespace Ai
         public float MaxHealth => maxHealth;
         public float Health { get; private set; }
 
-        public UnityEvent OnDied;
+        public UnityEvent OnDied = new UnityEvent();
 
         /// <summary>
         /// Context menu method for testing only.

@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// This class contain custom drawer for ReadOnly attribute.
+/// This class contain custom drawer for ShowOnlyAttribute.
 /// </summary>
 [CustomPropertyDrawer(typeof(ShowOnlyAttribute))]
 public class ShowOnlyDrawer : PropertyDrawer

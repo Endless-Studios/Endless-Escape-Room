@@ -65,11 +65,11 @@ namespace Ai
             // If we hit nothing return the db of the sound after calculating its falloff over the distance
             if (numHits == 0)
             {
-                float dbAfterFalloff = CalculateDBAfterDistanceFalloff(soundData.DBAtSource, distanceToSoundSource);
+                float dbAfterFalloff = CalculateDBAfterDistanceFalloff(soundData.DecibelsAtSource, distanceToSoundSource);
                 return dbAfterFalloff;
             }
 
-            float currentDB = soundData.DBAtSource;
+            float currentDB = soundData.DecibelsAtSource;
             Vector3 currentSoundOrigin = soundData.Position;
             
             //Step through each hit collider
@@ -78,13 +78,13 @@ namespace Ai
                 //Get the hit collider and check if it has a SoundBlockingModifier. If it does use that value otherwise use the default
                 RaycastHit hit = hits[i];
                 SoundBlockingModifier modifier = hit.transform.GetComponent<SoundBlockingModifier>();
-                float soundBlockingValue = SoundManager.Instance.DefaultSoundBlockingValue;
+                float soundBlockingValue;
                 float distanceToBarrier = Vector3.Distance(currentSoundOrigin, hit.point);
-                
+
                 if (modifier)
-                {
                     soundBlockingValue = modifier.SoundBlockingValue;
-                }
+                else
+                    soundBlockingValue = SoundManager.Instance.DefaultSoundBlockingValue;
 
                 //Calculate the volume of the sound when it reaches the hit collider 
                 float dBAtBarrier = CalculateDBAfterDistanceFalloff(currentDB, distanceToBarrier);

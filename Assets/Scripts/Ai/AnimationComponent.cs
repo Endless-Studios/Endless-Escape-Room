@@ -11,12 +11,17 @@ namespace Ai
     public class AnimationComponent : AiComponent
     {
         [SerializeField] private Animator animator;
-        
-        private static readonly int enterDoorway = Animator.StringToHash("EnterDoorway");
-        private static readonly int moving = Animator.StringToHash("Moving");
+
+        [SerializeField] private string thresholdTriggerName;
+        [SerializeField] private string movingBoolName;
+
+        private int enterDoorway;
+        private int moving;
 
         protected void Awake()
         {
+            enterDoorway = Animator.StringToHash(thresholdTriggerName);
+            moving = Animator.StringToHash(movingBoolName);
             Entity.OnWalkingThroughDoorway += WalkThroughDoor;
         }
 
