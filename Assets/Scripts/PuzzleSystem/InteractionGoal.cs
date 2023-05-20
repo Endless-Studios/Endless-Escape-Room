@@ -9,6 +9,8 @@ public abstract class InteractionGoal : MonoBehaviour
     public UnityEvent OnCompleted = new UnityEvent();
     public UnityEvent OnUncompleted = new UnityEvent();
 
+    [SerializeField] private bool isUncompletable = true;
+
     private bool complete;
     public bool IsComplete
     {
@@ -18,7 +20,7 @@ public abstract class InteractionGoal : MonoBehaviour
         }
         set
         {
-            if (complete != value)
+            if (complete != value && (isUncompletable || complete == false))
             {
                 complete = value;
 
