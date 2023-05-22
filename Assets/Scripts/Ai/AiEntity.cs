@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,12 +18,12 @@ namespace Ai
         public UnityEvent OnDied = new UnityEvent();
         public UnityEvent OnSpawn = new UnityEvent();
         public UnityEvent OnDespawn = new UnityEvent();
+        public UnityEvent<PointOfInterest> OnStartedInteracting = new UnityEvent<PointOfInterest>();
+        public UnityEvent OnFinishedInteracting = new UnityEvent();
+        public UnityEvent OnFinishedFidgeting = new UnityEvent();
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
-        
-        public UnityEvent<PointOfInterest> OnStartedInteracting;
-        public UnityEvent OnFinishedInteracting;
 
         /// <summary>
         /// Invokes the OnWalkingThroughDoorway event
@@ -72,6 +73,11 @@ namespace Ai
         public void Died()
         {
             OnDied.Invoke();
+        }
+
+        public void FinishedFidgeting()
+        {
+            OnFinishedFidgeting.Invoke();
         }
     }
 }

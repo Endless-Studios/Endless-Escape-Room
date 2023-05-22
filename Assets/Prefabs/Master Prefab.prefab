@@ -308,6 +308,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 824498804725008711}
     m_Modifications:
+    - target: {fileID: 1278550280107342237, guid: 3b6fa822ad0ee064bb9147d713e0f281,
+        type: 3}
+      propertyPath: buildNavigationOnGameStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2802466113254387938, guid: 3b6fa822ad0ee064bb9147d713e0f281,
         type: 3}
       propertyPath: m_Name

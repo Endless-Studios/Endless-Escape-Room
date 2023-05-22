@@ -194,6 +194,9 @@ MonoBehaviour:
   OnFinishedInteracting:
     m_PersistentCalls:
       m_Calls: []
+  OnFinishedFidgeting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -347,6 +350,9 @@ MonoBehaviour:
   maxInvestigateDistance: 15
   reInvestigateTime: 30
   PlayersHideout: {fileID: 0}
+  OnFinishedInvestigating:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +537,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Creature_Warden_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78fc400961e3968428243a300eb8ea2f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 78fc400961e3968428243a300eb8ea2f,
         type: 3}
       propertyPath: m_Controller
@@ -589,8 +600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1727435511707494434}
-  thresholdTriggerName: 
-  movingBoolName: 
+  thresholdTriggerName: EnterDoorway
+  movingBoolName: Moving
 --- !u!137 &7606774132491417518 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5835767784289656291, guid: 78fc400961e3968428243a300eb8ea2f,
