@@ -10,7 +10,7 @@ namespace Sound
     {
         [SerializeField] private AudioClip clip;
         [SerializeField] private float audioClipDB;
-        [SerializeField] private SoundEnum soundKind;
+        [SerializeField] private SoundType soundKind;
 
         [ContextMenu("Emit Sound")]
         public void EmitSound()
