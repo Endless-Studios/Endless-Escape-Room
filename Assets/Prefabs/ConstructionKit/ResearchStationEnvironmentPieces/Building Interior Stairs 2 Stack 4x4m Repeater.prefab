@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8312026018747972705}
   m_Layer: 0
   m_Name: Building Interior Stairs 2 Stack 4x4m Repeater
-  m_TagString: Untagged
+  m_TagString: Stair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8728148390303642958, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: -8728148390303642958, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
@@ -118,6 +123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StitchLightmapSeams
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7167348101818685794, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: -7167348101818685794, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
