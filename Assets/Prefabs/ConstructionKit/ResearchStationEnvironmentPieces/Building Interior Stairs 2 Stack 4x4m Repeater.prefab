@@ -44,6 +44,11 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8909946994066318241, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8728148390303642958, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
       propertyPath: m_TagString
@@ -67,7 +72,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
@@ -139,6 +144,11 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4696232992982098736, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2983746314763629589, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
       propertyPath: m_Convex
@@ -148,6 +158,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -2538535821773381266, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2161916926036435846, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
@@ -163,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticShadowCaster
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693750875286086792, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.794658
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b07e6bddbe43b44800683896a3206a, type: 3}

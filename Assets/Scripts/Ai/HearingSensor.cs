@@ -28,7 +28,7 @@ namespace Ai
 
         private void HandleOnSoundEmitted(EmittedSoundData soundData)
         {
-            if (soundData.SoundKind == SoundEnum.AiGenerated)
+            if (soundData.SoundKind == SoundType.AiGenerated)
                 return;
 
             float perceivedDB = CalculatePerceivedDB(soundData);

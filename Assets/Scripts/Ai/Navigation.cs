@@ -45,7 +45,7 @@ namespace Ai
                     return float.MaxValue;
                 case NavMeshPathStatus.PathPartial:
                     if(ShouldDebugNavigation)
-                        Debug.Log("Returning value for partial path distance");
+                        Debug.LogWarning("Returning value for partial path distance");
                     goto case NavMeshPathStatus.PathComplete;
                 case NavMeshPathStatus.PathComplete:
                     float totalDistance = 0f;

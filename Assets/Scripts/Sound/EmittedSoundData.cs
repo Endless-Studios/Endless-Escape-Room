@@ -9,10 +9,10 @@ namespace Sound
     {
         public readonly Vector3 Position;
         public readonly float DecibelsAtSource;
-        public readonly SoundEnum SoundKind;
+        public readonly SoundType SoundKind;
         public readonly float ClipLength;
 
-        public EmittedSoundData(Vector3 position, float decibelsAtSource, SoundEnum soundKind, float clipLength)
+        public EmittedSoundData(Vector3 position, float decibelsAtSource, SoundType soundKind, float clipLength)
         {
             Position = position;
             DecibelsAtSource = decibelsAtSource;
