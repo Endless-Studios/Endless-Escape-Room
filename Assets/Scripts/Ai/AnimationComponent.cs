@@ -39,6 +39,11 @@ namespace Ai
             transform.localPosition = Vector3.zero;
         }
 
+        public void FinishedInteracting()
+        {
+            Entity.FinishedInteracting();
+        }
+
         
         private void Update()
         {

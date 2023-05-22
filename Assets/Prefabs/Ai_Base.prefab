@@ -1,5 +1,126 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1005777688304057736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9115251897415153184}
+  - component: {fileID: 2735531839366895144}
+  - component: {fileID: 6385378050296048021}
+  - component: {fileID: 7418646077117480693}
+  - component: {fileID: 4416175924687438435}
+  - component: {fileID: 4961856700329453582}
+  m_Layer: 14
+  m_Name: Thresholds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9115251897415153184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005777688304057736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626646627048455303}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2735531839366895144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005777688304057736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Bored
+  baseThreshold: 5
+  minThresholdModifier: 0
+  maxThresholdModifier: 5
+  AmountOverThreshold: 0
+--- !u!114 &6385378050296048021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005777688304057736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: WanderNear
+  baseThreshold: 20
+  minThresholdModifier: 0
+  maxThresholdModifier: 5
+  AmountOverThreshold: 0
+--- !u!114 &7418646077117480693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005777688304057736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: WanderFar
+  baseThreshold: 45
+  minThresholdModifier: 0
+  maxThresholdModifier: 15
+  AmountOverThreshold: 0
+--- !u!114 &4416175924687438435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005777688304057736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Fidget
+  baseThreshold: 15
+  minThresholdModifier: 0
+  maxThresholdModifier: 10
+  AmountOverThreshold: 0
+--- !u!114 &4961856700329453582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005777688304057736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Fiddle
+  baseThreshold: 60
+  minThresholdModifier: 0
+  maxThresholdModifier: 20
+  AmountOverThreshold: 0
 --- !u!1 &3417203797340643467
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,9 +138,8 @@ GameObject:
   - component: {fileID: 75287004308826072}
   - component: {fileID: 5708969744281638855}
   - component: {fileID: 758338748543762705}
-  - component: {fileID: 3274762608564594551}
-  - component: {fileID: 1816274818776610447}
-  - component: {fileID: 4357895078427991714}
+  - component: {fileID: 7734784122640802021}
+  - component: {fileID: 525566787602427729}
   - component: {fileID: 8686548554604012545}
   - component: {fileID: 2871788024795322273}
   m_Layer: 14
@@ -42,6 +162,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4690843874338648664}
+  - {fileID: 9115251897415153184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65,6 +186,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnDespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartedInteracting:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedInteracting:
     m_PersistentCalls:
       m_Calls: []
 --- !u!195 &8683445511247982297
@@ -102,7 +229,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Wander
+      Far Distance","value":{"$content":15.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Wander
+      Near Distance","value":{"$content":5.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &3278828093606095786
 MonoBehaviour:
@@ -186,7 +317,7 @@ MonoBehaviour:
   doorApproachDistanceTolerance: 0.1
   maxAttackDistance: 2
   approachDistance: 1.5
---- !u!114 &3274762608564594551
+--- !u!114 &7734784122640802021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,11 +326,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3417203797340643467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d636e8675144ae895b77dd8e6a58037, type: 3}
+  m_Script: {fileID: 11500000, guid: f9e0cf5c44074d65911d9c47aa049a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fidgetThreshold: 2e+11
---- !u!114 &1816274818776610447
+  fiddleThreshold: 15
+  maxInteractionDistance: 15
+  reInteractTime: 90
+--- !u!114 &525566787602427729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,25 +341,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3417203797340643467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0159c08b05ee4bad9fbce1978c184795, type: 3}
+  m_Script: {fileID: 11500000, guid: 82791749ce434c159bb654743f979939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderThreshold: 10
-  maxWanderDistance: 5
---- !u!114 &4357895078427991714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70da0457a4a42489991bcde3f3253c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderThreshold: 35
-  maxWanderDistance: 20
+  maxInvestigateDistance: 15
+  reInvestigateTime: 30
+  PlayersHideout: {fileID: 0}
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +364,11 @@ MonoBehaviour:
   navigationComponent: {fileID: 758338748543762705}
   sightSensor: {fileID: 4870086894081962781}
   hearingSensor: {fileID: 4769800100488525422}
+  boredThreshold: {fileID: 2735531839366895144}
+  wanderThreshold: {fileID: 6385378050296048021}
+  wanderFarThreshold: {fileID: 7418646077117480693}
+  fidgetThreshold: {fileID: 4416175924687438435}
+  fiddleThreshold: {fileID: 4961856700329453582}
 --- !u!114 &2871788024795322273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1727435511707494434}
+  thresholdTriggerName: 
+  movingBoolName: 
 --- !u!137 &7606774132491417518 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5835767784289656291, guid: 78fc400961e3968428243a300eb8ea2f,

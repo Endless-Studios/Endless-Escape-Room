@@ -14,6 +14,11 @@ namespace Ai
         [SerializeField] private NavigationComponent navigationComponent;
         [SerializeField] private SightSensor sightSensor;
         [SerializeField] private HearingSensor hearingSensor;
+        [SerializeField] private ThresholdBehavior boredThreshold;
+        [SerializeField] private ThresholdBehavior wanderThreshold;
+        [SerializeField] private ThresholdBehavior wanderFarThreshold;
+        [SerializeField] private ThresholdBehavior fidgetThreshold;
+        [SerializeField] private ThresholdBehavior fiddleThreshold;
         
 
         public Animator Animator => animator;
@@ -21,5 +26,12 @@ namespace Ai
         public NavigationComponent NavigationComponent => navigationComponent;
         public SightSensor SightSensor => sightSensor;
         public HearingSensor HearingSensor => hearingSensor;
+        public ThresholdBehavior BoredThreshold => boredThreshold;
+        public ThresholdBehavior WanderThreshold => wanderThreshold;
+        public ThresholdBehavior WanderFarThreshold => wanderFarThreshold;
+        public ThresholdBehavior FidgetThreshold => fidgetThreshold;
+        public ThresholdBehavior FiddleThreshold => fiddleThreshold;
+        
+        
     }
 }

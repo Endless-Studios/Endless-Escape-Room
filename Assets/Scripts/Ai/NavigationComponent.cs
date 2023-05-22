@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 // ReSharper disable Unity.InefficientPropertyAccess
@@ -28,7 +29,7 @@ namespace Ai
         public float ApproachDistance => approachDistance;
         
         private bool isTraversingLink;
-        
+
         private void Update()
         {
             if (references.Agent.isOnOffMeshLink && !isTraversingLink)

@@ -3,17 +3,21 @@
 namespace Ai
 {
     /// <summary>
-    /// This class should be attached to the Ai and referenced by the AiFacade. This class tracks the time since the Ai  
+    /// This class should be attached to the root GameObject of the Ai. This class tracks the time since the Ai  
     /// last "wandered far" and also contains the threshold for when an ai should "wander far".
     /// </summary>
     public class WanderFarComponent : MonoBehaviour
     {
         [SerializeField] private float wanderThreshold;
         [SerializeField] private float maxWanderDistance;
+        [SerializeField] private float minWanderModifier;
+        [SerializeField] private float maxWanderModifier;
 
-        public float WanderThreshold => wanderThreshold;
+        public float WanderThreshold => wanderThreshold + wanderModifier;
         public float MaxWanderDistance => maxWanderDistance;
         public float TimeSinceLastWander { get; private set; }
+
+        private float wanderModifier;
 
         /// <summary>
         /// Increments TimeSinceLastWander by the deltaTime parameter. Delta time should be the amount of time that has
@@ -32,6 +36,7 @@ namespace Ai
         public void ResetLastWanderFarTime()
         {
             TimeSinceLastWander = 0;
+            wanderModifier = Random.Range(minWanderModifier, maxWanderModifier);
         }
     }
 }

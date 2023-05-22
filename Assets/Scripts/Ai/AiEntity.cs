@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,6 +20,9 @@ namespace Ai
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
+        
+        public UnityEvent<PointOfInterest> OnStartedInteracting;
+        public UnityEvent OnFinishedInteracting;
 
         /// <summary>
         /// Invokes the OnWalkingThroughDoorway event
@@ -34,6 +38,16 @@ namespace Ai
         public void WalkedThroughDoorway()
         {
             OnWalkedThroughDoorway?.Invoke();
+        }
+
+        public void StartedInteracting(PointOfInterest pointOfInterest)
+        {
+            OnStartedInteracting?.Invoke(pointOfInterest);
+        }
+
+        public void FinishedInteracting()
+        {
+            OnFinishedInteracting?.Invoke();
         }
 
         /// <summary>
@@ -59,6 +73,5 @@ namespace Ai
         {
             OnDied.Invoke();
         }
-        
     }
 }

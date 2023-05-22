@@ -9,8 +9,12 @@ namespace Ai
     public class FidgetComponent : MonoBehaviour
     {
         [SerializeField] private float fidgetThreshold;
+        [SerializeField] private float minFidgetModifier;
+        [SerializeField] private float maxFidgetModifier;
+
+        private float fidgetModifier;
         
-        public float FidgetThreshold => fidgetThreshold;
+        public float FidgetThreshold => fidgetThreshold + fidgetModifier;
         public float TimeSinceLastFidget { get; private set; }
         public bool IsFidgeting { get; private set; }
 
@@ -31,6 +35,7 @@ namespace Ai
         public void ResetLastFidgetTime()
         {
             TimeSinceLastFidget = 0f;
+            fidgetModifier = Random.Range(minFidgetModifier, maxFidgetModifier);
         }
 
         /// <summary>
