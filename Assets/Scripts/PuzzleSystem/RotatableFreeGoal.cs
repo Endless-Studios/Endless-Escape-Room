@@ -1,7 +1,8 @@
 using UnityEngine;
 
-/// <summary>Interaction Goal for evaluating a Rotatable's end of interaction position within a tolerance range.</summary>
-[RequireComponent(typeof(Rotatable))]
+/// <summary>
+/// Interaction Goal for evaluating a Rotatable's end of interaction position within a tolerance range.
+/// </summary>
 public class RotatableFreeGoal : InteractionGoal
 {
     [SerializeField] private Rotatable rotatable;
@@ -18,7 +19,19 @@ public class RotatableFreeGoal : InteractionGoal
 
     private void Awake()
     {
-        rotatable.OnFinishedRotation.AddListener(HandleFinishedRotation);
+        if(rotatable == null)
+        {
+            Debug.LogWarning("Rotatable missing from goal, removing goal.");
+            GameObject.Destroy(this);
+        }
+        else
+            rotatable.OnFinishedRotation.AddListener(HandleFinishedRotation);
+    }
+
+    private void OnDestroy()
+    {
+        if(rotatable != null)
+            rotatable.OnFinishedRotation.RemoveListener(HandleFinishedRotation);
     }
 
     private void HandleFinishedRotation(float rotationResult)

@@ -2116,6 +2116,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: TrimFrame
+    second: {fileID: 2100000, guid: dc583ceb6a6a9c24f94e6909a209c806, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Wall
     second: {fileID: 2100000, guid: 06cc5fe50b202dc40bebd3faa01bd786, type: 2}
   materials:

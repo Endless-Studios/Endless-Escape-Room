@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8312026018747972705}
   m_Layer: 0
   m_Name: Building Interior Stairs 2 Stack 4x4m Repeater
-  m_TagString: Untagged
+  m_TagString: Stair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,16 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8909946994066318241, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8728148390303642958, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: -8728148390303642958, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -62,7 +72,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
@@ -116,6 +126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7167348101818685794, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: -7167348101818685794, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 19
       objectReference: {fileID: 0}
@@ -129,9 +144,29 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4696232992982098736, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2983746314763629589, guid: 75b07e6bddbe43b44800683896a3206a,
         type: 3}
       propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2936021931484298935, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -2538535821773381266, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2161916926036435846, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 75b07e6bddbe43b44800683896a3206a,
@@ -143,6 +178,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359310991058167975, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693750875286086792, guid: 75b07e6bddbe43b44800683896a3206a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.794658
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75b07e6bddbe43b44800683896a3206a, type: 3}

@@ -1,7 +1,8 @@
 using UnityEngine;
 
-///<summary>Interaction goal for evaluating a Slidable's snap point.</summary>
-[RequireComponent(typeof(Slidable))]
+/// <summary>
+/// Interaction goal for evaluating a Slidable's snap point.
+/// </summary>
 public class SlidableSnapGoal : InteractionGoal
 {
     private enum SnapEvaluation { BothXY, OnlyX, OnlyY }
@@ -17,7 +18,19 @@ public class SlidableSnapGoal : InteractionGoal
 
     private void Awake()
     {
-        slidable.OnPositionSnapped.AddListener(HandleSlidableSnapChanged);
+        if (slidable == null)
+        {
+            Debug.LogWarning("Slidable missing from goal, removing goal.");
+            GameObject.Destroy(this);
+        }
+        else
+            slidable.OnPositionSnapped.AddListener(HandleSlidableSnapChanged);
+    }
+
+    private void OnDestroy()
+    {
+        if (slidable != null)
+            slidable.OnPositionSnapped.RemoveListener(HandleSlidableSnapChanged);
     }
 
     private void HandleSlidableSnapChanged(Vector2Int snapValue)
