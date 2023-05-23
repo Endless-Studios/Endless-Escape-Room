@@ -15,6 +15,7 @@ public class Openable : MonoBehaviour
     public UnityEvent OnUnlocked = new UnityEvent();
 
     public bool IsLocked { get => isLocked; }
+    public bool IsOpen => isOpen;
 
     /// <summary>
     /// Attempts to open the door

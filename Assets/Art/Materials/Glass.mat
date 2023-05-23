@@ -24,7 +24,8 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: c51d62a0edd684c4c8f343f644c82edb,
     type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -35,7 +36,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 4af34976836eb0b4fbea0646159eb3de, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MixMap:
@@ -43,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: c51ba205cf0d65547846c7d2040ae4f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2073d2b16f136c04aa52a664406a8c65, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -60,12 +61,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Metalness: 0.612
-    - _Normal_Strength: 0.007
+    - _AlphaClip: 0
+    - _Blend: 2
+    - _CastShadows: 1
+    - _Cull: 2
+    - _DstBlend: 1
+    - _IOR: 0.36
+    - _Metalness: 0.977
+    - _Normal_Strength: 0.012
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Refraction_Strength: 2.21
-    - _Smoothness: 0.839
-    - _Transparency: 0.263
+    - _ReceiveShadows: 1
+    - _Refraction_Strength: 0.64
+    - _Smoothness: 0.955
+    - _SrcBlend: 5
+    - _Surface: 1
+    - _Transparency: 0.69
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors: []
   m_BuildTextureStacks: []
