@@ -5,21 +5,32 @@ using UnityEngine;
 [System.Serializable]
 public class Identifier: System.IEquatable<Identifier>
 {
-    [SerializeField] string identifier;
+    [SerializeField] string identifier = string.Empty;
+
+    public Identifier()
+    {
+        identifier = string.Empty;
+    }
 
     public static bool operator ==(Identifier lhs, Identifier rhs)
     {
-        return lhs.Equals(rhs);
+        if(lhs is null)
+            return rhs is null;
+        else
+            return lhs.Equals(rhs);
     }
 
     public static bool operator !=(Identifier lhs, Identifier rhs)
     {
-        return !lhs.Equals(rhs);
+        if(lhs is null)
+            return rhs is null;
+        else
+            return !lhs.Equals(rhs);
     }
 
     public override bool Equals(object obj)
     {
-        return obj is Identifier other ? other.identifier == identifier : false;
+        return obj is Identifier other ? string.Equals(other.identifier, identifier) : false;
     }
 
     public override int GetHashCode()
@@ -29,7 +40,10 @@ public class Identifier: System.IEquatable<Identifier>
 
     public bool Equals(Identifier other)
     {
-        return other != null && other.identifier == identifier;
+        if(other is null)
+            return false;
+        else
+            return string.Equals(other.identifier, identifier);
     }
 }
 

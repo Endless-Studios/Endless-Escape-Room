@@ -53,7 +53,7 @@ public class ItemInspector : MonoBehaviour
         playerInput.InteractEnabled = true;
         playerInput.LookEnabled = false;
         playerInput.MoveEnabled = false;
-        heldItemManager.HideProjectedVisualsAndControls();
+        //heldItemManager.HideProjectedVisualsAndControls(); //TODO is this line needed?
         if(currentPickupable)
             currentPickupable.gameObject.SetActive(true);
 

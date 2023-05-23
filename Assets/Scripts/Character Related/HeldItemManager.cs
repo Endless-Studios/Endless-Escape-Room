@@ -121,29 +121,13 @@ public class HeldItemManager : MonoBehaviour
                 ProjectHeldItem();
             if(IsDropMode && playerInput.GetDropPressed())
             {
-                //TODO only for visuals, not collisions until we're done maybe?
-                if(currentSnappable)
-                {
-                    currentSnappable.SnapPickupable(HeldPickupable);
-                    currentSnappable = null;
-                    HeldPickupable.HandleDropped(false);
-                }
-                else
-                {
-                    HeldPickupable.transform.parent = null;
-                    HeldPickupable.IsInteractable = true;
-                    //TODO account for transform from visualRoot to parent
-                    HeldPickupable.transform.position = projectedVisuals.transform.position;
-                    HeldPickupable.transform.rotation = Quaternion.identity;
-                    HeldPickupable.HandleDropped();
-                }
-
-                ClearHeldItem();
+                DropItem();
             }
             else if(itemInspector.IsInspecting == false && HeldPickupable != null && playerInput.GetInspectPressed())
             {
                 PlayerHUD.Instance.SetHeldScreenActive(false);
                 itemInspector.InspectItem(HeldPickupable);
+                ClearProjectedVisuals();
             }
             else if(!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
             {
@@ -152,8 +136,35 @@ public class HeldItemManager : MonoBehaviour
         }
     }
 
+    private void DropItem()
+    {
+        //Cache everything so we can clear and reset our state before any events send outward (which may change our state again!)
+        Pickupable droppingItem = HeldPickupable;
+        Vector3 projectedPosition = projectedVisuals.transform.position;
+        ClearHeldItem();
+
+        //TODO only for visuals, not collisions until we're done maybe?
+        if(currentSnappable)
+        {
+            droppingItem.HandleDropped(false);
+            currentSnappable.SnapPickupable(droppingItem);
+            currentSnappable = null;
+        }
+        else
+        {
+            droppingItem.transform.parent = null;
+            droppingItem.IsInteractable = true;
+            //TODO account for transform from visualRoot to parent
+            droppingItem.transform.position = projectedPosition;
+            droppingItem.transform.rotation = Quaternion.identity;
+            droppingItem.HandleDropped();
+        }
+    }
+
     public void ClearHeldItem()
     {
+        if(heldUseable && !IsDropMode)
+            playerInput.InteractEnabled = true;
         ClearProjectedVisuals();
         PlayerHUD.Instance.SetHeldScreenActive(false);
         HeldPickupable = null;

@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 7307238664253114075, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7781818
+      value: 1.7771536
       objectReference: {fileID: 0}
     - target: {fileID: 7485675807474701852, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -85,6 +85,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6419312489086153408, guid: 4bd0166003eb95042908a281e57794c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4bd0166003eb95042908a281e57794c0, type: 3}
+--- !u!114 &205525343966502563 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2350323757107018741, guid: 4bd0166003eb95042908a281e57794c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2469146011850827094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274739890655059032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7532276ed0da0ae4aaebcb74a7bc4a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &274739890655059032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2419621909708617998, guid: 4bd0166003eb95042908a281e57794c0,
@@ -103,5 +115,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c94c31150daef40aa201beff0e6062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactor: {fileID: 9185972736506520492}
+  heldItemManager: {fileID: 205525343966502563}
   maxInventorySlots: 99999
   maxStackSize: 99
+--- !u!114 &9185972736506520492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6719100988358395642, guid: 4bd0166003eb95042908a281e57794c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2469146011850827094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274739890655059032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ba416287370354a88d21d96a58f2ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
