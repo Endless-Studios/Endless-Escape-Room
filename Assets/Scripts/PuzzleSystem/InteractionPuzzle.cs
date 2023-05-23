@@ -10,21 +10,27 @@ public class InteractionPuzzle : Puzzle
 
     private void Awake()
     {
-        foreach (InteractionGoal interactionGoal in interactionGoals)
+        if (evaluateOnChange)
         {
-            interactionGoal.OnCompleted.AddListener(SolutionChanged);
-            interactionGoal.OnUncompleted.AddListener(SolutionChanged);
+            foreach (InteractionGoal interactionGoal in interactionGoals)
+            {
+                interactionGoal.OnCompleted.AddListener(SolutionChanged);
+                interactionGoal.OnUncompleted.AddListener(SolutionChanged);
+            }
         }
     }
 
     private void OnDestroy()
     {
-        foreach (InteractionGoal interactionGoal in interactionGoals)
+        if (evaluateOnChange)
         {
-            if (interactionGoal != null)
+            foreach (InteractionGoal interactionGoal in interactionGoals)
             {
-                interactionGoal.OnCompleted.RemoveListener(SolutionChanged);
-                interactionGoal.OnUncompleted.RemoveListener(SolutionChanged);
+                if (interactionGoal != null)
+                {
+                    interactionGoal.OnCompleted.RemoveListener(SolutionChanged);
+                    interactionGoal.OnUncompleted.RemoveListener(SolutionChanged);
+                }
             }
         }
     }

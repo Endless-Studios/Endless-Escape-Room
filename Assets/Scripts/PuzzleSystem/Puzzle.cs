@@ -8,7 +8,8 @@ public abstract class Puzzle : MonoBehaviour
 {
     public UnityEvent OnCompleted = new UnityEvent();
     public UnityEvent OnUncompleted = new UnityEvent();
-    public UnityEvent<bool> OnFailedSolution = new UnityEvent<bool>(); //Evaluate solution failed. true: manual evaluation | false: automatic evaluation (evaluate on change)
+    [Tooltip("Evaluate solution failed. true: manual evaluation | false: automatic evaluation (evaluate on change)")]
+    public UnityEvent<bool> OnFailedSolution = new UnityEvent<bool>();
 
     [SerializeField] private bool allowUncompleting = false;
     [SerializeField] protected bool evaluateOnChange = true;
