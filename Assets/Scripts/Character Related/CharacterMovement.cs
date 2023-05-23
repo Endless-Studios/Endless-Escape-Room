@@ -149,7 +149,7 @@ public class CharacterMovement : MonoBehaviour
 
             if (Physics.SphereCast(currentHeightPosition, characterController.radius, Vector3.up, out RaycastHit hit, targetHeightChange, groundedLayerMask))
             {
-                targetHeight = characterController.height + hit.distance; //head collision
+                targetHeight = characterController.height + (hit.distance - characterController.skinWidth); //head collision
             }
 
             SetCharacterControllerHeight(targetHeight);

@@ -35,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2419621909708617998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59,10 +59,10 @@ CharacterController:
   m_Height: 1.7
   m_Radius: 0.35
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.1
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: -0.15, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!95 &82908347484867682
 Animator:
   serializedVersion: 4
@@ -100,6 +100,7 @@ MonoBehaviour:
   cameraManager: {fileID: 4597869270661111247}
   inventory: {fileID: 6419312489086153408}
   heldItemManager: {fileID: 2350323757107018741}
+  fpsCameraRootTransform: {fileID: 88013906174402261}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,13 +129,18 @@ MonoBehaviour:
   characterController: {fileID: 2419621909708617996}
   playerInput: {fileID: 8377813685331739176}
   walkSpeed: 1
-  runSpeed: 3
+  sprintSpeedMultiplier: 3
+  crouchingSpeedMultiplier: 0.3
   accelerationTime: 0.15
   terminalVelocity: -60
   jumpForce: 5
   groundedLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  fpsCameraHeight: -0.2
+  standingHeight: 1.7
+  crouchingHeight: 0.4
+  crouchTransitionSpeed: 4
 --- !u!114 &6719100988358395642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +434,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785388, y: 1}
+    m_SensorSize: {x: 1.7452093, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -463,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7351502227686689194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.145, z: 0}
+  m_LocalPosition: {x: 0, y: 0.855, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 0
   m_Children: []
