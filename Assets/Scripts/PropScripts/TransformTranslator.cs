@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Component for modifying the transforms local position, local rotation and local scale.
+/// </summary>
 public class TransformTranslator : MonoBehaviour
 {
     [SerializeField] private Transform targetTransform;

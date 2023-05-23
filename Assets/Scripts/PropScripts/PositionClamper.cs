@@ -1,6 +1,8 @@
 using UnityEngine;
 
-///<summary>Component for clamping a transforms local position.</summary>
+/// <summary>
+/// Component for clamping a transforms local position.
+/// </summary>
 public class PositionClamper : MonoBehaviour
 {
     [SerializeField] private Transform targetTransform;
@@ -27,7 +29,7 @@ public class PositionClamper : MonoBehaviour
             targetTransform = transform;
     }
 
-    void Update()
+    private void LateUpdate()
     {
         if (autoClamp)
             Clamp();
