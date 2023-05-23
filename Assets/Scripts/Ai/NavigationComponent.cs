@@ -68,7 +68,7 @@ namespace Ai
             //If the threshold is locked we need to break out of current navigation path and disable the link temporarily
             if (linkController.Openable.IsLocked)
             {
-                linkController.DisableLink(Navigation.Instance.LinkDisableTime);
+                linkController.DisableLink(attributes.AgentType, Navigation.Instance.LinkDisableTime);
                 //This flicker is intentional since it clears the current off mesh link without needing to complete it.
                 references.Agent.enabled = false;
                 references.Agent.enabled = true;

@@ -11,11 +11,11 @@ namespace Ai
         [SerializeField] private float noticeThreshold;
         [SerializeField] private float visibilityThreshold;
         [SerializeField] private float stimuliDeclineRate;
-        private readonly Dictionary<SightTarget, float> visibilityBySightTarget = new Dictionary<SightTarget, float>();
+        private readonly Dictionary<SenseTarget, float> visibilityBySightTarget = new Dictionary<SenseTarget, float>();
         private List<ISense> senses;
 
         public Stimulus CurrentStimulus { get; private set; }
-        public SightTarget Target { get; private set; }
+        public SenseTarget Target { get; private set; }
 
         public UnityEvent GainedNewStimulus;
         public UnityEvent OnGainedTarget;
@@ -35,13 +35,13 @@ namespace Ai
             switch (stimulus.SenseKind)
             {
                 case SenseKind.Sight:
-                    if (visibilityBySightTarget.ContainsKey(stimulus.SightTarget))
+                    if (visibilityBySightTarget.ContainsKey(stimulus.SenseTarget))
                     {
-                        visibilityBySightTarget[stimulus.SightTarget] += stimulus.Value;
+                        visibilityBySightTarget[stimulus.SenseTarget] += stimulus.Value;
                     }
                     else
                     {
-                        visibilityBySightTarget.Add(stimulus.SightTarget, stimulus.Value);
+                        visibilityBySightTarget.Add(stimulus.SenseTarget, stimulus.Value);
                     }
                     break;
                 case SenseKind.Hearing:
@@ -73,8 +73,8 @@ namespace Ai
             }
             else
             {
-                (SightTarget sightTarget, float value) mostVisibleTarget = (null, float.MinValue);
-                foreach (KeyValuePair<SightTarget,float> sightPair in visibilityBySightTarget)
+                (SenseTarget sightTarget, float value) mostVisibleTarget = (null, float.MinValue);
+                foreach (KeyValuePair<SenseTarget,float> sightPair in visibilityBySightTarget)
                 {
                     if (sightPair.Value > mostVisibleTarget.value)
                     {

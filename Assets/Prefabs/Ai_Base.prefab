@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1816274818776610447}
   - component: {fileID: 4357895078427991714}
   - component: {fileID: 8686548554604012545}
+  - component: {fileID: 4976039804609410108}
   m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
@@ -41,6 +42,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4690843874338648664}
+  - {fileID: 682002620391529714}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,6 +107,15 @@ MonoBehaviour:
           m_StringArgument: OnDespawn
           m_BoolArgument: 0
         m_CallState: 2
+  OnStartedInteracting:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedInteracting:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedFidgeting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -222,6 +233,8 @@ MonoBehaviour:
   doorApproachAngleTolerance: 3
   doorApproachMovementSpeed: 1
   doorApproachDistanceTolerance: 0.1
+  maxAttackDistance: 0
+  approachDistance: 0
 --- !u!114 &3274762608564594551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fidgetThreshold: 2e+11
+  minFidgetModifier: 0
+  maxFidgetModifier: 0
 --- !u!114 &1816274818776610447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderThreshold: 10
   maxWanderDistance: 5
+  minWanderModifier: 0
+  maxWanderModifier: 0
 --- !u!114 &4357895078427991714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderThreshold: 35
   maxWanderDistance: 20
+  minWanderModifier: 0
+  maxWanderModifier: 0
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +299,26 @@ MonoBehaviour:
   navigationComponent: {fileID: 758338748543762705}
   sightSensor: {fileID: 4870086894081962781}
   hearingSensor: {fileID: 4769800100488525422}
+  boredThreshold: {fileID: 8678276500234800677}
+  wanderThreshold: {fileID: 3476776795415583245}
+  wanderFarThreshold: {fileID: 5413147699087195352}
+  fidgetThreshold: {fileID: 1760390034293458789}
+  fiddleThreshold: {fileID: 1080036828054471172}
+--- !u!114 &4976039804609410108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d1e43bec5a47e490951aca1c84148c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderNearDistance: 5
+  wanderFarDistance: 15
+  agentType: 1
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +367,16 @@ MonoBehaviour:
   sightBlockingMask:
     serializedVersion: 2
     m_Bits: 4097
-  maxViewConeHalfAngle: 60
+  centralVisionScalar: 1
+  nearPeripheralThreshold: 30
+  nearPeripheralScalar: 0.66
+  farPeripheralThreshold: 60
+  farPeripheralScalar: 0.33
+  maxViewConeHalfAngle: 90
+  maxViewDistance: 333
+  closeViewThreshold: 100
+  closeViewDistanceScalar: 1
+  losProbeBaseValue: 20
 --- !u!114 &4769800100488525422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +390,127 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minPerceivedDB: 20
+--- !u!1 &6461828906644631074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682002620391529714}
+  - component: {fileID: 8678276500234800677}
+  - component: {fileID: 1760390034293458789}
+  - component: {fileID: 3476776795415583245}
+  - component: {fileID: 1080036828054471172}
+  - component: {fileID: 5413147699087195352}
+  m_Layer: 14
+  m_Name: Thresholds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &682002620391529714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626646627048455303}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8678276500234800677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Bored
+  baseThreshold: 5
+  minThresholdModifier: 0
+  maxThresholdModifier: 5
+  AmountOverThreshold: 0
+--- !u!114 &1760390034293458789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Fidget
+  baseThreshold: 10
+  minThresholdModifier: 0
+  maxThresholdModifier: 10
+  AmountOverThreshold: 0
+--- !u!114 &3476776795415583245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: WanderNear
+  baseThreshold: 30
+  minThresholdModifier: 0
+  maxThresholdModifier: 10
+  AmountOverThreshold: 0
+--- !u!114 &1080036828054471172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Fiddle
+  baseThreshold: 45
+  minThresholdModifier: 0
+  maxThresholdModifier: 15
+  AmountOverThreshold: 0
+--- !u!114 &5413147699087195352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: WanderFar
+  baseThreshold: 60
+  minThresholdModifier: 0
+  maxThresholdModifier: 15
+  AmountOverThreshold: 0
 --- !u!1001 &5085550086419174835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,6 +933,23 @@ MonoBehaviour:
   animator: {fileID: 1727435511707494434}
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
+--- !u!114 &2097964165954542098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355599136332048610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9775787e744c78967430e3f3443f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proximityBlockingMask:
+    serializedVersion: 2
+    m_Bits: 1
+  maxProximityDistance: 3
+  baseProximityValue: 100
 --- !u!137 &7606774132491417518 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5835767784289656291, guid: 78fc400961e3968428243a300eb8ea2f,

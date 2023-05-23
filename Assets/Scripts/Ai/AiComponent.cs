@@ -9,6 +9,7 @@ namespace Ai
     {
         protected AiEntity Entity;
         protected AiReferences references;
+        protected AiAttributes attributes;
         
         protected virtual void OnValidate()
         {
@@ -20,6 +21,11 @@ namespace Ai
             if (!references)
             {
                 references = GetComponentInParent<AiReferences>();
+            }
+
+            if (!attributes)
+            {
+                attributes = GetComponentInParent<AiAttributes>();
             }
         }
     }

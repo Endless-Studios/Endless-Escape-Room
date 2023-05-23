@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Ai
 {
@@ -11,10 +14,11 @@ namespace Ai
     public class LinkController : MonoBehaviour
     {
         [SerializeField] private NavMeshLink navMeshLink;
-        [SerializeField] private LinkTraversalEnum linkTraversalKind;
+        [SerializeField] private LinkTraversalType linkTraversalKind;
         [SerializeField] private Openable openable;
 
-        public LinkTraversalEnum LinkTraversalKind => linkTraversalKind;
+        public List<LinkInfo> Links = new List<LinkInfo>();
+        public LinkTraversalType LinkTraversalKind => linkTraversalKind;
         public Openable Openable => openable;
         public NavMeshLink NavMeshLink => navMeshLink;
         private Coroutine reEnableLinkRoutine;
@@ -35,19 +39,21 @@ namespace Ai
         /// <summary>
         /// Disables the link for an amount of time equal to linkDisableTime.
         /// </summary>
+        /// <param name="agentType"></param>
         /// <param name="linkDisableTime"></param>
-        public void DisableLink(float linkDisableTime)
+        public void DisableLink(AgentType agentType, float linkDisableTime)
         {
+            GetLinkForAgentType(agentType).enabled = false;
             NavMeshLink.enabled = false;
             if (reEnableLinkRoutine is not null) 
                 StopCoroutine(reEnableLinkRoutine);
-            reEnableLinkRoutine = StartCoroutine(ReenableLinkRoutine(linkDisableTime));
+            reEnableLinkRoutine = StartCoroutine(ReenableLinkRoutine(agentType, linkDisableTime));
         }
         
-        private IEnumerator ReenableLinkRoutine(float linkDisableTime)
+        private IEnumerator ReenableLinkRoutine(AgentType agentType, float linkDisableTime)
         {
             yield return new WaitForSeconds(linkDisableTime);
-            NavMeshLink.enabled = true;
+            GetLinkForAgentType(agentType).enabled = true;
             reEnableLinkRoutine = null;
         }
 
@@ -56,6 +62,17 @@ namespace Ai
             if (reEnableLinkRoutine is not null)
                 StopCoroutine(reEnableLinkRoutine);
             NavMeshLink.enabled = true;
+        }
+
+        private NavMeshLink GetLinkForAgentType(AgentType agentType)
+        {
+            foreach (LinkInfo linkInfo in Links)
+            {
+                if (linkInfo.AgentType == agentType)
+                    return linkInfo.Link;
+            }
+
+            throw new Exception("No appropriate Nav Mesh Link found");
         }
 
         /// <summary>
@@ -80,4 +97,20 @@ namespace Ai
             return null;
         }
     }
+
+    [Serializable]
+    public class LinkInfo
+    {
+        public NavMeshLink Link;
+        public AgentType AgentType;
+        public LinkTraversalType LinkTraversalType;
+    }
+
+    public enum AgentType
+    {
+        Humanoid,
+        Monster,
+        Ghost
+    }
+    
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines the kinds of thresholds an Ai can pass through.
     /// </summary>
-    public enum LinkTraversalEnum
+    public enum LinkTraversalType
     {
         NarrowThreshold,
         WideThreshold,

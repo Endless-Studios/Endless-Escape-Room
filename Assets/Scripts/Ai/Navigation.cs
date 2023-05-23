@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -59,6 +60,17 @@ namespace Ai
                 default:
                     throw new InvalidEnumArgumentException();
             }
+        }
+
+        public static int GetAreaFromAgentType(AgentType agentType)
+        {
+            return agentType switch
+            {
+                AgentType.Humanoid => NavMesh.GetAreaFromName("Humanoid"),
+                AgentType.Monster => NavMesh.GetAreaFromName("Monster"),
+                AgentType.Ghost => NavMesh.GetAreaFromName("Ghost"),
+                _ => throw new ArgumentOutOfRangeException(nameof(agentType), agentType, null)
+            };
         }
     }
 }

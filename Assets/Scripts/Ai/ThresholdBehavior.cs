@@ -8,10 +8,10 @@ namespace Ai
         [SerializeField] private float baseThreshold;
         [SerializeField] private float minThresholdModifier;
         [SerializeField] private float maxThresholdModifier;
-
+        [ShowOnly] public float AmountOverThreshold;
+        
         public float Threshold => baseThreshold + thresholdModifer;
         public bool HasExceededThreshold => Value > Threshold;
-        public float AmountOverThreshold ;
         public float Value { get; private set; }
         
         private float thresholdModifer;

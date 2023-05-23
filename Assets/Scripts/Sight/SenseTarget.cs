@@ -5,20 +5,20 @@ using UnityEngine;
 namespace Sight
 {
     
-    public class SightTarget : MonoBehaviour
+    public class SenseTarget : MonoBehaviour
     {
-        public static readonly List<SightTarget> SightTargets = new List<SightTarget>();
+        public static readonly List<SenseTarget> SenseTargets = new List<SenseTarget>();
         
         [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
 
         private void Awake()
         {
-            SightTargets.Add(this);
+            SenseTargets.Add(this);
         }
 
         private void OnDestroy()
         {
-            SightTargets.Remove(this);
+            SenseTargets.Remove(this);
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Sight;
 using Unity.Mathematics;
 using UnityEngine;
@@ -26,18 +25,15 @@ namespace Ai
 
         public event Action<Stimulus> OnSensedStimulus;
 
-        private readonly Dictionary<SightTarget, float> awarenessThisFrame = new Dictionary<SightTarget, float>();
-
         /// <summary>
         /// Checks los against each SightTarget in the scene.
         /// </summary>
         public void CheckLineOfSight()
         {
-            awarenessThisFrame.Clear();
-            foreach (SightTarget sightTarget in SightTarget.SightTargets)
+            foreach (SenseTarget senseTarget in SenseTarget.SenseTargets)
             {
                 float totalAwarenessThisFrame = 0;
-                foreach (LosProbe losProbe in sightTarget.LosProbes)
+                foreach (LosProbe losProbe in senseTarget.LosProbes)
                 {
                     Vector3 transformPosition = transform.position;
                     Vector3 toVector = losProbe.transform.position - transformPosition;
@@ -66,40 +62,28 @@ namespace Ai
                         distanceScalar = closeViewDistanceScalar;
 
                     Ray ray = new Ray(transformPosition, toVector.normalized);
+                    
                     if (Physics.Raycast(ray, out RaycastHit hit, distance, sightBlockingMask))
                     {
                         if (hit.collider == losProbe.LosCollider)
-                        {
                             totalAwarenessThisFrame += losProbeBaseValue * viewAngleScalar * distanceScalar;
-                        }
                     }
                 }
 
-                if (totalAwarenessThisFrame > 0)
-                {
-                    awarenessThisFrame.Add(sightTarget, totalAwarenessThisFrame);
-                }
-            }
+                if (totalAwarenessThisFrame <= 0)
+                    continue;
 
-            foreach (KeyValuePair<SightTarget, float> awarenessPair in awarenessThisFrame)
-            {
                 Stimulus stimulus = new Stimulus
                 (
-                    awarenessPair.Key.transform.position,
+                    senseTarget.transform.position,
                     Time.time,
-                    math.clamp(awarenessPair.Value, 0 ,100),
+                    math.clamp(totalAwarenessThisFrame, 0 ,100),
                     SenseKind.Sight,
-                    awarenessPair.Key
+                    senseTarget
                 );
                 
                 OnSensedStimulus?.Invoke(stimulus);
             }
-
         }
-    }
-
-    public interface ISense
-    {
-        public event Action<Stimulus> OnSensedStimulus;
     }
 }
