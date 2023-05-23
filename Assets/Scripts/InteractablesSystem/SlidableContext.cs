@@ -15,19 +15,6 @@ public class SlidableContext : MonoBehaviour
         public Vector3 worldPosition;
     }
 
-    /// <summary>
-    /// If no context is provided, this default plane can be used. 
-    /// </summary>
-    public static Plane GetDefaultPlaneAtPosition(Vector3 targetPosition)
-    {
-        return new Plane(Vector3.up, targetPosition);
-    }
-
-    private void Awake()
-    {
-        SnapAllSlidables();
-    }
-
     [ContextMenu("Snap All Children")] // Can be called from context menu in editor to fix position in scene
     protected void SnapAllSlidables()
     {
@@ -37,6 +24,14 @@ public class SlidableContext : MonoBehaviour
         {
             slidable.transform.position = GetEndSlideResult(slidable.transform.position).worldPosition;
         }
+    }
+
+    /// <summary>
+    /// If no context is provided, this default plane can be used. 
+    /// </summary>
+    public static Plane GetDefaultPlaneAtPosition(Vector3 targetPosition)
+    {
+        return new Plane(Vector3.up, targetPosition);
     }
 
     /// <summary>
