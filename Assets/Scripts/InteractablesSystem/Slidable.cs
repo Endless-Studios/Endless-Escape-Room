@@ -3,38 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Slidable : Grabbable
 {
     protected override string DefaultInteractionText => "Slide";
+    public SlidableContext SlidableContext => slidableContext;
 
-    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private SlidableContext slidableContext;
+
+    [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space (or [x,z] world space for slidables w/o a context)
+    [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
+
+    [Header("Rigidbody Options")]
+    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private float slideSpeed = 10f;
     [SerializeField, Min(.05f)] private float smoothSnapTime = .1f;
-
-    [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space
-    [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
+    [SerializeField] private bool freezeRotationDuringSlide = false;
 
     private Vector3 targetPosition;
     private bool interactionActive;
     private Coroutine activeSnapCoroutine;
 
     private bool cachedRigidbodyIsKinematic;
+    private RigidbodyConstraints cachedRigidbodyConstraints;
 
-    void Awake()
+    private void Awake()
     {
-        if (slidableContext == null)
+        if (rigidbody)
         {
-            Debug.LogWarning("Slidable Context missing. Removing Slidable.");
-            Destroy(this);
-            return;
+            cachedRigidbodyIsKinematic = rigidbody.isKinematic;
+            cachedRigidbodyConstraints = rigidbody.constraints;
+
+            if (rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
+                rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; //RigidbodyInterpolation.Interpolate doesnt work properly on child rigidbodies
         }
 
-        cachedRigidbodyIsKinematic = rigidbody.isKinematic;
-
-        if(rigidbody.interpolation == RigidbodyInterpolation.Interpolate)
-            rigidbody.interpolation = RigidbodyInterpolation.Extrapolate; //RigidbodyInterpolation.Interpolate doesnt work properly on child rigidbodies
+        HandleStopInteract(); //Setup initial state
     }
 
     protected virtual void OnValidate()
@@ -54,14 +57,31 @@ public class Slidable : Grabbable
         }
 
         interactionActive = true;
-        rigidbody.isKinematic = false; //allow movement from the rigidbody's velocity
-        targetPosition = rigidbody.position; //init target pos
+
+        if (rigidbody != null)
+        {
+            rigidbody.isKinematic = false; //allow movement from the rigidbody's velocity
+            targetPosition = rigidbody.position; //init target pos
+        }
+        else
+        {
+            targetPosition = transform.position;
+        }
+
+        if (freezeRotationDuringSlide)
+            rigidbody.freezeRotation = true;
     }
 
     public override void HandleUpdate()
     {
         //Plane based on the slidercontext's orientation
-        Plane dragPlane = new Plane(slidableContext.transform.forward, slidableContext.transform.position);
+        Plane dragPlane;
+
+        if (slidableContext != null)
+            dragPlane = slidableContext.GetContextPlane(this);
+        else
+            dragPlane = SlidableContext.GetDefaultPlaneAtPosition(transform.position);
+
         Camera cam = Camera.main;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
@@ -69,7 +89,11 @@ public class Slidable : Grabbable
         if (dragPlane.Raycast(ray, out float hitDistance))
         {
             Vector3 hitPoint = ray.GetPoint(hitDistance);
-            targetPosition = slidableContext.ClampPosition(hitPoint); //Clamp the desired drag position to the context's bounds
+
+            if (slidableContext != null)
+                targetPosition = slidableContext.ClampPosition(hitPoint); //Clamp the desired drag position to the context's bounds
+            else
+                targetPosition = hitPoint;
         }
         else
         {
@@ -82,17 +106,25 @@ public class Slidable : Grabbable
     protected override void HandleStopInteract()
     {
         interactionActive = false;
-        rigidbody.isKinematic = cachedRigidbodyIsKinematic;
-        rigidbody.velocity = Vector3.zero;
 
-        activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
+        if (rigidbody != null)
+        {
+            rigidbody.isKinematic = cachedRigidbodyIsKinematic;
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.constraints = cachedRigidbodyConstraints;
+        }
+
+        if (slidableContext != null)
+            activeSnapCoroutine = StartCoroutine(SmoothToPosition(slidableContext.GetEndSlideResult(transform.position))); //smooth to final position based on snap result
+        else
+            OnPositionMoved.Invoke(new Vector2(transform.position.x, transform.position.z));
     }
 
-    IEnumerator SmoothToPosition(SlidableContext.EndSlideResult snapResult)
+    private IEnumerator SmoothToPosition(SlidableContext.EndSlideResult snapResult)
     {
         Vector3 startPosition = transform.position;
 
-        for(float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
+        for (float elapsedTime = 0; elapsedTime < smoothSnapTime; elapsedTime += Time.deltaTime)
         {
             float interpolationPoint = elapsedTime / smoothSnapTime;
             transform.position = (Vector3.Lerp(startPosition, snapResult.worldPosition, interpolationPoint));
@@ -105,13 +137,20 @@ public class Slidable : Grabbable
             OnPositionSnapped.Invoke(snapResult.snapID);
 
         OnPositionMoved.Invoke(snapResult.localPosition);
-        // Debug.Log($"Snap: { snapResult.snapIndex } , Pos: { snapResult.localPosition }");
         activeSnapCoroutine = null;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        if (interactionActive)
+        if (interactionActive && rigidbody == null)
+        {
+            transform.position = targetPosition;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (interactionActive && rigidbody != null)
         {
             Vector3 moveDirection = targetPosition - rigidbody.position;
             Vector3 moveVelocity = moveDirection.normalized * slideSpeed * Time.fixedDeltaTime;
@@ -127,5 +166,11 @@ public class Slidable : Grabbable
                 rigidbody.velocity = moveVelocity; //move the slidable respecting physics
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (slidableContext != null)
+            slidableContext.DrawGizmosForSelectedSlidable(this);
     }
 }
