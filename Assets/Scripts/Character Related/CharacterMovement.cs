@@ -10,26 +10,56 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private PlayerInput playerInput = null;
 
     [SerializeField] private float walkSpeed = 1f;
-    [SerializeField] private float runSpeed = 3f;
+    [SerializeField] private float sprintSpeedMultiplier = 3f;
+    [SerializeField] private float crouchingSpeedMultiplier = .3f;
     [SerializeField] private float accelerationTime = 1f;
     [SerializeField] private float terminalVelocity = -60;
     [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
     [SerializeField] private LayerMask groundedLayerMask;
+    [Tooltip("Height distance from top of collision capsule.")]
+    [SerializeField] private float fpsCameraHeight = -.2f;
+
+    [Header("Standing/Crouching")]
+    [SerializeField] private float standingHeight = 1.7f;
+    [SerializeField] private float crouchingHeight = .4f;
+    [SerializeField] private float crouchTransitionSpeed = 4f;
 
     private float yVelocity = 0;
     private bool isGrounded;
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
+    private bool crouchToggledOn = false;
+    private float crouchStandMovementFactor; //calculated when character height is changed: 0 = full crouch | 1 = full stand
 
-    //TODO move into function, not as ternary operator
-    float MoveSpeed => playerInput.GetSprintHeld() ? runSpeed : walkSpeed;
+    /// <summary>
+    /// Calculated movement speed based on crouching and sprinting state.
+    /// </summary>
+    private float CalculatedMovementSpeed
+    {
+        get
+        {
+            float speed = walkSpeed * Mathf.Lerp(crouchingSpeedMultiplier, 1, crouchStandMovementFactor);
+
+            if (playerInput.GetSprintHeld())
+                speed *= sprintSpeedMultiplier;
+
+            return speed;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        float correctHeight = characterController.center.y + characterController.skinWidth;
-        // set the controller center vector:
-        characterController.center = new Vector3(0, correctHeight, 0);
+        if (crouchingHeight < characterController.radius) //radius is minimum height for a capsule
+            crouchingHeight = characterController.radius;
+
+        SetCharacterToStandingHeight();
+    }
+
+    [ContextMenu("Set Character to the Standing Height")]
+    private void SetCharacterToStandingHeight()
+    {
+        SetCharacterControllerHeight(standingHeight);
     }
 
     // Update is called once per frame
@@ -67,12 +97,78 @@ public class CharacterMovement : MonoBehaviour
             Vector3 cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
             moveInput = cameraRelativeMovement;
             //--
-
         }
-        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * MoveSpeed, ref movementDampVelocity, accelerationTime);
+
+        if (playerInput.GetToggleCrouchPressed())
+            crouchToggledOn = !crouchToggledOn;
+
+        bool crouchingThisFrame = crouchToggledOn;
+
+        if (playerInput.GetCrouchHeld())
+        {
+            crouchToggledOn = false; // overrides toggle functionality
+            crouchingThisFrame = true;
+        }
+
+        if (crouchingThisFrame == true)
+            CrouchDown();
+        else
+            StandUp();
+
+
+        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * CalculatedMovementSpeed, ref movementDampVelocity, accelerationTime);
         motion.y = yVelocity;
         characterController.Move(motion * Time.deltaTime);
     }
+
+    /// <summary>
+    /// Shrinks the Character Contoller until the it reaches the crouching size
+    /// </summary>
+    private void CrouchDown()
+    {
+        if (Mathf.Approximately(crouchingHeight, characterController.height) == false)
+        {
+            float targetHeight = Mathf.Max(crouchingHeight, characterController.height - (crouchTransitionSpeed * Time.deltaTime));
+            SetCharacterControllerHeight(targetHeight);
+        }
+    }
+
+    /// <summary>
+    /// Grows the  Character Contoller until it reaches the standing size
+    /// </summary>
+    private void StandUp()
+    {
+
+        if (Mathf.Approximately(standingHeight, characterController.height) == false)
+        {
+            float targetHeight = Mathf.Min(standingHeight, characterController.height + (crouchTransitionSpeed * Time.deltaTime));
+
+            Vector3 currentCenterPosition = transform.TransformPoint(characterController.center);
+            Vector3 currentHeightPosition = currentCenterPosition + (Vector3.up * ((characterController.height / 2f) - characterController.radius));
+            float targetHeightChange = targetHeight - characterController.height;
+
+            if (Physics.SphereCast(currentHeightPosition, characterController.radius, Vector3.up, out RaycastHit hit, targetHeightChange, groundedLayerMask))
+            {
+                targetHeight = characterController.height + hit.distance; //head collision
+            }
+
+            SetCharacterControllerHeight(targetHeight);
+        }
+    }
+
+
+    /// <summary>
+    /// Sets a the Character Controller height. Also sets FPS camera position and Character Controller center position accordingly. 
+    /// </summary>
+    private void SetCharacterControllerHeight(float targetHeight)
+    {
+        float centerHeight = targetHeight / 2f;
+        characterController.height = targetHeight;
+        characterController.center = new Vector3(0, centerHeight, 0);
+        PlayerCore.LocalPlayer.FpsCameraRootTransform.localPosition = new Vector3(0, targetHeight + fpsCameraHeight, 0);
+        crouchStandMovementFactor = Mathf.InverseLerp(crouchingHeight, standingHeight, targetHeight);
+    }
+
 
     private bool CheckGrounding()
     {
