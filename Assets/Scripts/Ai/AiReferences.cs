@@ -14,24 +14,26 @@ namespace Ai
         [SerializeField] private NavigationComponent navigationComponent;
         [SerializeField] private SightSensor sightSensor;
         [SerializeField] private HearingSensor hearingSensor;
+        [SerializeField] private ProximitySensor proximitySensor;
+        [SerializeField] private AwarenessComponent awarenessComponent;
         [SerializeField] private ThresholdBehavior boredThreshold;
         [SerializeField] private ThresholdBehavior wanderThreshold;
         [SerializeField] private ThresholdBehavior wanderFarThreshold;
         [SerializeField] private ThresholdBehavior fidgetThreshold;
         [SerializeField] private ThresholdBehavior fiddleThreshold;
-        
+
 
         public Animator Animator => animator;
         public NavMeshAgent Agent => agent;
         public NavigationComponent NavigationComponent => navigationComponent;
         public SightSensor SightSensor => sightSensor;
         public HearingSensor HearingSensor => hearingSensor;
+        public ProximitySensor ProximitySensor => proximitySensor;
+        public AwarenessComponent AwarenessComponent => awarenessComponent;
         public ThresholdBehavior BoredThreshold => boredThreshold;
         public ThresholdBehavior WanderThreshold => wanderThreshold;
         public ThresholdBehavior WanderFarThreshold => wanderFarThreshold;
         public ThresholdBehavior FidgetThreshold => fidgetThreshold;
         public ThresholdBehavior FiddleThreshold => fiddleThreshold;
-        
-        
     }
 }

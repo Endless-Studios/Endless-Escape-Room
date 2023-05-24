@@ -19,12 +19,14 @@ namespace Ai
         public void UpdateValue(float deltaTime)
         {
             Value += deltaTime;
+            AmountOverThreshold = Mathf.Max(0, Value - Threshold);
         }
 
         public void ResetValue()
         {
             Value = 0;
             thresholdModifer += Random.Range(minThresholdModifier, maxThresholdModifier);
+            AmountOverThreshold = 0;
         }
     }
 }
