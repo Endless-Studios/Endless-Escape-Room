@@ -134,6 +134,7 @@ MonoBehaviour:
   accelerationTime: 0.15
   terminalVelocity: -60
   jumpForce: 5
+  crouchingJumpForce: 2.5
   groundedLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -143,7 +144,6 @@ MonoBehaviour:
   crouchingHeight: 0.7
   standingStepOffset: 0.3
   crouchingStepOffset: 0.1
-  headCollisionGap: 0.04
 --- !u!114 &6719100988358395642
 MonoBehaviour:
   m_ObjectHideFlags: 0

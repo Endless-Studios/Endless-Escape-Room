@@ -9,16 +9,20 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private CharacterController characterController = null;
     [SerializeField] private PlayerInput playerInput = null;
+    [SerializeField] private LayerMask groundedLayerMask;
+    [Tooltip("Height distance from top of collision capsule.")]
+    [SerializeField] private float fpsCameraHeight = -0.2f;
 
+    [Header("Speed")]
     [SerializeField] private float walkSpeed = 1f;
     [SerializeField] private float sprintSpeedMultiplier = 3f;
     [SerializeField] private float crouchingSpeedMultiplier = 0.3f;
     [SerializeField] private float accelerationTime = 1f;
     [SerializeField] private float terminalVelocity = -60;
-    [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
-    [SerializeField] private LayerMask groundedLayerMask;
-    [Tooltip("Height distance from top of collision capsule.")]
-    [SerializeField] private float fpsCameraHeight = -0.2f;
+
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 5; //Temp, probably replace with press and hold input?
+    [SerializeField] private float crouchingJumpForce = 2.5f;
 
     [Header("Standing/Crouching")]
     [SerializeField] private float crouchTransitionSpeed = 4f;
@@ -79,7 +83,7 @@ public class CharacterMovement : MonoBehaviour
         {
             yVelocity = 0;
             if (playerInput.GetJumpRequested())
-                yVelocity = jumpForce;//Temp simple jump
+                yVelocity = Mathf.Lerp(crouchingJumpForce, jumpForce, crouchStandMovementFactor);//Temp simple jump
         }
         else
         {
