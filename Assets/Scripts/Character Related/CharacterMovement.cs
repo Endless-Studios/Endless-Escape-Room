@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private CharacterController characterController = null;
     [SerializeField] private PlayerInput playerInput = null;
     [SerializeField] private LayerMask groundedLayerMask;
+    [SerializeField] float groundedCheckDistance = 0.2f;
     [Tooltip("Height distance from top of collision capsule.")]
     [SerializeField] private float fpsCameraHeight = -0.2f;
 
@@ -31,11 +32,20 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float standingStepOffset = 0.3f;
     [SerializeField] private float crouchingStepOffset = 0.1f;
 
+    [SerializeField] Transform visualTransform = null;
+
+    bool isGrounded = false;
+    bool isJumping = false;
+
     private float yVelocity = 0;
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
     private bool crouchToggledOn = false;
-    private float crouchStandMovementFactor; //calculated when character height is changed: 0 = full crouch | 1 = full stand
+
+    /// <summary>
+    /// Calculated when character height is changed: 0 = full crouch | 1 = full stand
+    /// </summary>
+    private float crouchStandMovementFactor; 
 
     /// <summary>
     /// Calculated movement speed based on crouching and sprinting state.
@@ -79,16 +89,27 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isGrounded = CheckGrounding();
+        Vector3 groundedNormal = Vector3.zero;
+        if(isGrounded || yVelocity <= 0) //If we're in the air, and headed upwards, we dont check grounded
+            isGrounded = CheckGrounding(out groundedNormal);
 
         if (isGrounded)
         {
             yVelocity = 0;
-            if (playerInput.GetJumpRequested())
-                yVelocity = Mathf.Lerp(crouchingJumpForce, jumpForce, crouchStandMovementFactor);//Temp simple jump
+            if(isJumping)//We hit the ground, exit the jump
+                isJumping = false;
+            else
+            {
+                if(playerInput.GetJumpRequested())
+                {
+                    isJumping = true;
+                    yVelocity = Mathf.Lerp(crouchingJumpForce, jumpForce, crouchStandMovementFactor);//Temp simple jump
+                    isGrounded = false;
+                }
+            }
         }
         else
-        {
+        {//Apply gravity to stop our upward, and allow it to go negative, but not more than terminal velocity!
             yVelocity += Physics.gravity.y * Time.deltaTime;
             yVelocity = Mathf.Max(yVelocity, terminalVelocity);
         }
@@ -96,7 +117,6 @@ public class CharacterMovement : MonoBehaviour
         Vector3 moveInput = playerInput.GetMovementInput();
         if (moveInput != Vector3.zero)
         {
-            //--Could go either way on this. Does playerInput communicate direction it intends to move? Or just wrapping input and letting character movement determine how to utilize that input?
             Vector3 forward = Camera.main.transform.forward;
             Vector3 right = Camera.main.transform.right;
 
@@ -110,7 +130,6 @@ public class CharacterMovement : MonoBehaviour
 
             Vector3 cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
             moveInput = cameraRelativeMovement;
-            //--
         }
 
         if (playerInput.GetToggleCrouchPressed())
@@ -129,9 +148,14 @@ public class CharacterMovement : MonoBehaviour
         else
             StandUp();
 
+        if(isGrounded)
+        {
+            moveInput = Vector3.ProjectOnPlane(moveInput, groundedNormal);
+            moveInput.Normalize();
+        }
         motion = Vector3.SmoothDamp(motion, moveInput * CalculatedMovementSpeed, ref movementDampVelocity, accelerationTime);
 
-        motion.y = yVelocity;
+        Vector3 motionToUse = motion + Vector3.up * yVelocity; //Apply our gravity seperately from the projected horizontal movement
 
         Vector3 movingGroundMotion = Vector3.zero;
 
@@ -141,7 +165,7 @@ public class CharacterMovement : MonoBehaviour
             connectedMovingPlatformPreviousPosition = connectedMovingPlatform.position;
         }
 
-        characterController.Move((motion * Time.deltaTime) + (movingGroundMotion));
+        characterController.Move((motionToUse * Time.deltaTime) + (movingGroundMotion));
     }
 
     /// <summary>
@@ -184,6 +208,11 @@ public class CharacterMovement : MonoBehaviour
     private void SetCharacterControllerHeight(float targetHeight)
     {
         crouchStandMovementFactor = Mathf.InverseLerp(crouchingHeight, standingHeight, targetHeight);
+        if(visualTransform)
+        {//Scale the visuals to help visualize
+            float heightScale = Mathf.Lerp(crouchingHeight / standingHeight, 1, crouchStandMovementFactor);
+            visualTransform.transform.localScale = new Vector3(visualTransform.transform.localScale.x, heightScale, visualTransform.transform.localScale.z);
+        }
         float centerHeight = targetHeight / 2f;
         characterController.height = targetHeight;
         characterController.center = new Vector3(0, centerHeight, 0);
@@ -191,17 +220,21 @@ public class CharacterMovement : MonoBehaviour
         characterController.stepOffset = Mathf.Lerp(crouchingStepOffset, standingStepOffset, crouchStandMovementFactor);
     }
 
-    private bool CheckGrounding()
+    private bool CheckGrounding(out Vector3 averageNormal)
     {
-        Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (0.01f - characterController.height / 2f);
+        averageNormal = Vector3.zero;
+        Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (groundedCheckDistance - 0.01f - characterController.height / 2f);
 
         //Center grounding ray check
         Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
-        Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * 0.02f, Color.red);
+        Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * groundedCheckDistance, Color.red);
 
-        if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask, QueryTriggerInteraction.Ignore))
+        RaycastHit hitInfo;
+        bool hitGround = false;
+        if (Physics.Raycast(centerGroundedRay, out hitInfo, groundedCheckDistance, groundedLayerMask, QueryTriggerInteraction.Ignore))
         {
-            return true;
+            averageNormal += hitInfo.normal;
+            hitGround = true;
         }
 
         //Radius grounding rays check
@@ -212,15 +245,18 @@ public class CharacterMovement : MonoBehaviour
             Vector3 radiusRayOffset = new Vector3(Mathf.Cos(angleRadian) * characterController.radius, 0, Mathf.Sin(angleRadian) * characterController.radius); //Get point on the circumference at that angle
 
             Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
-            Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * 0.02f, Color.red);
+            Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * groundedCheckDistance, Color.red);
 
-            if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(radiusRay, out hitInfo, groundedCheckDistance, groundedLayerMask, QueryTriggerInteraction.Ignore))
             {
-                return true;
+                averageNormal += hitInfo.normal;
+                hitGround = true;
             }
         }
 
-        return false;
+        if(hitGround)
+            averageNormal.Normalize();
+        return hitGround;
     }
 
     public void SetMovingSurface(Transform movingSurfaceTransform)
@@ -233,5 +269,25 @@ public class CharacterMovement : MonoBehaviour
     {
         if(connectedMovingPlatform == movingSurfaceTransform)
             connectedMovingPlatform = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (groundedCheckDistance - 0.01f - characterController.height / 2f);
+        
+        //Center grounding ray check
+        Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
+        Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * groundedCheckDistance, Color.red);
+
+        //Radius grounding rays check
+        for(int i = 0; i < RADIUS_GROUNDING_RAY_COUNT; i++)
+        {
+            //Calculate the XZ offsets for each of the 8 points in a circle: 
+            float angleRadian = i * Mathf.PI * 2f / (float)RADIUS_GROUNDING_RAY_COUNT; //Get the radian value of each angle (0-2π) 
+            Vector3 radiusRayOffset = new Vector3(Mathf.Cos(angleRadian) * characterController.radius, 0, Mathf.Sin(angleRadian) * characterController.radius); //Get point on the circumference at that angle
+
+            Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
+            Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * groundedCheckDistance, Color.red);
+        }
     }
 }

@@ -1688,6 +1688,9 @@ MonoBehaviour:
   OnFinishedRotationSnap:
     m_PersistentCalls:
       m_Calls: []
+  OnRotationChangeDelta:
+    m_PersistentCalls:
+      m_Calls: []
   targetTransform: {fileID: 91214377}
   rotationSpeed: 5
   rotationAxis: 2
@@ -2004,6 +2007,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedRotationSnap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationChangeDelta:
     m_PersistentCalls:
       m_Calls: []
   targetTransform: {fileID: 93184968}
@@ -2655,17 +2661,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 114490955}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 114490955}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &115323826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5006,17 +5013,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 273850054}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 273850054}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &273850056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5213,6 +5221,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedRotationSnap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationChangeDelta:
     m_PersistentCalls:
       m_Calls: []
   targetTransform: {fileID: 278652684}
@@ -6885,17 +6896,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 340504156}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 340504156}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!4 &342747257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4634701041041928623, guid: d6a8d1cd2ab5cd54187cdc07e2c280aa,
@@ -7097,7 +7109,7 @@ PrefabInstance:
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -7139,15 +7151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5685148041957440190, guid: 4bd0166003eb95042908a281e57794c0,
-        type: 3}
-      propertyPath: crouchingHeight
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 7307238664253114075, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7652549
+      value: 1.7791165
       objectReference: {fileID: 0}
     - target: {fileID: 7485675807474701852, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -8309,17 +8316,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 440699206}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 440699206}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &440699208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9162,17 +9170,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 505299578}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 505299578}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &505299580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12537,6 +12546,9 @@ MonoBehaviour:
   OnFinishedRotationSnap:
     m_PersistentCalls:
       m_Calls: []
+  OnRotationChangeDelta:
+    m_PersistentCalls:
+      m_Calls: []
   targetTransform: {fileID: 656299213}
   rotationSpeed: 5
   rotationAxis: 0
@@ -14012,17 +14024,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 772106935}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 749204022}
+  slidableContext: {fileID: 772106935}
   slideSpeed: 80
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 749204022}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!54 &749204022
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14751,17 +14764,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 768149707}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 768149707}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &771611875
 GameObject:
   m_ObjectHideFlags: 0
@@ -15294,6 +15308,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedRotationSnap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationChangeDelta:
     m_PersistentCalls:
       m_Calls: []
   targetTransform: {fileID: 808585513}
@@ -15897,17 +15914,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 829287198}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 829287198}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -17779,17 +17797,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 975863119}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 975863119}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &975863121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18195,7 +18214,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7652549, y: 1}
+    m_SensorSize: {x: 1.7791165, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18509,17 +18528,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1021485339}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1021485339}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &1023944617
 GameObject:
   m_ObjectHideFlags: 0
@@ -19487,6 +19507,9 @@ MonoBehaviour:
   OnFinishedRotationSnap:
     m_PersistentCalls:
       m_Calls: []
+  OnRotationChangeDelta:
+    m_PersistentCalls:
+      m_Calls: []
   targetTransform: {fileID: 1045449023}
   rotationSpeed: 5
   rotationAxis: 0
@@ -19751,17 +19774,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 131812076}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1073968813}
+  slidableContext: {fileID: 131812076}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1073968813}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!54 &1073968813
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20932,17 +20956,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1172113366}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1172113366}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &1172113368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22435,7 +22460,6 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 92145822}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
@@ -22454,10 +22478,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  rigidbody: {fileID: 1280034263}
+  slidableContext: {fileID: 92145822}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1280034263}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!54 &1280034263
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24831,6 +24857,9 @@ MonoBehaviour:
   OnFinishedRotationSnap:
     m_PersistentCalls:
       m_Calls: []
+  OnRotationChangeDelta:
+    m_PersistentCalls:
+      m_Calls: []
   targetTransform: {fileID: 1433571713}
   rotationSpeed: 5
   rotationAxis: 0
@@ -25325,6 +25354,9 @@ MonoBehaviour:
   OnFinishedRotationSnap:
     m_PersistentCalls:
       m_Calls: []
+  OnRotationChangeDelta:
+    m_PersistentCalls:
+      m_Calls: []
   targetTransform: {fileID: 1440095012}
   rotationSpeed: 5
   rotationAxis: 2
@@ -25561,17 +25593,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1442157356}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1442157356}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &1442682551
 GameObject:
   m_ObjectHideFlags: 0
@@ -26286,17 +26319,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1071748276}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 0}
+  slidableContext: {fileID: 1071748276}
   slideSpeed: 40
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 0}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!65 &1506173290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26465,17 +26499,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1514881569}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1514881569}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &1514881571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27879,17 +27914,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 599791647}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 0}
+  slidableContext: {fileID: 599791647}
   slideSpeed: 40
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 0}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!65 &1587475337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28122,17 +28158,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1599069159}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1599069159}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &1599069161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29075,17 +29112,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1121933302}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 0}
+  slidableContext: {fileID: 1121933302}
   slideSpeed: 40
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 0}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &1646123316
 GameObject:
   m_ObjectHideFlags: 0
@@ -37805,17 +37843,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 459695555}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1930959586}
+  slidableContext: {fileID: 459695555}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1930959586}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &1930959588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39566,17 +39605,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 2119237043}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 0}
+  slidableContext: {fileID: 2119237043}
   slideSpeed: 40
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 0}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!65 &2030600631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39766,17 +39806,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 2034194735}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 2034194735}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &2043359369
 GameObject:
   m_ObjectHideFlags: 0
@@ -39991,17 +40032,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 147851484}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 2054453347}
+  slidableContext: {fileID: 147851484}
   slideSpeed: 40
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 2054453347}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!54 &2054453347
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40334,17 +40376,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 131812076}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 2072078432}
+  slidableContext: {fileID: 131812076}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 2072078432}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!54 &2072078432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45804,17 +45847,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 1754192127}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 2105931614}
+  slidableContext: {fileID: 1754192127}
   slideSpeed: 10
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 2105931614}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!1 &2109923749
 GameObject:
   m_ObjectHideFlags: 0
@@ -46577,7 +46621,7 @@ PrefabInstance:
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3806633
+      value: 0.38066328
       objectReference: {fileID: 0}
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
@@ -46996,6 +47040,9 @@ MonoBehaviour:
   OnFinishedRotationSnap:
     m_PersistentCalls:
       m_Calls: []
+  OnRotationChangeDelta:
+    m_PersistentCalls:
+      m_Calls: []
   targetTransform: {fileID: 1051265452947569919}
   rotationSpeed: 5
   rotationAxis: 0
@@ -47131,6 +47178,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedRotationSnap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationChangeDelta:
     m_PersistentCalls:
       m_Calls: []
   targetTransform: {fileID: 1051265453035605429}
@@ -48168,6 +48218,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedRotationSnap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationChangeDelta:
     m_PersistentCalls:
       m_Calls: []
   targetTransform: {fileID: 1051265453786962430}
@@ -50067,17 +50120,18 @@ MonoBehaviour:
   OnInteractStopped:
     m_PersistentCalls:
       m_Calls: []
-  slidableContext: {fileID: 0}
   OnPositionMoved:
     m_PersistentCalls:
       m_Calls: []
   OnPositionSnapped:
     m_PersistentCalls:
       m_Calls: []
-  rigidbody: {fileID: 1955521007279567087}
+  slidableContext: {fileID: 0}
   slideSpeed: 80
   smoothSnapTime: 0.1
+  rigidbody: {fileID: 1955521007279567087}
   freezeRotationDuringSlide: 0
+  slideKinematically: 0
 --- !u!114 &1955521007279567089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51944,6 +51998,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedRotationSnap:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationChangeDelta:
     m_PersistentCalls:
       m_Calls: []
   targetTransform: {fileID: 6912715290501081536}
