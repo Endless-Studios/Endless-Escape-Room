@@ -117,4 +117,14 @@ public class PlayerInput : MonoBehaviour
     {
         return HeldControlsEnabled && Input.GetButtonDown("Interact");
     }
+
+    public bool GetCrouchHeld()
+    {
+        return MoveEnabled && Input.GetButton("Hold Crouch");
+    }
+
+    public bool GetToggleCrouchPressed()
+    {
+        return MoveEnabled && Input.GetButtonDown("Toggle Crouch");
+    }
 }
