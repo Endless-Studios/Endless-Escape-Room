@@ -32,7 +32,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float crouchingStepOffset = 0.1f;
 
     private float yVelocity = 0;
-    private bool isGrounded;
     private Vector3 movementDampVelocity = Vector3.zero;
     private Vector3 motion;
     private bool crouchToggledOn = false;
@@ -59,6 +58,9 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     public bool IsCrouching => crouchStandMovementFactor < .5f;
 
+    Transform connectedMovingPlatform;
+    Vector3 connectedMovingPlatformPreviousPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = CheckGrounding();
+        bool isGrounded = CheckGrounding();
 
         if (isGrounded)
         {
@@ -127,10 +129,19 @@ public class CharacterMovement : MonoBehaviour
         else
             StandUp();
 
+        motion = Vector3.SmoothDamp(motion, moveInput * CalculatedMovementSpeed, ref movementDampVelocity, accelerationTime);
 
-        motion = Vector3.SmoothDamp(characterController.velocity, moveInput * CalculatedMovementSpeed, ref movementDampVelocity, accelerationTime);
         motion.y = yVelocity;
-        characterController.Move(motion * Time.deltaTime);
+
+        Vector3 movingGroundMotion = Vector3.zero;
+
+        if (connectedMovingPlatform)
+        {
+            movingGroundMotion = connectedMovingPlatform.position - connectedMovingPlatformPreviousPosition;
+            connectedMovingPlatformPreviousPosition = connectedMovingPlatform.position;
+        }
+
+        characterController.Move((motion * Time.deltaTime) + (movingGroundMotion));
     }
 
     /// <summary>
@@ -150,7 +161,6 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     private void StandUp()
     {
-
         if (Mathf.Approximately(standingHeight, characterController.height) == false)
         {
             float targetHeight = Mathf.Min(standingHeight, characterController.height + (crouchTransitionSpeed * Time.deltaTime));
@@ -168,7 +178,6 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Sets a the Character Controller height. Also sets FPS camera position and Character Controller center position, & Character Controller step offset accordingly. 
     /// </summary>
@@ -182,7 +191,6 @@ public class CharacterMovement : MonoBehaviour
         characterController.stepOffset = Mathf.Lerp(crouchingStepOffset, standingStepOffset, crouchStandMovementFactor);
     }
 
-
     private bool CheckGrounding()
     {
         Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (0.01f - characterController.height / 2f);
@@ -191,7 +199,7 @@ public class CharacterMovement : MonoBehaviour
         Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
         Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * 0.02f, Color.red);
 
-        if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask))
+        if (Physics.Raycast(centerGroundedRay, 0.02f, groundedLayerMask, QueryTriggerInteraction.Ignore))
         {
             return true;
         }
@@ -206,12 +214,24 @@ public class CharacterMovement : MonoBehaviour
             Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
             Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * 0.02f, Color.red);
 
-            if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask))
+            if (Physics.Raycast(radiusRay, 0.02f, groundedLayerMask, QueryTriggerInteraction.Ignore))
             {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void SetMovingSurface(Transform movingSurfaceTransform)
+    {
+        connectedMovingPlatform = movingSurfaceTransform;
+        connectedMovingPlatformPreviousPosition = movingSurfaceTransform.position;
+    }
+
+    public void UnsetMovingSurface(Transform movingSurfaceTransform)
+    {
+        if(connectedMovingPlatform == movingSurfaceTransform)
+            connectedMovingPlatform = null;
     }
 }

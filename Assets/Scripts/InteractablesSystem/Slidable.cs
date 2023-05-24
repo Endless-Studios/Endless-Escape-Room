@@ -8,16 +8,17 @@ public class Slidable : Grabbable
     protected override string DefaultInteractionText => "Slide";
     public SlidableContext SlidableContext => slidableContext;
 
-    [SerializeField] private SlidableContext slidableContext;
-
     [HideInInspector] public UnityEvent<Vector2> OnPositionMoved = new UnityEvent<Vector2>(); //Move finished event, Vector2 result in context's local space (or [x,z] world space for slidables w/o a context)
     [HideInInspector] public UnityEvent<Vector2Int> OnPositionSnapped = new UnityEvent<Vector2Int>(); //Snap finished, Vector2Int x,y snap index
 
-    [Header("Rigidbody Options")]
-    [SerializeField] private new Rigidbody rigidbody;
+    [SerializeField] private SlidableContext slidableContext;
     [SerializeField] private float slideSpeed = 10f;
     [SerializeField, Min(.05f)] private float smoothSnapTime = .1f;
+
+    [Header("Rigidbody Options")]
+    [SerializeField] private new Rigidbody rigidbody;
     [SerializeField] private bool freezeRotationDuringSlide = false;
+    [SerializeField] private bool slideKinematically = false;
 
     private Vector3 targetPosition;
     private bool interactionActive;
@@ -60,7 +61,7 @@ public class Slidable : Grabbable
 
         if (rigidbody != null)
         {
-            rigidbody.isKinematic = false; //allow movement from the rigidbody's velocity
+            rigidbody.isKinematic = slideKinematically; //allow movement from the rigidbody's velocity
             targetPosition = rigidbody.position; //init target pos
         }
         else
@@ -97,7 +98,10 @@ public class Slidable : Grabbable
         }
         else
         {
-            targetPosition = rigidbody.position;
+            if (rigidbody != null)
+                targetPosition = rigidbody.position;
+            else
+                targetPosition = transform.position;
         }
 
         Debug.DrawLine(cam.transform.position, targetPosition, Color.red);
@@ -144,7 +148,13 @@ public class Slidable : Grabbable
     {
         if (interactionActive && rigidbody == null)
         {
-            transform.position = targetPosition;
+            Vector3 moveDirection = targetPosition - transform.position;
+            Vector3 moveVelocity = moveDirection.normalized * slideSpeed * Time.fixedDeltaTime; //Time.fixedDelta to move same speed as rigidbody version. change speed calc??
+
+            if ((moveVelocity * Time.fixedDeltaTime).sqrMagnitude > moveDirection.sqrMagnitude) //check to see if the drag will overshoot the target position
+                transform.position = targetPosition;
+            else
+                transform.position += moveVelocity * Time.deltaTime;
         }
     }
 
@@ -163,7 +173,10 @@ public class Slidable : Grabbable
             }
             else
             {
-                rigidbody.velocity = moveVelocity; //move the slidable respecting physics
+                if (slideKinematically == false)
+                    rigidbody.velocity = moveVelocity; //move the slidable respecting physics
+                else
+                    rigidbody.MovePosition(rigidbody.position + (moveVelocity * Time.fixedDeltaTime));
             }
         }
     }
