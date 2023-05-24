@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExpandedInventory : InventoryBase
 {
@@ -49,9 +50,20 @@ public class ExpandedInventory : InventoryBase
         }
     }
 
-    public class InventorySlot
+    public class StackableInventorySlot : InventorySlotBase
     {
-        public List<Pickupable> itemsHeld = new List<Pickupable>();
+        public List<Pickupable> items = new List<Pickupable>();
+        string prompt = string.Empty;
+
+        public override Pickupable Pickupable => items[0];
+        public override int Count => items.Count;
+        public override string Prompt => prompt;
+
+        public void SetPrompt(string newPrompt)
+        {
+            prompt = newPrompt;
+            HandleSlotUpdated();
+        }
     }
 
     [SerializeField] PlayerInteractor interactor;
@@ -59,15 +71,18 @@ public class ExpandedInventory : InventoryBase
     [SerializeField] int maxInventorySlots = 99999;
     [SerializeField] int maxStackSize = 99;
 
-    Dictionary<PickupableKey, InventorySlot> heldItemsMap = new Dictionary<PickupableKey, InventorySlot>();
-    List<InventorySlot> orderedSlots = new List<InventorySlot>();
+    Dictionary<PickupableKey, StackableInventorySlot> heldItemsMap = new Dictionary<PickupableKey, StackableInventorySlot>();
+    List<StackableInventorySlot> orderedSlots = new List<StackableInventorySlot>();
 
     int selectedIndex = -1;
+
+    public override bool UiAlwaysOpen => true;
 
     private void Start()
     {
         //Maybe instead switch to a notification?
         interactor.OnItemInteracted.AddListener(HandleItemInteracted);
+        PlayerHUD.Instance.InventoryUi.Show();
     }
 
     private void HandleItemInteracted(Interactable interactable)
@@ -82,13 +97,12 @@ public class ExpandedInventory : InventoryBase
     {
         PickupableKey key = new PickupableKey(pickupable);
         if(heldItemsMap.ContainsKey(key))
-            return heldItemsMap[key].itemsHeld.Count < maxStackSize;
+            return heldItemsMap[key].items.Count < maxStackSize;
         else
             return heldItemsMap.Count < maxInventorySlots;
     }
 
-    //Convert to InventorySlot? Maybe an interface that has a count, and pickupable?
-    public override Pickupable[] GetItems(Pickupable[] skipList = null)
+    public override InventorySlotBase[] GetItems(Pickupable[] skipList = null)
     {
         if(skipList != null)
         { 
@@ -99,11 +113,11 @@ public class ExpandedInventory : InventoryBase
             }
             //TODO use more friendly syntax.
             PickupableKey[] keys = heldItemsMap.Keys.Except(skippedKeys).ToArray();
-            return keys.Select(key => heldItemsMap[key].itemsHeld[0]).ToArray();
+            return keys.Select(key => heldItemsMap[key]).ToArray();
         }
         else
         {
-            return heldItemsMap.Keys.Select(key => heldItemsMap[key].itemsHeld[0]).ToArray();
+            return heldItemsMap.Keys.Select(key => heldItemsMap[key]).ToArray();
         }
     }
 
@@ -115,16 +129,36 @@ public class ExpandedInventory : InventoryBase
             PickupableKey key = new PickupableKey(pickupable);
             if(heldItemsMap.ContainsKey(key) == false)
             {
-                InventorySlot newSlot = new InventorySlot();
+                StackableInventorySlot newSlot = new StackableInventorySlot();
                 orderedSlots.Add(newSlot);
+                int newSlotIndex = orderedSlots.Count - 1;
+                newSlot.SetPrompt(GetIndexPrompt(newSlotIndex));
                 heldItemsMap[key] = newSlot;
             }
-            heldItemsMap[key].itemsHeld.Add(pickupable);
+            heldItemsMap[key].items.Add(pickupable);
+            PlayerHUD.Instance.InventoryUi.Show();
+
             pickupable.gameObject.SetActive(false);
             //TODO subscribe to pickupable OnIdentifiersChanged to move to a new slot/update current slot
             return true;
         }
         return false;
+    }
+
+    private void UpdateOrderSlotPrompts()
+    {
+        for (int index = 0; index < orderedSlots.Count; index++)
+            orderedSlots[index].SetPrompt(GetIndexPrompt(index));
+    }
+
+    private static string GetIndexPrompt(int index)
+    {
+        if(index < 9)
+            return (index + 1).ToString();
+        else if(index == 9)
+            return "0";
+        else
+            return string.Empty;
     }
 
     private void Update()
@@ -161,7 +195,7 @@ public class ExpandedInventory : InventoryBase
 
     private void ShowCurrentSlot()
     {
-        Pickupable pickupable = orderedSlots[selectedIndex].itemsHeld[0];
+        Pickupable pickupable = orderedSlots[selectedIndex].Pickupable;
         pickupable.gameObject.SetActive(true);
         pickupable.OnDropped.AddListener(HandleHeldItemDropped);
         heldItemManager.HoldItem(pickupable, false);
@@ -169,19 +203,23 @@ public class ExpandedInventory : InventoryBase
 
     private void HandleHeldItemDropped()
     {
-        Pickupable droppedPickupable = orderedSlots[selectedIndex].itemsHeld[0];
+        Pickupable droppedPickupable = orderedSlots[selectedIndex].Pickupable;
         droppedPickupable.OnDropped.RemoveListener(HandleHeldItemDropped);
-        orderedSlots[selectedIndex].itemsHeld.RemoveAt(0);
-        if(orderedSlots[selectedIndex].itemsHeld.Count > 0)
+        orderedSlots[selectedIndex].items.RemoveAt(0);
+        if(orderedSlots[selectedIndex].items.Count > 0)
         {
             ShowCurrentSlot();
+            orderedSlots[selectedIndex].HandleSlotUpdated();
         }
         else
         {
+            int indexToRemove = selectedIndex;
+            selectedIndex = -1;
             PickupableKey key = new PickupableKey(droppedPickupable);
             heldItemsMap.Remove(key);
-            orderedSlots.RemoveAt(selectedIndex);
-            selectedIndex = -1;
+            orderedSlots.RemoveAt(indexToRemove);
+            UpdateOrderSlotPrompts();
+            PlayerHUD.Instance.InventoryUi.Show();
         }
     }
 }

@@ -1,23 +1,36 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class UiInventoryElement3D : UiInventoryElement
 {
     [SerializeField] float depth = 1;
+    [SerializeField] TextMeshProUGUI countText = null;
     GameObject visuals = null;
 
     Bounds finalBounds;
 
     protected override void Setup()
     {
-        visuals = Pickupable.GetVisualClone(Pickupable.transform.position, Quaternion.identity);
+        visuals = Slot.Pickupable.GetVisualClone(Slot.Pickupable.transform.position, Quaternion.identity);
+        UpdateCountText();
         visuals.transform.SetParent(Camera.main.transform, true);
         PositionVisuals();
         AdjustSize();
         Unhighlight();
+    }
+
+    private void UpdateCountText()
+    {
+        if(countText != null)
+        {
+            if(Slot.Count > 1)
+                countText.SetText($"x{Slot.Count}");
+            else
+                countText.SetText(string.Empty);
+        }
     }
 
     void AdjustSize() //TODO this is slightly innacurate depending on rotation
@@ -92,5 +105,10 @@ public class UiInventoryElement3D : UiInventoryElement
     public override void Unhighlight()
     {
         Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedItem"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
+    }
+
+    public override void HandleUpdate()
+    {
+        UpdateCountText();
     }
 }

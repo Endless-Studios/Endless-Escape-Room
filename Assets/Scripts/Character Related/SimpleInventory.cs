@@ -4,6 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public class SimpleInventorySlot : InventorySlotBase
+{
+    Pickupable item = null;
+
+    public SimpleInventorySlot(Pickupable pickupable)
+    {
+        item = null;
+    }
+
+    public override Pickupable Pickupable => item;
+    public override int Count => 1;
+    public override string Prompt => string.Empty;
+}
+
 /// <summary>
 /// A simple implementation of inventory that just checks if an item is held only
 /// </summary>
@@ -13,6 +27,8 @@ public class SimpleInventory : InventoryBase
     [SerializeField] ItemInspector itemInspector;
     [SerializeField] PlayerInteractor interactor;
     [SerializeField] bool inspectOnPickup = true;
+
+    public override bool UiAlwaysOpen => false;
 
     private void Start()
     {
@@ -46,16 +62,16 @@ public class SimpleInventory : InventoryBase
         return false;
     }
 
-    public override Pickupable[] GetItems(Pickupable[] skipList = null)
+    public override InventorySlotBase[] GetItems(Pickupable[] skipList = null)
     {//We're only every have 0 or 1 items in this simple inventory. Just check it the skip list contains the held item or not
         if(heldItemManager.HeldPickupable != null)
         {
             if(skipList != null && skipList.Contains(heldItemManager.HeldPickupable))
-                return new Pickupable[0];
+                return new SimpleInventorySlot[0];
             else
-                return new Pickupable[] { heldItemManager.HeldPickupable };
+                return new SimpleInventorySlot[] { new SimpleInventorySlot(heldItemManager.HeldPickupable) };
         }
         else
-            return new Pickupable[0];
+            return new SimpleInventorySlot[0];
     }
 }
