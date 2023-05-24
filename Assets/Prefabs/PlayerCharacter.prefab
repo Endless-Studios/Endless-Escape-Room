@@ -138,9 +138,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   fpsCameraHeight: -0.2
-  standingHeight: 1.7
-  crouchingHeight: 0.4
   crouchTransitionSpeed: 4
+  standingHeight: 1.7
+  crouchingHeight: 0.7
+  standingStepOffset: 0.3
+  crouchingStepOffset: 0.1
+  headCollisionGap: 0.04
 --- !u!114 &6719100988358395642
 MonoBehaviour:
   m_ObjectHideFlags: 0

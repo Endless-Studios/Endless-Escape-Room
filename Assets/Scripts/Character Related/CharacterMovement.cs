@@ -5,24 +5,27 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private const int RADIUS_GROUNDING_RAY_COUNT = 8;
+    private const float HEAD_COLLISION_GAP = .01f; // The amount of space to leave between upper capsule collision and object above when transitioning from crouching to standing.
 
     [SerializeField] private CharacterController characterController = null;
     [SerializeField] private PlayerInput playerInput = null;
 
     [SerializeField] private float walkSpeed = 1f;
     [SerializeField] private float sprintSpeedMultiplier = 3f;
-    [SerializeField] private float crouchingSpeedMultiplier = .3f;
+    [SerializeField] private float crouchingSpeedMultiplier = 0.3f;
     [SerializeField] private float accelerationTime = 1f;
     [SerializeField] private float terminalVelocity = -60;
     [SerializeField] private int jumpForce = 5; //Temp, probably replace with press and hold input?
     [SerializeField] private LayerMask groundedLayerMask;
     [Tooltip("Height distance from top of collision capsule.")]
-    [SerializeField] private float fpsCameraHeight = -.2f;
+    [SerializeField] private float fpsCameraHeight = -0.2f;
 
     [Header("Standing/Crouching")]
-    [SerializeField] private float standingHeight = 1.7f;
-    [SerializeField] private float crouchingHeight = .4f;
     [SerializeField] private float crouchTransitionSpeed = 4f;
+    [SerializeField] private float standingHeight = 1.7f;
+    [SerializeField] private float crouchingHeight = 0.7f;
+    [SerializeField] private float standingStepOffset = 0.3f;
+    [SerializeField] private float crouchingStepOffset = 0.1f;
 
     private float yVelocity = 0;
     private bool isGrounded;
@@ -47,11 +50,16 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns true if character is in a crouching state.
+    /// </summary>
+    public bool IsCrouching => crouchStandMovementFactor < .5f;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (crouchingHeight < characterController.radius) //radius is minimum height for a capsule
-            crouchingHeight = characterController.radius;
+        if (crouchingHeight < characterController.radius * 2f) //radius * 2 is minimum height for a capsule
+            crouchingHeight = characterController.radius * 2f;
 
         SetCharacterToStandingHeight();
     }
@@ -149,7 +157,7 @@ public class CharacterMovement : MonoBehaviour
 
             if (Physics.SphereCast(currentHeightPosition, characterController.radius, Vector3.up, out RaycastHit hit, targetHeightChange, groundedLayerMask))
             {
-                targetHeight = characterController.height + (hit.distance - characterController.skinWidth); //head collision
+                targetHeight = characterController.height + (hit.distance - HEAD_COLLISION_GAP); //head collision
             }
 
             SetCharacterControllerHeight(targetHeight);
@@ -158,15 +166,16 @@ public class CharacterMovement : MonoBehaviour
 
 
     /// <summary>
-    /// Sets a the Character Controller height. Also sets FPS camera position and Character Controller center position accordingly. 
+    /// Sets a the Character Controller height. Also sets FPS camera position and Character Controller center position, & Character Controller step offset accordingly. 
     /// </summary>
     private void SetCharacterControllerHeight(float targetHeight)
     {
+        crouchStandMovementFactor = Mathf.InverseLerp(crouchingHeight, standingHeight, targetHeight);
         float centerHeight = targetHeight / 2f;
         characterController.height = targetHeight;
         characterController.center = new Vector3(0, centerHeight, 0);
         PlayerCore.LocalPlayer.FpsCameraRootTransform.localPosition = new Vector3(0, targetHeight + fpsCameraHeight, 0);
-        crouchStandMovementFactor = Mathf.InverseLerp(crouchingHeight, standingHeight, targetHeight);
+        characterController.stepOffset = Mathf.Lerp(crouchingStepOffset, standingStepOffset, crouchStandMovementFactor);
     }
 
 
