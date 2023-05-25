@@ -151,7 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"SearchingTime","value":{"$content":0.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"InvestigatingTime","value":{"$content":0.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"InvestigatingTimeoutThreshold","value":{"$content":60.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"SearchingTimeoutThreshold","value":{"$content":60.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!114 &3278828093606095786
 MonoBehaviour:
@@ -273,7 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderNearDistance: 5
   wanderFarDistance: 15
-  agentType: 1
 --- !u!114 &3246184029654640956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noticeThreshold: 40
   visibilityThreshold: 60
-  stimuliDeclineRate: 10
   GainedNewStimulus:
     m_PersistentCalls:
       m_Calls: []
@@ -362,7 +364,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8520134032321937830}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
 --- !u!114 &4870086894081962781
 MonoBehaviour:
   m_ObjectHideFlags: 0
