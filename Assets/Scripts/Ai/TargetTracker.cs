@@ -31,15 +31,14 @@ namespace Ai
             Vector3 velocity = displacement / (recentPositions.Count * Time.fixedDeltaTime);
 
             Vector3 estimatedPosition = recentPositions[recentPositions.Count - 1] + velocity * estimationTime;
-
-            int navArea = Navigation.GetAreaFromAgentType(attributes.AgentType);
             
-            if (NavMesh.SamplePosition(estimatedPosition, out NavMeshHit hit, navmeshSampleDistance, navArea))
+            
+            if (NavMesh.SamplePosition(estimatedPosition, out NavMeshHit hit, navmeshSampleDistance, NavMesh.AllAreas))
             {
                 return hit.position;
             }
 
-            if(NavMesh.SamplePosition(recentPositions[recentPositions.Count - 1], out hit, navmeshSampleDistance, navArea))
+            if(NavMesh.SamplePosition(recentPositions[recentPositions.Count - 1], out hit, navmeshSampleDistance, NavMesh.AllAreas))
             {
                 return hit.position;
             }

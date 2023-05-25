@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Ai
     /// </summary>
     public class Navigation : MonoBehaviourSingleton<Navigation>
     {
-        [SerializeField] private NavMeshSurface surface;
+        [SerializeField] private NavMeshSurface[] surfaces;
         [SerializeField] private bool buildNavigationOnGameStart;
         [SerializeField] private float linkDisableTime;
         [SerializeField] private float meshSampleTolerance;
@@ -24,11 +25,25 @@ namespace Ai
         public int MaxNavigationSamples => maxNavigationSamples;
         private static bool ShouldDebugNavigation => Instance && Instance.shouldDebugNavigation;
 
+        private void OnValidate()
+        {
+            if (surfaces.Length == 0)
+            {
+                surfaces = GetComponents<NavMeshSurface>();
+            }
+        }
+
         protected override void Awake()
         {
             base.Awake();
-            if(buildNavigationOnGameStart)
+            
+            if (!buildNavigationOnGameStart) 
+                return;
+            
+            foreach (NavMeshSurface surface in surfaces)
+            {
                 surface.BuildNavMesh();
+            }
         }
 
         /// <summary>
@@ -60,17 +75,6 @@ namespace Ai
                 default:
                     throw new InvalidEnumArgumentException();
             }
-        }
-
-        public static int GetAreaFromAgentType(AgentType agentType)
-        {
-            return agentType switch
-            {
-                AgentType.Humanoid => NavMesh.GetAreaFromName("Humanoid"),
-                AgentType.Monster => NavMesh.GetAreaFromName("Monster"),
-                AgentType.Ghost => NavMesh.GetAreaFromName("Ghost"),
-                _ => throw new ArgumentOutOfRangeException(nameof(agentType), agentType, null)
-            };
         }
     }
 }

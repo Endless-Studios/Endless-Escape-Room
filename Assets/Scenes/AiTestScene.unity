@@ -949,6 +949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ai_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 4935126840799936727, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32429fcbf37a3404eb8b106dd18ad79a, type: 3}
 --- !u!1001 &194591040
@@ -1533,6 +1538,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
+--- !u!1 &275044498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3417203797340643467, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+    type: 3}
+  m_PrefabInstance: {fileID: 178753165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &275044501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3246184029654640956, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+    type: 3}
+  m_PrefabInstance: {fileID: 178753165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275044498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b31faa57494921b4edd8aa6a6548c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &275044516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275044498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed996e5bbd84203b1c1cf15c278a67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awarenessComponent: {fileID: 275044501}
 --- !u!1 &277167223
 GameObject:
   m_ObjectHideFlags: 0
@@ -6035,6 +6071,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670513956646036688, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
+        type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.23333333
       objectReference: {fileID: 0}
     - target: {fileID: 3883215917873696932, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}

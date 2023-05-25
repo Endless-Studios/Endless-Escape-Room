@@ -10,7 +10,6 @@ namespace Ai
     {
         [SerializeField] private float noticeThreshold;
         [SerializeField] private float visibilityThreshold;
-        [SerializeField] private float stimuliDeclineRate;
         private readonly Dictionary<SenseTarget, float> visibilityBySightTarget = new Dictionary<SenseTarget, float>();
         private List<ISense> senses;
 
@@ -62,14 +61,17 @@ namespace Ai
         {
             if (Target)
             {
-                if (visibilityBySightTarget.ContainsKey(Target)) 
+                if (visibilityBySightTarget.ContainsKey(Target))
+                {
+                    visibilityBySightTarget.Clear();
                     return;
+                }
                 
                 Stimulus lastKnowLocation = new Stimulus(Target.transform.position, Time.time, 100, SenseKind.Undefined);
-                OnLostTarget?.Invoke();
                 CurrentStimulus = lastKnowLocation;
                 Target = null;
                 GainedNewStimulus?.Invoke();
+                OnLostTarget?.Invoke();
             }
             else
             {
@@ -82,12 +84,16 @@ namespace Ai
                     }
                 }
 
-                if (!mostVisibleTarget.sightTarget) 
+                if (!mostVisibleTarget.sightTarget)
+                {
+                    visibilityBySightTarget.Clear();
                     return;
+                }
                 
                 if (mostVisibleTarget.value > visibilityThreshold)
                 {
                     Target = mostVisibleTarget.sightTarget;
+                    LostInterest();
                     OnGainedTarget?.Invoke();
                 }
                 else if (mostVisibleTarget.value > noticeThreshold)
@@ -95,16 +101,6 @@ namespace Ai
                     Stimulus noticeLocation = new Stimulus(mostVisibleTarget.sightTarget.transform.position, Time.time, mostVisibleTarget.value, SenseKind.Undefined);
                     HandleOnSensedStimulus(noticeLocation);
                 }
-            }
-        }
-
-        public void DecreaseStimuliValue(float deltaTime)
-        {
-            if (CurrentStimulus is not null)
-            {
-                CurrentStimulus.Value -= stimuliDeclineRate * deltaTime;
-                if (CurrentStimulus.Value <= 0)
-                    CurrentStimulus = null;
             }
             visibilityBySightTarget.Clear();
         }

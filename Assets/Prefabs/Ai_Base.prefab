@@ -17,9 +17,6 @@ GameObject:
   - component: {fileID: 75287004308826072}
   - component: {fileID: 5708969744281638855}
   - component: {fileID: 758338748543762705}
-  - component: {fileID: 3274762608564594551}
-  - component: {fileID: 1816274818776610447}
-  - component: {fileID: 4357895078427991714}
   - component: {fileID: 8686548554604012545}
   - component: {fileID: 4976039804609410108}
   - component: {fileID: 3246184029654640956}
@@ -127,12 +124,12 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3417203797340643467}
   m_Enabled: 0
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 0.5
   m_Speed: 2.5
   m_Acceleration: 4
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
@@ -184,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ccb9ec2ab47b24faed2780fdd7a96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 10
   OnDied:
     m_PersistentCalls:
       m_Calls: []
@@ -236,55 +233,8 @@ MonoBehaviour:
   doorApproachAngleTolerance: 3
   doorApproachMovementSpeed: 1
   doorApproachDistanceTolerance: 0.1
-  maxAttackDistance: 0
-  approachDistance: 0
---- !u!114 &3274762608564594551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d636e8675144ae895b77dd8e6a58037, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fidgetThreshold: 2e+11
-  minFidgetModifier: 0
-  maxFidgetModifier: 0
---- !u!114 &1816274818776610447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0159c08b05ee4bad9fbce1978c184795, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderThreshold: 10
-  maxWanderDistance: 5
-  minWanderModifier: 0
-  maxWanderModifier: 0
---- !u!114 &4357895078427991714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70da0457a4a42489991bcde3f3253c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderThreshold: 35
-  maxWanderDistance: 20
-  minWanderModifier: 0
-  maxWanderModifier: 0
+  maxAttackDistance: 2
+  approachDistance: 1.5
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +355,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4903535583582025397}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: -0.341, z: -0.406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431,9 +381,9 @@ MonoBehaviour:
   centralVisionScalar: 1
   nearPeripheralThreshold: 30
   nearPeripheralScalar: 0.66
-  farPeripheralThreshold: 60
+  farPeripheralThreshold: 75
   farPeripheralScalar: 0.33
-  maxViewConeHalfAngle: 90
+  maxViewConeHalfAngle: 120
   maxViewDistance: 333
   closeViewThreshold: 100
   closeViewDistanceScalar: 1

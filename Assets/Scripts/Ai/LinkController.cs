@@ -13,14 +13,10 @@ namespace Ai
     /// </summary>
     public class LinkController : MonoBehaviour
     {
-        [SerializeField] private NavMeshLink navMeshLink;
-        [SerializeField] private LinkTraversalType linkTraversalKind;
         [SerializeField] private Openable openable;
 
         public List<LinkInfo> Links = new List<LinkInfo>();
-        public LinkTraversalType LinkTraversalKind => linkTraversalKind;
         public Openable Openable => openable;
-        public NavMeshLink NavMeshLink => navMeshLink;
         private Coroutine reEnableLinkRoutine;
         private static readonly Collider[] results = new Collider[5];
         private const int LayerMask = 1 << 15;
@@ -41,19 +37,18 @@ namespace Ai
         /// </summary>
         /// <param name="agentType"></param>
         /// <param name="linkDisableTime"></param>
-        public void DisableLink(AgentType agentType, float linkDisableTime)
+        public void DisableLink(int agentType, float linkDisableTime)
         {
             GetLinkForAgentType(agentType).enabled = false;
-            NavMeshLink.enabled = false;
             if (reEnableLinkRoutine is not null) 
                 StopCoroutine(reEnableLinkRoutine);
             reEnableLinkRoutine = StartCoroutine(ReenableLinkRoutine(agentType, linkDisableTime));
         }
         
-        private IEnumerator ReenableLinkRoutine(AgentType agentType, float linkDisableTime)
+        private IEnumerator ReenableLinkRoutine(int agentTypeId, float linkDisableTime)
         {
             yield return new WaitForSeconds(linkDisableTime);
-            GetLinkForAgentType(agentType).enabled = true;
+            GetLinkForAgentType(agentTypeId).enabled = true;
             reEnableLinkRoutine = null;
         }
 
@@ -61,14 +56,18 @@ namespace Ai
         {
             if (reEnableLinkRoutine is not null)
                 StopCoroutine(reEnableLinkRoutine);
-            NavMeshLink.enabled = true;
+            
+            foreach (LinkInfo linkInfo in Links)
+            {
+                linkInfo.Link.enabled = true;
+            }
         }
 
-        private NavMeshLink GetLinkForAgentType(AgentType agentType)
+        private NavMeshLink GetLinkForAgentType(int agentTypeId)
         {
             foreach (LinkInfo linkInfo in Links)
             {
-                if (linkInfo.AgentType == agentType)
+                if (linkInfo.Link.agentTypeID == agentTypeId)
                     return linkInfo.Link;
             }
 
@@ -97,20 +96,4 @@ namespace Ai
             return null;
         }
     }
-
-    [Serializable]
-    public class LinkInfo
-    {
-        public NavMeshLink Link;
-        public AgentType AgentType;
-        public LinkTraversalType LinkTraversalType;
-    }
-
-    public enum AgentType
-    {
-        Humanoid,
-        Monster,
-        Ghost
-    }
-    
 }
