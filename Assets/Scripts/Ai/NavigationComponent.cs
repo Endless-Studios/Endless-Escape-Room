@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+
 // ReSharper disable Unity.InefficientPropertyAccess
 
 namespace Ai
@@ -29,6 +31,8 @@ namespace Ai
         public float ApproachDistance => approachDistance;
         
         private bool isTraversingLink;
+
+        public UnityEvent OnTriedLockedThreshold;
 
         private void Update()
         {
@@ -76,6 +80,7 @@ namespace Ai
                 references.Agent.updateRotation = true;
                 references.Agent.updatePosition = true;
                 isTraversingLink = false;
+                OnTriedLockedThreshold.Invoke();
             }
             //Otherwise we want to listen for us finishing traversal of the threshold
             else

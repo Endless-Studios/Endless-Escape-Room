@@ -62,6 +62,11 @@ namespace Ai
             return potentialInvestigationTarget[0].hideout;
         }
 
+        public void FinishedInvestigating()
+        {
+            OnFinishedInvestigating.Invoke();
+        }
+
         public void SearchHideout(Hideout hideout)
         {
             recentInvestigations.Add(new Interaction(hideout, Time.time));
