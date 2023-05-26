@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] RectTransform inventoryEntriesParent = null;
     [SerializeField] float dropRaycastDistance = 5;
     [SerializeField] LayerMask dropRaycastMask;
+    [SerializeField] bool addInReverseOrder = true;
 
     Snappable currentSnappable = null;
     UiInventoryElement originalElement = null;
@@ -34,14 +35,28 @@ public class InventoryUI : MonoBehaviour
         inventoryCanvas.enabled = true;
 
         InventorySlotBase[] inventorySlots = PlayerCore.LocalPlayer.Inventory.GetItems();
-        //TODO if inspecting tell the entry being inspected to be different
-        foreach(InventorySlotBase slot in inventorySlots)
+        if(addInReverseOrder)
         {
-            UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
-            newEntry.Initialize(slot, PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable != slot.Pickupable);
-            currentEntries.Add(newEntry);
+            for(int index = inventorySlots.Length - 1; index >= 0; index--)
+            {
+                SetupSlot(inventorySlots[index]);
+            }
         }
+        else
+        {
+            for(int index = 0; index < inventorySlots.Length; index++)
+            {
+                SetupSlot(inventorySlots[index]);
+            }
+        }
+    }
+
+    private void SetupSlot(InventorySlotBase slot)
+    {
+        UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
+        newEntry.Initialize(slot, PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable != slot.Pickupable);
+        currentEntries.Add(newEntry);
     }
 
     public void Hide()
