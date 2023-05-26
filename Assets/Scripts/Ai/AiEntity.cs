@@ -21,6 +21,8 @@ namespace Ai
         public UnityEvent<PointOfInterest> OnStartedInteracting = new UnityEvent<PointOfInterest>();
         public UnityEvent OnFinishedInteracting = new UnityEvent();
         public UnityEvent OnFinishedFidgeting = new UnityEvent();
+        public UnityEvent OnStartedAttacking = new UnityEvent();
+        public UnityEvent OnFinishedAttacking = new UnityEvent();
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
@@ -78,6 +80,16 @@ namespace Ai
         public void FinishedFidgeting()
         {
             OnFinishedFidgeting.Invoke();
+        }
+
+        public void StartedAttacking()
+        {
+            OnStartedAttacking.Invoke();
+        }
+
+        public void FinishedAttacking()
+        {
+            OnFinishedAttacking.Invoke();
         }
     }
 }

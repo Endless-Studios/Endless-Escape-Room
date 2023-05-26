@@ -21,6 +21,7 @@ namespace Ai
         [SerializeField] private float doorApproachDistanceTolerance;
         [SerializeField] private float maxAttackDistance;
         [SerializeField] private float approachDistance;
+        [SerializeField] private float maxAttackAngleDifference;
 
         // ReSharper disable once MemberCanBePrivate.Global
         public float NavigationTolerance => navigationTolerance;
@@ -29,6 +30,7 @@ namespace Ai
         public Vector3 Destination { get; set; }
         public float MaxAttackDistance => maxAttackDistance;
         public float ApproachDistance => approachDistance;
+        public float MaxAttackAngleDifference => maxAttackAngleDifference;
         
         private bool isTraversingLink;
 

@@ -239,6 +239,10 @@ MonoBehaviour:
   doorApproachDistanceTolerance: 0.1
   maxAttackDistance: 2
   approachDistance: 1.5
+  maxAttackAngleDifference: 5
+  OnTriedLockedThreshold:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0

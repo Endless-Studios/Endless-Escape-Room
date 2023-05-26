@@ -83,7 +83,6 @@ namespace Ai
         public static LinkController GetLinkFromEndPoints(Vector3 startPoint, Vector3 endPoint)
         {
             Vector3 midPoint = (startPoint + endPoint) / 2f;
-            Debug.DrawLine(midPoint, midPoint + Vector3.up, Color.cyan, 1f);
             int numberOfColliders = Physics.OverlapSphereNonAlloc(midPoint, MidpointOverlapRadius, results, LayerMask, QueryTriggerInteraction.Collide);
             for (int i = 0; i < numberOfColliders; i++)
             {
