@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public abstract class UiInventoryElement : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI promptText = null;
-
+    [SerializeField] Selectable selectable = null;
     public InventorySlotBase Slot { get; private set; }
 
     protected RectTransform rectTransform;
 
-    public void Initialize(InventorySlotBase slot)
+    public void Initialize(InventorySlotBase slot, bool isSelectable = true)
     {
+        if(selectable)
+            selectable.interactable = isSelectable;
         Slot = slot;
         Slot.OnSlotUpdated.AddListener(HandleUpdateInternal);
         UpdatePromptText();

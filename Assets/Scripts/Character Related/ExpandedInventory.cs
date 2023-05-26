@@ -68,6 +68,7 @@ public class ExpandedInventory : InventoryBase
 
     [SerializeField] PlayerInteractor interactor;
     [SerializeField] HeldItemManager heldItemManager;
+    [SerializeField] ItemInspector itemInspector;
     [SerializeField] int maxInventorySlots = 99999;
     [SerializeField] int maxStackSize = 99;
 
@@ -102,23 +103,9 @@ public class ExpandedInventory : InventoryBase
             return heldItemsMap.Count < maxInventorySlots;
     }
 
-    public override InventorySlotBase[] GetItems(Pickupable[] skipList = null)
+    public override InventorySlotBase[] GetItems()
     {
-        if(skipList != null)
-        { 
-            List<PickupableKey> skippedKeys = new List<PickupableKey>();
-            foreach(Pickupable pickupable in skipList)
-            {
-                skippedKeys.Add(new PickupableKey(pickupable));
-            }
-            //TODO use more friendly syntax.
-            PickupableKey[] keys = heldItemsMap.Keys.Except(skippedKeys).ToArray();
-            return keys.Select(key => heldItemsMap[key]).ToArray();
-        }
-        else
-        {
-            return heldItemsMap.Keys.Select(key => heldItemsMap[key]).ToArray();
-        }
+        return orderedSlots.ToArray();
     }
 
     public override bool PickupItem(Pickupable pickupable)
@@ -179,7 +166,11 @@ public class ExpandedInventory : InventoryBase
                 }
                 else
                 {
-                    ClearSelection();
+                    if(itemInspector.CurrentInspectable == null)
+                    {
+                        //If you're inspecting an item you cant deselect it, instead they should exit inspection if they need to
+                        ClearSelection();
+                    }
                 }
             }
         }
@@ -198,7 +189,12 @@ public class ExpandedInventory : InventoryBase
         Pickupable pickupable = orderedSlots[selectedIndex].Pickupable;
         pickupable.gameObject.SetActive(true);
         pickupable.OnDropped.AddListener(HandleHeldItemDropped);
-        heldItemManager.HoldItem(pickupable, false);
+        heldItemManager.HoldItem(pickupable, itemInspector.IsInspecting);
+        if(itemInspector.IsInspecting)
+        {
+            itemInspector.SwapCurrentInspectable(pickupable);
+            PlayerHUD.Instance.InventoryUi.Show();
+        }
     }
 
     private void HandleHeldItemDropped()

@@ -33,12 +33,13 @@ public class InventoryUI : MonoBehaviour
 
         inventoryCanvas.enabled = true;
 
-        InventorySlotBase[] inventorySlots = PlayerCore.LocalPlayer.Inventory.GetItems(null);//TODO ignore the one in your hand actively, if inspecting
-        foreach(var slot in inventorySlots)
+        InventorySlotBase[] inventorySlots = PlayerCore.LocalPlayer.Inventory.GetItems();
+        //TODO if inspecting tell the entry being inspected to be different
+        foreach(InventorySlotBase slot in inventorySlots)
         {
             UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
             LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
-            newEntry.Initialize(slot);
+            newEntry.Initialize(slot, PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable != slot.Pickupable);
             currentEntries.Add(newEntry);
         }
     }

@@ -24,5 +24,5 @@ public abstract class InventoryBase : MonoBehaviour
     public abstract bool CanPickupItem(Pickupable pickupable);
     public abstract bool PickupItem(Pickupable pickupable);
 
-    public abstract InventorySlotBase[] GetItems(Pickupable[] skipList = null);
+    public abstract InventorySlotBase[] GetItems();
 }

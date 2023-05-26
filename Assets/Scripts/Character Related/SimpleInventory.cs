@@ -62,14 +62,11 @@ public class SimpleInventory : InventoryBase
         return false;
     }
 
-    public override InventorySlotBase[] GetItems(Pickupable[] skipList = null)
-    {//We're only every have 0 or 1 items in this simple inventory. Just check it the skip list contains the held item or not
+    public override InventorySlotBase[] GetItems()
+    {//We're only every have 0 or 1 items in this simple inventory
         if(heldItemManager.HeldPickupable != null)
         {
-            if(skipList != null && skipList.Contains(heldItemManager.HeldPickupable))
-                return new SimpleInventorySlot[0];
-            else
-                return new SimpleInventorySlot[] { new SimpleInventorySlot(heldItemManager.HeldPickupable) };
+            return new SimpleInventorySlot[] { new SimpleInventorySlot(heldItemManager.HeldPickupable) };
         }
         else
             return new SimpleInventorySlot[0];

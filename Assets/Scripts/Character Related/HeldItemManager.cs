@@ -129,7 +129,7 @@ public class HeldItemManager : MonoBehaviour
                 itemInspector.InspectItem(HeldPickupable);
                 ClearProjectedVisuals();
             }
-            else if(!IsDropMode && heldUseable && playerInput.GetUseButtonDown())
+            else if(itemInspector.IsInspecting == false && !IsDropMode && heldUseable && playerInput.GetUseButtonDown())
             {
                 heldUseable.Use();
             }
