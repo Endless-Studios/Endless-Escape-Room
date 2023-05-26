@@ -62,6 +62,7 @@ public class CameraManager : MonoBehaviour
                 PlayerCore.LocalPlayer.HeldItemManager.ReenterHeld();
             }
 
+            PlayerHUD.Instance.SetReticleActive(true);
             targetCamera.HandledUnfocused();
             targetCamera = null;
         }

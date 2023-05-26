@@ -18,6 +18,10 @@ public class ItemInspector : MonoBehaviour
     public Inspectable CurrentInspectable { get; private set; }
     public bool IsInspecting => CurrentInspectable != false;
 
+    Pickupable currentPickupable;
+    bool inspectingHeldItem;
+    bool canPickup;
+
     private void Start()
     {
         //Maybe instead switch to a notification?
@@ -46,14 +50,14 @@ public class ItemInspector : MonoBehaviour
     IEnumerator InspectInspectable()
     {
         CurrentInspectable.HandleInspectionStarted();
-        Pickupable currentPickupable = CurrentInspectable as Pickupable;
-        bool inspectingHeldItem = currentPickupable && heldItemManager.HeldPickupable == currentPickupable;
+        currentPickupable = CurrentInspectable as Pickupable;
+        inspectingHeldItem = currentPickupable && heldItemManager.HeldPickupable == currentPickupable;
 
         CurrentInspectable.IsInteractable = false;
         playerInput.InteractEnabled = true;
         playerInput.LookEnabled = false;
         playerInput.MoveEnabled = false;
-        heldItemManager.HideProjectedVisualsAndControls();
+        //heldItemManager.HideProjectedVisualsAndControls(); //TODO is this line needed?
         if(currentPickupable)
             currentPickupable.gameObject.SetActive(true);
 
@@ -69,13 +73,14 @@ public class ItemInspector : MonoBehaviour
 
         PlayerHUD.Instance.InventoryUi.Show();
 
-        CurrentInspectable.transform.position = Camera.main.transform.position + Camera.main.transform.forward * attachOffset;
-        CurrentInspectable.transform.localRotation = Quaternion.identity;
+        SetToInspectedPosition();
+
+        MouseLockHandler.Instance.ClaimMouseCursor(this);
+        canPickup = currentPickupable != null && (inventory.CanPickupItem(currentPickupable) || heldItemManager.HeldPickupable == currentPickupable);
+        PlayerHUD.Instance.SetInspectScreenActive(true, canPickup);
+
         bool backPressed = false;
         bool pickupPressed = false;
-        MouseLockHandler.Instance.ClaimMouseCursor(this);
-        bool canPickup = currentPickupable != null && (inventory.CanPickupItem(currentPickupable) || heldItemManager.HeldPickupable == currentPickupable);
-        PlayerHUD.Instance.SetInspectScreenActive(true, canPickup);
         bool rotationHeld = false;
         while(backPressed == false && pickupPressed == false)
         {
@@ -85,7 +90,7 @@ public class ItemInspector : MonoBehaviour
                 playerInput.InteractEnabled = false;
                 //MouseLockHandler.Instance.ReleaseMouseCursor(this);
             }
-            else if (rotationHeld && playerInput.GetRotationButtonUp())
+            else if(rotationHeld && playerInput.GetRotationButtonUp())
             {
                 rotationHeld = false;
                 playerInput.InteractEnabled = true;
@@ -146,8 +151,30 @@ public class ItemInspector : MonoBehaviour
         inspectCoroutine = null;
     }
 
+    private void SetToInspectedPosition()
+    {
+        CurrentInspectable.transform.position = Camera.main.transform.position + Camera.main.transform.forward * attachOffset;
+        CurrentInspectable.transform.localRotation = Quaternion.identity;
+    }
+
     bool CanPickupItem(Pickupable pickupable)
     {
         return inventory != null && inventory.CanPickupItem(pickupable);
+    }
+
+    /// <summary>
+    /// Call when already inspecting an object to swap to another inspectable object
+    /// </summary>
+    /// <param name="inspectable"></param>
+    public void SwapCurrentInspectable(Inspectable inspectable)
+    {
+        CurrentInspectable = inspectable;
+        CurrentInspectable.IsInteractable = false;
+        SetToInspectedPosition();
+        currentPickupable = CurrentInspectable as Pickupable;
+        inspectingHeldItem = currentPickupable && heldItemManager.HeldPickupable == currentPickupable;
+
+        canPickup = CurrentInspectable != null && (inventory.CanPickupItem(currentPickupable) || heldItemManager.HeldPickupable == CurrentInspectable);
+        PlayerHUD.Instance.SetInspectScreenActive(true, canPickup);
     }
 }

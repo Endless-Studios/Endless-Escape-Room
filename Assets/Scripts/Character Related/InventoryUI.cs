@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] RectTransform inventoryEntriesParent = null;
     [SerializeField] float dropRaycastDistance = 5;
     [SerializeField] LayerMask dropRaycastMask;
+    [SerializeField] bool addInReverseOrder = true;
 
     Snappable currentSnappable = null;
     UiInventoryElement originalElement = null;
@@ -28,32 +29,55 @@ public class InventoryUI : MonoBehaviour
         if(inventoryCanvas.enabled)
         {
             //If we are already shown, lets clear and reinitiaize, the context could have changed!
-            Hide();
+            ClearEntries();
         }
 
         inventoryCanvas.enabled = true;
 
-        Pickupable[] items = PlayerCore.LocalPlayer.Inventory.GetItems(null);//TODO ignore the one in your hand actively, if inspecting
-        foreach(Pickupable item in items)
+        InventorySlotBase[] inventorySlots = PlayerCore.LocalPlayer.Inventory.GetItems();
+        if(addInReverseOrder)
         {
-            UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
-            newEntry.Initialize(item);
-            currentEntries.Add(newEntry);
+            for(int index = inventorySlots.Length - 1; index >= 0; index--)
+            {
+                SetupSlot(inventorySlots[index]);
+            }
         }
+        else
+        {
+            for(int index = 0; index < inventorySlots.Length; index++)
+            {
+                SetupSlot(inventorySlots[index]);
+            }
+        }
+    }
+
+    private void SetupSlot(InventorySlotBase slot)
+    {
+        UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
+        newEntry.Initialize(slot, PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable != slot.Pickupable);
+        currentEntries.Add(newEntry);
     }
 
     public void Hide()
     {
-        if(inventoryCanvas.enabled)
+        if(PlayerCore.LocalPlayer.Inventory.UiAlwaysOpen == false)
         {
-            inventoryCanvas.enabled = false;
-            foreach(UiInventoryElement entry in currentEntries)
+            if(inventoryCanvas.enabled)
             {
-                Destroy(entry.gameObject);
+                inventoryCanvas.enabled = false;
+                ClearEntries();
             }
-            currentEntries = new List<UiInventoryElement>();
         }
+    }
+
+    private void ClearEntries()
+    {
+        foreach(UiInventoryElement entry in currentEntries)
+        {
+            Destroy(entry.gameObject);
+        }
+        currentEntries = new List<UiInventoryElement>();
     }
 
     private void Update()
@@ -72,7 +96,7 @@ public class InventoryUI : MonoBehaviour
                         {
                             originalElement = inventoryElement;
                             draggingElement = Instantiate(draggedUiPrefab, inventoryElement.transform.position, inventoryElement.transform.rotation, inventoryCanvas.transform);
-                            draggingElement.Initialize(originalElement.Pickupable);
+                            draggingElement.Initialize(originalElement.Slot);
                             PlayerCore.LocalPlayer.PlayerInput.InspectControlsEnabled = false;
                         }
                     }
@@ -92,7 +116,7 @@ public class InventoryUI : MonoBehaviour
                 if(didHit)
                 {
                     hitSnappable = hitInfo.collider.GetComponentInParent<Snappable>();
-                    if(hitSnappable && hitSnappable.AcceptsPickupable(originalElement.Pickupable) == false)
+                    if(hitSnappable && hitSnappable.AcceptsPickupable(originalElement.Slot.Pickupable) == false)
                     {//If we hit one, but it wont accept our object, ignore it.
                         hitSnappable = null;
                     }
@@ -119,15 +143,15 @@ public class InventoryUI : MonoBehaviour
                  //Did we do something with the pickupable because of our drop? (probably hit a snappable)
                     if(hitSnappable != null)
                     {
-                        if(PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable == originalElement.Pickupable)
+                        if(PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable == originalElement.Slot.Pickupable)
                         {
                             PlayerCore.LocalPlayer.HeldItemManager.ClearHeldItem();
                         }
 
-                        originalElement.Pickupable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0.5f));//TODO dont magic number?
-                        originalElement.Pickupable.gameObject.SetActive(true);
-                        hitSnappable.SnapPickupable(originalElement.Pickupable);
-                        originalElement.Pickupable.HandleDropped(false);
+                        originalElement.Slot.Pickupable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0.5f));//TODO dont magic number?
+                        originalElement.Slot.Pickupable.gameObject.SetActive(true);
+                        hitSnappable.SnapPickupable(originalElement.Slot.Pickupable);
+                        originalElement.Slot.Pickupable.HandleDropped(false);
 
                         currentEntries.Remove(originalElement);
                         Destroy(originalElement.gameObject);
