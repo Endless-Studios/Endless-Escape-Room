@@ -5,10 +5,17 @@ using UnityEngine.Events;
 
 public class Inspectable : Interactable
 {
+    [SerializeField] Vector3 inspectionDefaultRotation = Vector3.zero;
+    [SerializeField] float inspectDistance = 0;
+
     public UnityEvent OnInspectionStarted = new UnityEvent();
     public UnityEvent OnInspectionEnded = new UnityEvent();
 
     protected override string DefaultInteractionText => "Inspect";
+
+    public Vector3 InspectionDefaultRotation => inspectionDefaultRotation;
+
+    public float InspectDistance => inspectDistance;
 
     Quaternion initialRotation;
     Vector3 initialPosition;

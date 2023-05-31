@@ -14,6 +14,9 @@ public class Pickupable : Inspectable
     [Tooltip("Optional, but more efficient when projecting the dropped visuals if it is prebuilt")]
     [SerializeField] GameObject visualsPrefab;
 
+    [SerializeField] Vector3 holdOffset = Vector3.zero;
+    [SerializeField] Vector3 holdRotation = new Vector3(0, 20, 0);
+
     protected override string DefaultInteractionText => "Pick up";
 
     public UnityEvent OnPickedUp = new UnityEvent();
@@ -21,6 +24,8 @@ public class Pickupable : Inspectable
 
     public Identifier[] Identifiers => identifiers;
     public GameObject VisualsPrefab => visualsPrefab;
+    public Vector3 HoldOffset => holdOffset;
+    public Vector3 HoldRotation => holdRotation;
 
     internal void HandlePickedUp()
     {
