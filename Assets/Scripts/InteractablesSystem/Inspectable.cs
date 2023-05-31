@@ -21,8 +21,6 @@ public class Inspectable : Interactable
     Vector3 initialPosition;
     Transform initialParent;
 
-    const string inspectedLayer = "InspectedItem";
-
     private void Awake()
     {
         CacheTransform();
