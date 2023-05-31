@@ -68,9 +68,9 @@ Material:
     - _Scale: 3.31
     - _Zenith_Blend_Power: 0.881
     m_Colors:
-    - _Cloud_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
+    - _Cloud_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
     - _Cloud_Speed: {r: 0.2, g: 0.2, b: 0, a: 0}
-    - _Horizon_Color: {r: 0.34247062, g: 0.3679245, b: 0.36009255, a: 0}
+    - _Horizon_Color: {r: 0.55853206, g: 0.6320754, b: 0.611063, a: 0}
     - _Nadir_Color: {r: 0, g: 0, b: 0, a: 0}
-    - _Zenith_Color: {r: 0.70250386, g: 0.754717, b: 0.73098373, a: 0}
+    - _Zenith_Color: {r: 0.8930817, g: 1, b: 0.9506531, a: 0}
   m_BuildTextureStacks: []

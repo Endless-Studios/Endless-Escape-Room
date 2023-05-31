@@ -36,7 +36,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4af34976836eb0b4fbea0646159eb3de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MixMap:
@@ -62,21 +62,22 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Alpha_Clip: 0
     - _Blend: 2
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 1
     - _IOR: 0.36
-    - _Metalness: 0.977
-    - _Normal_Strength: 0.012
+    - _Metalness: 0.426
+    - _Normal_Strength: 0.015
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Refraction_Strength: 0.64
-    - _Smoothness: 0.955
+    - _Refraction_Strength: 0
+    - _Smoothness: 0.784
     - _SrcBlend: 5
     - _Surface: 1
-    - _Transparency: 0.69
+    - _Transparency: 0.906
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
