@@ -98,18 +98,21 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: -45, y: 10, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
   OnInspectionEnded:
     m_PersistentCalls:
       m_Calls: []
-  visualsRoot: {fileID: 4283165232734335160}
   dropRigidbody: {fileID: 4283165234517753015}
   identifiers:
   - identifier: VCR Tape
   visualsPrefab: {fileID: 919132149155446097, guid: 32c63086f5ebceb4bb814314d754fe12,
     type: 3}
+  holdOffset: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 20, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []

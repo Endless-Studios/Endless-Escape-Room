@@ -14,7 +14,7 @@ public abstract class UiInventoryElement : MonoBehaviour
 
     public void Initialize(InventorySlotBase slot, bool isSelectable = true)
     {
-        if(selectable)
+        if(selectable != null)
             selectable.interactable = isSelectable;
         Slot = slot;
         Slot.OnSlotUpdated.AddListener(HandleUpdateInternal);

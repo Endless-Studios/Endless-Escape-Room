@@ -271,7 +271,7 @@ public class CharacterMovement : MonoBehaviour
             connectedMovingPlatform = null;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (groundedCheckDistance - 0.01f - characterController.height / 2f);
         
