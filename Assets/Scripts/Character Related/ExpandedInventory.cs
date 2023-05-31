@@ -156,7 +156,7 @@ public class ExpandedInventory : InventoryBase
             if(Input.GetKeyDown((KeyCode)keyValue))
             {
                 int index = keyValue - startKey;
-                Debug.Log($"Key {(KeyCode)keyValue} Pressed: {index}");
+                //Debug.Log($"Key {(KeyCode)keyValue} Pressed: {index}");
                 if(selectedIndex != index)
                 {
                     if(selectedIndex != -1)
