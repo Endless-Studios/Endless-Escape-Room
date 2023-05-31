@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4003577186214622399}
   - component: {fileID: 6770426313654700224}
   - component: {fileID: 3872074893842674758}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TestHideout
   m_TagString: Untagged
   m_Icon: {fileID: 0}

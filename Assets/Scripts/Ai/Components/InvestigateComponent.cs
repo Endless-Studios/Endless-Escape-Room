@@ -51,7 +51,11 @@ namespace Ai
             {
                 //Calculate the path to the hideout
                 NavMeshPath path = new NavMeshPath();
-                NavMesh.CalculatePath(transform.position, hideout.InteractionPoint, NavMesh.AllAreas, path);
+                if(!NavMesh.SamplePosition(hideout.InteractionPoint, out NavMeshHit hit, attributes.NavSampleDistance, NavMesh.AllAreas))
+                {
+                    continue;
+                }
+                NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
 
                 //If we can reach the hideout, record the distance to it
                 switch (path.status)
@@ -62,6 +66,15 @@ namespace Ai
                             potentialInvestigationTarget.Add(new PointOfInterestDistancePair(hideout, distance));
                         break;
                     case NavMeshPathStatus.PathPartial:
+                        float offset = Vector3.Distance(path.corners[path.corners.Length - 1], hit.position);
+                        if (offset < .1f)
+                        {
+                            distance = Navigation.GetPathDistance(path);
+                            if(distance <= maxInvestigateDistance)
+                                potentialInvestigationTarget.Add(new PointOfInterestDistancePair(hideout, distance));
+                            break;
+                        }
+                        Debug.LogWarning("Partial path, check the position of the interact point on this point of interest", hideout.gameObject);
                         break;
                     case NavMeshPathStatus.PathInvalid:
                         Debug.LogWarning("Invalid path, check source and target positions to ensure validity");

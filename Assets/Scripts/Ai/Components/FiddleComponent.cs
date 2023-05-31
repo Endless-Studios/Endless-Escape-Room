@@ -40,7 +40,11 @@ namespace Ai
             {
                 //Calculate the path to the point of interest
                 NavMeshPath path = new NavMeshPath();
-                NavMesh.CalculatePath(transform.position, pointOfInterest.InteractionPoint, NavMesh.AllAreas, path);
+                if(!NavMesh.SamplePosition(pointOfInterest.InteractionPoint, out NavMeshHit hit, attributes.NavSampleDistance, NavMesh.AllAreas))
+                {
+                    continue;
+                }
+                NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
                 
                 //If we can reach the point of interest, record the distance to it
                 switch (path.status)
@@ -51,6 +55,14 @@ namespace Ai
                             potentialFidgetTarget.Add(new PointOfInterestDistancePair(pointOfInterest, distance));
                         break;
                     case NavMeshPathStatus.PathPartial:
+                        float offset = Vector3.Distance(path.corners[path.corners.Length - 1], hit.position);
+                        if (offset < .1f)
+                        {
+                            distance = Navigation.GetPathDistance(path);
+                            if(distance <= maxInteractionDistance)
+                                potentialFidgetTarget.Add(new PointOfInterestDistancePair(pointOfInterest, distance));
+                            break;
+                        }
                         Debug.LogWarning("Partial path, check the position of the interact point on this point of interest", pointOfInterest.gameObject);
                         break;
                     case NavMeshPathStatus.PathInvalid:
