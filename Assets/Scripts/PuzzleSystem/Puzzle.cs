@@ -4,6 +4,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Base class representing a puzzle in the game.
 /// </summary>
+[SelectionBase]
 public abstract class Puzzle : MonoBehaviour
 {
     public UnityEvent OnCompleted = new UnityEvent();
@@ -75,6 +76,5 @@ public abstract class Puzzle : MonoBehaviour
         }
 
         IsComplete = result;
-
     }
 }
