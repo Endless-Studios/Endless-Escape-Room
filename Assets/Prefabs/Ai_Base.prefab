@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1626646627048455303}
   - component: {fileID: 7791166832454865358}
+  - component: {fileID: 6432490834441837270}
+  - component: {fileID: 8686548554604012545}
+  - component: {fileID: 4976039804609410108}
   - component: {fileID: 8683445511247982297}
   - component: {fileID: 5322358426517698959}
   - component: {fileID: 3278828093606095786}
@@ -17,11 +20,10 @@ GameObject:
   - component: {fileID: 75287004308826072}
   - component: {fileID: 5708969744281638855}
   - component: {fileID: 758338748543762705}
-  - component: {fileID: 8686548554604012545}
-  - component: {fileID: 4976039804609410108}
   - component: {fileID: 3246184029654640956}
   - component: {fileID: 2891075833820768807}
   - component: {fileID: 1384334374420571731}
+  - component: {fileID: 184511927446587037}
   m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
@@ -107,15 +109,81 @@ MonoBehaviour:
           m_StringArgument: OnDespawn
           m_BoolArgument: 0
         m_CallState: 2
-  OnStartedInteracting:
-    m_PersistentCalls:
-      m_Calls: []
   OnFinishedInteracting:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedFidgeting:
     m_PersistentCalls:
       m_Calls: []
+  OnStartedAttacking:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedAttacking:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6432490834441837270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b76d88ebb14ddb830b93f6461d3908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentPointOfInterest: {fileID: 0}
+  TargetHideout: {fileID: 0}
+  Target: {fileID: 0}
+  PlayersHideout: {fileID: 0}
+  Destination: {x: 0, y: 0, z: 0}
+--- !u!114 &8686548554604012545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d276800c4cd04327b74d40f0fe86e617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1727435511707494434}
+  agent: {fileID: 8683445511247982297}
+  navigationComponent: {fileID: 758338748543762705}
+  sightSensor: {fileID: 4870086894081962781}
+  hearingSensor: {fileID: 4769800100488525422}
+  proximitySensor: {fileID: 2097964165954542098}
+  awarenessComponent: {fileID: 3246184029654640956}
+  boredThreshold: {fileID: 8678276500234800677}
+  wanderThreshold: {fileID: 3476776795415583245}
+  wanderFarThreshold: {fileID: 5413147699087195352}
+  fidgetThreshold: {fileID: 1760390034293458789}
+  fiddleThreshold: {fileID: 1080036828054471172}
+  searchThreshold: {fileID: 7057165101696368421}
+  investigateThreshold: {fileID: 9025293886819925347}
+--- !u!114 &4976039804609410108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d1e43bec5a47e490951aca1c84148c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderNearDistance: 5
+  wanderFarDistance: 15
+  navSampleDistance: 5
+  navigationTolerance: 0.2
+  maxAttackDistance: 2.2
+  approachDistance: 1.5
+  maxAngleDifference: 5
+  maxAngularSpeed: 40
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -232,55 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5008231cb44023806515e3b0c14753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationTolerance: 0.2
   doorApproachRotationSpeed: 180
   doorApproachAngleTolerance: 3
   doorApproachMovementSpeed: 1
   doorApproachDistanceTolerance: 0.1
-  maxAttackDistance: 2
-  approachDistance: 1.5
-  maxAttackAngleDifference: 5
   OnTriedLockedThreshold:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8686548554604012545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d276800c4cd04327b74d40f0fe86e617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1727435511707494434}
-  agent: {fileID: 8683445511247982297}
-  navigationComponent: {fileID: 758338748543762705}
-  sightSensor: {fileID: 4870086894081962781}
-  hearingSensor: {fileID: 4769800100488525422}
-  proximitySensor: {fileID: 2097964165954542098}
-  awarenessComponent: {fileID: 3246184029654640956}
-  boredThreshold: {fileID: 8678276500234800677}
-  wanderThreshold: {fileID: 3476776795415583245}
-  wanderFarThreshold: {fileID: 5413147699087195352}
-  fidgetThreshold: {fileID: 1760390034293458789}
-  fiddleThreshold: {fileID: 1080036828054471172}
---- !u!114 &4976039804609410108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d1e43bec5a47e490951aca1c84148c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderNearDistance: 5
-  wanderFarDistance: 15
 --- !u!114 &3246184029654640956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +330,12 @@ MonoBehaviour:
   OnLostTarget:
     m_PersistentCalls:
       m_Calls: []
+  TargetEnteredHideout:
+    m_PersistentCalls:
+      m_Calls: []
+  TargetLeftHideout:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2891075833820768807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +350,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxInvestigateDistance: 15
   reInvestigateTime: 90
-  PlayersHideout: {fileID: 0}
   OnFinishedInvestigating:
     m_PersistentCalls:
       m_Calls: []
@@ -336,6 +367,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSampleTime: 0.25
   navmeshSampleDistance: 3
+--- !u!114 &184511927446587037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417203797340643467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e0cf5c44074d65911d9c47aa049a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxInteractionDistance: 10
+  reInteractTime: 30
 --- !u!1 &4903535583582025397
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +466,8 @@ GameObject:
   - component: {fileID: 3476776795415583245}
   - component: {fileID: 1080036828054471172}
   - component: {fileID: 5413147699087195352}
+  - component: {fileID: 7057165101696368421}
+  - component: {fileID: 9025293886819925347}
   m_Layer: 14
   m_Name: Thresholds
   m_TagString: Untagged
@@ -525,6 +572,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdName: WanderFar
   baseThreshold: 60
+  minThresholdModifier: 0
+  maxThresholdModifier: 15
+  AmountOverThreshold: 0
+--- !u!114 &7057165101696368421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Search
+  baseThreshold: 30
+  minThresholdModifier: 0
+  maxThresholdModifier: 15
+  AmountOverThreshold: 0
+--- !u!114 &9025293886819925347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461828906644631074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdName: Investigate
+  baseThreshold: 30
   minThresholdModifier: 0
   maxThresholdModifier: 15
   AmountOverThreshold: 0
@@ -964,7 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f43dda686e84421a84866bd6966dbc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1727435511707494434}
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
 --- !u!137 &7606774132491417518 stripped

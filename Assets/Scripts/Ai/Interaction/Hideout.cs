@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Ai
+{
+    /// <summary>
+    /// This class represents a special kind of point of interest that may hide a player. This
+    /// class provides additional functionality to the Ai so they can determine if and how to find the
+    /// player.
+    /// </summary>
+    public class Hideout : PointOfInterest
+    {
+        /// <summary>
+        /// A static list of all hideouts that each Ai adds to or removes itself from. 
+        /// </summary>
+        public static readonly List<Hideout> Hideouts = new List<Hideout>();
+        public static event Action<Hideout> OnEnteredHideout;
+        public static event Action<Hideout> OnLeftHideout;
+        
+        protected override void Awake()
+        {
+            base.Awake();
+            Hideouts.Add(this);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Hideouts.Remove(this);
+        }
+
+        /// <summary>
+        /// Public invoker for On Entered Hideout.
+        /// </summary>
+        public void PlayerEnteredHideout()
+        {
+            OnEnteredHideout?.Invoke(this);
+        }
+
+        /// <summary>
+        /// Public invoker for On Left Hideout.
+        /// </summary>
+        public void PlayerLeftHideout()
+        {
+            OnLeftHideout?.Invoke(this);
+        }
+    }
+}

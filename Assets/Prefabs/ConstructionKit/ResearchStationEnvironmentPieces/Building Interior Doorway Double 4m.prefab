@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isLocked: 0
+  interactionType: 2
   OnOpened:
     m_PersistentCalls:
       m_Calls: []
