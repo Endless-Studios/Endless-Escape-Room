@@ -10,7 +10,7 @@ public class SimpleInventorySlot : InventorySlotBase
 
     public SimpleInventorySlot(Pickupable pickupable)
     {
-        item = null;
+        item = pickupable;
     }
 
     public override Pickupable Pickupable => item;

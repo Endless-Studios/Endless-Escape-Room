@@ -7,9 +7,7 @@ public class HeldItemManager : MonoBehaviour
 {
     [SerializeField] Material dropIndicatorMaterial;
     [SerializeField] PlayerInput playerInput;
-    //TODO convert this to a distance, and a relative screen pos, to be consistent with different aspect ratios
-    [SerializeField] Vector3 holdLocalPosition = Vector3.forward;
-    [SerializeField] Vector3 holdLocalRotation = Vector3.zero;
+    [SerializeField] Vector3 holdViewportPosition;
     [SerializeField] float dropRaycastDistance = 5;
     [SerializeField] LayerMask dropRaycastMask;
     [SerializeField] ItemInspector itemInspector = null;
@@ -46,8 +44,10 @@ public class HeldItemManager : MonoBehaviour
 
     public void MoveHeldItemToProperPosition()
     {
-        HeldPickupable.transform.localPosition = holdLocalPosition;
-        HeldPickupable.transform.localRotation = Quaternion.Euler(holdLocalRotation);
+        Vector3 worldPosition = Camera.main.ViewportToWorldPoint(holdViewportPosition);
+        //HeldPickupable.transform.localPosition = holdLocalPosition;
+        HeldPickupable.transform.localPosition = Camera.main.transform.InverseTransformPoint(worldPosition) + HeldPickupable.HoldOffset;
+        HeldPickupable.transform.localRotation = Quaternion.Euler(HeldPickupable.HoldRotation);
     }
 
     public void ActivateDropMode()

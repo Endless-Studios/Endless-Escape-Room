@@ -234,8 +234,7 @@ MonoBehaviour:
   dropIndicatorMaterial: {fileID: 2100000, guid: e7abce1faa398224a99ca8781d612dd7,
     type: 2}
   playerInput: {fileID: 8377813685331739176}
-  holdLocalPosition: {x: 0.2, y: -0.2, z: 0.7}
-  holdLocalRotation: {x: 0, y: 20, z: 0}
+  holdViewportPosition: {x: 0.9, y: 0.1, z: 0.5}
   dropRaycastDistance: 5
   dropRaycastMask:
     serializedVersion: 2
@@ -439,7 +438,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7791165, y: 1}
+    m_SensorSize: {x: 1.7767146, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
