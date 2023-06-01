@@ -8,13 +8,11 @@ namespace Ai
     /// This component checks for Sense Targets nearby and invokes its OnSensedStimulus event whenever
     /// a target is within range and not blocked by some object.
     /// </summary>
-    public class ProximitySensor : MonoBehaviour, ISense
+    public class ProximitySensor : Sense
     {
         [SerializeField] private LayerMask proximityBlockingMask;
         [SerializeField] private float maxProximityDistance;
         [SerializeField] private float baseProximityValue;
-        
-        public event Action<Stimulus> OnSensedStimulus;
 
         public void CheckProximitySense()
         {
@@ -46,7 +44,7 @@ namespace Ai
                     SenseKind.Proximity
                 );
                 
-                OnSensedStimulus?.Invoke(stimulus);
+                SensedStimulus(stimulus);
             }
         }
     }

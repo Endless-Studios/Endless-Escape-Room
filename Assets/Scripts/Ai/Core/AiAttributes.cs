@@ -4,7 +4,9 @@ namespace Ai
 {
     public class AiAttributes : MonoBehaviour
     {
+        [SerializeField] private float minWanderNearDistance;
         [SerializeField] private float wanderNearDistance;
+        [SerializeField] private float minWanderFarDistance;
         [SerializeField] private float wanderFarDistance;
         [SerializeField] private float navSampleDistance;
         [SerializeField] private float navigationTolerance;
@@ -13,7 +15,9 @@ namespace Ai
         [SerializeField] private float maxAngleDifference;
         [SerializeField] private float maxAngularSpeed;
 
+        public float MinWanderNearDistance => minWanderNearDistance;
         public float WanderNearDistance => wanderNearDistance;
+        public float MinWanderFarDistance => minWanderFarDistance;
         public float WanderFarDistance => wanderFarDistance;
         public float NavSampleDistance => navSampleDistance;
         public float NavigationTolerance => navigationTolerance;

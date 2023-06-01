@@ -33,6 +33,8 @@ namespace Ai
                 pointsOfInterest.Remove(interaction.PointOfInterest);
             }
 
+            pointsOfInterest.Remove(gameplayInfo.PlayersHideout);
+
             //Associate a pointOfInterest with a float representing the distance it will take to reach it
             List<PointOfInterestDistancePair> potentialFidgetTarget = new List<PointOfInterestDistancePair>();
 

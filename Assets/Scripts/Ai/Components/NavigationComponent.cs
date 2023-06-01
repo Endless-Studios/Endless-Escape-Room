@@ -113,12 +113,14 @@ namespace Ai
         /// <summary>
         /// Returns a random position on the navMesh that has a path to it that is shorter than maxWanderDistance.
         /// </summary>
-        public Vector3 GetWanderDestination(float maxWanderDistance)
+        public Vector3 GetWanderDestination(float maxWanderDistance, float minWanderDistance)
         {
             Vector3 transformPosition = transform.position;
             for (int i = 0; i < Navigation.Instance.MaxNavigationSamples; i++)
             {
-                Vector3 samplePosition = transformPosition + Random.insideUnitSphere * maxWanderDistance;
+                Vector3 direction = Random.insideUnitSphere.normalized;
+                direction *= Random.Range(minWanderDistance, maxWanderDistance);
+                Vector3 samplePosition = transformPosition + direction;
                 
                 if (!NavMesh.SamplePosition(samplePosition, out NavMeshHit hit, Navigation.Instance.MeshSampleTolerance, NavMesh.AllAreas)) 
                     continue;

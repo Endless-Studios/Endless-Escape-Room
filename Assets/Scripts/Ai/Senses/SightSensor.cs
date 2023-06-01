@@ -9,7 +9,7 @@ namespace Ai
     /// This component is analogous to the eyes. It should be attached to the head of the Ai model and aligned with its
     /// forward vector.
     /// </summary>
-    public class SightSensor : MonoBehaviour, ISense
+    public class SightSensor : Sense
     {
         [SerializeField] private LayerMask sightBlockingMask;
         [SerializeField] private float centralVisionScalar;
@@ -22,8 +22,6 @@ namespace Ai
         [SerializeField] private float closeViewThreshold;
         [SerializeField] private float closeViewDistanceScalar;
         [SerializeField] private float losProbeBaseValue;
-
-        public event Action<Stimulus> OnSensedStimulus;
 
         /// <summary>
         /// Checks line of sight against each SightTarget in the scene.
@@ -82,7 +80,7 @@ namespace Ai
                     senseTarget
                 );
                 
-                OnSensedStimulus?.Invoke(stimulus);
+                SensedStimulus(stimulus);
             }
         }
     }

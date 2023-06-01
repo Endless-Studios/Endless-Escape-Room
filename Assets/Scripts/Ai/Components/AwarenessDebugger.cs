@@ -18,15 +18,18 @@ namespace Ai
         private void HandleGainedNewStimulus()
         {
             Vector3 position = gameplayInfo.CurrentStimulus.Position;
-            Color color = gameplayInfo.CurrentStimulus.SenseKind switch
-            {
-                SenseKind.Sight => Color.blue,
-                SenseKind.Hearing => Color.red,
-                SenseKind.Proximity => Color.yellow,
-                SenseKind.Undefined => Color.cyan,
-                _ => throw new ArgumentOutOfRangeException()
-            };
-            
+            Color color;
+            if (gameplayInfo.CurrentStimulus.SenseKind == SenseKind.Sight)
+                color = Color.blue;
+            else if (gameplayInfo.CurrentStimulus.SenseKind == SenseKind.Hearing)
+                color = Color.red;
+            else if (gameplayInfo.CurrentStimulus.SenseKind == SenseKind.Proximity)
+                color = Color.yellow;
+            else if (gameplayInfo.CurrentStimulus.SenseKind == SenseKind.Undefined)
+                color = Color.cyan;
+            else
+                throw new ArgumentOutOfRangeException();
+
             Debug.DrawLine(position, position + Vector3.up, color, 5f, false);
         }
     }

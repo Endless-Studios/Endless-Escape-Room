@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace Ai
 {
@@ -16,6 +17,9 @@ namespace Ai
         public static readonly List<Hideout> Hideouts = new List<Hideout>();
         public static event Action<Hideout> OnEnteredHideout;
         public static event Action<Hideout> OnLeftHideout;
+        
+        public UnityEvent OnEnterHideout;
+        public UnityEvent OnExitHideout;
         
         protected override void Awake()
         {
@@ -35,6 +39,7 @@ namespace Ai
         public void PlayerEnteredHideout()
         {
             OnEnteredHideout?.Invoke(this);
+            OnEnterHideout.Invoke();
         }
 
         /// <summary>
@@ -43,6 +48,7 @@ namespace Ai
         public void PlayerLeftHideout()
         {
             OnLeftHideout?.Invoke(this);
+            OnExitHideout.Invoke();
         }
     }
 }

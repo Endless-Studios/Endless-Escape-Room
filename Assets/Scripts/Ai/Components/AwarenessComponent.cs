@@ -14,7 +14,8 @@ namespace Ai
     {
         [SerializeField] private float noticeThreshold;
         [SerializeField] private float visibilityThreshold;
-        
+        [SerializeField] private Sense[] senses;
+
         public UnityEvent GainedNewStimulus;
         public UnityEvent OnGainedTarget;
         public UnityEvent OnLostTarget;
@@ -22,12 +23,10 @@ namespace Ai
         public UnityEvent TargetLeftHideout;
         
         private readonly Dictionary<SenseTarget, float> visibilityBySightTarget = new Dictionary<SenseTarget, float>();
-        private List<ISense> senses;
 
         private void Awake()
         {
-            senses = new List<ISense>(GetComponentsInChildren<ISense>());
-            foreach (ISense sense in senses)
+            foreach (Sense sense in senses)
             {
                 sense.OnSensedStimulus += HandleOnSensedStimulus;
             }
@@ -43,6 +42,8 @@ namespace Ai
                 TargetEnteredHideout.Invoke();
                 gameplayInfo.TargetHideout = hideout;
             }
+
+            gameplayInfo.PlayersHideout = hideout;
         }
 
         private void HandleLeftHideout(Hideout hideout)
@@ -52,6 +53,8 @@ namespace Ai
                 TargetLeftHideout.Invoke();
                 gameplayInfo.TargetHideout = null;
             }
+
+            gameplayInfo.PlayersHideout = null;
         }
 
         private void HandleOnSensedStimulus(Stimulus stimulus)

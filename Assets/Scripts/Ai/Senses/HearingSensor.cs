@@ -8,12 +8,10 @@ namespace Ai
     /// This component is analogous to the human ear. It listens for sounds to be emitted and checks if the sound reaches
     /// the sensor with enough volume to be heard.
     /// </summary>
-    public class HearingSensor : MonoBehaviour, ISense
+    public class HearingSensor : Sense
     {
         [SerializeField] private float minPerceivedDB;
-        
-        public event Action<Stimulus> OnSensedStimulus;
-        
+
         private readonly RaycastHit[] hits = new RaycastHit[10];
         
         private void Awake()
@@ -41,7 +39,7 @@ namespace Ai
                     Mathf.Clamp(perceivedDB, 0, 60), 
                     SenseKind.Hearing
                 );
-                OnSensedStimulus?.Invoke(stimulus);
+                SensedStimulus(stimulus);
             }
         }
 
