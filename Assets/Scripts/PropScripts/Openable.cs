@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using Ai;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Openable : MonoBehaviour
+public class Openable : MonoBehaviour, IAiInteractionTypeSource
 {
     [SerializeField] bool isOpen = false;
     [SerializeField] bool isLocked = false;
+    [SerializeField] private InteractionType interactionType;
 
     public UnityEvent OnOpened = new UnityEvent();
     public UnityEvent OnOpenFailed = new UnityEvent();
@@ -14,8 +14,9 @@ public class Openable : MonoBehaviour
     public UnityEvent OnLocked = new UnityEvent();
     public UnityEvent OnUnlocked = new UnityEvent();
 
-    public bool IsLocked { get => isLocked; }
+    public bool IsLocked => isLocked;
     public bool IsOpen => isOpen;
+    public InteractionType InteractionType => interactionType;
 
     /// <summary>
     /// Attempts to open the door
