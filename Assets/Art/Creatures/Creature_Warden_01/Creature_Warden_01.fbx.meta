@@ -31,6 +31,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: LeavesAndMoss
     second: {fileID: 2100000, guid: abfa948095a14c64ca4b23c7072f34d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Warden_Cards_M
+    second: {fileID: 2100000, guid: 595285049745ba34ea01aee945e3f887, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Warden_M
+    second: {fileID: 2100000, guid: 55ed17d7466804f48bfdad57dad28889, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
