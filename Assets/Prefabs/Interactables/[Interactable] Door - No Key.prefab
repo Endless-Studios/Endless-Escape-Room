@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8763147086991232820}
   - component: {fileID: 996586273029410417}
   - component: {fileID: 8750198739800237650}
+  - component: {fileID: 9194387543221894628}
   m_Layer: 0
-  m_Name: '[Interactable] Door_Standard_01'
+  m_Name: '[Interactable] Door - No Key'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,13 +69,37 @@ MonoBehaviour:
       m_Calls: []
   OnClosed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8750198739800237650}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Reverse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLocked:
     m_PersistentCalls:
       m_Calls: []
   OnUnlocked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9194387543221894628}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: set_IsInteractable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &8750198739800237650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +123,36 @@ MonoBehaviour:
   OnReverseAnimationFinished:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9194387543221894628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676435315591321250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 0
+  interactPromptText: 
+  itemName: 
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 996586273029410417}
+        m_TargetAssemblyTypeName: Openable, Assembly-CSharp
+        m_MethodName: ToggleOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &9194387543967574550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,64 +227,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e2c3bfa755db44aafd6143e65d77d4, type: 3}
---- !u!1 &8311515227786811207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 65e2c3bfa755db44aafd6143e65d77d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9194387543967574550}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &472778641768411725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8311515227786811207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980982bc01eec944b8303e768f93c65f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  OnOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnOpenFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLocked:
-    m_PersistentCalls:
-      m_Calls: []
-  OnUnlocked:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &8756222556243827921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8311515227786811207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab412b21bd7cd9e438a1354532dec40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationTime: 3
-  finalLocalPosition: {x: 0, y: 0, z: 0}
-  finalLocalRotation: {x: 0, y: 0, z: 0}
-  finalLocalScale: {x: 1, y: 1, z: 1}
-  targetTransform: {fileID: 8652470126031654397}
-  OnAnimationFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  OnReverseAnimationFinished:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &8652470126031654397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65e2c3bfa755db44aafd6143e65d77d4,

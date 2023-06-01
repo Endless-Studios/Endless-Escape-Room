@@ -101,16 +101,20 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
   OnInspectionEnded:
     m_PersistentCalls:
       m_Calls: []
-  visualsRoot: {fileID: 7357678462920608366}
   dropRigidbody: {fileID: 583875167995515812}
-  identifiers: []
+  identifiers:
+  - identifier: Ornate Key
   visualsPrefab: {fileID: 207651697648967247}
+  holdOffset: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 20, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []

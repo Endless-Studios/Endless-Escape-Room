@@ -1311,7 +1311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005647524991532312}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0.3556, z: 0.3155}
+  m_LocalPosition: {x: 0, y: 0.3556, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 6005647525112418420}
   - component: {fileID: 6005647525112418423}
   - component: {fileID: 6005647525112418422}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MovableSurfaceTrigger (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,7 +1554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005647525112418416}
   m_LocalRotation: {x: -3.3087225e-24, y: -0, z: 1.6543612e-24, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0263, z: -0.2102}
+  m_LocalPosition: {x: 0.00000002888737, y: -0.03199999, z: -0.20999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1580,7 +1580,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47, y: 0.02, z: 0.3}
+  m_Size: {x: 0.47, y: 0.01, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6005647525112418422
 MonoBehaviour:
@@ -2137,7 +2137,7 @@ GameObject:
   - component: {fileID: 6005647525313709953}
   - component: {fileID: 6005647525313709952}
   - component: {fileID: 6005647525313709955}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MovableSurfaceTrigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2152,7 +2152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005647525313710077}
   m_LocalRotation: {x: -4.9630837e-24, y: -0, z: 1.6543612e-24, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0263, z: -0.2102}
+  m_LocalPosition: {x: 0, y: -0.032, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2178,7 +2178,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47, y: 0.02, z: 0.3}
+  m_Size: {x: 0.47, y: 0.01, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6005647525313709955
 MonoBehaviour:
@@ -2204,7 +2204,7 @@ GameObject:
   - component: {fileID: 6005647525356417261}
   - component: {fileID: 6005647525356417260}
   - component: {fileID: 6005647525356417266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MovableSurfaceTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2219,7 +2219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005647525356417262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.0263, z: -0.2102}
+  m_LocalPosition: {x: 0, y: -0.032, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2245,7 +2245,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47, y: 0.02, z: 0.3}
+  m_Size: {x: 0.47, y: 0.01, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6005647525356417266
 MonoBehaviour:
@@ -2284,7 +2284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005647525572385104}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0.50165, z: 0.3155}
+  m_LocalPosition: {x: 0, y: 0.50165, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2510,7 +2510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005647525585361403}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0.20955, z: 0.3155}
+  m_LocalPosition: {x: 0, y: 0.20955, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
