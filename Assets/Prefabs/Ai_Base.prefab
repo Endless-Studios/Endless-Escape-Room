@@ -178,8 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWanderNearDistance: 2
   wanderNearDistance: 5
-  minWanderFarDistance: 7.5
-  wanderFarDistance: 15
+  minWanderFarDistance: 10
+  wanderFarDistance: 20
   navSampleDistance: 5
   navigationTolerance: 0.2
   maxAttackDistance: 2.2

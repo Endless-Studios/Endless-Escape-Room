@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Ai
 {
@@ -13,24 +15,29 @@ namespace Ai
         [SerializeField] private float baseThreshold;
         [SerializeField] private float minThresholdModifier;
         [SerializeField] private float maxThresholdModifier;
+        [ShowOnly, SerializeField] private float value;
+        [ShowOnly, SerializeField] private float currentThreshold;
         [ShowOnly] public float AmountOverThreshold;
-        
+
+        private void Awake()
+        {
+            ResetValue();
+        }
+
         /// <summary>
         /// Current threshold for the value.
         /// </summary>
-        public float Threshold => baseThreshold + thresholdModifer;
+        public float Threshold => currentThreshold;
         
         /// <summary>
         /// Returns true if the value is greater than the threshold
         /// </summary>
         public bool HasExceededThreshold => Value > Threshold;
-        
+
         /// <summary>
         /// The current value
         /// </summary>
-        public float Value { get; private set; }
-        
-        private float thresholdModifer;
+        public float Value => value;
 
         /// <summary>
         /// Increases the amount of the value by the give amount and checks if the amount has exceeded
@@ -39,7 +46,7 @@ namespace Ai
         /// <param name="deltaTime"></param>
         public void UpdateValue(float deltaTime)
         {
-            Value += deltaTime;
+            value += deltaTime;
             AmountOverThreshold = Mathf.Max(0, Value - Threshold);
         }
 
@@ -48,8 +55,8 @@ namespace Ai
         /// </summary>
         public void ResetValue()
         {
-            Value = 0;
-            thresholdModifer = Random.Range(minThresholdModifier, maxThresholdModifier);
+            value = 0;
+            currentThreshold = baseThreshold + Random.Range(minThresholdModifier, maxThresholdModifier);
             AmountOverThreshold = 0;
         }
     }
