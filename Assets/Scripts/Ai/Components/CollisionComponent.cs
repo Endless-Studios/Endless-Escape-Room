@@ -12,7 +12,7 @@ namespace Ai
 
         private void OnValidate()
         {
-            if (colliders.Length == 0)
+            if(colliders == null || colliders.Length == 0)
             {
                 colliders = GetComponentsInChildren<Collider>();
             }

@@ -25,7 +25,7 @@ namespace Ai
 
         private void OnValidate()
         {
-            if (surfaces.Length == 0)
+            if (surfaces == null || surfaces.Length == 0)
             {
                 surfaces = GetComponents<NavMeshSurface>();
             }

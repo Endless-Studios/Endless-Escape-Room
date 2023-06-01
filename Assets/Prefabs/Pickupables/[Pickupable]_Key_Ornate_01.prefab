@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7357678462920608366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 583875167995515812}
   - component: {fileID: 7105482111513525998}
   - component: {fileID: 2656559502307659654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '[Pickupable]_Key_Ornate_01'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,6 +202,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key_Ornate_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 15f009d340da38b4d8b14f0d1fb91a78,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102182226985796984, guid: 15f009d340da38b4d8b14f0d1fb91a78,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 15f009d340da38b4d8b14f0d1fb91a78,
         type: 3}
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
@@ -216,6 +226,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LODs.Array.data[2].screenRelativeHeight
       value: 0.025042113
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151796349165067641, guid: 15f009d340da38b4d8b14f0d1fb91a78,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547605674088173174, guid: 15f009d340da38b4d8b14f0d1fb91a78,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15f009d340da38b4d8b14f0d1fb91a78, type: 3}

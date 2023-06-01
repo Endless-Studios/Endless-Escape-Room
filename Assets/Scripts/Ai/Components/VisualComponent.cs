@@ -14,7 +14,7 @@ namespace Ai
 
         private void OnValidate()
         {
-            if (renderers.Count == 0)
+            if (renderers == null || renderers.Count == 0)
             {
                 renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
             }
