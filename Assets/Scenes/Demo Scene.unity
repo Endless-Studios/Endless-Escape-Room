@@ -10855,7 +10855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589c10b638743bf48a49cf119b801236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawCondition: 1
+  drawCondition: 0
   text: 0001
   localOffset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &1151099989
