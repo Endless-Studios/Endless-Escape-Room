@@ -207,7 +207,9 @@ public class HeldItemManager : MonoBehaviour
                     hitInfoToUse = colliderHitInfo;
                 }
                 else
+                {
                     hitInfoToUse = triggerHitInfo;
+                }
             }
             else if(triggerHit)
             {
@@ -218,8 +220,7 @@ public class HeldItemManager : MonoBehaviour
                 snappable = null;
                 hitInfoToUse = colliderHitInfo;
             }
-
-            Debug.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (Camera.main.transform.forward * hitInfoToUse.distance));
+            Debug.DrawLine(Camera.main.transform.position, hitInfoToUse.point, Color.cyan);
 
             if(snappable)
             {
