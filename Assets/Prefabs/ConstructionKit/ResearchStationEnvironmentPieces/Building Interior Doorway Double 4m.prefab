@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isLocked: 0
+  interactionType: 2
   OnOpened:
     m_PersistentCalls:
       m_Calls: []
@@ -358,6 +359,21 @@ PrefabInstance:
       propertyPath: openable
       value: 
       objectReference: {fileID: 2195026533683840211}
+    - target: {fileID: 2883116393341147428, guid: 2472e64d61d74fe459088fbe9a038218,
+        type: 3}
+      propertyPath: Links.Array.data[0].AgentType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883116393341147428, guid: 2472e64d61d74fe459088fbe9a038218,
+        type: 3}
+      propertyPath: Links.Array.data[0].LinkTraversalType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883116393341147428, guid: 2472e64d61d74fe459088fbe9a038218,
+        type: 3}
+      propertyPath: Links.Array.data[1].LinkTraversalType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2472e64d61d74fe459088fbe9a038218, type: 3}
 --- !u!4 &6986061601830562600 stripped

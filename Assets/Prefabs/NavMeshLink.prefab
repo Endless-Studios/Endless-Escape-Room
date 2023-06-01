@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1754010590299214860}
-  - component: {fileID: 5752409002913245109}
-  - component: {fileID: 3402346100801143464}
   - component: {fileID: 2883116393341147428}
+  - component: {fileID: 5752409002913245109}
+  - component: {fileID: 489543232674211716}
+  - component: {fileID: 3402346100801143464}
   m_Layer: 15
   m_Name: NavMeshLink
   m_TagString: Untagged
@@ -34,7 +35,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2883116393341147428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589985815425922955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094bcc71faa94c0a83d92ce124024963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshLink: {fileID: 5752409002913245109}
+  linkTraversalKind: 1
+  openable: {fileID: 0}
+  Links:
+  - Link: {fileID: 5752409002913245109}
+    AgentType: 0
+    LinkTraversalType: 0
+  - Link: {fileID: 5752409002913245109}
+    AgentType: 0
+    LinkTraversalType: 0
 --- !u!114 &5752409002913245109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589985815425922955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -334000983
+  m_StartPoint: {x: 0, y: 0, z: -0.9}
+  m_EndPoint: {x: 0, y: 0, z: 0.9}
+  m_Width: 0
+  m_CostModifier: -1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
+--- !u!114 &489543232674211716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,18 +110,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2883116393341147428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589985815425922955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094bcc71faa94c0a83d92ce124024963, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshLink: {fileID: 5752409002913245109}
-  linkTraversalKind: 1
-  openable: {fileID: 0}
