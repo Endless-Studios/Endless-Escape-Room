@@ -99,7 +99,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inspectionDefaultRotation: {x: -45, y: 10, z: 0}
-  inspectDistance: 0
+  inspectDistance: -0.25
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
