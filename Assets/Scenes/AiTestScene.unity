@@ -816,11 +816,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestHideout
       objectReference: {fileID: 0}
-    - target: {fileID: 2076582499043163578, guid: f65451f638ddb7646a116c6d152a477a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3872074893842674758, guid: f65451f638ddb7646a116c6d152a477a,
         type: 3}
       propertyPath: m_Size.x
@@ -6153,6 +6148,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815518124988517653, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
+        type: 3}
+      propertyPath: interactionAnimationPairs.Array.data[3].InteractionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815518124988517653, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
+        type: 3}
+      propertyPath: interactionAnimationPairs.Array.data[3].animationTriggerName
+      value: OpenDoor
       objectReference: {fileID: 0}
     - target: {fileID: 7092409327044442223, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
