@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum ItemLayer
+{
+    World,
+    Held,
+    Ui
+}
+
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
@@ -45,29 +52,66 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    const string highlightLayer = "InteractableOutline";
-    const string normalLayer = "InteractableNoOutline";
-    const string inspectingHighlightLayer = "InspectedOutline";
-    const string inspectingNormalLayer = "InspectedItem";
+    const string worldHighlightLayer = "InteractableOutline";
+    const string worldNormalLayer = "InteractableNoOutline";
+    const string heldHighlightLayer = "InspectedOutline";
+    const string heldNormalLayer = "InspectedItem";
+    const string uiHighlightLayer = "UiOutline";
+    const string uiNormalLayer = "UiNoOutline";
 
-    public void Unhighlight(bool isInspecting)
+    static int GetHighlightedLayer(ItemLayer layer)
     {
-        SetToNormalLayer(isInspecting);
+        switch(layer)
+        {
+            case ItemLayer.World:
+                return LayerMask.NameToLayer(worldHighlightLayer);
+            case ItemLayer.Held:
+                return LayerMask.NameToLayer(heldHighlightLayer);
+            case ItemLayer.Ui:
+                return LayerMask.NameToLayer(uiHighlightLayer);
+            default:
+                throw new System.ArgumentException($"You must have a standard {nameof(ItemLayer)} value!");
+        }
     }
 
-    public void SetToNormalLayer(bool isInspecting = false)
+    static int GetNormalLayer(ItemLayer layer)
+    {
+        switch(layer)
+        {
+            case ItemLayer.World:
+                return LayerMask.NameToLayer(worldNormalLayer);
+            case ItemLayer.Held:
+                return LayerMask.NameToLayer(heldNormalLayer);
+            case ItemLayer.Ui:
+                return LayerMask.NameToLayer(uiNormalLayer);
+            default:
+                throw new System.ArgumentException($"You must have a standard {nameof(ItemLayer)} value!");
+        }
+    }
+
+    public void Unhighlight(ItemLayer layer = ItemLayer.World)
+    {
+        Unhighlight(transform, layer);
+    }
+
+    public static void Unhighlight(Transform transform, ItemLayer layer = ItemLayer.World)
     {
         //Debug.Log($"setting {gameObject.name} to a normal layer");
-        SetLayerRecursive(transform, LayerMask.NameToLayer(isInspecting ? inspectingNormalLayer : normalLayer));
+        SetLayerRecursive(transform, GetNormalLayer(layer));
     }
 
-    public void Highlight(bool isInspecting)
+    public void Highlight(ItemLayer layer = ItemLayer.World)
+    {
+        Highlight(transform, layer);
+    }
+
+    public static void Highlight(Transform transform, ItemLayer layer = ItemLayer.World)
     {
         //Debug.Log($"setting {gameObject.name} to a highlight layer");
-        SetLayerRecursive(transform, LayerMask.NameToLayer(isInspecting ? inspectingHighlightLayer : highlightLayer));
+        SetLayerRecursive(transform, GetHighlightedLayer(layer));
     }
 
-    public static void SetLayerRecursive(Transform transform, int layer)
+    static void SetLayerRecursive(Transform transform, int layer)
     {
         transform.gameObject.layer = layer;
         int childCount = transform.childCount;
