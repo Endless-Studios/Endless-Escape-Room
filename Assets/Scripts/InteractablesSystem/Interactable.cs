@@ -128,4 +128,9 @@ public class Interactable : MonoBehaviour
     protected virtual void InternalHandleInteract()
     {
     }
+
+    public void UpdatePrompt(string newPrompt)
+    {
+        interactPromptText = newPrompt;
+    }
 }

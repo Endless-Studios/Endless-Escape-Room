@@ -79,6 +79,9 @@ public class PlayerInteractor : MonoBehaviour
             {
                 Interact(lastHoveredInteractable);
                 currentGrabbable = lastHoveredInteractable as Grabbable;
+
+                //Just in case interacting changed the text - a common case.
+                PlayerHUD.Instance.SetInteractText(hoveredInteractable.InteractPrompt);
             }
         }
         else if (playerInput.GetInteractReleased())
