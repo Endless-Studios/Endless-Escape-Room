@@ -100,6 +100,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_10bd878589b94b6f8f5a10936b2a779e_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d588e5971b9d8a34d814faec93e635a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_93c13e88744449fe904b3154db7a1464_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 5568a701f2024414f900bf84fd631739, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_c28d0a5f900b41d3a407b3d838442bb1_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 256b8317d63cddc4c80433d017d2662c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -160,6 +172,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
     - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _Drips_Tiling: {r: 2, g: 2, b: 0, a: 0}
+    - _Drops_Tiling: {r: 4, g: 4, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

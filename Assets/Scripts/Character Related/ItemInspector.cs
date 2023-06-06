@@ -61,7 +61,7 @@ public class ItemInspector : MonoBehaviour
         if(currentPickupable)
             currentPickupable.gameObject.SetActive(true);
 
-        CurrentInspectable.SetToNormalLayer(true);
+        CurrentInspectable.Unhighlight(ItemLayer.Held);
         Vector3 startPosition = CurrentInspectable.transform.position;
         Quaternion startRotation = CurrentInspectable.transform.localRotation;
         for(float elapsedTime = 0; elapsedTime < inspectMoveTime; elapsedTime += Time.deltaTime)
@@ -130,7 +130,7 @@ public class ItemInspector : MonoBehaviour
             if(backPressed)
             {//TODO maybe move some of this into inspectable?
                 CurrentInspectable.RestoreTransform();
-                CurrentInspectable.SetToNormalLayer();
+                CurrentInspectable.Unhighlight();
                 CurrentInspectable.IsInteractable = true;
             }
             else if(pickupPressed)

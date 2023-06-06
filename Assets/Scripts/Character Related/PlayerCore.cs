@@ -12,6 +12,7 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] CameraManager cameraManager;
     [SerializeField] InventoryBase inventory;
     [SerializeField] HeldItemManager heldItemManager;
+    [SerializeField] ItemInspector itemInspector;
     [SerializeField] Transform fpsCameraRootTransform;
 
     public bool IsLocalPlayer => LocalPlayer == this;
@@ -20,6 +21,7 @@ public class PlayerCore : MonoBehaviour
     public InventoryBase Inventory => inventory;
     public HeldItemManager HeldItemManager => heldItemManager;
     public Transform FpsCameraRootTransform => fpsCameraRootTransform;
+    public ItemInspector ItemInspector => itemInspector;
 
     private void Awake()
     {

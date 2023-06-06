@@ -30,7 +30,7 @@ public class Pickupable : Inspectable
     internal void HandlePickedUp()
     {
         //RestoreVisualsRoot();
-        SetToNormalLayer(true);
+        Unhighlight(ItemLayer.Held);
         if(dropRigidbody)
         {
             dropRigidbody.isKinematic = true;
@@ -44,7 +44,7 @@ public class Pickupable : Inspectable
     {
         if(enableRigidbody && dropRigidbody)
             dropRigidbody.isKinematic = false;
-        SetToNormalLayer();
+        Unhighlight();
         OnDropped.Invoke();
     }
 

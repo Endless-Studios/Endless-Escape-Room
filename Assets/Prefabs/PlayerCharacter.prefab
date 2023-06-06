@@ -103,6 +103,7 @@ MonoBehaviour:
   cameraManager: {fileID: 4597869270661111247}
   inventory: {fileID: 6419312489086153408}
   heldItemManager: {fileID: 2350323757107018741}
+  itemInspector: {fileID: 7485675807474701852}
   fpsCameraRootTransform: {fileID: 88013906174402261}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
@@ -687,7 +688,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767146, y: 1}
+    m_SensorSize: {x: 1.7771318, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
