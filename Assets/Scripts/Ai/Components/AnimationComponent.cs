@@ -11,20 +11,31 @@ namespace Ai
     {
         [SerializeField] private string thresholdTriggerName;
         [SerializeField] private string movingBoolName;
+        [SerializeField] private string attackTriggerName;
 
         private int enterDoorway;
         private int moving;
+        private int attackTrigger;
 
         protected void Awake()
         {
             enterDoorway = Animator.StringToHash(thresholdTriggerName);
             moving = Animator.StringToHash(movingBoolName);
-            entity.OnWalkingThroughDoorway += WalkThroughDoor;
+            attackTrigger = Animator.StringToHash(attackTriggerName);
+            
+            entity.OnWalkingThroughDoorway += HandleOnWalkingThroughDoor;
+            entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
         }
 
-        private void WalkThroughDoor()
+        private void HandleOnWalkingThroughDoor()
         {
             references.Animator.SetTrigger(enterDoorway);
+        }
+
+        private void HandleStartedAttacking()
+        {
+            references.Animator.SetTrigger(attackTrigger);
+            Invoke(nameof(FinishedAttacking), 2f);
         }
 
         /// <summary>
@@ -42,6 +53,14 @@ namespace Ai
         public void FinishedInteracting()
         {
             entity.FinishedInteracting();
+        }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void FinishedAttacking()
+        {
+            entity.FinishedAttacking();
         }
 
         

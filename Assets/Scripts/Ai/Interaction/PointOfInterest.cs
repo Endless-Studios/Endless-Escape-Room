@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ai
 {
@@ -17,10 +19,17 @@ namespace Ai
         [SerializeField] private GameObject interactionPointObject;
         [SerializeField] private InteractionType interactionType;
 
+        public UnityEvent OnInteracted = new UnityEvent();
+
         public InteractionType InteractionType => interactionType;
         public Vector3 InteractionPoint => interactionPointObject.transform.position;
         public Quaternion InteractionRotation => interactionPointObject.transform.rotation;
 
+        public void Interact()
+        {
+            OnInteracted?.Invoke();
+        }
+        
         protected virtual void Awake()
         {
             PointsOfInterest.Add(this);

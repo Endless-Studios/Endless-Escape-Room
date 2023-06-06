@@ -84,17 +84,5 @@ namespace Ai
         {
             OnFinishedAttacking.Invoke();
         }
-
-        public void WarpAfterAttack()
-        {
-            StartCoroutine(WarpRoutine());
-        }
-
-        private IEnumerator WarpRoutine()
-        {
-            Despawn();
-            yield return null;
-            Spawn();
-        }
     }
 }

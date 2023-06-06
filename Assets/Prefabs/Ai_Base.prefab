@@ -99,6 +99,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   PlayersHideout: {fileID: 0}
   Destination: {x: 0, y: 0, z: 0}
+  ShouldSpawnInPlace: 0
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +119,7 @@ MonoBehaviour:
   hearingSensor: {fileID: 4769800100488525422}
   proximitySensor: {fileID: 2097964165954542098}
   awarenessComponent: {fileID: 3246184029654640956}
+  animationComponent: {fileID: 0}
   boredThreshold: {fileID: 8678276500234800677}
   wanderThreshold: {fileID: 3476776795415583245}
   wanderFarThreshold: {fileID: 5413147699087195352}
@@ -147,6 +149,7 @@ MonoBehaviour:
   approachDistance: 1.5
   maxAngleDifference: 5
   maxAngularSpeed: 40
+  targetMovementExtrapolationTime: 1.5
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1021,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
+  attackTriggerName: Attack
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,

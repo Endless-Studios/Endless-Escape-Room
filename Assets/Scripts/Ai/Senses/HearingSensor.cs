@@ -29,7 +29,26 @@ namespace Ai
             if (soundData.SoundKind == SoundType.AiGenerated)
                 return;
 
-            float perceivedDB = CalculatePerceivedDB(soundData);
+            float perceivedDB;
+            if (soundData.SoundKind == SoundType.Lure)
+            {
+                perceivedDB = CalculatePerceivedDB(soundData, DecibelDecayMode.FalloffOnly);
+                if (perceivedDB > minPerceivedDB)
+                {
+                    Stimulus stimulus = new Stimulus
+                    (
+                        soundData.Position,
+                        Time.time,
+                        100,
+                        SenseKind.ForceAlert
+                    );
+                    SensedStimulus(stimulus);   
+                }
+
+                return;
+            }
+            
+            perceivedDB = CalculatePerceivedDB(soundData);
             if (perceivedDB > minPerceivedDB)
             {
                 Stimulus stimulus = new Stimulus
@@ -49,13 +68,20 @@ namespace Ai
         /// the sensor
         /// </summary>
         /// <param name="soundData">Information about the emitted sound</param>
+        /// <param name="decibelDecayMode"></param>
         /// <returns></returns>
-        private float CalculatePerceivedDB(EmittedSoundData soundData)
+        private float CalculatePerceivedDB(EmittedSoundData soundData, DecibelDecayMode decibelDecayMode = DecibelDecayMode.WallsAndFalloff)
         {
-            Vector3 position = transform.position;
+            if (decibelDecayMode == DecibelDecayMode.None)
+                return soundData.DecibelsAtSource;
             
+            Vector3 position = transform.position;
+
             //Get the distance from the source of the sound to the sensor
             float distanceToSoundSource = Vector3.Distance(position, soundData.Position);
+
+            if (decibelDecayMode == DecibelDecayMode.FalloffOnly)
+                return CalculateDBAfterDistanceFalloff(soundData.DecibelsAtSource, distanceToSoundSource);
 
             // Raycast from the origin of the sound against all the layers that could possibly block sound
             int numHits = Physics.RaycastNonAlloc(soundData.Position, (position - soundData.Position).normalized, hits, distanceToSoundSource, SoundManager.Instance.SoundBlockerMask);
@@ -121,7 +147,7 @@ namespace Ai
             
             return currentDB;
         }
-        
+
         /// <summary>
         /// Calculates the volume of the sound over distance. Initial DB is presumed to be recorded at 1m to simplify
         /// calculation
@@ -142,5 +168,12 @@ namespace Ai
 
             return dBAfterFalloff;
         }
+    }
+
+    public enum DecibelDecayMode
+    {
+        WallsAndFalloff,
+        FalloffOnly,
+        None
     }
 }

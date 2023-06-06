@@ -8,6 +8,7 @@
         Sight,
         Hearing,
         Proximity,
+        ForceAlert,
         Undefined
     }
 }
