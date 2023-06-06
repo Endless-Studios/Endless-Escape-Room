@@ -39,8 +39,8 @@ namespace Ai
         {
             if (gameplayInfo.Target)
             {
-                TargetEnteredHideout.Invoke();
                 gameplayInfo.TargetHideout = hideout;
+                TargetEnteredHideout.Invoke();
             }
 
             gameplayInfo.PlayersHideout = hideout;

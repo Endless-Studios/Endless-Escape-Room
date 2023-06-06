@@ -9,8 +9,12 @@ namespace Ai
     /// <summary>
     /// Used as a central point for managing Ai state. This component Should be placed on the root object of the Ai prefab.
     /// </summary>
-    public class AiEntity : MonoBehaviour
+    public class AiEntity : AiComponent
     {
+        public static event Action<AiReferences> OnAiAttackingPlayer;
+        public static event Action OnAiFinishedAttackingPlayer; 
+
+
         public bool ShouldSpawnOnStart;
 
         public UnityEvent OnDied = new UnityEvent();
@@ -77,11 +81,13 @@ namespace Ai
         public void StartedAttacking()
         {
             OnStartedAttacking.Invoke();
+            OnAiAttackingPlayer?.Invoke(references);
         }
 
         public void FinishedAttacking()
         {
             OnFinishedAttacking.Invoke();
+            OnAiFinishedAttackingPlayer?.Invoke();
         }
     }
 }

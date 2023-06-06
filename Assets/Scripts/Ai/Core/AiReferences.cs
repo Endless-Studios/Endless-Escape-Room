@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Ai
@@ -23,6 +24,7 @@ namespace Ai
         [SerializeField] private ThresholdBehavior fiddleThreshold;
         [SerializeField] private ThresholdBehavior searchThreshold;
         [SerializeField] private ThresholdBehavior investigateThreshold;
+        [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
 
         public Animator Animator => animator;
@@ -39,5 +41,6 @@ namespace Ai
         public ThresholdBehavior FiddleThreshold => fiddleThreshold;
         public ThresholdBehavior SearchThreshold => searchThreshold;
         public ThresholdBehavior InvestigateThreshold => investigateThreshold;
+        public CinemachineVirtualCamera VirtualCamera => virtualCamera;
     }
 }
