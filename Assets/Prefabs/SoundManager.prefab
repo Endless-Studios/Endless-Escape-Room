@@ -48,3 +48,5 @@ MonoBehaviour:
   <SoundBlockerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 1
+  <AudioSourcePrefab>k__BackingField: {fileID: 8123889935040910573, guid: fcf997b4e40c2374cb058ce50e3a6b55,
+    type: 3}
