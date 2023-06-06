@@ -3,7 +3,12 @@ guid: 6959346c5bb5f4145a81eafadf35f409
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Greenhouse_Garden_Tools
+    second: {fileID: 2100000, guid: 7e3dbe96eaa510d418877f23aa3ddf8a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
