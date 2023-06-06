@@ -101,8 +101,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
-  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
-  inspectDistance: 0
+  inspectionDefaultRotation: {x: 120, y: -35, z: 0}
+  inspectDistance: -0.02
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -113,8 +113,8 @@ MonoBehaviour:
   identifiers:
   - identifier: Ornate Key
   visualsPrefab: {fileID: 207651697648967247}
-  holdOffset: {x: 0, y: 0, z: 0}
-  holdRotation: {x: 0, y: 20, z: 0}
+  holdOffset: {x: -0.3, y: 0.15, z: -0.3}
+  holdRotation: {x: -25, y: -30, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []
