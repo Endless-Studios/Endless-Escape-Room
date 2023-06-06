@@ -626,6 +626,8 @@ GameObject:
   - component: {fileID: 39951093}
   - component: {fileID: 39951092}
   - component: {fileID: 39951091}
+  - component: {fileID: 39951095}
+  - component: {fileID: 39951094}
   m_Layer: 0
   m_Name: Green Snappable
   m_TagString: Untagged
@@ -665,9 +667,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -679,11 +681,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 39951092}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Green
+  requirementType: 1
 --- !u!114 &39951092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +761,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &39951094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39951088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &39951095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39951088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!1001 &41320604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5627,6 +5673,8 @@ GameObject:
   - component: {fileID: 303444286}
   - component: {fileID: 303444289}
   - component: {fileID: 303444290}
+  - component: {fileID: 303444292}
+  - component: {fileID: 303444291}
   m_Layer: 0
   m_Name: Red Snappable
   m_TagString: Untagged
@@ -5727,9 +5775,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5741,11 +5789,55 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 303444289}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Red
+  requirementType: 1
+--- !u!114 &303444291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303444284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 30
+  soundKind: 1
+--- !u!114 &303444292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303444284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 30
+  soundKind: 1
 --- !u!1 &306143546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8082,6 +8174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420261034}
   - component: {fileID: 420261035}
+  - component: {fileID: 420261036}
   m_Layer: 0
   m_Name: Button6
   m_TagString: Untagged
@@ -8147,6 +8240,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &420261036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420261033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &427341044
 GameObject:
   m_ObjectHideFlags: 0
@@ -8847,6 +8967,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -11577,6 +11699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isLocked: 1
+  interactionType: 0
   OnOpened:
     m_PersistentCalls:
       m_Calls:
@@ -13036,6 +13159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692704980}
   - component: {fileID: 692704981}
+  - component: {fileID: 692704982}
   m_Layer: 0
   m_Name: Button2
   m_TagString: Untagged
@@ -13101,6 +13225,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &692704982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692704979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &700300184
 GameObject:
   m_ObjectHideFlags: 0
@@ -13870,6 +14021,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -14422,6 +14575,8 @@ GameObject:
   - component: {fileID: 754711858}
   - component: {fileID: 754711857}
   - component: {fileID: 754711856}
+  - component: {fileID: 754711860}
+  - component: {fileID: 754711859}
   m_Layer: 0
   m_Name: Yellow Snappable
   m_TagString: Untagged
@@ -14461,9 +14616,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14475,11 +14630,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 754711857}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Yellow
+  requirementType: 1
 --- !u!114 &754711857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14541,6 +14710,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &754711859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754711853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &754711860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754711853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!1 &756915086
 GameObject:
   m_ObjectHideFlags: 0
@@ -17325,6 +17524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934406821}
   - component: {fileID: 934406822}
+  - component: {fileID: 934406823}
   m_Layer: 0
   m_Name: Button evaluate
   m_TagString: Untagged
@@ -17390,6 +17590,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &934406823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934406820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!4 &954658038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 32c63086f5ebceb4bb814314d754fe12,
@@ -17408,6 +17635,8 @@ GameObject:
   - component: {fileID: 959718172}
   - component: {fileID: 959718171}
   - component: {fileID: 959718170}
+  - component: {fileID: 959718174}
+  - component: {fileID: 959718173}
   m_Layer: 0
   m_Name: Red Snappable (1)
   m_TagString: Untagged
@@ -17447,9 +17676,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17461,11 +17690,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 959718171}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Red
+  requirementType: 1
 --- !u!114 &959718171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17527,6 +17770,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &959718173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959718167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &959718174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959718167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!1 &960332299
 GameObject:
   m_ObjectHideFlags: 0
@@ -17585,6 +17858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963894002}
   - component: {fileID: 963894003}
+  - component: {fileID: 963894004}
   m_Layer: 0
   m_Name: Button8
   m_TagString: Untagged
@@ -17650,6 +17924,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &963894004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963894001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &967621016
 GameObject:
   m_ObjectHideFlags: 0
@@ -17660,6 +17961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 967621017}
   - component: {fileID: 967621018}
+  - component: {fileID: 967621019}
   m_Layer: 0
   m_Name: Button5
   m_TagString: Untagged
@@ -17725,6 +18027,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &967621019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967621016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &975863117
 GameObject:
   m_ObjectHideFlags: 0
@@ -18214,7 +18543,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7791165, y: 1}
+    m_SensorSize: {x: 2.1620903, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18692,6 +19021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029783500}
   - component: {fileID: 1029783501}
+  - component: {fileID: 1029783502}
   m_Layer: 0
   m_Name: Button1
   m_TagString: Untagged
@@ -18757,6 +19087,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1029783502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029783499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &1030183487
 GameObject:
   m_ObjectHideFlags: 0
@@ -21000,6 +21357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182747012}
   - component: {fileID: 1182747013}
+  - component: {fileID: 1182747014}
   m_Layer: 0
   m_Name: Button9
   m_TagString: Untagged
@@ -21065,6 +21423,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1182747014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182747011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &1197558061
 GameObject:
   m_ObjectHideFlags: 0
@@ -22914,6 +23299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1287925625}
   - component: {fileID: 1287925626}
+  - component: {fileID: 1287925627}
   m_Layer: 0
   m_Name: Button3
   m_TagString: Untagged
@@ -22979,6 +23365,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1287925627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287925624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &1290568893
 GameObject:
   m_ObjectHideFlags: 0
@@ -23088,6 +23501,8 @@ GameObject:
   - component: {fileID: 1299739339}
   - component: {fileID: 1299739338}
   - component: {fileID: 1299739337}
+  - component: {fileID: 1299739341}
+  - component: {fileID: 1299739340}
   m_Layer: 0
   m_Name: Green Snappable (1)
   m_TagString: Untagged
@@ -23127,9 +23542,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23141,11 +23556,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 1299739338}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Green
+  requirementType: 1
 --- !u!114 &1299739338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23207,6 +23636,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1299739340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299739334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &1299739341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299739334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!1 &1314080038
 GameObject:
   m_ObjectHideFlags: 0
@@ -23326,6 +23785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1329771570}
   - component: {fileID: 1329771571}
+  - component: {fileID: 1329771572}
   m_Layer: 0
   m_Name: Button4
   m_TagString: Untagged
@@ -23391,6 +23851,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1329771572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329771569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &1331859211
 GameObject:
   m_ObjectHideFlags: 0
@@ -23401,6 +23888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1331859212}
   - component: {fileID: 1331859213}
+  - component: {fileID: 1331859214}
   m_Layer: 0
   m_Name: Buttonx
   m_TagString: Untagged
@@ -23466,6 +23954,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1331859214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331859211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &1333531785
 GameObject:
   m_ObjectHideFlags: 0
@@ -25759,6 +26274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isLocked: 1
+  interactionType: 0
   OnOpened:
     m_PersistentCalls:
       m_Calls:
@@ -26783,6 +27299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isLocked: 1
+  interactionType: 0
   OnOpened:
     m_PersistentCalls:
       m_Calls:
@@ -28432,6 +28949,8 @@ GameObject:
   - component: {fileID: 1624157515}
   - component: {fileID: 1624157514}
   - component: {fileID: 1624157513}
+  - component: {fileID: 1624157517}
+  - component: {fileID: 1624157516}
   m_Layer: 0
   m_Name: Blue Snappable
   m_TagString: Untagged
@@ -28471,9 +28990,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28485,11 +29004,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 1624157514}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Blue
+  requirementType: 1
 --- !u!114 &1624157514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28551,6 +29084,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1624157516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624157510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &1624157517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624157510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!1 &1626496455
 GameObject:
   m_ObjectHideFlags: 0
@@ -30279,6 +30842,8 @@ GameObject:
   - component: {fileID: 1697718938}
   - component: {fileID: 1697718937}
   - component: {fileID: 1697718936}
+  - component: {fileID: 1697718940}
+  - component: {fileID: 1697718939}
   m_Layer: 0
   m_Name: Blue Snappable (1)
   m_TagString: Untagged
@@ -30318,9 +30883,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30332,11 +30897,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 1697718937}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Blue
+  requirementType: 1
 --- !u!114 &1697718937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30398,6 +30977,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1697718939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697718933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &1697718940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697718933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!1 &1714714012
 GameObject:
   m_ObjectHideFlags: 0
@@ -36223,6 +36832,8 @@ GameObject:
   - component: {fileID: 1793369921}
   - component: {fileID: 1793369920}
   - component: {fileID: 1793369919}
+  - component: {fileID: 1793369923}
+  - component: {fileID: 1793369922}
   m_Layer: 0
   m_Name: Yellow Snappable (1)
   m_TagString: Untagged
@@ -36262,9 +36873,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LogResult, Assembly-CSharp
-        m_MethodName: Log
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36276,11 +36887,25 @@ MonoBehaviour:
         m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 39951094}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isUncompletable: 1
   snappable: {fileID: 1793369920}
-  goalSuccessIdentifiers: []
-  requirementType: 0
+  goalSuccessIdentifiers:
+  - identifier: DataCube
+  - identifier: Yellow
+  requirementType: 1
 --- !u!114 &1793369920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36342,6 +36967,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1793369922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793369916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
+--- !u!114 &1793369923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793369916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
+  audioClipDB: 0
+  soundKind: 0
 --- !u!4 &1812660286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6059622464125642926, guid: bc0414a75cb405948aac6c5e20795442,
@@ -36456,6 +37111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841894037}
   - component: {fileID: 1841894038}
+  - component: {fileID: 1841894039}
   m_Layer: 0
   m_Name: Button7
   m_TagString: Untagged
@@ -36521,6 +37177,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420261036}
+        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1841894039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841894036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
+  audioClipDB: 20
+  soundKind: 1
 --- !u!1 &1844459754
 GameObject:
   m_ObjectHideFlags: 0
@@ -37691,6 +38374,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -39066,6 +39751,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -40601,6 +41288,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -40610,6 +41299,8 @@ MonoBehaviour:
   dropRigidbody: {fileID: 2079118824}
   identifiers: []
   visualsPrefab: {fileID: 325114409}
+  holdOffset: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 20, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []
@@ -50674,6 +51365,8 @@ MonoBehaviour:
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
+  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
+  inspectDistance: 0
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -50686,6 +51379,8 @@ MonoBehaviour:
   - identifier: Red
   visualsPrefab: {fileID: 919132149155446097, guid: 32c63086f5ebceb4bb814314d754fe12,
     type: 3}
+  holdOffset: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 20, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []
@@ -50982,7 +51677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398254361343511536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1801615, y: 0.049999952, z: -3.3054063}
+  m_LocalPosition: {x: 0.79, y: 0.049999952, z: -3.3054063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

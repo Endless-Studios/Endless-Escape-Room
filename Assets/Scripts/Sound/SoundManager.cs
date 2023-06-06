@@ -24,6 +24,7 @@ namespace Sound
             AudioSource useAudioSource = GetAvailableAudioSource();
             useAudioSource.transform.position = soundData.Position;
             useAudioSource.clip = clip;
+            useAudioSource.Play();
 
             //Schedule pooling
             StartCoroutine(AddAudioSourceToPoolAfterDelay(useAudioSource, soundData.ClipLength));
