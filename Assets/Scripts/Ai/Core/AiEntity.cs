@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -82,6 +83,18 @@ namespace Ai
         public void FinishedAttacking()
         {
             OnFinishedAttacking.Invoke();
+        }
+
+        public void WarpAfterAttack()
+        {
+            StartCoroutine(WarpRoutine());
+        }
+
+        private IEnumerator WarpRoutine()
+        {
+            Despawn();
+            yield return null;
+            Spawn();
         }
     }
 }

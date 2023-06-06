@@ -63,52 +63,13 @@ MonoBehaviour:
   ShouldSpawnOnStart: 1
   OnDied:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3278828093606095786}
-        m_TargetAssemblyTypeName: Unity.VisualScripting.EventMachine`2[[Unity.VisualScripting.StateGraph,
-          Unity.VisualScripting.State
-        m_MethodName: TriggerUnityEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnDied
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSpawn:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3278828093606095786}
-        m_TargetAssemblyTypeName: Unity.VisualScripting.EventMachine`2[[Unity.VisualScripting.StateGraph,
-          Unity.VisualScripting.State
-        m_MethodName: TriggerUnityEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnSpawn
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnDespawn:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3278828093606095786}
-        m_TargetAssemblyTypeName: Unity.VisualScripting.EventMachine`2[[Unity.VisualScripting.StateGraph,
-          Unity.VisualScripting.State
-        m_MethodName: TriggerUnityEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnDespawn
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnFinishedInteracting:
     m_PersistentCalls:
       m_Calls: []
@@ -505,6 +466,8 @@ MonoBehaviour:
   baseThreshold: 5
   minThresholdModifier: 0
   maxThresholdModifier: 5
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!114 &1760390034293458789
 MonoBehaviour:
@@ -522,6 +485,8 @@ MonoBehaviour:
   baseThreshold: 10
   minThresholdModifier: 0
   maxThresholdModifier: 10
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!114 &3476776795415583245
 MonoBehaviour:
@@ -539,6 +504,8 @@ MonoBehaviour:
   baseThreshold: 30
   minThresholdModifier: 0
   maxThresholdModifier: 10
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!114 &1080036828054471172
 MonoBehaviour:
@@ -556,6 +523,8 @@ MonoBehaviour:
   baseThreshold: 45
   minThresholdModifier: 0
   maxThresholdModifier: 15
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!114 &5413147699087195352
 MonoBehaviour:
@@ -573,6 +542,8 @@ MonoBehaviour:
   baseThreshold: 60
   minThresholdModifier: 0
   maxThresholdModifier: 15
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!114 &7057165101696368421
 MonoBehaviour:
@@ -590,6 +561,8 @@ MonoBehaviour:
   baseThreshold: 30
   minThresholdModifier: 0
   maxThresholdModifier: 15
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!114 &9025293886819925347
 MonoBehaviour:
@@ -607,6 +580,8 @@ MonoBehaviour:
   baseThreshold: 30
   minThresholdModifier: 0
   maxThresholdModifier: 15
+  value: 0
+  currentThreshold: 0
   AmountOverThreshold: 0
 --- !u!1001 &5085550086419174835
 PrefabInstance:

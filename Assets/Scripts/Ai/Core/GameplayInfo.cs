@@ -1,4 +1,5 @@
-﻿using Sight;
+﻿using System;
+using Sight;
 using UnityEngine;
 
 namespace Ai
@@ -10,6 +11,14 @@ namespace Ai
         [ShowOnly] public SenseTarget Target;
         [ShowOnly] public Hideout PlayersHideout;
         [ShowOnly] public Vector3 Destination;
+        [HideInInspector] public bool ShouldSpawnInPlace;
+        
         public Stimulus CurrentStimulus;
+        public Vector3 InitialSpawnPoint { get; private set; }
+
+        private void Awake()
+        {
+            InitialSpawnPoint = transform.position;
+        }
     }
 }
