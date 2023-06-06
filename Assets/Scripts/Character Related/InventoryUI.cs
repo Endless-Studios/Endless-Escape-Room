@@ -55,7 +55,7 @@ public class InventoryUI : MonoBehaviour
     {
         UiInventoryElement newEntry = Instantiate(itemUiPrefab, inventoryEntriesParent);
         LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryCanvas.transform as RectTransform);
-        newEntry.Initialize(slot, PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable != slot.Pickupable);
+        newEntry.Initialize(slot, PlayerCore.LocalPlayer.ItemInspector.CurrentInspectable != slot.Pickupable);
         currentEntries.Add(newEntry);
     }
 
