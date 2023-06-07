@@ -147,6 +147,7 @@ namespace Ai
         public void LostTarget()
         {
             OnLostTarget.Invoke();
+            gameplayInfo.Target = null;
         }
     }
 }

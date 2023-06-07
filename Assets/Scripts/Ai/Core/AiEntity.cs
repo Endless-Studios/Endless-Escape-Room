@@ -10,7 +10,7 @@ namespace Ai
     /// <summary>
     /// Used as a central point for managing Ai state. This component Should be placed on the root object of the Ai prefab.
     /// </summary>
-    public class AiEntity : MonoBehaviour
+    public class AiEntity : AiComponent
     {
         public bool ShouldSpawnOnStart;
 

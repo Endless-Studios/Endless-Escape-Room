@@ -119,7 +119,7 @@ MonoBehaviour:
   hearingSensor: {fileID: 4769800100488525422}
   proximitySensor: {fileID: 2097964165954542098}
   awarenessComponent: {fileID: 3246184029654640956}
-  animationComponent: {fileID: 0}
+  animationComponent: {fileID: 6678927175151319528}
   boredThreshold: {fileID: 8678276500234800677}
   wanderThreshold: {fileID: 3476776795415583245}
   wanderFarThreshold: {fileID: 5413147699087195352}
