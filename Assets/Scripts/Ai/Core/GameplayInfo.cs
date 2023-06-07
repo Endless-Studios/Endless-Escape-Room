@@ -20,5 +20,15 @@ namespace Ai
         {
             InitialSpawnPoint = transform.position;
         }
+
+        public void ResetValues()
+        {
+            CurrentPointOfInterest = null;
+            TargetHideout = null;
+            Target = null;
+            PlayersHideout = null;
+            Destination = transform.position;
+            CurrentStimulus = null;
+        }
     }
 }

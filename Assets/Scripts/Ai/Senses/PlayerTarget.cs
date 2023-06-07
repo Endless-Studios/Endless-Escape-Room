@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Sight;
 using UnityEngine;
@@ -24,7 +25,13 @@ namespace Ai
 
         public void StartFadeout(Action fadeoutCompleteCallback)
         {
-            
+            StartCoroutine(fauxFadeout(fadeoutCompleteCallback));
+        }
+
+        private IEnumerator fauxFadeout(Action fadeoutCompleteCallback)
+        {
+            yield return new WaitForSeconds(2f);
+            fadeoutCompleteCallback.Invoke();
         }
 
         public void DealDamage(float damage)
