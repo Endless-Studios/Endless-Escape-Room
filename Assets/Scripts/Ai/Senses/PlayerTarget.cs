@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sight;
 using UnityEngine;
 
-namespace Sight
+namespace Ai
 {
     
-    public class SenseTarget : MonoBehaviour
+    public class PlayerTarget : MonoBehaviour
     {
-        public static readonly List<SenseTarget> SenseTargets = new List<SenseTarget>();
+        public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
         
         [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
 
@@ -19,6 +20,16 @@ namespace Sight
         private void OnDestroy()
         {
             SenseTargets.Remove(this);
+        }
+
+        public void StartFadeout(Action fadeoutCompleteCallback)
+        {
+            
+        }
+
+        public void DealDamage(float damage)
+        {
+            
         }
     }
 }

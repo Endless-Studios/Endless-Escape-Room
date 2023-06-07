@@ -7,7 +7,7 @@ namespace Ai
     {
         [ShowOnly] public PointOfInterest CurrentPointOfInterest;
         [ShowOnly] public Hideout TargetHideout;
-        [ShowOnly] public SenseTarget Target;
+        [ShowOnly] public PlayerTarget Target;
         [ShowOnly] public Hideout PlayersHideout;
         [ShowOnly] public Vector3 Destination;
         public Stimulus CurrentStimulus;

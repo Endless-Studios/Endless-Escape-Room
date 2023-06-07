@@ -16,7 +16,7 @@ namespace Ai
 
         public void CheckProximitySense()
         {
-            foreach (SenseTarget senseTarget in SenseTarget.SenseTargets)
+            foreach (PlayerTarget senseTarget in PlayerTarget.SenseTargets)
             {
                 Vector3 transformPosition = transform.position;
                 Vector3 toVector = senseTarget.transform.position - transformPosition;

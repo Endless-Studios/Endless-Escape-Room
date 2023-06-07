@@ -22,7 +22,7 @@ namespace Ai
         public UnityEvent TargetEnteredHideout;
         public UnityEvent TargetLeftHideout;
         
-        private readonly Dictionary<SenseTarget, float> visibilityBySightTarget = new Dictionary<SenseTarget, float>();
+        private readonly Dictionary<PlayerTarget, float> visibilityBySightTarget = new Dictionary<PlayerTarget, float>();
 
         private void Awake()
         {
@@ -62,13 +62,13 @@ namespace Ai
             switch (stimulus.SenseKind)
             {
                 case SenseKind.Sight:
-                    if (visibilityBySightTarget.ContainsKey(stimulus.SenseTarget))
+                    if (visibilityBySightTarget.ContainsKey(stimulus.PlayerTarget))
                     {
-                        visibilityBySightTarget[stimulus.SenseTarget] += stimulus.Value;
+                        visibilityBySightTarget[stimulus.PlayerTarget] += stimulus.Value;
                     }
                     else
                     {
-                        visibilityBySightTarget.Add(stimulus.SenseTarget, stimulus.Value);
+                        visibilityBySightTarget.Add(stimulus.PlayerTarget, stimulus.Value);
                     }
                     break;
                 case SenseKind.Hearing:
@@ -114,8 +114,8 @@ namespace Ai
                     return;
                 
                 //Find our sight target we can see the most
-                (SenseTarget sightTarget, float value) mostVisibleTarget = (null, float.MinValue);
-                foreach (KeyValuePair<SenseTarget,float> sightPair in visibilityBySightTarget)
+                (PlayerTarget sightTarget, float value) mostVisibleTarget = (null, float.MinValue);
+                foreach (KeyValuePair<PlayerTarget,float> sightPair in visibilityBySightTarget)
                 {
                     if (sightPair.Value > mostVisibleTarget.value)
                     {
