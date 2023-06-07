@@ -12,15 +12,15 @@ namespace Ai
         public readonly float Value;
         public readonly float Time; 
         public readonly SenseKind SenseKind;
-        public readonly SenseTarget SenseTarget;
+        public readonly PlayerTarget PlayerTarget;
 
-        public Stimulus(Vector3 position, float time, float value, SenseKind senseKind, SenseTarget senseTarget = null)
+        public Stimulus(Vector3 position, float time, float value, SenseKind senseKind, PlayerTarget playerTarget = null)
         {
             Position = position;
             Time = time;
             Value = value;
             SenseKind = senseKind;
-            SenseTarget = senseTarget;
+            PlayerTarget = playerTarget;
         }
     }
 }

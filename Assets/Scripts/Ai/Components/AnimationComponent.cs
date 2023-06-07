@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Ai
 {
@@ -15,27 +17,34 @@ namespace Ai
 
         private int enterDoorway;
         private int moving;
-        private int attackTrigger;
+        private int attack;
 
         protected void Awake()
         {
             enterDoorway = Animator.StringToHash(thresholdTriggerName);
             moving = Animator.StringToHash(movingBoolName);
-            attackTrigger = Animator.StringToHash(attackTriggerName);
-            
-            entity.OnWalkingThroughDoorway += HandleOnWalkingThroughDoor;
+            attack = Animator.StringToHash(attackTriggerName);
+            entity.OnWalkingThroughDoorway += WalkThroughDoor;
             entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
         }
 
-        private void HandleOnWalkingThroughDoor()
+        private void WalkThroughDoor()
         {
             references.Animator.SetTrigger(enterDoorway);
         }
-
+        
         private void HandleStartedAttacking()
         {
-            references.Animator.SetTrigger(attackTrigger);
-            Invoke(nameof(FinishedAttacking), 2f);
+            references.Animator.SetTrigger(attack);
+            StartCoroutine(FauxAttackSteps());
+        }
+
+        private IEnumerator FauxAttackSteps()
+        {
+            yield return new WaitForSeconds(2f);
+            DealtDamage();
+            yield return new WaitForSeconds(4f);
+            FinishedAttacking();
         }
 
         /// <summary>
@@ -63,6 +72,13 @@ namespace Ai
             entity.FinishedAttacking();
         }
 
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void DealtDamage()
+        {
+            entity.DealtDamage();
+        }
         
         private void Update()
         {

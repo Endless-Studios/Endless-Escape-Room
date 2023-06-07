@@ -20,7 +20,10 @@ namespace Ai
         public UnityEvent OnFinishedInteracting = new UnityEvent();
         public UnityEvent OnFinishedFidgeting = new UnityEvent();
         public UnityEvent OnStartedAttacking = new UnityEvent();
+        public UnityEvent OnDealtDamage = new UnityEvent();
         public UnityEvent OnFinishedAttacking = new UnityEvent();
+        public UnityEvent OnDisappear = new UnityEvent();
+        public UnityEvent OnReappear = new UnityEvent();
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
@@ -83,6 +86,21 @@ namespace Ai
         public void FinishedAttacking()
         {
             OnFinishedAttacking.Invoke();
+        }
+
+        public void DealtDamage()
+        {
+            OnDealtDamage.Invoke();
+        }
+
+        public void Disappear()
+        {
+            OnDisappear.Invoke();
+        }
+
+        public void Reappear()
+        {
+            OnReappear.Invoke();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Ai
         [SerializeField] private float approachDistance;
         [SerializeField] private float maxAngleDifference;
         [SerializeField] private float maxAngularSpeed;
-        [SerializeField] private float targetMovementExtrapolationTime;
+        [SerializeField] private float attackDamage;
 
         public float MinWanderNearDistance => minWanderNearDistance;
         public float WanderNearDistance => wanderNearDistance;
@@ -26,6 +26,6 @@ namespace Ai
         public float ApproachDistance => approachDistance;
         public float MaxAngleDifference => maxAngleDifference;
         public float MaxAngularSpeed => maxAngularSpeed;
-        public float TargetMovementExtrapolationTime => targetMovementExtrapolationTime;
+        public float AttackDamage => attackDamage;
     }
 }
