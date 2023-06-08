@@ -13,7 +13,7 @@ namespace Ai
     public class LinkController : MonoBehaviour
     {
         [SerializeField] private Openable openable;
-        [SerializeField] private List<LinkInfo> Links = new List<LinkInfo>();
+        [SerializeField] private List<LinkInfo> links = new List<LinkInfo>();
         
         public Openable Openable => openable;
         
@@ -54,7 +54,7 @@ namespace Ai
             if (reEnableLinkRoutine is not null)
                 StopCoroutine(reEnableLinkRoutine);
             
-            foreach (LinkInfo linkInfo in Links)
+            foreach (LinkInfo linkInfo in links)
             {
                 linkInfo.Link.enabled = true;
             }
@@ -62,7 +62,7 @@ namespace Ai
 
         private NavMeshLink GetLinkForAgentType(int agentTypeId)
         {
-            foreach (LinkInfo linkInfo in Links)
+            foreach (LinkInfo linkInfo in links)
             {
                 if (linkInfo.Link.agentTypeID == agentTypeId)
                     return linkInfo.Link;

@@ -1,6 +1,9 @@
 ﻿namespace Ai
 {
-    public class AttackComponent : AiComponent
+    /// <summary>
+    /// This class handles the attack behavior for the "Monster" Ai type.
+    /// </summary>
+    public class MonsterAttackComponent : AiComponent
     {
         private void Awake()
         {

@@ -6,7 +6,9 @@ using UnityEngine.Events;
 
 namespace Ai
 {
-
+    /// <summary>
+    /// This component is how the Ai senses track the player and how the Ai affects the player. 
+    /// </summary>
     public class PlayerTarget : MonoBehaviour
     {
         public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
