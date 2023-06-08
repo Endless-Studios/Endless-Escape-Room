@@ -626,8 +626,9 @@ GameObject:
   - component: {fileID: 39951093}
   - component: {fileID: 39951092}
   - component: {fileID: 39951091}
+  - component: {fileID: 39951097}
+  - component: {fileID: 39951096}
   - component: {fileID: 39951095}
-  - component: {fileID: 39951094}
   m_Layer: 0
   m_Name: Green Snappable
   m_TagString: Untagged
@@ -667,9 +668,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -682,9 +683,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -761,21 +762,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &39951094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39951088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &39951095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,9 +774,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &39951096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39951088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 39951089}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &39951097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39951088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 39951089}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &41320604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5673,8 +5716,9 @@ GameObject:
   - component: {fileID: 303444286}
   - component: {fileID: 303444289}
   - component: {fileID: 303444290}
+  - component: {fileID: 303444294}
+  - component: {fileID: 303444293}
   - component: {fileID: 303444292}
-  - component: {fileID: 303444291}
   m_Layer: 0
   m_Name: Red Snappable
   m_TagString: Untagged
@@ -5775,9 +5819,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5790,9 +5834,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5808,21 +5852,6 @@ MonoBehaviour:
   - identifier: DataCube
   - identifier: Red
   requirementType: 1
---- !u!114 &303444291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303444284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 30
-  soundKind: 1
 --- !u!114 &303444292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5835,9 +5864,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 30
+  soundDecibels: 25
   soundKind: 1
+--- !u!114 &303444293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303444284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 303444285}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &303444294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303444284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 303444285}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &306143546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,8 +8350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &427341044
 GameObject:
@@ -13249,8 +13334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &700300184
 GameObject:
@@ -14575,8 +14659,9 @@ GameObject:
   - component: {fileID: 754711858}
   - component: {fileID: 754711857}
   - component: {fileID: 754711856}
+  - component: {fileID: 754711862}
+  - component: {fileID: 754711861}
   - component: {fileID: 754711860}
-  - component: {fileID: 754711859}
   m_Layer: 0
   m_Name: Yellow Snappable
   m_TagString: Untagged
@@ -14616,9 +14701,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14631,9 +14716,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14710,21 +14795,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &754711859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754711853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &754711860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14737,9 +14807,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &754711861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754711853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 754711854}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &754711862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754711853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 754711854}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &756915086
 GameObject:
   m_ObjectHideFlags: 0
@@ -17614,8 +17741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!4 &954658038 stripped
 Transform:
@@ -17635,8 +17761,9 @@ GameObject:
   - component: {fileID: 959718172}
   - component: {fileID: 959718171}
   - component: {fileID: 959718170}
+  - component: {fileID: 959718176}
+  - component: {fileID: 959718175}
   - component: {fileID: 959718174}
-  - component: {fileID: 959718173}
   m_Layer: 0
   m_Name: Red Snappable (1)
   m_TagString: Untagged
@@ -17676,9 +17803,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17691,9 +17818,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17770,21 +17897,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &959718173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959718167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &959718174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17797,9 +17909,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &959718175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959718167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 959718168}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &959718176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959718167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 959718168}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &960332299
 GameObject:
   m_ObjectHideFlags: 0
@@ -17948,8 +18117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &967621016
 GameObject:
@@ -18051,8 +18219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &975863117
 GameObject:
@@ -18543,7 +18710,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1620903, y: 1}
+    m_SensorSize: {x: 1.7663552, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19111,8 +19278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &1030183487
 GameObject:
@@ -21447,8 +21613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &1197558061
 GameObject:
@@ -23389,8 +23554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &1290568893
 GameObject:
@@ -23501,8 +23665,9 @@ GameObject:
   - component: {fileID: 1299739339}
   - component: {fileID: 1299739338}
   - component: {fileID: 1299739337}
+  - component: {fileID: 1299739343}
+  - component: {fileID: 1299739342}
   - component: {fileID: 1299739341}
-  - component: {fileID: 1299739340}
   m_Layer: 0
   m_Name: Green Snappable (1)
   m_TagString: Untagged
@@ -23542,9 +23707,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23557,9 +23722,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23636,21 +23801,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1299739340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299739334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &1299739341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23663,9 +23813,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &1299739342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299739334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1299739335}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1299739343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299739334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1299739335}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1314080038
 GameObject:
   m_ObjectHideFlags: 0
@@ -23875,8 +24082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &1331859211
 GameObject:
@@ -23978,8 +24184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &1333531785
 GameObject:
@@ -28949,8 +29154,9 @@ GameObject:
   - component: {fileID: 1624157515}
   - component: {fileID: 1624157514}
   - component: {fileID: 1624157513}
+  - component: {fileID: 1624157519}
+  - component: {fileID: 1624157518}
   - component: {fileID: 1624157517}
-  - component: {fileID: 1624157516}
   m_Layer: 0
   m_Name: Blue Snappable
   m_TagString: Untagged
@@ -28990,9 +29196,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29005,9 +29211,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29084,21 +29290,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1624157516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624157510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &1624157517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29111,9 +29302,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &1624157518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624157510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1624157511}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1624157519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624157510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1624157511}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1626496455
 GameObject:
   m_ObjectHideFlags: 0
@@ -30842,8 +31090,9 @@ GameObject:
   - component: {fileID: 1697718938}
   - component: {fileID: 1697718937}
   - component: {fileID: 1697718936}
+  - component: {fileID: 1697718942}
+  - component: {fileID: 1697718941}
   - component: {fileID: 1697718940}
-  - component: {fileID: 1697718939}
   m_Layer: 0
   m_Name: Blue Snappable (1)
   m_TagString: Untagged
@@ -30883,9 +31132,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30898,9 +31147,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30977,21 +31226,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1697718939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697718933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &1697718940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31004,9 +31238,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &1697718941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697718933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1697718934}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1697718942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697718933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1697718934}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1714714012
 GameObject:
   m_ObjectHideFlags: 0
@@ -36832,8 +37123,9 @@ GameObject:
   - component: {fileID: 1793369921}
   - component: {fileID: 1793369920}
   - component: {fileID: 1793369919}
+  - component: {fileID: 1793369925}
+  - component: {fileID: 1793369924}
   - component: {fileID: 1793369923}
-  - component: {fileID: 1793369922}
   m_Layer: 0
   m_Name: Yellow Snappable (1)
   m_TagString: Untagged
@@ -36873,9 +37165,9 @@ MonoBehaviour:
   OnCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951095}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951097}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36888,9 +37180,9 @@ MonoBehaviour:
   OnUncompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39951094}
-        m_TargetAssemblyTypeName: Sound.SoundEmitter, Assembly-CSharp
-        m_MethodName: EmitSound
+      - m_Target: {fileID: 39951096}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36967,21 +37259,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1793369922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1793369916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4e8bdf0f59a0c5246ad2b1cd1b7d5ab8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
 --- !u!114 &1793369923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36994,9 +37271,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 56cbd143684d6fa4aaac5a5ee7ac1db8, type: 3}
-  audioClipDB: 0
-  soundKind: 0
+  soundDecibels: 25
+  soundKind: 1
+--- !u!114 &1793369924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793369916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1793369917}
+  soundClip: {fileID: 8300000, guid: 1dd2031a14b813a4fa9732fb4f6c9fda, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1793369925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793369916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1793369917}
+  soundClip: {fileID: 8300000, guid: f2267bcf15153ad4ab91578a58e7cbf6, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39951095}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1812660286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6059622464125642926, guid: bc0414a75cb405948aac6c5e20795442,
@@ -37201,8 +37535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: dc67b7f705b8353449b383a120e9cc85, type: 3}
-  audioClipDB: 20
+  soundDecibels: 0
   soundKind: 1
 --- !u!1 &1844459754
 GameObject:
@@ -47413,6 +47746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974630684342269798, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 3580552560181517890, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}

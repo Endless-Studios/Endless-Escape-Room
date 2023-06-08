@@ -49,7 +49,7 @@ PrefabInstance:
     - target: {fileID: 602672969673358103, guid: fcb1282462ebb694d9c53292bc3765fa,
         type: 3}
       propertyPath: m_Name
-      value: SoundManager
+      value: SoundPoolManager
       objectReference: {fileID: 0}
     - target: {fileID: 4732333671859616249, guid: fcb1282462ebb694d9c53292bc3765fa,
         type: 3}

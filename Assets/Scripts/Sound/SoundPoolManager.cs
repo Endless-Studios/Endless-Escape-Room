@@ -8,26 +8,22 @@ namespace Sound
     /// <summary>
     /// Manages playing sounds in the scene. Maintains a pool of audio sources and plays clips through them.
     /// </summary>
-    public class SoundManager : MonoBehaviourSingleton<SoundManager>
+    public class SoundPoolManager : MonoBehaviourSingleton<SoundPoolManager>
     {
-        public static event Action<EmittedSoundData> OnSoundEmitted;
-
         [field: SerializeField] public AudioSource AudioSourcePrefab { get; private set; }
 
         private List<AudioSource> audioSourcePool = new List<AudioSource>();
 
-        public void EmitSoundAtPosition(EmittedSoundData soundData, AudioClip clip)
+        public void PlaySoundAtPosition(Vector3 position, AudioClip clip)
         {
             //PlayClip from pooled audio source
             AudioSource useAudioSource = GetAvailableAudioSource();
-            useAudioSource.transform.position = soundData.Position;
+            useAudioSource.transform.position = position;
             useAudioSource.clip = clip;
             useAudioSource.Play();
 
             //Schedule pooling
             StartCoroutine(AddAudioSourceToPoolAfterDelay(useAudioSource, clip.length));
-
-            OnSoundEmitted?.Invoke(soundData);
         }
 
         private AudioSource GetAvailableAudioSource()
@@ -35,19 +31,16 @@ namespace Sound
             AudioSource useAudioSource = null;
 
             //check pool for an available audio source
-            for (int i = 0; i < audioSourcePool.Count; i++)
+            if(audioSourcePool.Count > 0)
             {
-                if (audioSourcePool[i].isPlaying == false)
-                {
-                    useAudioSource = audioSourcePool[i];
-                    audioSourcePool.Remove(useAudioSource);
-                    break;
-                }
+                useAudioSource = audioSourcePool[0];
+                audioSourcePool.RemoveAt(0);
             }
-
-            //no audio source available, create one
-            if (useAudioSource == null)
-                useAudioSource = CreateAudioSoruce();
+            else
+            {
+                //no audio source available, create one
+                useAudioSource = CreateAudioSoruce(); ;
+            }
 
             return useAudioSource;
         }
@@ -58,7 +51,7 @@ namespace Sound
             return createdAudioSource;
         }
 
-        IEnumerator AddAudioSourceToPoolAfterDelay(AudioSource targetAudioSource, float delaySeconds)
+        private IEnumerator AddAudioSourceToPoolAfterDelay(AudioSource targetAudioSource, float delaySeconds)
         {
             yield return new WaitForSeconds(delaySeconds);
             audioSourcePool.Add(targetAudioSource);
