@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 2972815285524830649}
   - component: {fileID: 1893632562667910974}
   - component: {fileID: 7434589766560750895}
+  - component: {fileID: 5235216998997054313}
   m_Layer: 12
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -294,6 +295,7 @@ MonoBehaviour:
   - {fileID: 7148516710388815565}
   - {fileID: 2107148359325220997}
   - {fileID: 7935093375614766997}
+  <HealthComponent>k__BackingField: {fileID: 5235216998997054313}
 --- !u!114 &7434589766560750895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +311,22 @@ MonoBehaviour:
   controller: {fileID: 2419621909708617996}
   emitter: {fileID: 2919596182087691684}
   strideTime: 0.8
+--- !u!114 &5235216998997054313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419621909708617998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ccb9ec2ab47b24faed2780fdd7a96a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2520388116198933995
 GameObject:
   m_ObjectHideFlags: 0

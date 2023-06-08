@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sight;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ai
 {
-    
+
     public class PlayerTarget : MonoBehaviour
     {
         public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
-        
+
         [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
+        [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
 
         private void Awake()
         {
@@ -23,20 +24,21 @@ namespace Ai
             SenseTargets.Remove(this);
         }
 
-        public void StartFadeout(Action fadeoutCompleteCallback)
+
+        ///<summary>
+        /// AI triggers a fadeout on the player.
+        ///</summary>
+        public void StartFadeout(UnityAction fadeoutCompleteCallback)
         {
-            StartCoroutine(fauxFadeout(fadeoutCompleteCallback));
+            PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback);
         }
 
-        private IEnumerator fauxFadeout(Action fadeoutCompleteCallback)
-        {
-            yield return new WaitForSeconds(2f);
-            fadeoutCompleteCallback.Invoke();
-        }
-
+        ///<summary>
+        /// AI deals damage to the player.
+        ///</summary>
         public void DealDamage(float damage)
         {
-            
+            HealthComponent.TakeDamage(damage);
         }
     }
 }

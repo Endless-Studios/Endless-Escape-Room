@@ -25,7 +25,11 @@ public class PlayerHUD : MonoBehaviourSingleton<PlayerHUD>
     [Header("UI Class References")]
     [SerializeField] InventoryUI inventoryUi;
 
+    [Header("Fade To Black")]
+    [SerializeField] FadeToBlack fadeToBlack;
+
     public InventoryUI InventoryUi => inventoryUi;
+    public FadeToBlack FadeToBlack => fadeToBlack;
 
     protected override void Awake()
     {
