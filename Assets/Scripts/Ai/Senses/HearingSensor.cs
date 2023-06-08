@@ -16,12 +16,12 @@ namespace Ai
         
         private void Awake()
         {
-            SoundManager.OnSoundEmitted += HandleOnSoundEmitted;
+            SoundManager.Instance.OnSoundEmitted += HandleOnSoundEmitted;
         }
 
         private void OnDestroy()
         {
-            SoundManager.OnSoundEmitted -= HandleOnSoundEmitted;
+            SoundManager.Instance.OnSoundEmitted -= HandleOnSoundEmitted;
         }
 
         private void HandleOnSoundEmitted(EmittedSoundData soundData)
