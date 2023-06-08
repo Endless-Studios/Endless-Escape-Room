@@ -8,6 +8,7 @@ namespace Sound
     /// </summary>
     public class FootstepEmitter : MonoBehaviour
     {
+        [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private CharacterController controller;
         [SerializeField] private float strideTime;
         [SerializeField] private AnimationCurve curve;
@@ -20,7 +21,7 @@ namespace Sound
                 return;
 
             float velocityMagnitude = controller.velocity.magnitude;
-            float speedValue = velocityMagnitude / 3;
+            float speedValue = velocityMagnitude / characterMovement.MaximumLocomotionSpeed;
             float volume = curve.Evaluate(speedValue);
 
             //TODO: Add code to sample surfaces and modify the clip played and the dB of the clip based on the surface

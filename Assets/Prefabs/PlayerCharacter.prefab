@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc3af313c4c4b1e9283e13389a5fbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMovement: {fileID: 5685148041957440190}
   controller: {fileID: 2419621909708617996}
   strideTime: 0.8
   curve:
