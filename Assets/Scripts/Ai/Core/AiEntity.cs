@@ -146,7 +146,7 @@ namespace Ai
 
         public void FinishSearchAnimation()
         {
-            OnFinishedPursueAnimation.Invoke();
+            OnFinishedSearchAnimation.Invoke();
         }
         
     }
