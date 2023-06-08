@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,9 +8,9 @@ using UnityEngine.Events;
 namespace Ai
 {
     /// <summary>
-    /// Used as a central point for managing Ai state. This component Should be placed on the root object of the Ai prefab.
+    /// Used as a central point for managing Ai events. This class should be placed on the root object of the Ai prefab.
     /// </summary>
-    public class AiEntity : MonoBehaviour
+    public class AiEntity : AiComponent
     {
         public bool ShouldSpawnOnStart;
 
@@ -19,7 +20,10 @@ namespace Ai
         public UnityEvent OnFinishedInteracting = new UnityEvent();
         public UnityEvent OnFinishedFidgeting = new UnityEvent();
         public UnityEvent OnStartedAttacking = new UnityEvent();
+        public UnityEvent OnDealtDamage = new UnityEvent();
         public UnityEvent OnFinishedAttacking = new UnityEvent();
+        public UnityEvent OnDisappear = new UnityEvent();
+        public UnityEvent OnReappear = new UnityEvent();
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
@@ -40,6 +44,9 @@ namespace Ai
             OnWalkedThroughDoorway?.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedInteracting event
+        /// </summary>
         public void FinishedInteracting()
         {
             OnFinishedInteracting?.Invoke();
@@ -69,19 +76,52 @@ namespace Ai
             OnDied.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedFidgeting event
+        /// </summary>
         public void FinishedFidgeting()
         {
             OnFinishedFidgeting.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnStartedAttacking event
+        /// </summary>
         public void StartedAttacking()
         {
             OnStartedAttacking.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedAttacking event
+        /// </summary>
         public void FinishedAttacking()
         {
             OnFinishedAttacking.Invoke();
+        }
+
+        /// <summary>
+        /// Invokes the OnDealtDamage event
+        /// </summary>
+        public void DealtDamage()
+        {
+            OnDealtDamage.Invoke();
+        }
+
+        /// <summary>
+        /// Invokes the OnDisappear event
+        /// </summary>
+        public void Disappear()
+        {
+            OnDisappear.Invoke();
+        }
+
+        /// <summary>
+        /// Invokes the OnReappear event
+        /// </summary>
+        public void Reappear()
+        {
+            OnReappear.Invoke();
         }
     }
 }

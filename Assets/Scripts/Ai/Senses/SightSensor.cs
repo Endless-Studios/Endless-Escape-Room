@@ -28,7 +28,7 @@ namespace Ai
         /// </summary>
         public void CheckLineOfSight()
         {
-            foreach (SenseTarget senseTarget in SenseTarget.SenseTargets)
+            foreach (PlayerTarget senseTarget in PlayerTarget.SenseTargets)
             {
                 float totalAwarenessThisFrame = 0;
                 foreach (LosProbe losProbe in senseTarget.LosProbes)
