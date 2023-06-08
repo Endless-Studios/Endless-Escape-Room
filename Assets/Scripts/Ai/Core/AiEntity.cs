@@ -24,6 +24,11 @@ namespace Ai
         public UnityEvent OnFinishedAttacking = new UnityEvent();
         public UnityEvent OnDisappear = new UnityEvent();
         public UnityEvent OnReappear = new UnityEvent();
+        public UnityEvent OnStartedPursueAnimation = new UnityEvent();
+        public UnityEvent OnFinishedPursueAnimation = new UnityEvent();
+        public UnityEvent OnStartedSearchAnimation = new UnityEvent();
+        public UnityEvent OnFinishedSearchAnimation = new UnityEvent();
+        
 
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
@@ -123,5 +128,26 @@ namespace Ai
         {
             OnReappear.Invoke();
         }
+
+        public void StartPursueAnimation()
+        {
+            OnStartedPursueAnimation.Invoke();
+        }
+
+        public void FinishPursueAnimation()
+        {
+            OnFinishedPursueAnimation.Invoke();
+        }
+
+        public void StartSearchAnimation()
+        {
+            OnStartedSearchAnimation.Invoke();
+        }
+
+        public void FinishSearchAnimation()
+        {
+            OnFinishedPursueAnimation.Invoke();
+        }
+        
     }
 }
