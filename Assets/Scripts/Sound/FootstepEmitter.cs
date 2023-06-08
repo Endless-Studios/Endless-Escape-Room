@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Sound
 {
@@ -8,9 +9,9 @@ namespace Sound
     public class FootstepEmitter : MonoBehaviour
     {
         [SerializeField] private CharacterController controller;
-        [SerializeField] private SoundEmitter emitter;
         [SerializeField] private float strideTime;
-        
+        [SerializeField] private AnimationCurve curve;
+
         private float nextStepTime;
 
         public void Update()
@@ -19,13 +20,12 @@ namespace Sound
                 return;
 
             float velocityMagnitude = controller.velocity.magnitude;
-            
-            if (velocityMagnitude < .25f) 
-                return;
-            
+            float speedValue = velocityMagnitude / 3;
+            float volume = curve.Evaluate(speedValue);
+
             //TODO: Add code to sample surfaces and modify the clip played and the dB of the clip based on the surface
-            
-            emitter.EmitSound(60 * (velocityMagnitude / 3));
+            EmittedSoundData soundData = new EmittedSoundData(transform.position, volume, SoundType.PlayerGenerated);
+            AiSound.Instance.EmitSound(soundData);
             nextStepTime = Time.time + strideTime;
         }
     }

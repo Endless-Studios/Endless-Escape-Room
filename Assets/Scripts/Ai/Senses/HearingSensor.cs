@@ -14,14 +14,14 @@ namespace Ai
 
         private readonly RaycastHit[] hits = new RaycastHit[10];
         
-        private void Awake()
+        private void Start()
         {
-            SoundManager.OnSoundEmitted += HandleOnSoundEmitted;
+            AiSound.Instance.OnSoundEmitted += HandleOnSoundEmitted;
         }
 
         private void OnDestroy()
         {
-            SoundManager.OnSoundEmitted -= HandleOnSoundEmitted;
+            AiSound.Instance.OnSoundEmitted -= HandleOnSoundEmitted;
         }
 
         private void HandleOnSoundEmitted(EmittedSoundData soundData)
@@ -58,7 +58,7 @@ namespace Ai
             float distanceToSoundSource = Vector3.Distance(position, soundData.Position);
 
             // Raycast from the origin of the sound against all the layers that could possibly block sound
-            int numHits = Physics.RaycastNonAlloc(soundData.Position, (position - soundData.Position).normalized, hits, distanceToSoundSource, SoundManager.Instance.SoundBlockerMask);
+            int numHits = Physics.RaycastNonAlloc(soundData.Position, (position - soundData.Position).normalized, hits, distanceToSoundSource, AiSound.Instance.SoundBlockerMask);
 
             // If we hit nothing return the db of the sound after calculating its falloff over the distance
             if (numHits == 0)
@@ -82,7 +82,7 @@ namespace Ai
                 if (modifier)
                     soundBlockingValue = modifier.SoundBlockingValue;
                 else
-                    soundBlockingValue = SoundManager.Instance.DefaultSoundBlockingValue;
+                    soundBlockingValue = AiSound.Instance.DefaultSoundBlockingValue;
 
                 //Calculate the volume of the sound when it reaches the hit collider 
                 float dBAtBarrier = CalculateDBAfterDistanceFalloff(currentDB, distanceToBarrier);

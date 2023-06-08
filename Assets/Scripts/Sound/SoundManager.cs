@@ -10,8 +10,6 @@ namespace Sound
     /// </summary>
     public class SoundManager : MonoBehaviourSingleton<SoundManager>
     {
-        [field: SerializeField] public float DefaultSoundBlockingValue { get; private set; }
-        [field: SerializeField] public LayerMask SoundBlockerMask { get; private set; }
         public static event Action<EmittedSoundData> OnSoundEmitted;
 
         [field: SerializeField] public AudioSource AudioSourcePrefab { get; private set; }
@@ -27,7 +25,7 @@ namespace Sound
             useAudioSource.Play();
 
             //Schedule pooling
-            StartCoroutine(AddAudioSourceToPoolAfterDelay(useAudioSource, soundData.ClipLength));
+            StartCoroutine(AddAudioSourceToPoolAfterDelay(useAudioSource, clip.length));
 
             OnSoundEmitted?.Invoke(soundData);
         }

@@ -306,8 +306,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2419621909708617996}
-  emitter: {fileID: 2919596182087691684}
   strideTime: 0.8
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.32833013
+      outSlope: 0.32833013
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.13648292
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.4710982
+      outSlope: 2.4710982
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.04199493
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2520388116198933995
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +340,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3161468691605888696}
-  - component: {fileID: 2919596182087691684}
   - component: {fileID: 2107148359325220997}
   - component: {fileID: 5604056280666689071}
   m_Layer: 12
@@ -342,21 +364,6 @@ Transform:
   m_Father: {fileID: 1656773749985587249}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2919596182087691684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2520388116198933995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  audioClipDB: 80
-  soundKind: 2
 --- !u!114 &2107148359325220997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +694,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767146, y: 1}
+    m_SensorSize: {x: 1.7485337, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
