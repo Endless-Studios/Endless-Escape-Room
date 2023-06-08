@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
     /// <summary>
     /// Calculated when character height is changed: 0 = full crouch | 1 = full stand
     /// </summary>
-    private float crouchStandMovementFactor; 
+    private float crouchStandMovementFactor;
 
     /// <summary>
     /// Calculated movement speed based on crouching and sprinting state.
@@ -90,17 +90,17 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         Vector3 groundedNormal = Vector3.zero;
-        if(isGrounded || yVelocity <= 0) //If we're in the air, and headed upwards, we dont check grounded
+        if (isGrounded || yVelocity <= 0) //If we're in the air, and headed upwards, we dont check grounded
             isGrounded = CheckGrounding(out groundedNormal);
 
         if (isGrounded)
         {
             yVelocity = 0;
-            if(isJumping)//We hit the ground, exit the jump
+            if (isJumping)//We hit the ground, exit the jump
                 isJumping = false;
             else
             {
-                if(playerInput.GetJumpRequested())
+                if (playerInput.GetJumpRequested())
                 {
                     isJumping = true;
                     yVelocity = Mathf.Lerp(crouchingJumpForce, jumpForce, crouchStandMovementFactor);//Temp simple jump
@@ -112,6 +112,9 @@ public class CharacterMovement : MonoBehaviour
         {//Apply gravity to stop our upward, and allow it to go negative, but not more than terminal velocity!
             yVelocity += Physics.gravity.y * Time.deltaTime;
             yVelocity = Mathf.Max(yVelocity, terminalVelocity);
+
+            if (yVelocity > 0 && HeadCollisionCheck(HEAD_COLLISION_GAP, out float hitDistance)) //head collision stops y velocity up
+                yVelocity = 0;
         }
 
         Vector3 moveInput = playerInput.GetMovementInput();
@@ -148,7 +151,7 @@ public class CharacterMovement : MonoBehaviour
         else
             StandUp();
 
-        if(isGrounded)
+        if (isGrounded)
         {
             moveInput = Vector3.ProjectOnPlane(moveInput, groundedNormal);
             moveInput.Normalize();
@@ -188,18 +191,37 @@ public class CharacterMovement : MonoBehaviour
         if (Mathf.Approximately(standingHeight, characterController.height) == false)
         {
             float targetHeight = Mathf.Min(standingHeight, characterController.height + (crouchTransitionSpeed * Time.deltaTime));
-
-            Vector3 currentCenterPosition = transform.TransformPoint(characterController.center);
-            Vector3 currentHeightPosition = currentCenterPosition + (Vector3.up * ((characterController.height / 2f) - characterController.radius));
             float targetHeightChange = targetHeight - characterController.height;
 
-            if (Physics.SphereCast(currentHeightPosition, characterController.radius, Vector3.up, out RaycastHit hit, targetHeightChange, groundedLayerMask))
+            if (HeadCollisionCheck(targetHeightChange, out float hitDistance))
             {
-                targetHeight = characterController.height + (hit.distance - HEAD_COLLISION_GAP); //head collision
+                targetHeight = characterController.height + (hitDistance - HEAD_COLLISION_GAP); //head collided, limit stand up to the collision height
             }
 
             SetCharacterControllerHeight(targetHeight);
         }
+    }
+
+
+    /// <summary>
+    /// Checks for head collisions within a specified distance.
+    /// </summary>
+    /// <param name="checkDistance">The distance to check for head collisions.</param>
+    /// <param name="hitDistance">Outputs the distance of the head collision(within the checkDistance).</param>
+    /// <returns>If a collision is detected.</returns>
+    private bool HeadCollisionCheck(float checkDistance, out float hitDistance)
+    {
+        Vector3 currentCenterPosition = transform.TransformPoint(characterController.center);
+        Vector3 currentHeightPosition = currentCenterPosition + (Vector3.up * ((characterController.height / 2f) - characterController.radius));
+
+        if (Physics.SphereCast(currentHeightPosition, characterController.radius, Vector3.up, out RaycastHit hit, checkDistance, groundedLayerMask))
+        {
+            hitDistance = hit.distance;
+            return true;
+        }
+
+        hitDistance = 0;
+        return false;
     }
 
     /// <summary>
@@ -208,7 +230,7 @@ public class CharacterMovement : MonoBehaviour
     private void SetCharacterControllerHeight(float targetHeight)
     {
         crouchStandMovementFactor = Mathf.InverseLerp(crouchingHeight, standingHeight, targetHeight);
-        if(visualTransform)
+        if (visualTransform)
         {//Scale the visuals to help visualize
             float heightScale = Mathf.Lerp(crouchingHeight / standingHeight, 1, crouchStandMovementFactor);
             visualTransform.transform.localScale = new Vector3(visualTransform.transform.localScale.x, heightScale, visualTransform.transform.localScale.z);
@@ -254,7 +276,7 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-        if(hitGround)
+        if (hitGround)
             averageNormal.Normalize();
         return hitGround;
     }
@@ -267,20 +289,20 @@ public class CharacterMovement : MonoBehaviour
 
     public void UnsetMovingSurface(Transform movingSurfaceTransform)
     {
-        if(connectedMovingPlatform == movingSurfaceTransform)
+        if (connectedMovingPlatform == movingSurfaceTransform)
             connectedMovingPlatform = null;
     }
 
     private void OnDrawGizmosSelected()
     {
         Vector3 allRaysVerticalOffset = characterController.center + Vector3.up * (groundedCheckDistance - 0.01f - characterController.height / 2f);
-        
+
         //Center grounding ray check
         Ray centerGroundedRay = new Ray(transform.position + allRaysVerticalOffset, Vector3.down);
         Debug.DrawLine(centerGroundedRay.origin, centerGroundedRay.origin + centerGroundedRay.direction * groundedCheckDistance, Color.red);
 
         //Radius grounding rays check
-        for(int i = 0; i < RADIUS_GROUNDING_RAY_COUNT; i++)
+        for (int i = 0; i < RADIUS_GROUNDING_RAY_COUNT; i++)
         {
             //Calculate the XZ offsets for each of the 8 points in a circle: 
             float angleRadian = i * Mathf.PI * 2f / (float)RADIUS_GROUNDING_RAY_COUNT; //Get the radian value of each angle (0-2π) 
