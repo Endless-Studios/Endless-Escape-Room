@@ -2,6 +2,11 @@
 
 namespace Ai
 {
+    /// <summary>
+    /// This class defines values that are used to control Ai behavior that are not changed during runtime and need to
+    /// be accessed by multiple classes or visual scripting nodes. This component should be placed on the root object of
+    /// the Ai prefab. 
+    /// </summary>
     public class AiAttributes : MonoBehaviour
     {
         [SerializeField] private float minWanderNearDistance;
