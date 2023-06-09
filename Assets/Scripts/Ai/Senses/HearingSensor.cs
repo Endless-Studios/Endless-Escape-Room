@@ -18,12 +18,7 @@ namespace Ai
         {
             AiSound.Instance.OnSoundEmitted += HandleOnSoundEmitted;
         }
-
-        private void OnDestroy()
-        {
-            AiSound.Instance.OnSoundEmitted -= HandleOnSoundEmitted;
-        }
-
+        
         private void HandleOnSoundEmitted(EmittedSoundData soundData)
         {
             if (soundData.SoundKind == SoundType.AiGenerated)

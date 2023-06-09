@@ -167,6 +167,7 @@ MonoBehaviour:
   hearingSensor: {fileID: 4769800100488525422}
   proximitySensor: {fileID: 2097964165954542098}
   awarenessComponent: {fileID: 3246184029654640956}
+  animationComponent: {fileID: 6678927175151319528}
   cameraFocus: {fileID: 7910102620408296028}
   boredThreshold: {fileID: 8678276500234800677}
   wanderThreshold: {fileID: 3476776795415583245}
@@ -488,7 +489,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.4794723, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1228,6 +1229,16 @@ MonoBehaviour:
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
   attackTriggerName: GrabMiddle
+  interactionAnimationPairs:
+  - InteractionType: 0
+    animationTriggerName: 
+  - InteractionType: 1
+    animationTriggerName: Default
+  - InteractionType: 2
+    animationTriggerName: OpenDoor
+  fidgetNames:
+  - Fidget_01
+  - Fidget_02
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,
