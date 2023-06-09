@@ -14,14 +14,14 @@ namespace Ai
 
         private readonly RaycastHit[] hits = new RaycastHit[10];
         
-        private void Awake()
+        private void Start()
         {
-            SoundManager.Instance.OnSoundEmitted += HandleOnSoundEmitted;
+            AiSound.Instance.OnSoundEmitted += HandleOnSoundEmitted;
         }
 
         private void OnDestroy()
         {
-            SoundManager.Instance.OnSoundEmitted -= HandleOnSoundEmitted;
+            AiSound.Instance.OnSoundEmitted -= HandleOnSoundEmitted;
         }
 
         private void HandleOnSoundEmitted(EmittedSoundData soundData)
@@ -29,26 +29,7 @@ namespace Ai
             if (soundData.SoundKind == SoundType.AiGenerated)
                 return;
 
-            float perceivedDB;
-            if (soundData.SoundKind == SoundType.Lure)
-            {
-                perceivedDB = CalculatePerceivedDB(soundData, DecibelDecayMode.FalloffOnly);
-                if (perceivedDB > minPerceivedDB)
-                {
-                    Stimulus stimulus = new Stimulus
-                    (
-                        soundData.Position,
-                        Time.time,
-                        100,
-                        SenseKind.ForceAlert
-                    );
-                    SensedStimulus(stimulus);   
-                }
-
-                return;
-            }
-            
-            perceivedDB = CalculatePerceivedDB(soundData);
+            float perceivedDB = CalculatePerceivedDB(soundData);
             if (perceivedDB > minPerceivedDB)
             {
                 Stimulus stimulus = new Stimulus
@@ -68,23 +49,16 @@ namespace Ai
         /// the sensor
         /// </summary>
         /// <param name="soundData">Information about the emitted sound</param>
-        /// <param name="decibelDecayMode"></param>
         /// <returns></returns>
-        private float CalculatePerceivedDB(EmittedSoundData soundData, DecibelDecayMode decibelDecayMode = DecibelDecayMode.WallsAndFalloff)
+        private float CalculatePerceivedDB(EmittedSoundData soundData)
         {
-            if (decibelDecayMode == DecibelDecayMode.None)
-                return soundData.DecibelsAtSource;
-            
             Vector3 position = transform.position;
-
+            
             //Get the distance from the source of the sound to the sensor
             float distanceToSoundSource = Vector3.Distance(position, soundData.Position);
 
-            if (decibelDecayMode == DecibelDecayMode.FalloffOnly)
-                return CalculateDBAfterDistanceFalloff(soundData.DecibelsAtSource, distanceToSoundSource);
-
             // Raycast from the origin of the sound against all the layers that could possibly block sound
-            int numHits = Physics.RaycastNonAlloc(soundData.Position, (position - soundData.Position).normalized, hits, distanceToSoundSource, SoundManager.Instance.SoundBlockerMask);
+            int numHits = Physics.RaycastNonAlloc(soundData.Position, (position - soundData.Position).normalized, hits, distanceToSoundSource, AiSound.Instance.SoundBlockerMask);
 
             // If we hit nothing return the db of the sound after calculating its falloff over the distance
             if (numHits == 0)
@@ -108,7 +82,7 @@ namespace Ai
                 if (modifier)
                     soundBlockingValue = modifier.SoundBlockingValue;
                 else
-                    soundBlockingValue = SoundManager.Instance.DefaultSoundBlockingValue;
+                    soundBlockingValue = AiSound.Instance.DefaultSoundBlockingValue;
 
                 //Calculate the volume of the sound when it reaches the hit collider 
                 float dBAtBarrier = CalculateDBAfterDistanceFalloff(currentDB, distanceToBarrier);
@@ -147,7 +121,7 @@ namespace Ai
             
             return currentDB;
         }
-
+        
         /// <summary>
         /// Calculates the volume of the sound over distance. Initial DB is presumed to be recorded at 1m to simplify
         /// calculation
@@ -168,12 +142,5 @@ namespace Ai
 
             return dBAfterFalloff;
         }
-    }
-
-    public enum DecibelDecayMode
-    {
-        WallsAndFalloff,
-        FalloffOnly,
-        None
     }
 }

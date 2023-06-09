@@ -308,9 +308,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc3af313c4c4b1e9283e13389a5fbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMovement: {fileID: 5685148041957440190}
   controller: {fileID: 2419621909708617996}
-  emitter: {fileID: 2919596182087691684}
   strideTime: 0.8
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &5235216998997054313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,8 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  audioClipDB: 80
+  soundDecibels: 0
   soundKind: 2
 --- !u!114 &2107148359325220997
 MonoBehaviour:
