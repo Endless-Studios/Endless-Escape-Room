@@ -128,6 +128,9 @@ MonoBehaviour:
   OnDisappear:
     m_PersistentCalls:
       m_Calls: []
+  OnReappear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6432490834441837270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,7 +1221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
-  attackTriggerName: 
+  attackTriggerName: GrabMiddle
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,
