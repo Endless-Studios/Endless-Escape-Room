@@ -33,6 +33,7 @@ namespace Ai
 
             Hideout.OnEnteredHideout += HandleEnteredHideout;
             Hideout.OnLeftHideout += HandleLeftHideout;
+            
         }
 
         private void HandleEnteredHideout(Hideout hideout)

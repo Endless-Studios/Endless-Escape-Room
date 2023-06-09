@@ -79,6 +79,14 @@ namespace Ai
         {
             entity.DealtDamage();
         }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void FinishedFidgeting()
+        {
+            entity.FinishedFidgeting();
+        }
         
         private void Update()
         {

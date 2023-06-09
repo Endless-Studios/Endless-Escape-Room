@@ -60,7 +60,7 @@ namespace Ai
 
             if (!linkController.Openable.IsOpen)
             {
-                string animationName = InteractionAnimations.Instance.GetAnimationName(linkController.Openable.InteractionType);
+                string animationName = AnimationNames.Instance.GetInteractionAnimationName(linkController.Openable.InteractionType);
                 Debug.Log("Setting animation trigger for: " + animationName);
                 //references.Animator.SetTrigger(animationName);
                 yield return new WaitForSeconds(1f);

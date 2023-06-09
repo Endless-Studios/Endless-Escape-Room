@@ -978,6 +978,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1224505149943912267, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.5014663
+      objectReference: {fileID: 0}
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1032,41 +1037,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000005886538
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.0000000050349604
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.000000029802308
       objectReference: {fileID: 0}
     - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
@@ -5946,6 +5916,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097871015136609949, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
+        type: 3}
+      propertyPath: m_Name
+      value: AI_AnimationNames
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79b1e1870f8a2a45af8a3fc0b98fec2, type: 3}
