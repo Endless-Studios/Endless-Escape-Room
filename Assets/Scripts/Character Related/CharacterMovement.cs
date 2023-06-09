@@ -68,6 +68,11 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     public bool IsCrouching => crouchStandMovementFactor < .5f;
 
+    /// <summary>
+    /// Fastest run speed.
+    /// </summary>
+    public float MaximumLocomotionSpeed => walkSpeed * sprintSpeedMultiplier;
+
     Transform connectedMovingPlatform;
     Vector3 connectedMovingPlatformPreviousPosition;
 
