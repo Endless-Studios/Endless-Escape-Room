@@ -36,15 +36,6 @@ namespace Ai
         private void HandleStartedAttacking()
         {
             references.Animator.SetTrigger(attack);
-            StartCoroutine(FauxAttackSteps());
-        }
-
-        private IEnumerator FauxAttackSteps()
-        {
-            yield return new WaitForSeconds(2f);
-            DealtDamage();
-            yield return new WaitForSeconds(4f);
-            FinishedAttacking();
         }
 
         /// <summary>
