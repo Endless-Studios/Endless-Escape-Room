@@ -56,14 +56,20 @@ public class PlayerInteractor : MonoBehaviour
             }
             if(lastHoveredInteractable != hoveredInteractable)
             {
+                ItemLayer itemLayer;
+                if(itemInspector.IsInspecting)
+                    itemLayer = ItemLayer.Held;
+                else
+                    itemLayer = ItemLayer.World;
+
                 if(debug)
                     Debug.Log($"Hovered changed: {lastHoveredInteractable?.gameObject.name} -> { hoveredInteractable?.gameObject.name}");
                 if(lastHoveredInteractable != null)
-                    lastHoveredInteractable.Unhighlight(itemInspector.IsInspecting);
+                    lastHoveredInteractable.Unhighlight(itemLayer);
                 lastHoveredInteractable = hoveredInteractable;
                 if(hoveredInteractable)
                 {
-                    hoveredInteractable.Highlight(itemInspector.IsInspecting);
+                    hoveredInteractable.Highlight(itemLayer);
                     PlayerHUD.Instance.SetInteractText(hoveredInteractable.InteractPrompt);
                 }
                 else
@@ -73,6 +79,9 @@ public class PlayerInteractor : MonoBehaviour
             {
                 Interact(lastHoveredInteractable);
                 currentGrabbable = lastHoveredInteractable as Grabbable;
+
+                //Just in case interacting changed the text - a common case.
+                PlayerHUD.Instance.SetInteractText(hoveredInteractable.InteractPrompt);
             }
         }
         else if (playerInput.GetInteractReleased())

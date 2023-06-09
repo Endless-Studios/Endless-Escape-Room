@@ -99,12 +99,12 @@ public class UiInventoryElement3D : UiInventoryElement
 
     public override void Highlight()
     {
-        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedOutline"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
+        Interactable.Highlight(visuals.transform, ItemLayer.Ui);
     }
 
     public override void Unhighlight()
     {
-        Interactable.SetLayerRecursive(visuals.transform, LayerMask.NameToLayer("InspectedItem"));//TODO centralize layer management functions, and convert to new layer, on new camera in stack.
+        Interactable.Unhighlight(visuals.transform, ItemLayer.Ui);
     }
 
     public override void HandleUpdate()

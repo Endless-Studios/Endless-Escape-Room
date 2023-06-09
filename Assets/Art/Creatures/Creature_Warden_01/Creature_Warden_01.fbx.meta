@@ -73,8 +73,8 @@ ModelImporter:
       name: Warden_Walk_F
       takeName: Scene
       internalID: 0
-      firstFrame: 202
-      lastFrame: 319
+      firstFrame: 490
+      lastFrame: 620
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -160,8 +160,8 @@ ModelImporter:
       name: Warden_Walk_F_Start
       takeName: Scene
       internalID: 0
-      firstFrame: 120
-      lastFrame: 200
+      firstFrame: 360
+      lastFrame: 460
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
