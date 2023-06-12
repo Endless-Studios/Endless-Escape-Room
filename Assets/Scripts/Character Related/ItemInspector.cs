@@ -68,7 +68,9 @@ public class ItemInspector : MonoBehaviour
         {
             Vector3 endPosition = Camera.main.transform.position + Camera.main.transform.forward * (attachOffset + CurrentInspectable.InspectDistance);
             CurrentInspectable.transform.position = Vector3.Slerp(startPosition, endPosition, elapsedTime / inspectMoveTime);
-            CurrentInspectable.transform.localRotation = Quaternion.Slerp(startRotation, Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation), elapsedTime / inspectMoveTime);
+            Vector3 cameraFacingEulerAngles = Camera.main.transform.position - endPosition;
+            Quaternion targetWorldSpaceRotation = Quaternion.LookRotation(cameraFacingEulerAngles) * Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
+            CurrentInspectable.transform.rotation = Quaternion.Slerp(startRotation, targetWorldSpaceRotation, elapsedTime / inspectMoveTime);
             yield return null;
         }
 
@@ -155,7 +157,9 @@ public class ItemInspector : MonoBehaviour
     private void SetToInspectedPosition()
     {
         CurrentInspectable.transform.position = Camera.main.transform.position + Camera.main.transform.forward * (attachOffset + CurrentInspectable.InspectDistance);
-        CurrentInspectable.transform.localRotation = Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
+        Vector3 cameraFacingEulerAngles = Camera.main.transform.position - CurrentInspectable.transform.position;
+        Quaternion targetWorldSpaceRotation = Quaternion.LookRotation(cameraFacingEulerAngles) * Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
+        CurrentInspectable.transform.rotation = targetWorldSpaceRotation;
     }
 
     bool CanPickupItem(Pickupable pickupable)
