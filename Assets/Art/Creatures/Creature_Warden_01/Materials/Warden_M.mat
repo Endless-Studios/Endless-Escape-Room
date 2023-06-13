@@ -114,6 +114,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Alpha_Clip_Threshold: 0
     - _Blend: 0
     - _BumpScale: 1
     - _CastShadows: 1
@@ -133,6 +134,7 @@ Material:
     - _Metallic: 0
     - _Metalness: 1
     - _Mode: 0
+    - _Normal_Strength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
