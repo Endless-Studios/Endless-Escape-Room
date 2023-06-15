@@ -68,8 +68,7 @@ public class ItemInspector : MonoBehaviour
         {
             Vector3 endPosition = Camera.main.transform.position + Camera.main.transform.forward * (attachOffset + CurrentInspectable.InspectDistance);
             CurrentInspectable.transform.position = Vector3.Slerp(startPosition, endPosition, elapsedTime / inspectMoveTime);
-            Vector3 cameraFacingEulerAngles = Camera.main.transform.position - endPosition;
-            Quaternion targetWorldSpaceRotation = Quaternion.LookRotation(cameraFacingEulerAngles) * Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
+            Quaternion targetWorldSpaceRotation = Camera.main.transform.rotation * Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
             CurrentInspectable.transform.rotation = Quaternion.Slerp(startRotation, targetWorldSpaceRotation, elapsedTime / inspectMoveTime);
             yield return null;
         }
@@ -157,8 +156,7 @@ public class ItemInspector : MonoBehaviour
     private void SetToInspectedPosition()
     {
         CurrentInspectable.transform.position = Camera.main.transform.position + Camera.main.transform.forward * (attachOffset + CurrentInspectable.InspectDistance);
-        Vector3 cameraFacingEulerAngles = Camera.main.transform.position - CurrentInspectable.transform.position;
-        Quaternion targetWorldSpaceRotation = Quaternion.LookRotation(cameraFacingEulerAngles) * Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
+        Quaternion targetWorldSpaceRotation = Camera.main.transform.rotation * Quaternion.Euler(CurrentInspectable.InspectionDefaultRotation);
         CurrentInspectable.transform.rotation = targetWorldSpaceRotation;
     }
 
