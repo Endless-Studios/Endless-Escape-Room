@@ -5183,6 +5183,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (1)'
       objectReference: {fileID: 0}
+    - target: {fileID: 3149385786880959877, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.4911
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149385786880959877, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -5237,6 +5247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265338226718752939, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: size.y
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
