@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Ai
 {
@@ -21,12 +22,16 @@ namespace Ai
         private int enterDoorway;
         private int moving;
         private int attack;
+        private int velX;
+        private int velY;
         
         protected void Awake()
         {
             enterDoorway = Animator.StringToHash(thresholdTriggerName);
             moving = Animator.StringToHash(movingBoolName);
             attack = Animator.StringToHash(attackTriggerName);
+            velX = Animator.StringToHash("VelX");
+            velY = Animator.StringToHash("VelY");
             entity.OnWalkingThroughDoorway += WalkThroughDoor;
             entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
             
@@ -131,6 +136,8 @@ namespace Ai
         private void Update()
         {
             references.Animator.SetBool(moving, references.NavigationComponent.IsMoving);
+            references.Animator.SetFloat(velX, references.NavigationComponent.LocalRelativeVelocity.x);
+            references.Animator.SetFloat(velY, references.NavigationComponent.LocalRelativeVelocity.z);
         }
     }
 }
