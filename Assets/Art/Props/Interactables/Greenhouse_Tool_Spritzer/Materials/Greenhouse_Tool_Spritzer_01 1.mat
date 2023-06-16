@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -23,6 +23,8 @@ Material:
   m_Name: Greenhouse_Tool_Spritzer_01 1
   m_Shader: {fileID: -6465566751694194690, guid: dc73709ccc9191141bc947aa9fe6531a,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
@@ -33,6 +35,7 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -104,11 +107,23 @@ Material:
         m_Texture: {fileID: 2800000, guid: d588e5971b9d8a34d814faec93e635a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_10bd878589b94b6f8f5a10936b2a779e_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d588e5971b9d8a34d814faec93e635a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_93c13e88744449fe904b3154db7a1464_Texture_1:
         m_Texture: {fileID: 2800000, guid: 5568a701f2024414f900bf84fd631739, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_93c13e88744449fe904b3154db7a1464_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 5568a701f2024414f900bf84fd631739, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_c28d0a5f900b41d3a407b3d838442bb1_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 256b8317d63cddc4c80433d017d2662c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_c28d0a5f900b41d3a407b3d838442bb1_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 256b8317d63cddc4c80433d017d2662c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -131,8 +146,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _Alpha_Clip_Threshold: 0
     - _Blend: 0
+    - _BlendModePreserveSpecular: 0
     - _Blur: 0.0295
     - _BumpScale: 1
     - _CastShadows: 1
