@@ -10,7 +10,7 @@ public class FadeToBlack : MonoBehaviour
 {
     private Coroutine activeFade;
 
-    [SerializeField] private Image fadeToBlackImage;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     [Header("Fade Duration")]
     [SerializeField] private float fadeOutDuration;
@@ -62,12 +62,12 @@ public class FadeToBlack : MonoBehaviour
             if (fadeOut)
             {
                 fadePercentage = (Time.realtimeSinceStartup - startTime) / fadeOutDuration;
-                fadeToBlackImage.color = new Color(0, 0, 0, fadePercentage);
+                canvasGroup.alpha = fadePercentage;
             }
             else
             {
                 fadePercentage = (Time.realtimeSinceStartup - startTime) / fadeInDuration;
-                fadeToBlackImage.color = new Color(0, 0, 0, 1 - fadePercentage);
+                canvasGroup.alpha = 1 - fadePercentage;
             }
 
             yield return null;

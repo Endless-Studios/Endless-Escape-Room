@@ -141,6 +141,7 @@ public class HeldItemManager : MonoBehaviour
         //Cache everything so we can clear and reset our state before any events send outward (which may change our state again!)
         Pickupable droppingItem = HeldPickupable;
         Vector3 projectedPosition = projectedVisuals.transform.position;
+        Quaternion projectedRotation = projectedVisuals.transform.rotation;
         ClearHeldItem();
 
         //TODO only for visuals, not collisions until we're done maybe?
@@ -156,7 +157,7 @@ public class HeldItemManager : MonoBehaviour
             droppingItem.IsInteractable = true;
             //TODO account for transform from visualRoot to parent
             droppingItem.transform.position = projectedPosition;
-            droppingItem.transform.rotation = Quaternion.identity;
+            droppingItem.transform.rotation = projectedRotation;
             droppingItem.HandleDropped();
         }
     }
