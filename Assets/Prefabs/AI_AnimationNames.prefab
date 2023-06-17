@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9033235719112802756}
   - component: {fileID: 4547435483568381208}
   m_Layer: 0
-  m_Name: AI_InteractionNames
+  m_Name: AI_AnimationNames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,3 +51,6 @@ MonoBehaviour:
     animationTriggerName: interact
   - InteractionType: 2
     animationTriggerName: OpenDoor
+  monsterFidgetNames:
+  - Fidget_01
+  - Fidget_02

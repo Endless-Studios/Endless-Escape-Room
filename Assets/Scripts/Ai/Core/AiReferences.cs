@@ -16,6 +16,7 @@ namespace Ai
         [SerializeField] private HearingSensor hearingSensor;
         [SerializeField] private ProximitySensor proximitySensor;
         [SerializeField] private AwarenessComponent awarenessComponent;
+        [SerializeField] private AnimationComponent animationComponent;
         [SerializeField] private CameraFocus cameraFocus;
         [SerializeField] private ThresholdBehavior boredThreshold;
         [SerializeField] private ThresholdBehavior wanderThreshold;
@@ -33,6 +34,7 @@ namespace Ai
         public HearingSensor HearingSensor => hearingSensor;
         public ProximitySensor ProximitySensor => proximitySensor;
         public AwarenessComponent AwarenessComponent => awarenessComponent;
+        public AnimationComponent AnimationComponent => animationComponent;
         public CameraFocus CameraFocus => cameraFocus;
         public ThresholdBehavior BoredThreshold => boredThreshold;
         public ThresholdBehavior WanderThreshold => wanderThreshold;
