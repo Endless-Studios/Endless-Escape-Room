@@ -119,6 +119,7 @@ namespace Ai
         public void Disappear()
         {
             OnDisappear.Invoke();
+            Invoke(nameof(Reappear), 2f);
         }
 
         /// <summary>

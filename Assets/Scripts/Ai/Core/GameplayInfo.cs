@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Sight;
 using UnityEngine;
 
@@ -10,9 +11,11 @@ namespace Ai
     /// </summary>
     public class GameplayInfo : MonoBehaviour
     {
+        [SerializeField] private float targetMemoryTime;
         [ShowOnly] public PointOfInterest CurrentPointOfInterest;
         [ShowOnly] public Hideout TargetHideout;
-        [ShowOnly] public PlayerTarget Target;
+        [ShowOnly, SerializeField] private PlayerTarget target;
+        [ShowOnly, SerializeField] private PlayerTarget recentTarget;
         [ShowOnly] public Hideout PlayersHideout;
         [ShowOnly] public Vector3 Destination;
         [ShowOnly] public AlertState AlertState;
@@ -20,6 +23,25 @@ namespace Ai
         
         public Stimulus CurrentStimulus;
         public Vector3 InitialSpawnPoint { get; private set; }
+        public PlayerTarget Target
+        {
+            get => target;
+            set
+            {
+                if (value is null)
+                {
+                    recentTarget = target;
+                    StartCoroutine(ForgetTargetRoutine());
+                    target = null;
+                }
+                else
+                {
+                    target = value;
+                }
+            }
+        }
+
+        public PlayerTarget RecentTarget => recentTarget;
 
         private void Awake()
         {
@@ -33,11 +55,18 @@ namespace Ai
         {
             CurrentPointOfInterest = null;
             TargetHideout = null;
-            Target = null;
+            target = null;
             PlayersHideout = null;
             Destination = transform.position;
             CurrentStimulus = null;
             AlertState = AlertState.Unaware;
+            recentTarget = null;
+        }
+
+        private IEnumerator ForgetTargetRoutine()
+        {
+            yield return new WaitForSeconds(targetMemoryTime);
+            recentTarget = null;
         }
     }
 }

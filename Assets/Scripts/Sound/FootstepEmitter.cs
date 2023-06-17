@@ -12,6 +12,7 @@ namespace Sound
         [SerializeField] private CharacterController controller;
         [SerializeField] private float strideTime;
         [SerializeField] private AnimationCurve curve;
+        [SerializeField] private float footStepVolumeAtMaxSpeed;
 
         private float nextStepTime;
 
@@ -22,7 +23,7 @@ namespace Sound
 
             float velocityMagnitude = controller.velocity.magnitude;
             float speedValue = velocityMagnitude / characterMovement.MaximumLocomotionSpeed;
-            float volume = curve.Evaluate(speedValue);
+            float volume = footStepVolumeAtMaxSpeed * curve.Evaluate(speedValue);
 
             //TODO: Add code to sample surfaces and modify the clip played and the dB of the clip based on the surface
             EmittedSoundData soundData = new EmittedSoundData(transform.position, volume, SoundType.PlayerGenerated);

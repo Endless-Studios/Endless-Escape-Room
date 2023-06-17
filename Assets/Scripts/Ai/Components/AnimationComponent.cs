@@ -50,9 +50,7 @@ namespace Ai
 
         private void HandleStartedPursueAnimation()
         {
-            //references.Animator.SetTrigger(pursue);
-            Debug.Log("Playing pursue animation");
-            StartCoroutine(FauxPursueAnimation());
+            references.Animator.SetTrigger(pursue);
         }
 
         private void HandleStartedSearchAnimation()
@@ -68,12 +66,6 @@ namespace Ai
             DealtDamage();
             yield return new WaitForSeconds(4f);
             FinishedAttacking();
-        }
-
-        private IEnumerator FauxPursueAnimation()
-        {
-            yield return new WaitForSeconds(3f);
-            FinishedPursueAnimation();
         }
 
         private IEnumerator FauxSearchAnimation()
