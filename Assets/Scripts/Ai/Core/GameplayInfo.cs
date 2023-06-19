@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Sight;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Ai

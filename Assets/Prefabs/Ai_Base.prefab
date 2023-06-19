@@ -131,6 +131,18 @@ MonoBehaviour:
   OnReappear:
     m_PersistentCalls:
       m_Calls: []
+  OnStartedPursueAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedPursueAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartedSearchAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedSearchAnimation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6432490834441837270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,11 +155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b76d88ebb14ddb830b93f6461d3908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetMemoryTime: 90
   CurrentPointOfInterest: {fileID: 0}
   TargetHideout: {fileID: 0}
-  Target: {fileID: 0}
+  target: {fileID: 0}
+  recentTarget: {fileID: 0}
   PlayersHideout: {fileID: 0}
   Destination: {x: 0, y: 0, z: 0}
+  AlertState: 0
+  ShouldSpawnInPlace: 0
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,9 +211,9 @@ MonoBehaviour:
   navSampleDistance: 5
   navigationTolerance: 0.2
   maxAttackDistance: 2.2
-  approachDistance: 1.5
-  maxAngleDifference: 5
-  maxAngularSpeed: 40
+  approachDistance: 1
+  maxAngleDifference: 60
+  maxAngularSpeed: 55
   attackDamage: 0
 --- !u!195 &8683445511247982297
 NavMeshAgent:
@@ -209,10 +225,10 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: -334000983
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 4
   m_Acceleration: 4
   avoidancePriority: 50
-  m_AngularSpeed: 240
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
@@ -1264,6 +1280,8 @@ MonoBehaviour:
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
   attackTriggerName: GrabMiddle
+  pursueTriggerName: AlertScream
+  searchTriggerName: 
   interactionAnimationPairs:
   - InteractionType: 0
     animationTriggerName: 
