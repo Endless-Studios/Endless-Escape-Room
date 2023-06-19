@@ -209,10 +209,11 @@ MonoBehaviour:
   minWanderFarDistance: 10
   wanderFarDistance: 20
   navSampleDistance: 5
-  navigationTolerance: 0.2
+  navigationTolerance: 0.5
   maxAttackDistance: 2.2
   approachDistance: 1
-  maxAngleDifference: 60
+  maxAttackAngleDifference: 60
+  maxInteractionAngleDifference: 5
   maxAngularSpeed: 55
   attackDamage: 0
 --- !u!195 &8683445511247982297
