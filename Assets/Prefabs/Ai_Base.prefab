@@ -563,7 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightBlockingMask:
     serializedVersion: 2
-    m_Bits: 4097
+    m_Bits: 1
   centralVisionScalar: 1
   nearPeripheralThreshold: 30
   nearPeripheralScalar: 0.66
