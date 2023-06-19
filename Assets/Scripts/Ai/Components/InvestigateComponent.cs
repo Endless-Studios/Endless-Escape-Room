@@ -12,10 +12,14 @@ namespace Ai
     /// </summary>
     public class InvestigateComponent : AiComponent
     {
+        [SerializeField] private float investigateActionDelay;
         [SerializeField] private float maxInvestigateDistance;
         [SerializeField] private float reInvestigateTime;
-
+        [HideInInspector] public bool ShouldWander;
+        [HideInInspector] public bool ShouldInteract;
+ 
         public UnityEvent OnFinishedInvestigating = new UnityEvent();
+        public float InvestigateActionDelay => investigateActionDelay;
 
         private readonly List<Interaction> recentInvestigations = new List<Interaction>();
 
