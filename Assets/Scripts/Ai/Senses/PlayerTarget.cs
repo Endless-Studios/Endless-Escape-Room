@@ -42,6 +42,14 @@ namespace Ai
             //TODO: Implement
         }
 
+        /// <summary>
+        /// Ai reenables player input after finishing its attack.
+        /// </summary>
+        public void EnableInput()
+        {
+            //TODO: Implement
+        }
+
         ///<summary>
         /// AI deals damage to the player.
         ///</summary>
