@@ -213,7 +213,7 @@ MonoBehaviour:
   maxAttackDistance: 2.2
   approachDistance: 1
   maxAttackAngleDifference: 60
-  maxInteractionAngleDifference: 5
+  maxInteractionAngleDifference: 7.5
   maxAngularSpeed: 55
   attackDamage: 0
 --- !u!195 &8683445511247982297
