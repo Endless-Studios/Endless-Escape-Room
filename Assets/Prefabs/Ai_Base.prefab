@@ -226,7 +226,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: -334000983
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 3
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -379,8 +379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82791749ce434c159bb654743f979939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  investigateActionDelay: 5
   maxInvestigateDistance: 15
   reInvestigateTime: 90
+  ShouldWander: 0
+  ShouldInteract: 0
   OnFinishedInvestigating:
     m_PersistentCalls:
       m_Calls: []
