@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ai;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +18,7 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] Transform fpsCameraRootTransform;
     [SerializeField] CharacterController characterController;
     [SerializeField] NavMeshObstacle navMeshObstacle;
+    [SerializeField] PlayerTarget playerTarget;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
@@ -27,6 +29,7 @@ public class PlayerCore : MonoBehaviour
     public ItemInspector ItemInspector => itemInspector;
     public CharacterController CharacterController => characterController;
     public NavMeshObstacle NavMeshObstacle => navMeshObstacle;
+    public PlayerTarget PlayerTarget => playerTarget;
 
     private void Awake()
     {
