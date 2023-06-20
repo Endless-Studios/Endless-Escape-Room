@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sight;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,6 +32,14 @@ namespace Ai
         public void StartFadeout(UnityAction fadeoutCompleteCallback)
         {
             PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback);
+        }
+
+        /// <summary>
+        /// Ai stops the player from moving or looking around while attacking or grabbing the player out of the hideout.
+        /// </summary>
+        public void DisableInput()
+        {
+            //TODO: Implement
         }
 
         ///<summary>
