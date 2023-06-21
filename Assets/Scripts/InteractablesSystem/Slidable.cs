@@ -114,7 +114,10 @@ public class Slidable : Grabbable
         if (rigidbody != null)
         {
             rigidbody.isKinematic = cachedRigidbodyIsKinematic;
-            rigidbody.velocity = Vector3.zero;
+
+            if(rigidbody.isKinematic == false)
+                rigidbody.velocity = Vector3.zero;
+                
             rigidbody.constraints = cachedRigidbodyConstraints;
         }
 
@@ -168,12 +171,14 @@ public class Slidable : Grabbable
 
             if ((moveVelocity * Time.fixedDeltaTime).sqrMagnitude > moveDirection.sqrMagnitude) //check to see if the drag will overshoot the target position
             {
-                rigidbody.velocity = Vector3.zero;
+                if(rigidbody.isKinematic == false)
+                    rigidbody.velocity = Vector3.zero;
+
                 rigidbody.MovePosition(targetPosition);
             }
             else
             {
-                if (slideKinematically == false)
+                if (slideKinematically == false && rigidbody.isKinematic == false)
                     rigidbody.velocity = moveVelocity; //move the slidable respecting physics
                 else
                     rigidbody.MovePosition(rigidbody.position + (moveVelocity * Time.fixedDeltaTime));
