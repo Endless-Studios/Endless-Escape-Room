@@ -318,7 +318,7 @@ MonoBehaviour:
   - {fileID: 7148516710388815565}
   - {fileID: 2107148359325220997}
   - {fileID: 7935093375614766997}
-  <PlayerCore>k__BackingField: {fileID: 0}
+  <PlayerCore>k__BackingField: {fileID: 761649984126699673}
 --- !u!114 &7434589766560750895
 MonoBehaviour:
   m_ObjectHideFlags: 0
