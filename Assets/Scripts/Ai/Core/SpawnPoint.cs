@@ -16,7 +16,8 @@ namespace Ai
 
         private void OnDisable()
         {
-            SpawnLocationManager.Instance.ActiveSpawnPoints.Remove(this);
+            if(SpawnLocationManager.Instance)
+                SpawnLocationManager.Instance.ActiveSpawnPoints.Remove(this);
         }
         
     }
