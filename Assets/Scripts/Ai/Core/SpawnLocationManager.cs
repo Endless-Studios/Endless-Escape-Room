@@ -8,6 +8,7 @@ namespace Ai
     /// </summary>
     public class SpawnLocationManager : MonoBehaviourSingleton<SpawnLocationManager>
     {
+        public  readonly List<SpawnPoint> ActiveSpawnPoints = new List<SpawnPoint>();
         [SerializeField] private LayerMask lineOfSightMask;
 
         /// <summary>
@@ -16,20 +17,22 @@ namespace Ai
         /// if there are no active spawn points.
         /// </summary>
         /// <param name="point">The position of the spawn point</param>
+        /// <param name="rotation">The rotation of the spawn point</param>
         /// <returns>Returns true if a valid location was found</returns>
-        public bool TryGetSpawnLocation(out Vector3 point)
+        public bool TryGetSpawnLocation(out Vector3 point, out Quaternion rotation)
         {
             point = Vector3.zero;
+            rotation = Quaternion.identity;
             
             //Return false if there are no active spawn points
-            if (SpawnPoint.ActiveSpawnPoints.Count == 0)
+            if (ActiveSpawnPoints.Count == 0)
                 return false;
             
             Vector3 playerPos = PlayerCore.LocalPlayer.transform.position;
-            List<Vector3> points = new List<Vector3>();
+            List<Transform> points = new List<Transform>();
 
             //Raycast against the player from all spawn points
-            foreach (SpawnPoint spawnPoint in SpawnPoint.ActiveSpawnPoints)
+            foreach (SpawnPoint spawnPoint in ActiveSpawnPoints)
             {
                 Vector3 spawnPosition = spawnPoint.transform.position;
                 Vector3 losSamplePosition = spawnPosition + Vector3.up * 2;
@@ -40,20 +43,21 @@ namespace Ai
                 if (!Physics.Raycast(ray, toVector.magnitude, lineOfSightMask))
                     continue;
                 
-                points.Add(spawnPosition);
+                points.Add(spawnPoint.transform);
             }
             
             //If we have spawn points without line of sight to the player we set our output point to one of those positions randomly
             if (points.Count > 0)
             {
                 int index = Random.Range(0, points.Count);
-                point = points[index];
+                point = points[index].position;
+                rotation = points[index].rotation;
             }
             //If all of the spawn points have line of sight to the player set our output to one of those
             else
             {
-                int index = Random.Range(0, SpawnPoint.ActiveSpawnPoints.Count);
-                point = SpawnPoint.ActiveSpawnPoints[index].transform.position;
+                int index = Random.Range(0, ActiveSpawnPoints.Count);
+                point = ActiveSpawnPoints[index].transform.position;
             }
             
             //Return true since we are always going to return a valid point if we got here

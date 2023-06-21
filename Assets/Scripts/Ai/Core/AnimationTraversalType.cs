@@ -1,6 +1,6 @@
 ﻿namespace Ai
 {
-    public enum AlertState
+    public enum AnimationTraversalType
     {
         Unaware,
         Searching,
