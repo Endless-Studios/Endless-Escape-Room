@@ -173,7 +173,8 @@ public class CharacterMovement : MonoBehaviour
             connectedMovingPlatformPreviousPosition = connectedMovingPlatform.position;
         }
 
-        characterController.Move((motionToUse * Time.deltaTime) + (movingGroundMotion));
+        if(characterController.enabled)
+            characterController.Move((motionToUse * Time.deltaTime) + (movingGroundMotion));
     }
 
     /// <summary>

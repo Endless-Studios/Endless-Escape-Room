@@ -13,7 +13,7 @@ namespace Ai
         public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
 
         [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
-        [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
+        [field: SerializeField] public PlayerCore PlayerCore { get; private set; }
 
         private void Awake()
         {
@@ -24,7 +24,6 @@ namespace Ai
         {
             SenseTargets.Remove(this);
         }
-
 
         ///<summary>
         /// AI triggers a fadeout on the player.
@@ -39,7 +38,7 @@ namespace Ai
         /// </summary>
         public void DisableInput()
         {
-            //TODO: Implement
+            PlayerCore.PlayerInput.DisableAllInput();
         }
 
         /// <summary>
@@ -47,7 +46,7 @@ namespace Ai
         /// </summary>
         public void EnableInput()
         {
-            //TODO: Implement
+            PlayerCore.PlayerInput.EnableAllInput();
         }
 
         ///<summary>
@@ -55,7 +54,7 @@ namespace Ai
         ///</summary>
         public void DealDamage(float damage)
         {
-            HealthComponent.TakeDamage(damage);
+            PlayerCore.HealthComponent.TakeDamage(damage);
         }
     }
 }
