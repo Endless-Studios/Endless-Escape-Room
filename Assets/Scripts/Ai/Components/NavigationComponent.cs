@@ -15,15 +15,36 @@ namespace Ai
         [SerializeField] private float doorApproachAngleTolerance;
         [SerializeField] private float doorApproachMovementSpeed;
         [SerializeField] private float doorApproachDistanceTolerance;
+        [SerializeField] private float smoothTime;
 
         public bool IsMoving { get; private set; }
 
+        public Vector3 LocalRelativeVelocity
+        {
+            get
+            {
+                NavMeshAgent agent = references.Agent;
+                if (!agent.isOnOffMeshLink)
+                {
+                    return agent.transform.InverseTransformDirection(smoothedVelocity) / agent.speed;
+                }
+
+                return agent.transform.InverseTransformDirection(smoothedVelocity) / doorApproachMovementSpeed;
+            }
+        }
+
         private bool isTraversingLink;
+        private Vector3 smoothedVelocity;
+        private Vector3 currentVelocity;
+        private Vector3 lastPosition;
 
         public UnityEvent OnTriedLockedThreshold;
 
         private void Update()
         {
+            Vector3 targetVelocity = (transform.position - lastPosition) / Time.deltaTime;
+            smoothedVelocity = Vector3.SmoothDamp(smoothedVelocity, targetVelocity, ref currentVelocity, smoothTime);
+            lastPosition = transform.position;
             if (references.Agent.isOnOffMeshLink && !isTraversingLink)
             {
                 StartCoroutine(TryTraverseLink());
@@ -53,16 +74,14 @@ namespace Ai
                 if(angle > doorApproachAngleTolerance)
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, doorApproachRotationSpeed * Time.deltaTime);
                 float distance = Vector3.Distance(transform.position, linkData.startPos);
-                if(distance > doorApproachDistanceTolerance)
+                if (distance > doorApproachDistanceTolerance)
                     transform.position = Vector3.MoveTowards(transform.position, linkData.startPos, doorApproachMovementSpeed * Time.deltaTime);
                 yield return null;
             }
 
             if (!linkController.Openable.IsOpen)
             {
-                string animationName = InteractionAnimations.Instance.GetAnimationName(linkController.Openable.InteractionType);
-                Debug.Log("Setting animation trigger for: " + animationName);
-                //references.Animator.SetTrigger(animationName);
+                references.AnimationComponent.PlayInteractionAnimation(linkController.Openable.InteractionType);
                 yield return new WaitForSeconds(1f);
                 //TODO: Get animations in so I can tie into the animation events
                 // isInteracting = true;

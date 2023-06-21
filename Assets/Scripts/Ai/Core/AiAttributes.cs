@@ -17,7 +17,8 @@ namespace Ai
         [SerializeField] private float navigationTolerance;
         [SerializeField] private float maxAttackDistance;
         [SerializeField] private float approachDistance;
-        [SerializeField] private float maxAngleDifference;
+        [SerializeField] private float maxAttackAngleDifference;
+        [SerializeField] private float maxInteractionAngleDifference;
         [SerializeField] private float maxAngularSpeed;
         [SerializeField] private float attackDamage;
 
@@ -29,7 +30,8 @@ namespace Ai
         public float NavigationTolerance => navigationTolerance;
         public float MaxAttackDistance => maxAttackDistance;
         public float ApproachDistance => approachDistance;
-        public float MaxAngleDifference => maxAngleDifference;
+        public float MaxAttackAngleDifference => maxAttackAngleDifference;
+        public float MaxInteractionAngleDifference => maxInteractionAngleDifference;
         public float MaxAngularSpeed => maxAngularSpeed;
         public float AttackDamage => attackDamage;
     }

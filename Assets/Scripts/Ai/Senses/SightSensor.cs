@@ -61,10 +61,9 @@ namespace Ai
 
                     Ray ray = new Ray(transformPosition, toVector.normalized);
                     
-                    if (Physics.Raycast(ray, out RaycastHit hit, distance, sightBlockingMask))
+                    if (!Physics.Raycast(ray, out RaycastHit hit, distance, sightBlockingMask))
                     {
-                        if (hit.collider == losProbe.LosCollider)
-                            totalAwarenessThisFrame += losProbeBaseValue * viewAngleScalar * distanceScalar;
+                        totalAwarenessThisFrame += losProbeBaseValue * viewAngleScalar * distanceScalar;
                     }
                 }
 

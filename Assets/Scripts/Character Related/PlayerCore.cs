@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerCore : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] HeldItemManager heldItemManager;
     [SerializeField] ItemInspector itemInspector;
     [SerializeField] Transform fpsCameraRootTransform;
+    [SerializeField] CharacterController characterController;
+    [SerializeField] NavMeshObstacle navMeshObstacle;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
@@ -22,6 +25,8 @@ public class PlayerCore : MonoBehaviour
     public HeldItemManager HeldItemManager => heldItemManager;
     public Transform FpsCameraRootTransform => fpsCameraRootTransform;
     public ItemInspector ItemInspector => itemInspector;
+    public CharacterController CharacterController => characterController;
+    public NavMeshObstacle NavMeshObstacle => navMeshObstacle;
 
     private void Awake()
     {

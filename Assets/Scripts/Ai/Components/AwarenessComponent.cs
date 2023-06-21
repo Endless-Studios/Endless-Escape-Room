@@ -33,14 +33,16 @@ namespace Ai
 
             Hideout.OnEnteredHideout += HandleEnteredHideout;
             Hideout.OnLeftHideout += HandleLeftHideout;
+            
         }
 
         private void HandleEnteredHideout(Hideout hideout)
         {
             if (gameplayInfo.Target)
             {
-                TargetEnteredHideout.Invoke();
                 gameplayInfo.TargetHideout = hideout;
+                TargetEnteredHideout.Invoke();
+                return;
             }
 
             gameplayInfo.PlayersHideout = hideout;
@@ -74,6 +76,7 @@ namespace Ai
                 case SenseKind.Hearing:
                 case SenseKind.Proximity:
                 case SenseKind.Undefined:
+                case SenseKind.ForceAlert:
                     if (gameplayInfo.CurrentStimulus is null || stimulus.Value > gameplayInfo.CurrentStimulus.Value)
                     {
                         gameplayInfo.CurrentStimulus = stimulus;
@@ -145,6 +148,7 @@ namespace Ai
         public void LostTarget()
         {
             OnLostTarget.Invoke();
+            gameplayInfo.Target = null;
         }
     }
 }

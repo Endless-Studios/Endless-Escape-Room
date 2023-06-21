@@ -38,6 +38,8 @@ namespace Ai
         /// </summary>
         public void PlayerEnteredHideout()
         {
+            PlayerCore.LocalPlayer.CharacterController.enabled = false;
+            PlayerCore.LocalPlayer.NavMeshObstacle.enabled = false;
             OnEnteredHideout?.Invoke(this);
             OnEnterHideout.Invoke();
         }
@@ -47,6 +49,8 @@ namespace Ai
         /// </summary>
         public void PlayerLeftHideout()
         {
+            PlayerCore.LocalPlayer.CharacterController.enabled = true;
+            PlayerCore.LocalPlayer.NavMeshObstacle.enabled = true;
             OnLeftHideout?.Invoke(this);
             OnExitHideout.Invoke();
         }

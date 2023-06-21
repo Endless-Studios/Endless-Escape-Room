@@ -18,6 +18,11 @@
 
         private void HandleDealDamage()
         {
+            if (gameplayInfo.Target is null && gameplayInfo.RecentTarget is not null)
+            {
+                gameplayInfo.Target = gameplayInfo.RecentTarget;
+            }
+            
             gameplayInfo.Target.DealDamage(attributes.AttackDamage);
             gameplayInfo.Target.StartFadeout(FadeoutCompleteCallback);
         }

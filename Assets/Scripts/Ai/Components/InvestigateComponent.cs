@@ -12,10 +12,14 @@ namespace Ai
     /// </summary>
     public class InvestigateComponent : AiComponent
     {
+        [SerializeField] private float investigateActionDelay;
         [SerializeField] private float maxInvestigateDistance;
         [SerializeField] private float reInvestigateTime;
-
+        [HideInInspector] public bool ShouldWander;
+        [HideInInspector] public bool ShouldInteract;
+ 
         public UnityEvent OnFinishedInvestigating = new UnityEvent();
+        public float InvestigateActionDelay => investigateActionDelay;
 
         private readonly List<Interaction> recentInvestigations = new List<Interaction>();
 
@@ -84,12 +88,14 @@ namespace Ai
                 }
             }
 
-            //If there are no valid hideouts return the players current hideout(it is okay if this is null)
+            //If there are no valid hideouts return null
             if (potentialInvestigationTarget.Count == 0)
-                return gameplayInfo.PlayersHideout;
+                return null;
             
             //Sort all the valid hideouts by the distance to them
             potentialInvestigationTarget.Sort();
+            
+            recentInvestigations.Add(new Interaction(potentialInvestigationTarget[0].PointOfInterest, Time.time));
 
             //Return the closest hideout
             return (Hideout)potentialInvestigationTarget[0].PointOfInterest;
