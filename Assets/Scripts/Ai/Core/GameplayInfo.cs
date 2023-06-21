@@ -16,7 +16,7 @@ namespace Ai
         [ShowOnly, SerializeField] private PlayerTarget recentTarget;
         [ShowOnly] public Hideout PlayersHideout;
         [ShowOnly] public Vector3 Destination;
-        [ShowOnly] public AlertState AlertState;
+        [ShowOnly] public AnimationTraversalType AnimationTraversalType;
         [HideInInspector] public bool ShouldSpawnInPlace;
         
         public Stimulus CurrentStimulus;
@@ -29,7 +29,8 @@ namespace Ai
                 if (value is null)
                 {
                     recentTarget = target;
-                    StartCoroutine(ForgetTargetRoutine());
+                    StopForgetTargetRoutine();
+                    forgetRecentTargetRoutine = StartCoroutine(ForgetRecentTargetRoutine());
                     target = null;
                 }
                 else
@@ -39,7 +40,18 @@ namespace Ai
             }
         }
 
+        private void StopForgetTargetRoutine()
+        {
+            if (forgetRecentTargetRoutine is not null)
+            {
+                StopCoroutine(forgetRecentTargetRoutine);
+                forgetRecentTargetRoutine = null;
+            }
+        }
+
         public PlayerTarget RecentTarget => recentTarget;
+
+        private Coroutine forgetRecentTargetRoutine;
 
         private void Awake()
         {
@@ -57,11 +69,12 @@ namespace Ai
             PlayersHideout = null;
             Destination = transform.position;
             CurrentStimulus = null;
-            AlertState = AlertState.Unaware;
+            AnimationTraversalType = AnimationTraversalType.Unaware;
             recentTarget = null;
+            StopForgetTargetRoutine();
         }
 
-        private IEnumerator ForgetTargetRoutine()
+        private IEnumerator ForgetRecentTargetRoutine()
         {
             yield return new WaitForSeconds(targetMemoryTime);
             recentTarget = null;
