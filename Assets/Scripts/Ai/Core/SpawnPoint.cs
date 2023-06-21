@@ -9,16 +9,14 @@ namespace Ai
     /// </summary>
     public class SpawnPoint : MonoBehaviour
     {
-        public static readonly List<SpawnPoint> ActiveSpawnPoints = new List<SpawnPoint>();
-        
         private void OnEnable()
         {
-            ActiveSpawnPoints.Add(this);   
+            SpawnLocationManager.Instance.ActiveSpawnPoints.Add(this);   
         }
 
         private void OnDisable()
         {
-            ActiveSpawnPoints.Remove(this);
+            SpawnLocationManager.Instance.ActiveSpawnPoints.Remove(this);
         }
         
     }
