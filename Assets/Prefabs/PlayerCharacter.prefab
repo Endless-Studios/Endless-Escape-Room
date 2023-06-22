@@ -117,6 +117,7 @@ MonoBehaviour:
   fpsCameraRootTransform: {fileID: 88013906174402261}
   characterController: {fileID: 2419621909708617996}
   navMeshObstacle: {fileID: 2972815285524830649}
+  playerTarget: {fileID: 1893632562667910974}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -120,12 +120,17 @@ namespace Ai
         private void HandleOnWalkedThroughThreshold()
         {
             isTraversingLink = false;
-            references.Agent.updateRotation = true;
-            references.Agent.updatePosition = true;
             Transform agentTransform = references.Agent.transform;
             agentTransform.position = agentTransform.TransformPoint(references.Animator.transform.localPosition);
             references.Animator.transform.position = Vector3.zero;
-            references.Agent.CompleteOffMeshLink();
+            if(references.Agent.hasPath)
+                references.Agent.CompleteOffMeshLink();
+            else
+            {
+                references.Agent.destination = agentTransform.position;
+            }
+            references.Agent.updateRotation = true;
+            references.Agent.updatePosition = true;
             entity.OnWalkedThroughDoorway -= HandleOnWalkedThroughThreshold;
         }
 
@@ -158,5 +163,35 @@ namespace Ai
             Debug.LogWarning("Hit maximum number of samples for wander destination. Returning current position");
             return transformPosition;
         }
+
+        public void ResetPath()
+        {
+            if(!isTraversingLink)
+                references.Agent.ResetPath();
+        }
+
+        public void SetDestination(Vector3 destination)
+        {
+            if (!isTraversingLink)
+            {
+                references.Agent.SetDestination(destination);
+                cachedDestination = null;
+                entity.OnWalkedThroughDoorway -= SetDestinationAfterTraversal;
+            }
+            else
+            {
+                cachedDestination = destination;
+                entity.OnWalkedThroughDoorway += SetDestinationAfterTraversal;
+            }
+        }
+
+        private void SetDestinationAfterTraversal()
+        {
+            references.Agent.SetDestination(cachedDestination.Value);
+            cachedDestination = null;
+            entity.OnWalkedThroughDoorway -= SetDestinationAfterTraversal;
+        }
+
+        private Vector3? cachedDestination;
     }
 }
