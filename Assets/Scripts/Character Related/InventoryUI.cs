@@ -143,20 +143,23 @@ public class InventoryUI : MonoBehaviour
                  //Did we do something with the pickupable because of our drop? (probably hit a snappable)
                     if(hitSnappable != null)
                     {
-                        if(PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable == originalElement.Slot.Pickupable)
+                        Pickupable droppedPickupable = originalElement.Slot.Pickupable;
+                        if(PlayerCore.LocalPlayer.HeldItemManager.HeldPickupable == droppedPickupable)
                         {
                             PlayerCore.LocalPlayer.HeldItemManager.ClearHeldItem();
                         }
 
-                        originalElement.Slot.Pickupable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0.5f));//TODO dont magic number?
-                        originalElement.Slot.Pickupable.gameObject.SetActive(true);
-                        hitSnappable.SnapPickupable(originalElement.Slot.Pickupable);
-                        originalElement.Slot.Pickupable.HandleDropped(false);
+                        droppedPickupable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0.5f));//TODO dont magic number?
+                        droppedPickupable.gameObject.SetActive(true);
+                        hitSnappable.SnapPickupable(droppedPickupable);
+                        droppedPickupable.HandleDropped(false);
 
-                        currentEntries.Remove(originalElement);
-                        Destroy(originalElement.gameObject);
+                        if(originalElement.Slot.Count <= 0)
+                        {
+                            currentEntries.Remove(originalElement);
+                            Destroy(originalElement.gameObject);
+                        }
                     }
-
                     //We're no longer dragging anything, lets clean up
                     Destroy(draggingElement.gameObject);
                     PlayerCore.LocalPlayer.PlayerInput.InspectControlsEnabled = true;

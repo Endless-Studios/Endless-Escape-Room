@@ -66,6 +66,7 @@ public class ExpandedInventory : InventoryBase
         }
     }
 
+    [SerializeField] CameraManager cameraManager;
     [SerializeField] PlayerInteractor interactor;
     [SerializeField] HeldItemManager heldItemManager;
     [SerializeField] ItemInspector itemInspector;
@@ -121,15 +122,59 @@ public class ExpandedInventory : InventoryBase
                 int newSlotIndex = orderedSlots.Count - 1;
                 newSlot.SetPrompt(GetIndexPrompt(newSlotIndex));
                 heldItemsMap[key] = newSlot;
+                pickupable.OnDroppedInternal.AddListener(HandlePickupableDropped);
             }
             heldItemsMap[key].items.Add(pickupable);
             PlayerHUD.Instance.InventoryUi.Show();
 
             pickupable.gameObject.SetActive(false);
             //TODO subscribe to pickupable OnIdentifiersChanged to move to a new slot/update current slot
+            pickupable.HandlePickedUp();
             return true;
         }
         return false;
+    }
+
+    private void HandlePickupableDropped(Pickupable droppedPickupable)
+    {
+        //Debug.Log("Dropped");
+        droppedPickupable.OnDroppedInternal.RemoveListener(HandlePickupableDropped);
+        PickupableKey key = new PickupableKey(droppedPickupable);
+        StackableInventorySlot slot = heldItemsMap[key];
+        slot.items.RemoveAt(0);
+
+        if(slot.items.Count > 0)
+        {
+            //Debug.Log("Still carrying some");
+            if(orderedSlots.IndexOf(slot) == selectedIndex)
+            {//The thing dropped was in our "hand"
+                if(cameraManager.IsFocused)
+                {//If the camera is focused, we dont want to be spawning visuals, clear selection
+                    ClearSelection();
+                }
+                else
+                {//Show the next visual!
+                    ShowCurrentSlot();
+                }
+            }
+
+            //Subscribe to the next item in the slot for the next drop!
+            slot.items[0].OnDroppedInternal.AddListener(HandlePickupableDropped);
+            slot.HandleSlotUpdated();
+        }
+        else
+        {
+            //Debug.Log("out of stock");
+            int indexToRemove = orderedSlots.IndexOf(slot);
+            if(indexToRemove == selectedIndex)
+            {
+                selectedIndex = -1;
+            }
+            heldItemsMap.Remove(key);
+            orderedSlots.RemoveAt(indexToRemove);
+            UpdateOrderSlotPrompts();
+            PlayerHUD.Instance.InventoryUi.Show();
+        }
     }
 
     private void UpdateOrderSlotPrompts()
@@ -178,8 +223,8 @@ public class ExpandedInventory : InventoryBase
 
     private void ClearSelection()
     {
-        heldItemManager.HeldPickupable.gameObject.SetActive(false);
-        heldItemManager.HeldPickupable.OnDropped.RemoveListener(HandleHeldItemDropped);
+        if(heldItemManager.HeldPickupable)
+            heldItemManager.HeldPickupable.gameObject.SetActive(false);
         heldItemManager.ClearHeldItem();
         selectedIndex = -1;
     }
@@ -188,33 +233,10 @@ public class ExpandedInventory : InventoryBase
     {
         Pickupable pickupable = orderedSlots[selectedIndex].Pickupable;
         pickupable.gameObject.SetActive(true);
-        pickupable.OnDropped.AddListener(HandleHeldItemDropped);
         heldItemManager.HoldItem(pickupable, itemInspector.IsInspecting);
         if(itemInspector.IsInspecting)
         {
             itemInspector.SwapCurrentInspectable(pickupable);
-            PlayerHUD.Instance.InventoryUi.Show();
-        }
-    }
-
-    private void HandleHeldItemDropped()
-    {
-        Pickupable droppedPickupable = orderedSlots[selectedIndex].Pickupable;
-        droppedPickupable.OnDropped.RemoveListener(HandleHeldItemDropped);
-        orderedSlots[selectedIndex].items.RemoveAt(0);
-        if(orderedSlots[selectedIndex].items.Count > 0)
-        {
-            ShowCurrentSlot();
-            orderedSlots[selectedIndex].HandleSlotUpdated();
-        }
-        else
-        {
-            int indexToRemove = selectedIndex;
-            selectedIndex = -1;
-            PickupableKey key = new PickupableKey(droppedPickupable);
-            heldItemsMap.Remove(key);
-            orderedSlots.RemoveAt(indexToRemove);
-            UpdateOrderSlotPrompts();
             PlayerHUD.Instance.InventoryUi.Show();
         }
     }
