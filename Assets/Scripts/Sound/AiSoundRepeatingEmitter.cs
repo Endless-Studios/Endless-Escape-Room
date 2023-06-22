@@ -16,7 +16,7 @@ namespace Sound
             if(emitSoundRoutine is not null)
                 return;
             
-            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind);
+            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, gameObject);
             AiSound.Instance.EmitSound(soundData);
             emitSoundRoutine = StartCoroutine(EmitSoundRoutine());
         }
@@ -35,7 +35,7 @@ namespace Sound
             while (true)
             {
                 yield return new WaitForSeconds(period);
-                EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind);
+                EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, gameObject);
                 AiSound.Instance.EmitSound(soundData);
             }
         }

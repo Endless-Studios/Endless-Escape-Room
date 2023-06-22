@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8010029039262322635}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: InteractionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteractable: 1
   interactPromptText: Toggle Playing
-  itemName: 
+  itemName: Record Player
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c900ffc2aad94b23beebabd875538b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPointObject: {fileID: 0}
+  interactionPointObject: {fileID: 2421081737588830740}
   interactionType: 1
   OnInteracted:
     m_PersistentCalls:
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21015aedc580465bbaea50e177655b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundDecibels: 100
+  soundDecibels: 0
   soundKind: 1
   period: 5
 --- !u!1 &6537586875865598349

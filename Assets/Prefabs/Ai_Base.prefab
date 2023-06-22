@@ -162,7 +162,7 @@ MonoBehaviour:
   recentTarget: {fileID: 0}
   PlayersHideout: {fileID: 0}
   Destination: {x: 0, y: 0, z: 0}
-  AlertState: 0
+  AnimationTraversalType: 0
   ShouldSpawnInPlace: 0
 --- !u!114 &8686548554604012545
 MonoBehaviour:
@@ -204,6 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d1e43bec5a47e490951aca1c84148c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightBlockingMask:
+    serializedVersion: 2
+    m_Bits: 1
   minWanderNearDistance: 2
   wanderNearDistance: 5
   minWanderFarDistance: 10
@@ -384,6 +387,7 @@ MonoBehaviour:
   reInvestigateTime: 90
   ShouldWander: 0
   ShouldInteract: 0
+  ShouldForceInteraction: 0
   OnFinishedInvestigating:
     m_PersistentCalls:
       m_Calls: []

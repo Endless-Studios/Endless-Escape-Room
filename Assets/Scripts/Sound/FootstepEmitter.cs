@@ -25,7 +25,7 @@ namespace Sound
             float volume = footStepVolumeAtMaxSpeed * curve.Evaluate(speedValue);
 
             //TODO: Add code to sample surfaces and modify the clip played and the dB of the clip based on the surface
-            EmittedSoundData soundData = new EmittedSoundData(transform.position, volume, SoundType.PlayerGenerated);
+            EmittedSoundData soundData = new EmittedSoundData(transform.position, volume, SoundType.PlayerGenerated, gameObject);
             AiSound.Instance.EmitSound(soundData);
             nextStepTime = Time.time + strideTime;
         }

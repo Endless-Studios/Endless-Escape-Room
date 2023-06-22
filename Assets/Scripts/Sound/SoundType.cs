@@ -6,6 +6,7 @@
     public enum SoundType
     {
         //These could be more granular if the behaviour doesn't match expectations
+        None,
         AiGenerated,
         Prop,
         Lure,

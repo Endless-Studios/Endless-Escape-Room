@@ -13,13 +13,13 @@ namespace Sound
         [ContextMenu("Emit Sound")]
         public void EmitSound()
         {
-            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind);
+            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, gameObject);
             AiSound.Instance.EmitSound(soundData);
         }
 
         public void EmitSound(Vector3 position)
         {
-            EmittedSoundData soundData = new EmittedSoundData(position, soundDecibels, soundKind);
+            EmittedSoundData soundData = new EmittedSoundData(position, soundDecibels, soundKind, gameObject);
             AiSound.Instance.EmitSound(soundData);
         }
     }

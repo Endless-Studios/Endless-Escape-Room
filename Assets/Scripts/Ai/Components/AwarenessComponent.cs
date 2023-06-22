@@ -64,13 +64,14 @@ namespace Ai
             switch (stimulus.SenseKind)
             {
                 case SenseKind.Sight:
-                    if (visibilityBySightTarget.ContainsKey(stimulus.PlayerTarget))
+                    SightStimulus sightStimulus = (SightStimulus)stimulus;
+                    if (visibilityBySightTarget.ContainsKey(sightStimulus.PlayerTarget))
                     {
-                        visibilityBySightTarget[stimulus.PlayerTarget] += stimulus.Value;
+                        visibilityBySightTarget[sightStimulus.PlayerTarget] += stimulus.Value;
                     }
                     else
                     {
-                        visibilityBySightTarget.Add(stimulus.PlayerTarget, stimulus.Value);
+                        visibilityBySightTarget.Add(sightStimulus.PlayerTarget, stimulus.Value);
                     }
                     break;
                 case SenseKind.Hearing:

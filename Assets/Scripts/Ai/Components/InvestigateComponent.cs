@@ -17,6 +17,7 @@ namespace Ai
         [SerializeField] private float reInvestigateTime;
         [HideInInspector] public bool ShouldWander;
         [HideInInspector] public bool ShouldInteract;
+        [HideInInspector] public bool ShouldForceInteraction;
  
         public UnityEvent OnFinishedInvestigating = new UnityEvent();
         public float InvestigateActionDelay => investigateActionDelay;
@@ -132,6 +133,22 @@ namespace Ai
                     recentInvestigations.RemoveAt(i);
             }
         }
-        
+
+        public bool IsSoundStimulus(Stimulus stimulus)
+        {
+            return stimulus is SoundStimulus;
+        }
+
+        public bool CanSeeSoundStimulusSource(SoundStimulus stimulus)
+        {
+            Collider collider = stimulus.OriginObject.GetComponentInChildren<Collider>();
+            Vector3 startingPos = references.SightSensor.transform.position;
+            Vector3 targetPos = stimulus.OriginObject.transform.position;
+            Vector3 toVector = targetPos - startingPos;
+            
+            bool didHit = Physics.Raycast(startingPos, toVector.normalized, out RaycastHit hit, toVector.magnitude, attributes.SightBlockingMask);
+
+            return didHit && hit.collider == collider;
+        }
     }
 }

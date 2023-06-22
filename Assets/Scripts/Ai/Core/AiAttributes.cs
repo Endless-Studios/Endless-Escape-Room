@@ -9,6 +9,7 @@ namespace Ai
     /// </summary>
     public class AiAttributes : MonoBehaviour
     {
+        [SerializeField] private LayerMask sightBlockingMask;
         [SerializeField] private float minWanderNearDistance;
         [SerializeField] private float wanderNearDistance;
         [SerializeField] private float minWanderFarDistance;
@@ -22,6 +23,7 @@ namespace Ai
         [SerializeField] private float maxAngularSpeed;
         [SerializeField] private float attackDamage;
 
+        public LayerMask SightBlockingMask => sightBlockingMask;
         public float MinWanderNearDistance => minWanderNearDistance;
         public float WanderNearDistance => wanderNearDistance;
         public float MinWanderFarDistance => minWanderFarDistance;

@@ -36,12 +36,11 @@ namespace Ai
                 //the OnSensedStimulus event.
                 float awareness = Mathf.Lerp(baseProximityValue, 0, distance / maxProximityDistance);
                 
-                Stimulus stimulus = new Stimulus
+                ProximityStimulus stimulus = new ProximityStimulus
                 (
                     senseTarget.transform.position,
                     Time.time,
-                    awareness,
-                    SenseKind.Proximity
+                    awareness
                 );
                 
                 SensedStimulus(stimulus);

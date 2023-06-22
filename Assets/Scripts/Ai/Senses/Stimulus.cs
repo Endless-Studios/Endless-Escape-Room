@@ -1,4 +1,5 @@
 ﻿using Sight;
+using Sound;
 using UnityEngine;
 
 namespace Ai
@@ -12,15 +13,43 @@ namespace Ai
         public readonly float Value;
         public readonly float Time; 
         public readonly SenseKind SenseKind;
-        public readonly PlayerTarget PlayerTarget;
 
-        public Stimulus(Vector3 position, float time, float value, SenseKind senseKind, PlayerTarget playerTarget = null)
+        public Stimulus(Vector3 position, float time, float value, SenseKind senseKind)
         {
             Position = position;
             Time = time;
             Value = value;
             SenseKind = senseKind;
+        }
+    }
+
+    public class SightStimulus : Stimulus
+    {
+        public readonly PlayerTarget PlayerTarget;
+        
+        public SightStimulus(Vector3 position, float time, float value, PlayerTarget playerTarget) : base(position, time, value, SenseKind.Sight)
+        {
             PlayerTarget = playerTarget;
+        }
+    }
+
+    public class SoundStimulus : Stimulus
+    {
+        public readonly SoundType SoundType;
+        public readonly GameObject OriginObject;
+        
+        public SoundStimulus(Vector3 position, float time, float value, SoundType soundType, GameObject originObject) : base(position, time, value, SenseKind.Hearing)
+        {
+            SoundType = soundType;
+            OriginObject = originObject;
+        }
+    }
+
+    public class ProximityStimulus : Stimulus
+    {
+        public ProximityStimulus(Vector3 position, float time, float value) : base(position, time, value, SenseKind.Proximity)
+        {
+            
         }
     }
 }
