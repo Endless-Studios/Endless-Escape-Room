@@ -15,12 +15,12 @@ namespace Ai
         [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
         [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
 
-        private void Awake()
+        private void OnEnable()
         {
             SenseTargets.Add(this);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             SenseTargets.Remove(this);
         }

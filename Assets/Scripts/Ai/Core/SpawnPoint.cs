@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Ai
 {
@@ -16,7 +15,8 @@ namespace Ai
 
         private void OnDisable()
         {
-            SpawnLocationManager.Instance.ActiveSpawnPoints.Remove(this);
+            if(SpawnLocationManager.Instance)
+                SpawnLocationManager.Instance.ActiveSpawnPoints.Remove(this);
         }
         
     }
