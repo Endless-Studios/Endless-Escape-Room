@@ -16,7 +16,7 @@ namespace Ai
         [ShowOnly, SerializeField] private PlayerTarget recentTarget;
         [ShowOnly] public Hideout PlayersHideout;
         [ShowOnly] public Vector3 Destination;
-        [ShowOnly] public AnimationTraversalType AnimationTraversalType;
+        [ShowOnly] public AiAwarenessState AiAwarenessState;
         [HideInInspector] public bool ShouldSpawnInPlace;
         
         public Stimulus CurrentStimulus;
@@ -69,7 +69,7 @@ namespace Ai
             PlayersHideout = null;
             Destination = transform.position;
             CurrentStimulus = null;
-            AnimationTraversalType = AnimationTraversalType.Unaware;
+            AiAwarenessState = AiAwarenessState.Unaware;
             recentTarget = null;
             StopForgetTargetRoutine();
         }

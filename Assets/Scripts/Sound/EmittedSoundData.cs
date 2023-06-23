@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Ai;
+using UnityEngine;
 
 namespace Sound
 {
@@ -10,9 +11,9 @@ namespace Sound
         public readonly Vector3 Position;
         public readonly float DecibelsAtSource;
         public readonly SoundType SoundKind;
-        public readonly GameObject SourceObject;
+        public readonly PointOfInterest SourceObject;
 
-        public EmittedSoundData(Vector3 position, float decibelsAtSource, SoundType soundKind, GameObject sourceObject)
+        public EmittedSoundData(Vector3 position, float decibelsAtSource, SoundType soundKind, PointOfInterest sourceObject = null)
         {
             Position = position;
             DecibelsAtSource = decibelsAtSource;

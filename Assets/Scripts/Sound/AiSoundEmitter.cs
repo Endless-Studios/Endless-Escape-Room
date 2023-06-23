@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Ai;
+using UnityEngine;
 
 namespace Sound
 {
@@ -7,19 +8,20 @@ namespace Sound
     /// </summary>
     public class AiSoundEmitter : MonoBehaviour
     {
+        [SerializeField] private PointOfInterest pointOfInterest;
         [SerializeField] private float soundDecibels;
         [SerializeField] private SoundType soundKind;
 
         [ContextMenu("Emit Sound")]
         public void EmitSound()
         {
-            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, gameObject);
+            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, pointOfInterest);
             AiSound.Instance.EmitSound(soundData);
         }
 
         public void EmitSound(Vector3 position)
         {
-            EmittedSoundData soundData = new EmittedSoundData(position, soundDecibels, soundKind, gameObject);
+            EmittedSoundData soundData = new EmittedSoundData(position, soundDecibels, soundKind, pointOfInterest);
             AiSound.Instance.EmitSound(soundData);
         }
     }

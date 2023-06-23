@@ -17,6 +17,7 @@ namespace Ai
         public static readonly List<PointOfInterest> PointsOfInterest = new List<PointOfInterest>();
         
         [SerializeField] private GameObject interactionPointObject;
+        [SerializeField] private Collider lineOfSightCollider;
         [SerializeField] private InteractionType interactionType;
 
         public UnityEvent OnInteracted = new UnityEvent();
@@ -24,18 +25,19 @@ namespace Ai
         public InteractionType InteractionType => interactionType;
         public Vector3 InteractionPoint => interactionPointObject.transform.position;
         public Quaternion InteractionRotation => interactionPointObject.transform.rotation;
+        public Collider LineOfSightCollider => lineOfSightCollider;
 
         public void Interact()
         {
             OnInteracted?.Invoke();
         }
         
-        protected virtual void Awake()
+        protected virtual void OnEnable()
         {
             PointsOfInterest.Add(this);
         }
 
-        protected virtual void OnDestroy()
+        protected virtual void OnDisable()
         {
             PointsOfInterest.Remove(this);
         }

@@ -36,12 +36,12 @@ namespace Ai
     public class SoundStimulus : Stimulus
     {
         public readonly SoundType SoundType;
-        public readonly GameObject OriginObject;
+        public readonly PointOfInterest PointOfInterest;
         
-        public SoundStimulus(Vector3 position, float time, float value, SoundType soundType, GameObject originObject) : base(position, time, value, SenseKind.Hearing)
+        public SoundStimulus(Vector3 position, float time, float value, SoundType soundType, PointOfInterest pointOfInterest) : base(position, time, value, SenseKind.Hearing)
         {
             SoundType = soundType;
-            OriginObject = originObject;
+            PointOfInterest = pointOfInterest;
         }
     }
 

@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPointObject: {fileID: 2421081737588830740}
+  lineOfSightCollider: {fileID: 3787697772723655173}
   interactionType: 1
   OnInteracted:
     m_PersistentCalls:
@@ -280,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21015aedc580465bbaea50e177655b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointOfInterest: {fileID: 5685787623640825149}
   soundDecibels: 0
   soundKind: 1
   period: 5
