@@ -14,7 +14,7 @@ public class SimpleInventorySlot : InventorySlotBase
     }
 
     public override Pickupable Pickupable => item;
-    public override int Count => 1;
+    public override int Count => 0;//We dont use count on simple inventory
     public override string Prompt => string.Empty;
 }
 
@@ -53,10 +53,10 @@ public class SimpleInventory : InventoryBase
     {
         if(CanPickupItem(pickupable))
         {
-            pickupable.HandlePickedUp();
             heldItemManager.HoldItem(pickupable, inspectOnPickup);
             if(inspectOnPickup)
                 itemInspector.InspectItem(pickupable);
+            pickupable.HandlePickedUp();
             return true;
         }
         return false;
