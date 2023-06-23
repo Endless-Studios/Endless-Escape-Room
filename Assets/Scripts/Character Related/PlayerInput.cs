@@ -28,24 +28,6 @@ public class PlayerInput : MonoBehaviour
         return 0;
     }
 
-    public void EnableAllInput()
-    {
-        MoveEnabled = true;
-        InteractEnabled = true;
-        LookEnabled = true;
-        HeldControlsEnabled = true;
-        InspectControlsEnabled = true;
-    }
-
-    public void DisableAllInput()
-    {
-        MoveEnabled = false;
-        InteractEnabled = false;
-        LookEnabled = false;
-        HeldControlsEnabled = false;
-        InspectControlsEnabled = false;
-    }
-
     // Update is called once per frame
     void Update()
     {

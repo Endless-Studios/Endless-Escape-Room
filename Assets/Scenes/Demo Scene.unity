@@ -105,7 +105,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -118,7 +118,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -129,6 +129,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -197,12 +198,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &31244086
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -271,6 +276,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &31244087 stripped
 Transform:
@@ -283,6 +291,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -346,6 +355,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (37)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &34617877 stripped
 Transform:
@@ -364,6 +376,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -427,6 +440,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (33)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &39587135 stripped
 Transform:
@@ -439,6 +455,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 5997189697474376165, guid: a5a84a18846ebfa41971e481894079ca,
@@ -502,6 +519,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!1 &52706750
 GameObject:
@@ -579,6 +599,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -647,12 +668,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &68365253
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -716,6 +741,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (34)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &78955712 stripped
 Transform:
@@ -728,6 +756,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -801,6 +830,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &110046737 stripped
 Transform:
@@ -813,6 +845,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1282930511946463363, guid: faba372dfa5c86d48b261ea1ae6c3e99,
@@ -876,6 +909,9 @@ PrefabInstance:
       value: Building Interior Wall Window 4m (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faba372dfa5c86d48b261ea1ae6c3e99, type: 3}
 --- !u!1 &115931435
 GameObject:
@@ -947,6 +983,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -1010,6 +1047,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (25)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &117070347 stripped
 Transform:
@@ -1087,6 +1127,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -1150,12 +1191,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (32)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &135483251
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -1224,6 +1269,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &136985795
 GameObject:
@@ -1408,6 +1456,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -1471,6 +1520,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (23)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &150506450
 GameObject:
@@ -1542,6 +1594,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -1605,12 +1658,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &151736764
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -1674,6 +1731,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (42)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &151736765 stripped
 Transform:
@@ -1692,6 +1752,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -1760,12 +1821,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &173049983
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -1829,6 +1894,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (41)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &173049984 stripped
 Transform:
@@ -2036,6 +2104,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -2104,12 +2173,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &185260248
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -2173,6 +2246,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &185260249 stripped
 Transform:
@@ -2185,6 +2261,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -2248,6 +2325,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (26)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &191254853 stripped
 Transform:
@@ -2285,14 +2365,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!108 &203844588
 Light:
   m_ObjectHideFlags: 0
@@ -2381,6 +2464,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -2444,6 +2528,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (38)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &210585739 stripped
 Transform:
@@ -2534,6 +2621,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -2607,12 +2695,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &237266639
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -2681,6 +2773,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &243738944 stripped
 Transform:
@@ -2693,6 +2788,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -2756,6 +2852,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &248888491 stripped
 Transform:
@@ -3024,9 +3123,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286886230}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &286886233
@@ -3155,6 +3262,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 2374119729888818117, guid: a5a84a18846ebfa41971e481894079ca,
@@ -3166,6 +3274,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building Interior Doorway Single 4m
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: openable
+      value: 
+      objectReference: {fileID: 9194387543221894625}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[0].Link
+      value: 
+      objectReference: {fileID: 398028599}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[1].Link
+      value: 
+      objectReference: {fileID: 398028598}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[0].LinkTraversalType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[1].LinkTraversalType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8712651364964898681, guid: a5a84a18846ebfa41971e481894079ca,
         type: 3}
@@ -3223,6 +3361,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8712651364964898681, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9194387543221894626}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!1 &313869627
 GameObject:
@@ -3407,6 +3552,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -3475,6 +3621,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &332692274
 GameObject:
@@ -3825,6 +3974,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -3888,6 +4038,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (21)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &353670861 stripped
 Transform:
@@ -3971,6 +4124,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -4034,6 +4188,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (31)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &383951346 stripped
 Transform:
@@ -4058,6 +4215,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -4126,12 +4284,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
+--- !u!114 &398028598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8332617721670068644, guid: a5a84a18846ebfa41971e481894079ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 299468946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &398028599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4232533521981106581, guid: a5a84a18846ebfa41971e481894079ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 299468946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &401022190
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -4205,12 +4391,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &408246759
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -4279,6 +4469,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &423786122
 GameObject:
@@ -4350,6 +4543,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -4418,6 +4612,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &432693473
 GameObject:
@@ -4495,6 +4692,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -4563,6 +4761,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &446537917 stripped
 Transform:
@@ -4575,6 +4776,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -4638,6 +4840,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (46)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &456483268 stripped
 Transform:
@@ -4650,6 +4855,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -4718,6 +4924,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &461067445 stripped
 Transform:
@@ -4736,12 +4945,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7785400389636913481, guid: b03fa6b72c85f3a48af6e0c67662d0ee,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7785400389636913481, guid: b03fa6b72c85f3a48af6e0c67662d0ee,
         type: 3}
@@ -4799,6 +5009,9 @@ PrefabInstance:
       value: '[Pickupable]_Key_Ornate_01'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b03fa6b72c85f3a48af6e0c67662d0ee, type: 3}
 --- !u!4 &481692581 stripped
 Transform:
@@ -4811,6 +5024,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -4879,6 +5093,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &492993772
 GameObject:
@@ -4950,6 +5167,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5013,6 +5231,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (43)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &505483494 stripped
 Transform:
@@ -5025,6 +5246,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5093,6 +5315,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &505624137 stripped
 Transform:
@@ -5105,6 +5330,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5168,6 +5394,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (21)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &506822916 stripped
 Transform:
@@ -5180,12 +5409,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5181696968663832759, guid: a5ef6c825d68b3448ac51058405746f6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5181696968663832759, guid: a5ef6c825d68b3448ac51058405746f6,
         type: 3}
@@ -5243,12 +5473,16 @@ PrefabInstance:
       value: '[Prop]_Bed_Metal_01'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5ef6c825d68b3448ac51058405746f6, type: 3}
 --- !u!1001 &550804702
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5312,12 +5546,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (43)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &551289807
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5381,6 +5619,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (41)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &552901399
 GameObject:
@@ -5458,6 +5699,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5526,6 +5768,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &575633210 stripped
 Transform:
@@ -5538,6 +5783,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5601,6 +5847,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (46)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &608599923 stripped
 Transform:
@@ -5613,6 +5862,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5676,6 +5926,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (35)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &611130194 stripped
 Transform:
@@ -5743,9 +5996,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635880572}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &635880575
@@ -5803,6 +6064,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5866,12 +6128,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (45)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &642159309
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -5935,6 +6201,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (22)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &658597459
 GameObject:
@@ -6293,6 +6562,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -6366,6 +6636,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &680127751
 GameObject:
@@ -6447,6 +6720,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -6520,6 +6794,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &690715870 stripped
 Transform:
@@ -6532,6 +6809,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 5997189697474376165, guid: a5a84a18846ebfa41971e481894079ca,
@@ -6595,12 +6873,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!1001 &709506437
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -6664,6 +6946,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (38)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &713477015 stripped
 Transform:
@@ -7030,6 +7315,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -7093,12 +7379,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (19)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &747421276
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -7167,6 +7457,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &755876688
 GameObject:
@@ -7233,11 +7526,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757529963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8332617721670068644, guid: a5a84a18846ebfa41971e481894079ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1178955352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &757529964 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4232533521981106581, guid: a5a84a18846ebfa41971e481894079ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1178955352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &761241153
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -7301,6 +7619,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (30)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &761241154 stripped
 Transform:
@@ -7319,6 +7640,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -7392,12 +7714,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &776208308
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -7471,12 +7797,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &779906808
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -7540,12 +7870,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (42)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &784027141
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -7609,6 +7943,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (24)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &784952073
 GameObject:
@@ -7783,9 +8120,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793394449}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &793394452
@@ -7989,6 +8334,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -8052,12 +8398,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &816456375
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6005647524033869238, guid: c71fadeda3e7d844d87699cfb5d158e2,
@@ -8121,12 +8471,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71fadeda3e7d844d87699cfb5d158e2, type: 3}
 --- !u!1001 &845147387
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5181696968663832759, guid: a5ef6c825d68b3448ac51058405746f6,
@@ -8190,6 +8544,9 @@ PrefabInstance:
       value: '[Prop]_Bed_Metal_01 (1)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5ef6c825d68b3448ac51058405746f6, type: 3}
 --- !u!4 &848420245 stripped
 Transform:
@@ -8202,6 +8559,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -8270,12 +8628,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &850216459
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -8339,6 +8701,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (36)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &850216460 stripped
 Transform:
@@ -8363,6 +8728,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -8431,6 +8797,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &871828143
 GameObject:
@@ -8543,9 +8912,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875019507}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &875019510
@@ -8603,6 +8980,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -8666,6 +9044,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &880141813 stripped
 Transform:
@@ -8721,9 +9102,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882726389}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &882726392
@@ -8776,6 +9165,94 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882726389}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &891412093
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1708052
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1708052
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.1708052
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.186
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.946
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.096
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.80951643
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.058660407
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04221954
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.58263177
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -8.289
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 71.487
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e49d464ba0a2f6041869d71364ddaec7,
+        type: 3}
+      propertyPath: m_Name
+      value: Greenhouse_Planter_Square_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e49d464ba0a2f6041869d71364ddaec7, type: 3}
 --- !u!1 &897547020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8818,9 +9295,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897547020}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &897547023
@@ -8921,9 +9406,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931439874}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &931439877
@@ -9435,6 +9928,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -9498,6 +9992,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &979275225
 GameObject:
@@ -9656,6 +10153,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -9719,6 +10217,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (44)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1016511550 stripped
 Transform:
@@ -9903,6 +10404,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -9966,6 +10468,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (31)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1034843987 stripped
 Transform:
@@ -10015,9 +10520,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035336764}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1035336767
@@ -10075,6 +10588,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
@@ -10249,6 +10763,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79b1e1870f8a2a45af8a3fc0b98fec2, type: 3}
 --- !u!4 &1055905413 stripped
 Transform:
@@ -10261,6 +10778,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -10324,6 +10842,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (27)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1060406203
 GameObject:
@@ -10405,6 +10926,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -10468,6 +10990,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (17)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1070752723
 GameObject:
@@ -10612,6 +11137,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7899455050967448850, guid: 4e58ec0daa3f9a647b261f0d6b42255d,
@@ -10622,7 +11148,7 @@ PrefabInstance:
     - target: {fileID: 7899455050967448878, guid: 4e58ec0daa3f9a647b261f0d6b42255d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7899455050967448878, guid: 4e58ec0daa3f9a647b261f0d6b42255d,
         type: 3}
@@ -10675,12 +11201,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e58ec0daa3f9a647b261f0d6b42255d, type: 3}
 --- !u!1001 &1129094317
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -10749,6 +11279,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1140261632
 GameObject:
@@ -10943,6 +11476,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -11016,6 +11550,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1157921046 stripped
 Transform:
@@ -11028,6 +11565,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 5997189697474376165, guid: a5a84a18846ebfa41971e481894079ca,
@@ -11091,6 +11629,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!4 &1166048142 stripped
 Transform:
@@ -11103,12 +11644,53 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
+    - target: {fileID: 4232533521981106581, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5997189697474376165, guid: a5a84a18846ebfa41971e481894079ca,
         type: 3}
       propertyPath: m_Name
       value: Building Interior Doorway Single 4m (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: openable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[0].Link
+      value: 
+      objectReference: {fileID: 757529964}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[1].Link
+      value: 
+      objectReference: {fileID: 757529963}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[0].LinkTraversalType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731386412447209220, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: links.Array.data[1].LinkTraversalType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332617721670068644, guid: a5a84a18846ebfa41971e481894079ca,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8712651364964898681, guid: a5a84a18846ebfa41971e481894079ca,
         type: 3}
@@ -11165,13 +11747,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5390234020101318327, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!1001 &1180483580
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -11240,6 +11827,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1188709616 stripped
 Transform:
@@ -11252,6 +11842,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -11320,6 +11911,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1191999280 stripped
 Transform:
@@ -11332,6 +11926,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -11400,6 +11995,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1201082259
 GameObject:
@@ -11714,6 +12312,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -11777,12 +12376,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (35)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1217421808
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -11851,12 +12454,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1218083837
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -11925,6 +12532,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1219185686
 GameObject:
@@ -12146,6 +12756,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -12209,6 +12820,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (40)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1231614877 stripped
 Transform:
@@ -12227,6 +12841,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -12290,6 +12905,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (22)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1254864987 stripped
 Transform:
@@ -12339,9 +12957,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259058622}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1259058625
@@ -12399,6 +13025,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -12467,6 +13094,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1270449751
 GameObject:
@@ -12684,9 +13314,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280940133}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1280940136
@@ -12815,6 +13453,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -12883,12 +13522,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1325941545
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -12952,6 +13595,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (29)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1325941546 stripped
 Transform:
@@ -12964,6 +13610,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -13032,6 +13679,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1343573773 stripped
 Transform:
@@ -13050,6 +13700,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -13113,6 +13764,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (40)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1355901618 stripped
 Transform:
@@ -13125,6 +13779,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7899455050967448850, guid: 4e58ec0daa3f9a647b261f0d6b42255d,
@@ -13135,7 +13790,7 @@ PrefabInstance:
     - target: {fileID: 7899455050967448878, guid: 4e58ec0daa3f9a647b261f0d6b42255d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7899455050967448878, guid: 4e58ec0daa3f9a647b261f0d6b42255d,
         type: 3}
@@ -13188,12 +13843,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e58ec0daa3f9a647b261f0d6b42255d, type: 3}
 --- !u!1001 &1372476217
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -13257,6 +13916,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1376888652
 GameObject:
@@ -13339,10 +14001,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376888652}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -13356,9 +14029,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376888652}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.15, y: 0.1, z: 0.002}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1379384836
@@ -13538,6 +14219,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -13606,6 +14288,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1391509142 stripped
 Transform:
@@ -13618,12 +14303,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
@@ -13681,6 +14367,9 @@ PrefabInstance:
       value: Ai_Base
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32429fcbf37a3404eb8b106dd18ad79a, type: 3}
 --- !u!4 &1426701103 stripped
 Transform:
@@ -13693,6 +14382,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -13761,12 +14451,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1430928424
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -13835,12 +14529,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1437815689
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -13904,12 +14602,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (33)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1454312929
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -13973,12 +14675,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (26)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1454510722
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -14042,18 +14748,22 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (28)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1455591942
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4283165234517753010, guid: b4528828411e8fa4d9b5fff762d70673,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4283165234517753010, guid: b4528828411e8fa4d9b5fff762d70673,
         type: 3}
@@ -14111,6 +14821,9 @@ PrefabInstance:
       value: '[Pickupable]_VCR_Tape_01'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4528828411e8fa4d9b5fff762d70673, type: 3}
 --- !u!4 &1456386636 stripped
 Transform:
@@ -14123,6 +14836,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -14191,6 +14905,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1468591731 stripped
 Transform:
@@ -14337,6 +15054,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -14400,6 +15118,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (28)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1500818999 stripped
 Transform:
@@ -14449,9 +15170,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501550336}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1501550339
@@ -14509,6 +15238,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -14572,6 +15302,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (17)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1502376647 stripped
 Transform:
@@ -14584,6 +15317,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -14652,6 +15386,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1511600353
 GameObject:
@@ -14760,9 +15497,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515670333}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1515670336
@@ -14820,6 +15565,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -14883,6 +15629,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (32)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1520016993 stripped
 Transform:
@@ -14895,6 +15644,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -14958,6 +15708,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (27)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1520071105 stripped
 Transform:
@@ -14970,6 +15723,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -15038,12 +15792,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1547545093
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -15112,6 +15870,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1556896698 stripped
 Transform:
@@ -15136,6 +15897,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -15204,12 +15966,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1575893939
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -15278,6 +16044,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1579825832 stripped
 Transform:
@@ -15290,6 +16059,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -15358,6 +16128,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1579928822 stripped
 Transform:
@@ -15376,6 +16149,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -15439,12 +16213,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (30)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1592137993
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 5997189697474376165, guid: a5a84a18846ebfa41971e481894079ca,
@@ -15508,6 +16286,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!4 &1594724815 stripped
 Transform:
@@ -15520,6 +16301,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -15583,6 +16365,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (34)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1595704152 stripped
 Transform:
@@ -15595,6 +16380,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -15658,6 +16444,9 @@ PrefabInstance:
       value: oorCeilingCombo 4x4m (39)ilingCombo 4x4m (39)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1599628397 stripped
 Transform:
@@ -15670,6 +16459,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8676435315591321250, guid: 0cae4964dfb13904898f45556c0287de,
@@ -15680,7 +16470,7 @@ PrefabInstance:
     - target: {fileID: 8763147086991232820, guid: 0cae4964dfb13904898f45556c0287de,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 0cae4964dfb13904898f45556c0287de,
         type: 3}
@@ -15733,12 +16523,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cae4964dfb13904898f45556c0287de, type: 3}
 --- !u!1001 &1608224866
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -15802,6 +16596,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (45)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1608224867 stripped
 Transform:
@@ -15820,12 +16617,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1282930511946463363, guid: faba372dfa5c86d48b261ea1ae6c3e99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1282930511946463363, guid: faba372dfa5c86d48b261ea1ae6c3e99,
         type: 3}
@@ -15883,6 +16681,9 @@ PrefabInstance:
       value: Building Interior Wall Window 4m
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faba372dfa5c86d48b261ea1ae6c3e99, type: 3}
 --- !u!1 &1634169525
 GameObject:
@@ -15954,6 +16755,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -16017,6 +16819,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (20)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1639786145
 GameObject:
@@ -16100,6 +16905,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -16168,6 +16974,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1655296043
 GameObject:
@@ -16239,6 +17048,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2419621909708617998, guid: 4bd0166003eb95042908a281e57794c0,
@@ -16307,6 +17117,9 @@ PrefabInstance:
       value: 1.7771318
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bd0166003eb95042908a281e57794c0, type: 3}
 --- !u!1 &1663093530
 GameObject:
@@ -16455,6 +17268,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -16523,6 +17337,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1683293268
 GameObject:
@@ -16691,6 +17508,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 5997189697474376165, guid: a5a84a18846ebfa41971e481894079ca,
@@ -16754,12 +17572,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a84a18846ebfa41971e481894079ca, type: 3}
 --- !u!1001 &1723735298
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -16823,12 +17645,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1738257660
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -16892,12 +17718,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (36)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1745017733
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -16966,6 +17796,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1745224175
 GameObject:
@@ -17048,11 +17881,163 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1809596541}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1758152720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1758152726}
+  - component: {fileID: 1758152725}
+  - component: {fileID: 1758152724}
+  - component: {fileID: 1758152723}
+  - component: {fileID: 1758152722}
+  - component: {fileID: 1758152721}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1758152721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758152720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  interactPromptText: Summon Monster
+  itemName: 
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1758152722}
+        m_TargetAssemblyTypeName: Sound.AiSoundEmitter, Assembly-CSharp
+        m_MethodName: EmitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1758152722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758152720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundDecibels: 10000
+  soundKind: 1
+--- !u!65 &1758152723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758152720}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1758152724
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758152720}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1758152725
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758152720}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1758152726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758152720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.54, y: 0.48, z: 2.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 59
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1759213470
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -17116,6 +18101,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (25)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1762747905
 GameObject:
@@ -17187,6 +18175,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -17250,6 +18239,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (37)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1777666538 stripped
 Transform:
@@ -17392,6 +18384,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -17455,12 +18448,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (39)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1792713545
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -17524,6 +18521,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1792713546 stripped
 Transform:
@@ -17536,6 +18536,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -17599,6 +18600,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1795414845 stripped
 Transform:
@@ -17611,6 +18615,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -17679,12 +18684,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1809596541
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -17753,12 +18762,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1820680862
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -17822,12 +18835,16 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1001 &1838894733
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 628409348932422850, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -17901,6 +18918,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1844645205 stripped
 Transform:
@@ -17913,6 +18933,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -17981,6 +19002,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1 &1852915977
 GameObject:
@@ -18141,6 +19165,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -18204,6 +19229,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (29)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!1 &1875221713
 GameObject:
@@ -18325,6 +19353,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -18388,6 +19417,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (44)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1903575465 stripped
 Transform:
@@ -18530,6 +19562,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -18598,12 +19631,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!1001 &1918607916
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -18672,6 +19709,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &1932289308 stripped
 Transform:
@@ -18755,6 +19795,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -18818,6 +19859,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (23)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &1939745565 stripped
 Transform:
@@ -19294,6 +20338,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 784952074}
     m_Modifications:
     - target: {fileID: 1797958958677833645, guid: 514709ddc97569f49a9fd04e571b7681,
@@ -19362,6 +20407,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
 --- !u!4 &2051841472 stripped
 Transform:
@@ -19445,6 +20493,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -19508,6 +20557,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (24)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &2055422462 stripped
 Transform:
@@ -19520,6 +20572,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 499881076090776705, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -19588,6 +20641,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &2061635510 stripped
 Transform:
@@ -19643,9 +20699,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064750312}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2064750315
@@ -19772,6 +20836,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -19835,6 +20900,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &2071614147 stripped
 Transform:
@@ -19865,6 +20933,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -19928,6 +20997,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (19)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &2090706334 stripped
 Transform:
@@ -20082,6 +21154,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 226555097}
     m_Modifications:
     - target: {fileID: 7642894347740302613, guid: 3948584ace0e534429e47d05fa9a172d,
@@ -20145,6 +21218,9 @@ PrefabInstance:
       value: Building Interior FloorCeilingCombo 4x4m (20)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3948584ace0e534429e47d05fa9a172d, type: 3}
 --- !u!4 &2128193426 stripped
 Transform:
@@ -20163,8 +21239,84 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    serializedVersion: 3
+    m_TransformParent: {fileID: 798396270}
     m_Modifications:
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 398028598}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 398028598}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_bidirectional
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_bidirectional
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Unity.AI.Navigation.NavMeshLink, Unity.AI.Navigation
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Unity.AI.Navigation.NavMeshLink, Unity.AI.Navigation
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 996586273029410417, guid: 58823b122fca2f74d858159a90be9f34,
+        type: 3}
+      propertyPath: OnOpened.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8676435315591321250, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_Name
@@ -20173,12 +21325,12 @@ PrefabInstance:
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.547
+      value: -0.45300007
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
@@ -20188,27 +21340,27 @@ PrefabInstance:
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.909
+      value: 0.09100008
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
         type: 3}
@@ -20226,6 +21378,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58823b122fca2f74d858159a90be9f34, type: 3}
 --- !u!114 &9194387543221894625 stripped
 MonoBehaviour:
@@ -20239,3 +21394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980982bc01eec944b8303e768f93c65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &9194387543221894626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8763147086991232820, guid: 58823b122fca2f74d858159a90be9f34,
+    type: 3}
+  m_PrefabInstance: {fileID: 9194387543221894624}
+  m_PrefabAsset: {fileID: 0}

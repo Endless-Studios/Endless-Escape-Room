@@ -25,6 +25,9 @@ public class CameraManager : MonoBehaviour
             {
                 PlayerHUD.Instance.SetReticleActive(false);
                 PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = false;
+                PlayerCore.LocalPlayer.CharacterController.enabled = false;
+                PlayerCore.LocalPlayer.NavMeshObstacle.enabled = false;
+
                 currentlyFocusedCamera.CameraTarget.Priority = focusedPriority;
 
                 if(currentlyFocusedCamera.ShowMouseWhileFocused)
@@ -53,7 +56,9 @@ public class CameraManager : MonoBehaviour
             targetCamera.CameraTarget.Priority = unfocusedPriority;
 
             yield return null; //Maybe base off of camera transition time?
-            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = true;
+            PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = true; 
+            PlayerCore.LocalPlayer.CharacterController.enabled = true;
+            PlayerCore.LocalPlayer.NavMeshObstacle.enabled = true;
 
             if(targetCamera.ShowMouseWhileFocused)
             {

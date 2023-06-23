@@ -12,8 +12,11 @@ namespace Ai
     {
         public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
 
-        [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
-        [field: SerializeField] public PlayerCore PlayerCore { get; private set; }
+        [SerializeField] List<LosProbe> losProbes = new List<LosProbe>();
+        [SerializeField] PlayerCore playerCore = null;
+
+        public List<LosProbe> LosProbes => losProbes;
+        public PlayerCore PlayerCore => playerCore;
 
         private void Awake()
         {
@@ -33,28 +36,23 @@ namespace Ai
             PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback);
         }
 
-        /// <summary>
-        /// Ai stops the player from moving or looking around while attacking or grabbing the player out of the hideout.
-        /// </summary>
-        public void DisableInput()
-        {
-            PlayerCore.PlayerInput.DisableAllInput();
-        }
-
-        /// <summary>
-        /// Ai reenables player input after finishing its attack.
-        /// </summary>
-        public void EnableInput()
-        {
-            PlayerCore.PlayerInput.EnableAllInput();
-        }
-
         ///<summary>
         /// AI deals damage to the player.
         ///</summary>
         public void DealDamage(float damage)
         {
             PlayerCore.HealthComponent.TakeDamage(damage);
+        }
+
+        /// <summary>
+        /// Called at the beginning of an AI attack
+        /// </summary>
+        public void HandleAttacked()
+        {
+            //Force exit of any camera focus
+            playerCore.CameraManager.FocusCamera(null);
+
+            //TODO Cancel any inspection or similar behaviors
         }
     }
 }

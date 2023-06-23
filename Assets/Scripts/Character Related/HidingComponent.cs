@@ -28,8 +28,6 @@ public class HidingComponent : MonoBehaviour
     public void StartHiding()
     {
         Hidden = true;
-        characterController.enabled = false;
-        navMeshObstacle.enabled = false;
         OnHidingStarted.Invoke();
     }
 
@@ -39,8 +37,6 @@ public class HidingComponent : MonoBehaviour
     public void StopHiding()
     {
         Hidden = false;
-        characterController.enabled = true;
-        navMeshObstacle.enabled = true;
         OnHidingEnded.Invoke();
     }
 }

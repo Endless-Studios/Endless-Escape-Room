@@ -17,6 +17,8 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] Transform fpsCameraRootTransform;
     [SerializeField] HidingComponent hidingComponent;
     [SerializeField] HealthComponent healthComponent;
+    [SerializeField] CharacterController characterController;
+    [SerializeField] NavMeshObstacle navMeshObstacle;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
@@ -27,6 +29,8 @@ public class PlayerCore : MonoBehaviour
     public ItemInspector ItemInspector => itemInspector;
     public HidingComponent HidingComponent => hidingComponent;
     public HealthComponent HealthComponent => healthComponent;
+    public CharacterController CharacterController => characterController;
+    public NavMeshObstacle NavMeshObstacle => navMeshObstacle;
 
     private void Awake()
     {

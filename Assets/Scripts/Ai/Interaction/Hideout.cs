@@ -20,6 +20,7 @@ namespace Ai
 
         public UnityEvent OnEnterHideout;
         public UnityEvent OnExitHideout;
+        public UnityEvent OnForcedExit;
 
         protected override void Awake()
         {
@@ -51,6 +52,14 @@ namespace Ai
             PlayerCore.LocalPlayer.HidingComponent.StopHiding();
             OnLeftHideout?.Invoke(this);
             OnExitHideout.Invoke();
+        }
+
+        /// <summary>
+        /// Called from the AI when it starts kicking the player out
+        /// </summary>
+        public void KickedOut()
+        {
+            OnForcedExit.Invoke();
         }
     }
 }

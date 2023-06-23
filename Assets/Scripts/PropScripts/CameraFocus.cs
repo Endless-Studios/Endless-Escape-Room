@@ -16,7 +16,11 @@ public class CameraFocus : MonoBehaviour
 
     public CinemachineVirtualCamera CameraTarget => focusCamera;
     public bool ShowMouseWhileFocused => showMouseWhileFocused;
-    public bool AllowUnfocusKey => allowUnfocusKey;
+    public bool AllowUnfocusKey
+    {
+        get => allowUnfocusKey;
+        set => allowUnfocusKey = value;
+    }
 
     internal void HandledFocused()
     {
