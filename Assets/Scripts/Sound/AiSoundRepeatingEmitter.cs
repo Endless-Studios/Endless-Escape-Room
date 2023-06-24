@@ -25,7 +25,7 @@ namespace Sound
 
         public void StopEmittingSound()
         {
-            if (emitSoundRoutine is not null)
+            if (emitSoundRoutine is null)
                 return;
             
             StopCoroutine(emitSoundRoutine);

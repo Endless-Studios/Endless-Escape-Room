@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8010029039262322635}
+  - component: {fileID: 3188405543183723101}
   m_Layer: 0
   m_Name: InteractionPoint
   m_TagString: Untagged
@@ -31,6 +32,27 @@ Transform:
   m_Father: {fileID: 2447406626743752204}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!135 &3188405543183723101
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421081737588830740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 20480
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3638885075742266703
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPointObject: {fileID: 2421081737588830740}
-  lineOfSightCollider: {fileID: 3787697772723655173}
+  lineOfSightCollider: {fileID: 3188405543183723101}
   interactionType: 1
   OnInteracted:
     m_PersistentCalls:
@@ -282,8 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointOfInterest: {fileID: 5685787623640825149}
-  soundDecibels: 0
-  soundKind: 1
+  soundDecibels: 80
+  soundKind: 2
   period: 5
 --- !u!1 &6537586875865598349
 GameObject:

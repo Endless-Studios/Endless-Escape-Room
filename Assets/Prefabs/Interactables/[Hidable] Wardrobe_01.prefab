@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isLocked: 0
-  interactionType: 0
+  interactionType: 1
   OnOpened:
     m_PersistentCalls:
       m_Calls: []
@@ -186,7 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPointObject: {fileID: 1234428846397144448}
-  interactionType: 2
+  lineOfSightCollider: {fileID: 5292835237314019062}
+  interactionType: 1
   OnInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -357,6 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2566393999332904875}
+  - component: {fileID: 5292835237314019062}
   m_Layer: 0
   m_Name: InteractionPoint
   m_TagString: Untagged
@@ -379,6 +381,27 @@ Transform:
   m_Father: {fileID: 4081178179190534977}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!135 &5292835237314019062
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234428846397144448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 20480
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2807499235332259608
 GameObject:
   m_ObjectHideFlags: 0

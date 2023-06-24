@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPointObject: {fileID: 4328594461976813713}
+  lineOfSightCollider: {fileID: 5060622354821340796}
   interactionType: 1
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4328594461976813713
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +61,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7858133975522541819}
+  - component: {fileID: 5060622354821340796}
   m_Layer: 0
   m_Name: InteractionObject
   m_TagString: Untagged
@@ -79,11 +84,33 @@ Transform:
   m_Father: {fileID: 7534918275770756350}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!135 &5060622354821340796
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4328594461976813713}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8518392060614566144
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7534918275770756350}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 06046c089348d504abdc996fc600b3d7,
@@ -147,6 +174,9 @@ PrefabInstance:
       value: Prop_TV_CRT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06046c089348d504abdc996fc600b3d7, type: 3}
 --- !u!4 &8195936759789192939 stripped
 Transform:

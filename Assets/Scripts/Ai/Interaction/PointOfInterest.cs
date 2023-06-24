@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,7 +25,8 @@ namespace Ai
         public Vector3 InteractionPoint => interactionPointObject.transform.position;
         public Quaternion InteractionRotation => interactionPointObject.transform.rotation;
         public Collider LineOfSightCollider => lineOfSightCollider;
-
+        
+        [ContextMenu("Interact")]
         public void Interact()
         {
             OnInteracted?.Invoke();
