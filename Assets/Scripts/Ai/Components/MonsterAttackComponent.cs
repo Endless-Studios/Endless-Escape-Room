@@ -30,6 +30,7 @@
 
         private void FadeoutCompleteCallback()
         {
+            PlayerCore.LocalPlayer.PlayerTarget.SnapToPosition(gameplayInfo.TargetHideout.InteractionPoint);
             entity.Disappear();
             references.CameraFocus.AllowUnfocusKey = true;
             references.CameraFocus.Unfocus();
