@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ai
 {
@@ -16,8 +17,9 @@ namespace Ai
         [ShowOnly, SerializeField] private PlayerTarget recentTarget;
         [ShowOnly] public Hideout PlayersHideout;
         [ShowOnly] public Vector3 Destination;
-        [ShowOnly] public AiAwarenessState AiAwarenessState;
+        [SerializeField, ShowOnly] private AiAwarenessState aiAwarenessState;
         [HideInInspector] public bool ShouldSpawnInPlace;
+        [HideInInspector] public UnityEvent OnAwarenessStateChanged = new UnityEvent();
         
         public Stimulus CurrentStimulus;
         public Vector3 InitialSpawnPoint { get; private set; }
@@ -37,6 +39,18 @@ namespace Ai
                 {
                     target = value;
                 }
+            }
+        }
+
+        public AiAwarenessState AiAwarenessState
+        {
+            get => aiAwarenessState;
+            set
+            {
+                if (value == aiAwarenessState) return;
+                
+                aiAwarenessState = value;
+                OnAwarenessStateChanged.Invoke();
             }
         }
 

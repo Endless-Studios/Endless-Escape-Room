@@ -13,19 +13,27 @@ namespace Ai
     {
         [SerializeField] private string thresholdTriggerName;
         [SerializeField] private string movingBoolName;
-        [SerializeField] private string attackTriggerName;
+        [SerializeField] private string lowAttackTriggerName;
+        [SerializeField] private string midAttackTriggerName;
+        [SerializeField] private string highAttackTriggerName;
         [SerializeField] private string pursueTriggerName;
         [SerializeField] private string searchTriggerName;
+        [SerializeField] private string chasingBoolName;
         [SerializeField] private List<InteractionAnimationPair> interactionAnimationPairs = new List<InteractionAnimationPair>();
         [SerializeField] private List<string> fidgetNames;
+        [SerializeField] private float lowAttackHeightDifference;
+        [SerializeField] private float highAttackHeightDifference;
 
         private readonly Dictionary<InteractionType, string> animationNamesByInteractionType = new Dictionary<InteractionType, string>();
         
         private int enterDoorway;
         private int moving;
-        private int attack;
+        private int lowAttack;
+        private int midAttack;
+        private int highAttack;
         private int pursue;
         private int search;
+        private int chasing;
         
         private int velX;
         private int velY;
@@ -34,9 +42,12 @@ namespace Ai
         {
             enterDoorway = Animator.StringToHash(thresholdTriggerName);
             moving = Animator.StringToHash(movingBoolName);
-            attack = Animator.StringToHash(attackTriggerName);
+            lowAttack = Animator.StringToHash(lowAttackTriggerName);
+            midAttack = Animator.StringToHash(midAttackTriggerName);
+            highAttack = Animator.StringToHash(highAttackTriggerName);
             pursue = Animator.StringToHash(pursueTriggerName);
             search = Animator.StringToHash(searchTriggerName);
+            chasing = Animator.StringToHash(chasingBoolName);
             entity.OnWalkingThroughDoorway += WalkThroughDoor;
             entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
             entity.OnStartedPursueAnimation.AddListener(HandleStartedPursueAnimation);
@@ -44,7 +55,7 @@ namespace Ai
             velX = Animator.StringToHash("VelX");
             velY = Animator.StringToHash("VelY");
             entity.OnWalkingThroughDoorway += WalkThroughDoor;
-            entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
+            gameplayInfo.OnAwarenessStateChanged.AddListener(HandleAwarenessStateChanged);
             
             //Translate the list to a dictionary for easier lookup and data validation
             for (int i = 0; i < interactionAnimationPairs.Count; i++)
@@ -100,8 +111,23 @@ namespace Ai
         
         private void HandleStartedAttacking()
         {
-            references.Animator.SetTrigger(attack);
-            Debug.Log("Playing attack animation");
+            float heightDifference = PlayerCore.LocalPlayer.transform.position.y - entity.transform.position.y;
+            
+            if (heightDifference > highAttackHeightDifference)
+            {
+                Debug.LogWarning("Attacking high but playing mid attack as placeholder");
+                references.Animator.SetTrigger(midAttack);
+                return;
+            }
+
+            if (heightDifference < lowAttackHeightDifference || PlayerCore.LocalPlayer.CharacterMovement.IsCrouching)
+            {
+                Debug.LogWarning("Attacking low but playing mid attack as placeholder");
+                references.Animator.SetTrigger(midAttack);
+                return;
+            }
+            
+            references.Animator.SetTrigger(midAttack);
         }
 
         private void HandleStartedPursueAnimation()
@@ -120,6 +146,11 @@ namespace Ai
         {
             yield return new WaitForSeconds(3f);
             FinishedSearchAnimation();
+        }
+
+        private void HandleAwarenessStateChanged()
+        {
+            references.Animator.SetBool(chasing, gameplayInfo.AiAwarenessState == AiAwarenessState.Pursuing);
         }
 
         /// <summary>

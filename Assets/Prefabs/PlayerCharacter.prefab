@@ -118,6 +118,7 @@ MonoBehaviour:
   characterController: {fileID: 2419621909708617996}
   navMeshObstacle: {fileID: 2972815285524830649}
   playerTarget: {fileID: 1893632562667910974}
+  characterMovement: {fileID: 5685148041957440190}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da79b70fbed4e0d8b5b2fbb570d7597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointOfInterest: {fileID: 0}
   soundDecibels: 0
   soundKind: 2
 --- !u!114 &2107148359325220997

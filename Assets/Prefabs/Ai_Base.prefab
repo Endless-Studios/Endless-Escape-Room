@@ -162,8 +162,11 @@ MonoBehaviour:
   recentTarget: {fileID: 0}
   PlayersHideout: {fileID: 0}
   Destination: {x: 0, y: 0, z: 0}
-  AnimationTraversalType: 0
+  aiAwarenessState: 0
   ShouldSpawnInPlace: 0
+  OnAwarenessStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +194,6 @@ MonoBehaviour:
   fidgetThreshold: {fileID: 1760390034293458789}
   fiddleThreshold: {fileID: 1080036828054471172}
   searchThreshold: {fileID: 7057165101696368421}
-  investigateThreshold: {fileID: 0}
 --- !u!114 &4976039804609410108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noticeThreshold: 40
   visibilityThreshold: 60
+  newStimulusOvertakeValue: 15
   senses:
   - {fileID: 4870086894081962781}
   - {fileID: 4769800100488525422}
@@ -382,6 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82791749ce434c159bb654743f979939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPointMask:
+    serializedVersion: 2
+    m_Bits: 262145
   investigateActionDelay: 5
   maxInvestigateDistance: 15
   reInvestigateTime: 90
@@ -1264,9 +1270,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdTriggerName: EnterDoorway
   movingBoolName: Moving
-  attackTriggerName: GrabMiddle
+  lowAttackTriggerName: 
+  midAttackTriggerName: GrabMiddle
+  highAttackTriggerName: 
   pursueTriggerName: AlertScream
   searchTriggerName: 
+  chasingBoolName: 
   interactionAnimationPairs:
   - InteractionType: 0
     animationTriggerName: 
@@ -1277,6 +1286,8 @@ MonoBehaviour:
   fidgetNames:
   - Fidget_01
   - Fidget_02
+  lowAttackHeightDifference: -0.25
+  highAttackHeightDifference: 0.5
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,

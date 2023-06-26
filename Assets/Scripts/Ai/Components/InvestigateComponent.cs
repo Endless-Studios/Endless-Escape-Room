@@ -12,6 +12,7 @@ namespace Ai
     /// </summary>
     public class InvestigateComponent : AiComponent
     {
+        [SerializeField] private LayerMask interactionPointMask; 
         [SerializeField] private float investigateActionDelay;
         [SerializeField] private float maxInvestigateDistance;
         [SerializeField] private float reInvestigateTime;
@@ -150,7 +151,7 @@ namespace Ai
             Vector3 targetPos = stimulus.PointOfInterest.LineOfSightCollider.bounds.center;
             Vector3 toVector = targetPos - startingPos;
             
-            bool didHit = Physics.Raycast(startingPos, toVector.normalized, out RaycastHit hit, toVector.magnitude, attributes.SightBlockingMask);
+            bool didHit = Physics.Raycast(startingPos, toVector.normalized, out RaycastHit hit, toVector.magnitude, interactionPointMask);
 
             return didHit && hit.collider == collider;
         }

@@ -14,6 +14,7 @@ namespace Ai
     {
         [SerializeField] private float noticeThreshold;
         [SerializeField] private float visibilityThreshold;
+        [SerializeField] private float newStimulusOvertakeValue;
         [SerializeField] private Sense[] senses;
 
         public UnityEvent GainedNewStimulus;
@@ -78,7 +79,7 @@ namespace Ai
                 case SenseKind.Proximity:
                 case SenseKind.Undefined:
                 case SenseKind.ForceAlert:
-                    if (gameplayInfo.CurrentStimulus is null || stimulus.Value > gameplayInfo.CurrentStimulus.Value)
+                    if (gameplayInfo.CurrentStimulus is null || stimulus.Value > gameplayInfo.CurrentStimulus.Value + newStimulusOvertakeValue)
                     {
                         gameplayInfo.CurrentStimulus = stimulus;
                         GainedNewStimulus?.Invoke();

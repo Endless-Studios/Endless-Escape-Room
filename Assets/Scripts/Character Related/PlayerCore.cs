@@ -19,6 +19,7 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] CharacterController characterController;
     [SerializeField] NavMeshObstacle navMeshObstacle;
     [SerializeField] PlayerTarget playerTarget;
+    [SerializeField] CharacterMovement characterMovement;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
@@ -30,6 +31,7 @@ public class PlayerCore : MonoBehaviour
     public CharacterController CharacterController => characterController;
     public NavMeshObstacle NavMeshObstacle => navMeshObstacle;
     public PlayerTarget PlayerTarget => playerTarget;
+    public CharacterMovement CharacterMovement => characterMovement;
 
     private void Awake()
     {
