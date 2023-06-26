@@ -14,6 +14,7 @@
         private void HandleStartedAttacking()
         {
             references.CameraFocus.Focus();
+            references.CameraFocus.AllowUnfocusKey = false;
         }
 
         private void HandleDealDamage()
@@ -30,6 +31,7 @@
         private void FadeoutCompleteCallback()
         {
             entity.Disappear();
+            references.CameraFocus.AllowUnfocusKey = true;
             references.CameraFocus.Unfocus();
         }
     }
