@@ -21,6 +21,7 @@ public class Pickupable : Inspectable
 
     public UnityEvent OnPickedUp = new UnityEvent();
     public UnityEvent OnDropped = new UnityEvent();
+    [HideInInspector] public UnityEvent<Pickupable> OnDroppedInternal = new UnityEvent<Pickupable>();
 
     public Identifier[] Identifiers => identifiers;
     public GameObject VisualsPrefab => visualsPrefab;
@@ -34,8 +35,6 @@ public class Pickupable : Inspectable
         if(dropRigidbody)
         {
             dropRigidbody.isKinematic = true;
-            dropRigidbody.velocity = Vector3.zero;
-            dropRigidbody.angularVelocity = Vector3.zero;
         }
         OnPickedUp.Invoke();
     }
@@ -43,8 +42,11 @@ public class Pickupable : Inspectable
     internal void HandleDropped(bool enableRigidbody = true)
     {
         if(enableRigidbody && dropRigidbody)
+        {
             dropRigidbody.isKinematic = false;
+        }
         Unhighlight();
+        OnDroppedInternal.Invoke(this);
         OnDropped.Invoke();
     }
 

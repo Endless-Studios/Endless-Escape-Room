@@ -18,12 +18,12 @@ namespace Ai
         public List<LosProbe> LosProbes => losProbes;
         public PlayerCore PlayerCore => playerCore;
 
-        private void Awake()
+        private void OnEnable()
         {
             SenseTargets.Add(this);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             SenseTargets.Remove(this);
         }

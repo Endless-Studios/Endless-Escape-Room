@@ -1,15 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.AI;
 
 /// <summary>
 /// Character's Hiding Component handles the character's hidden state.
 /// </summary>
 public class HidingComponent : MonoBehaviour
 {
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private NavMeshObstacle navMeshObstacle;
-
     /// <summary>
     /// Character started hiding event. 
     /// </summary>
@@ -28,6 +24,7 @@ public class HidingComponent : MonoBehaviour
     public void StartHiding()
     {
         Hidden = true;
+        PlayerCore.LocalPlayer.PlayerTarget.enabled = false;
         OnHidingStarted.Invoke();
     }
 
@@ -37,6 +34,7 @@ public class HidingComponent : MonoBehaviour
     public void StopHiding()
     {
         Hidden = false;
+        PlayerCore.LocalPlayer.PlayerTarget.enabled = true;
         OnHidingEnded.Invoke();
     }
 }

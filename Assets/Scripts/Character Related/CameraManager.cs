@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] int unfocusedPriority = 0;
 
     CameraFocus currentlyFocusedCamera = null;
-    bool IsFocused => currentlyFocusedCamera != null;
+    public bool IsFocused => currentlyFocusedCamera != null;
 
     public void FocusCamera(CameraFocus cameraFocus)
     {
@@ -64,7 +64,8 @@ public class CameraManager : MonoBehaviour
             {
                 MouseLockHandler.Instance.ReleaseMouseCursor(this);
                 PlayerHUD.Instance.InventoryUi.Hide();
-                PlayerCore.LocalPlayer.HeldItemManager.ReenterHeld();
+                if(PlayerCore.LocalPlayer.ItemInspector.IsInspecting == false)
+                    PlayerCore.LocalPlayer.HeldItemManager.ReenterHeld();
             }
 
             PlayerHUD.Instance.SetReticleActive(true);

@@ -40,6 +40,7 @@ namespace Ai
         public void PlayerEnteredHideout()
         {
             PlayerCore.LocalPlayer.HidingComponent.StartHiding();
+            PlayerCore.LocalPlayer.PlayerTarget.enabled = false;
             OnEnteredHideout?.Invoke(this);
             OnEnterHideout.Invoke();
         }
@@ -50,6 +51,7 @@ namespace Ai
         public void PlayerLeftHideout()
         {
             PlayerCore.LocalPlayer.HidingComponent.StopHiding();
+            PlayerCore.LocalPlayer.PlayerTarget.enabled = true;
             OnLeftHideout?.Invoke(this);
             OnExitHideout.Invoke();
         }
