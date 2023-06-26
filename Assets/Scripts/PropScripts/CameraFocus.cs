@@ -10,6 +10,7 @@ public class CameraFocus : MonoBehaviour
     [SerializeField] Cinemachine.CinemachineVirtualCamera focusCamera;
     [SerializeField] bool showMouseWhileFocused = true;
     [SerializeField] bool allowUnfocusKey = true;
+    [SerializeField] bool priorityFocus = false;
 
     public UnityEvent OnFocused = new UnityEvent();
     public UnityEvent OnUnfocused = new UnityEvent();
@@ -22,6 +23,8 @@ public class CameraFocus : MonoBehaviour
         set => allowUnfocusKey = value;
     }
 
+    public bool PriorityFocus => priorityFocus;
+
     internal void HandledFocused()
     {
         OnFocused.Invoke();
@@ -32,9 +35,9 @@ public class CameraFocus : MonoBehaviour
         OnUnfocused.Invoke();
     }
 
-    public void Focus()
+    public bool Focus()
     {
-        PlayerCore.LocalPlayer.CameraManager.FocusCamera(this);
+        return PlayerCore.LocalPlayer.CameraManager.FocusCamera(this);
     }
 
     public void Unfocus()

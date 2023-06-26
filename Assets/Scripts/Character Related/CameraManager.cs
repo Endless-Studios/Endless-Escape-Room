@@ -12,42 +12,55 @@ public class CameraManager : MonoBehaviour
     CameraFocus currentlyFocusedCamera = null;
     public bool IsFocused => currentlyFocusedCamera != null;
 
-    public void FocusCamera(CameraFocus cameraFocus)
+    public bool FocusCamera(CameraFocus cameraFocus)
     {
         if(currentlyFocusedCamera != cameraFocus)
         {
-            if(currentlyFocusedCamera != null)
+            if(cameraFocus == null || currentlyFocusedCamera == null || currentlyFocusedCamera.PriorityFocus == false)
             {
-                StartCoroutine(UnfocusCameraCoroutine());
-            }
-            currentlyFocusedCamera = cameraFocus;
-            if(currentlyFocusedCamera != null)
-            {
-                PlayerHUD.Instance.SetReticleActive(false);
-                PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = false;
-                PlayerCore.LocalPlayer.CharacterController.enabled = false;
-                PlayerCore.LocalPlayer.NavMeshObstacle.enabled = false;
-
-                currentlyFocusedCamera.CameraTarget.Priority = focusedPriority;
-
-                if(currentlyFocusedCamera.ShowMouseWhileFocused)
+                if(currentlyFocusedCamera != null)
                 {
-                    MouseLockHandler.Instance.ClaimMouseCursor(this);
-                    PlayerHUD.Instance.InventoryUi.Show();
-                    PlayerCore.LocalPlayer.HeldItemManager.HideProjectedVisualsAndControls();
+                    StartCoroutine(UnfocusCameraCoroutine());
                 }
+                currentlyFocusedCamera = cameraFocus;
+                if(currentlyFocusedCamera != null)
+                {
+                    PlayerHUD.Instance.SetReticleActive(false);
+                    PlayerCore.LocalPlayer.PlayerInput.MoveEnabled = false;
+                    PlayerCore.LocalPlayer.CharacterController.enabled = false;
+                    PlayerCore.LocalPlayer.NavMeshObstacle.enabled = false;
 
-                currentlyFocusedCamera.HandledFocused();
+                    currentlyFocusedCamera.CameraTarget.Priority = focusedPriority;
+
+                    if(currentlyFocusedCamera.ShowMouseWhileFocused)
+                    {
+                        MouseLockHandler.Instance.ClaimMouseCursor(this);
+                        PlayerHUD.Instance.InventoryUi.Show();
+                        PlayerCore.LocalPlayer.HeldItemManager.HideProjectedVisualsAndControls();
+                    }
+
+                    currentlyFocusedCamera.HandledFocused();
+                }
+                else
+                {
+                    PlayerHUD.Instance.SetReticleActive(true);
+                }
+                return true;
             }
             else
             {
-                PlayerHUD.Instance.SetReticleActive(true);
+                return false;
             }
+        }
+        else
+        {
+            return true;
         }
     }
 
     IEnumerator UnfocusCameraCoroutine()
     {
+        Debug.Log("Unfocus routine");
         if(currentlyFocusedCamera != null)
         {
             CameraFocus targetCamera = currentlyFocusedCamera;
