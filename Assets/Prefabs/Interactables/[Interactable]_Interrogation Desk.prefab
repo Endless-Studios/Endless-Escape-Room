@@ -399,6 +399,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5356936504815137390}
+  - component: {fileID: 6802189760937505741}
+  - component: {fileID: 8170438300986256092}
+  - component: {fileID: 3934066843256969761}
   m_Layer: 0
   m_Name: '[Interactable]_Interrogation Desk'
   m_TagString: Untagged
@@ -423,6 +426,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6802189760937505741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356936504815137391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d964ce54895640e3b46ab5cc66aaaad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPointObject: {fileID: 498718136025863328}
+  lineOfSightCollider: {fileID: 6825682858391590870}
+  interactionType: 0
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnterHideout:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitHideout:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8170438300986256092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356936504815137391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4341099472a40bbb77fd8c9bb395453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideout: {fileID: 6802189760937505741}
+--- !u!65 &3934066843256969761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356936504815137391}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8934927, y: 0.7365033, z: 0.52496123}
+  m_Center: {x: -0.057021618, y: 0.39756826, z: -0.08282101}
 --- !u!1 &5356936505066795055
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,9 +861,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d60751f5afeff42a1bf433708446a5, type: 3}
+--- !u!1 &498718136025863328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2570010157789323388, guid: c1d60751f5afeff42a1bf433708446a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2684513850152219868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3771753971959228043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1231375367386436183, guid: c1d60751f5afeff42a1bf433708446a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2684513850152219868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6825682858391590870 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 8933168565261378314, guid: c1d60751f5afeff42a1bf433708446a5,
     type: 3}
   m_PrefabInstance: {fileID: 2684513850152219868}
   m_PrefabAsset: {fileID: 0}

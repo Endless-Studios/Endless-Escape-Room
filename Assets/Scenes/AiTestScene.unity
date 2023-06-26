@@ -10387,54 +10387,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5356936504815137391, guid: e3b33204bde5bc14495116ca224eac1a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1929143823}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3b33204bde5bc14495116ca224eac1a, type: 3}
---- !u!1 &1929143822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5356936504815137391, guid: e3b33204bde5bc14495116ca224eac1a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1929143821}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1929143823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929143822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d964ce54895640e3b46ab5cc66aaaad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPointObject: {fileID: 1929143825}
-  lineOfSightCollider: {fileID: 1929143824}
-  interactionType: 0
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnEnterHideout:
-    m_PersistentCalls:
-      m_Calls: []
-  OnExitHideout:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!135 &1929143824 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 6825682858391590870, guid: e3b33204bde5bc14495116ca224eac1a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1929143821}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1929143825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 498718136025863328, guid: e3b33204bde5bc14495116ca224eac1a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1929143821}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1934039943
 GameObject:
   m_ObjectHideFlags: 0
