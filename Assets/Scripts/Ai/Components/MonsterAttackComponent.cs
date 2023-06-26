@@ -14,6 +14,7 @@
         private void HandleStartedAttacking()
         {
             references.CameraFocus.Focus();
+            references.CameraFocus.AllowUnfocusKey = false;
         }
 
         private void HandleDealDamage()
@@ -29,7 +30,9 @@
 
         private void FadeoutCompleteCallback()
         {
+            PlayerCore.LocalPlayer.PlayerTarget.SnapToPosition(gameplayInfo.TargetHideout.InteractionPoint);
             entity.Disappear();
+            references.CameraFocus.AllowUnfocusKey = true;
             references.CameraFocus.Unfocus();
         }
     }

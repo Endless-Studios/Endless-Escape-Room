@@ -2790,7 +2790,7 @@ MonoBehaviour:
   fadeOutDuration: 5
   fadeInDuration: 2
   automaticallyFadeBackIn: 1
-  automaticallyFadeBackInDelay: 10
+  automaticallyFadeBackInDelay: 5
 --- !u!222 &1137245923395367232
 CanvasRenderer:
   m_ObjectHideFlags: 0

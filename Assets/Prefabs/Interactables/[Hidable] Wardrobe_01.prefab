@@ -209,6 +209,9 @@ MonoBehaviour:
   OnExitHideout:
     m_PersistentCalls:
       m_Calls: []
+  OnForcedExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7497559454378999132
 MonoBehaviour:
   m_ObjectHideFlags: 0

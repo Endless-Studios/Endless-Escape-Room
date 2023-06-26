@@ -12,8 +12,11 @@ namespace Ai
     {
         public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
 
-        [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
-        [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
+        [SerializeField] List<LosProbe> losProbes = new List<LosProbe>();
+        [SerializeField] PlayerCore playerCore = null;
+
+        public List<LosProbe> LosProbes => losProbes;
+        public PlayerCore PlayerCore => playerCore;
 
         private void OnEnable()
         {
@@ -25,7 +28,6 @@ namespace Ai
             SenseTargets.Remove(this);
         }
 
-
         ///<summary>
         /// AI triggers a fadeout on the player.
         ///</summary>
@@ -34,28 +36,31 @@ namespace Ai
             PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback);
         }
 
-        /// <summary>
-        /// Ai stops the player from moving or looking around while attacking or grabbing the player out of the hideout.
-        /// </summary>
-        public void DisableInput()
-        {
-            //TODO: Implement
-        }
-
-        /// <summary>
-        /// Ai reenables player input after finishing its attack.
-        /// </summary>
-        public void EnableInput()
-        {
-            //TODO: Implement
-        }
-
         ///<summary>
         /// AI deals damage to the player.
         ///</summary>
         public void DealDamage(float damage)
         {
-            HealthComponent.TakeDamage(damage);
+            PlayerCore.HealthComponent.TakeDamage(damage);
+        }
+
+        /// <summary>
+        /// Called at the beginning of an AI attack
+        /// </summary>
+        public void HandleAttacked()
+        {
+            //Force exit of any camera focus
+            playerCore.CameraManager.FocusCamera(null);
+
+            //TODO Cancel any inspection or similar behaviors
+        }
+
+        /// <summary>
+        /// Called when an AI needs to snap the Player to a position
+        /// </summary>
+        public void SnapToPosition(Vector3 position)
+        {
+            playerCore.Rigidbody.position = position;
         }
     }
 }

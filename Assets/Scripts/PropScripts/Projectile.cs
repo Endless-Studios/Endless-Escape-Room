@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
         if(Physics.Raycast(transform.position, transform.forward, out hitInfo, distanceThisFrame, hitLayerMask, QueryTriggerInteraction.Ignore))
         {
             //We hit something! See if we can do damage. Either way destroy.
-            Ai.HealthComponent healthComponent = hitInfo.collider.GetComponentInParent<Ai.HealthComponent>();
+            HealthComponent healthComponent = hitInfo.collider.GetComponentInParent<HealthComponent>();
             if(healthComponent != null)
                 healthComponent.TakeDamage(damage);
             if(hitEffect != null)
