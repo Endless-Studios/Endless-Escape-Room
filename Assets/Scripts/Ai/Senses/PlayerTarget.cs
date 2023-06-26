@@ -54,5 +54,13 @@ namespace Ai
 
             //TODO Cancel any inspection or similar behaviors
         }
+
+        /// <summary>
+        /// Called when an AI needs to snap the Player to a position
+        /// </summary>
+        public void SnapToPosition(Vector3 position)
+        {
+            playerCore.Rigidbody.position = position;
+        }
     }
 }
