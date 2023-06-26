@@ -221,6 +221,7 @@ MonoBehaviour:
   maxInteractionAngleDifference: 7.5
   maxAngularSpeed: 55
   attackDamage: 0
+  pursueAnimationThreshold: 5
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
