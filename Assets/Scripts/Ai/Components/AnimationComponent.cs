@@ -84,7 +84,14 @@ namespace Ai
                 return;
             }
             
-            references.Animator.SetTrigger(animationName);
+            //Temp code
+            if (interactionType == InteractionType.OpenDoor)
+            {
+                references.Animator.SetTrigger(animationName);
+                return;
+            }
+
+            StartCoroutine(FauxInteractionRoutine());
         }
 
         /// <summary>
@@ -102,6 +109,14 @@ namespace Ai
             string animationName = fidgetNames[index];
             
             references.Animator.SetTrigger(animationName);
+        }
+
+        private IEnumerator FauxInteractionRoutine()
+        {
+            yield return new WaitForSeconds(.5f);
+            AiInteracted();
+            yield return new WaitForSeconds(.5f);
+            FinishedInteracting();
         }
 
         private void WalkThroughDoor()
@@ -160,6 +175,14 @@ namespace Ai
         {
             entity.WalkedThroughDoorway();
             transform.localPosition = Vector3.zero;
+        }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void AiInteracted()
+        {
+            entity.AiInteracted();
         }
 
         /// <summary>

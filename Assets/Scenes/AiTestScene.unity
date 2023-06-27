@@ -945,6 +945,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1080036828054471172, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: baseThreshold
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080036828054471172, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: maxThresholdModifier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1224505149943912267, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -1005,6 +1015,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1760390034293458789, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: baseThreshold
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1014,6 +1029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ai_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476776795415583245, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: baseThreshold
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5322358426517698959, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
@@ -1802,6 +1822,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514709ddc97569f49a9fd04e571b7681, type: 3}
+--- !u!23 &327895360 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7827594395153678096, guid: 95a2196ccfb26e341b378d3fca96d000,
+    type: 3}
+  m_PrefabInstance: {fileID: 465529166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &337887466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5dc4abf33190fc84ea64fa557b1bb36b,
@@ -2551,6 +2577,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (3)'
       objectReference: {fileID: 0}
+    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -2697,6 +2728,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 107859609541969376, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._json
+      value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"PointOfInterest","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Ai.PointOfInterest,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Interacting
+        Entity","value":null,"typeHandle":{"Identification":"Ai.AiEntity, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Is
+        Interacting","value":{"$content":false,"$type":"System.Boolean"},"typeHandle":{"Identification":"System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"ScreenRenderer","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.MeshRenderer,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 107859609541969376, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 107859609541969376, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.data[1]
+      value: 
+      objectReference: {fileID: 327895360}
     - target: {fileID: 903749937270381331, guid: 95a2196ccfb26e341b378d3fca96d000,
         type: 3}
       propertyPath: m_Name
@@ -2787,6 +2839,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7831544286009159017, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bcfe8a8ad0047c448b8e0fcc72305e5a,
+        type: 2}
     - target: {fileID: 7858133975522541819, guid: 95a2196ccfb26e341b378d3fca96d000,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3205,6 +3263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (2)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
@@ -3926,6 +3989,16 @@ PrefabInstance:
         type: 3}
       propertyPath: soundDecibels
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685787623640825149, guid: 11a99d8055535dc4693f95e6da1a93eb,
+        type: 3}
+      propertyPath: OnAiInteracted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685787623640825149, guid: 11a99d8055535dc4693f95e6da1a93eb,
+        type: 3}
+      propertyPath: OnAiInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5853,6 +5926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01'
       objectReference: {fileID: 0}
+    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -7457,6 +7535,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 107859609541969376, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._json
+      value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"PointOfInterest","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Ai.PointOfInterest,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Interacting
+        Entity","value":null,"typeHandle":{"Identification":"Ai.AiEntity, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Is
+        Interacting","value":{"$content":false,"$type":"System.Boolean"},"typeHandle":{"Identification":"System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"ScreenRenderer","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.MeshRenderer,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 107859609541969376, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 903749937270381331, guid: 95a2196ccfb26e341b378d3fca96d000,
         type: 3}
       propertyPath: m_Name
@@ -7552,6 +7646,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7831544286009159017, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bcfe8a8ad0047c448b8e0fcc72305e5a,
+        type: 2}
     - target: {fileID: 7858133975522541819, guid: 95a2196ccfb26e341b378d3fca96d000,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8622,6 +8722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (1)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
@@ -9729,6 +9834,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (4)'
       objectReference: {fileID: 0}
+    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -10383,6 +10493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Interactable]_Interrogation Desk'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356936504815137391, guid: e3b33204bde5bc14495116ca224eac1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

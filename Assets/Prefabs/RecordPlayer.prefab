@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3780698538081619487}
   - component: {fileID: 5685787623640825149}
   - component: {fileID: 4286758742746312650}
+  - component: {fileID: 4244215976051846241}
+  - component: {fileID: 5909041550296613883}
   m_Layer: 0
   m_Name: RecordPlayer
   m_TagString: Untagged
@@ -223,7 +225,7 @@ MonoBehaviour:
   interactionPointObject: {fileID: 3546340029841694081}
   lineOfSightCollider: {fileID: 7594580328129027831}
   interactionType: 1
-  OnInteracted:
+  OnAiInteracted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8086045826228627264}
@@ -238,6 +240,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInteractionInterrupted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4286758742746312650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +259,47 @@ MonoBehaviour:
   soundDecibels: 80
   soundKind: 2
   period: 10
+--- !u!114 &4244215976051846241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638885075742266703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Interacting
+      Entity","value":null,"typeHandle":{"Identification":"Ai.AiEntity, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Is
+      Interacting","value":{"$content":false,"$type":"System.Boolean"},"typeHandle":{"Identification":"System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Point
+      Of Interest","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Ai.PointOfInterest,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Continuous
+      Sound Player","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Sound.ContinuousSoundPlayer,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 5685787623640825149}
+    - {fileID: 8086045826228627264}
+--- !u!114 &5909041550296613883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638885075742266703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: 34026aa37c3ae9943a4d4417fcb54437, type: 2}
 --- !u!1 &6537586875865598349
 GameObject:
   m_ObjectHideFlags: 0

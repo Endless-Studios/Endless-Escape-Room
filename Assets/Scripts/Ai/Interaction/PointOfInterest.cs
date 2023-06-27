@@ -19,7 +19,8 @@ namespace Ai
         [SerializeField] private Collider lineOfSightCollider;
         [SerializeField] private InteractionType interactionType;
 
-        public UnityEvent OnInteracted = new UnityEvent();
+        public UnityEvent<AiEntity> OnAiInteracted = new UnityEvent<AiEntity>();
+        public UnityEvent OnInteractionInterrupted = new UnityEvent();
 
         public InteractionType InteractionType => interactionType;
         public Vector3 InteractionPoint => interactionPointObject.transform.position;
@@ -27,9 +28,9 @@ namespace Ai
         public Collider LineOfSightCollider => lineOfSightCollider;
         
         [ContextMenu("Interact")]
-        public void Interact()
+        public void AiInteract(AiEntity aiEntity)
         {
-            OnInteracted?.Invoke();
+            OnAiInteracted?.Invoke(aiEntity);
         }
         
         protected virtual void OnEnable()

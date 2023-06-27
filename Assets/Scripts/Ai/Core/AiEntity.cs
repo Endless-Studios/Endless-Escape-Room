@@ -15,6 +15,7 @@ namespace Ai
         public UnityEvent OnDied = new UnityEvent();
         public UnityEvent OnSpawn = new UnityEvent();
         public UnityEvent OnDespawn = new UnityEvent();
+        public UnityEvent OnAiInteracted = new UnityEvent();
         public UnityEvent OnFinishedInteracting = new UnityEvent();
         public UnityEvent OnFinishedFidgeting = new UnityEvent();
         public UnityEvent OnStartedAttacking = new UnityEvent();
@@ -26,6 +27,11 @@ namespace Ai
         public UnityEvent OnFinishedPursueAnimation = new UnityEvent();
         public UnityEvent OnStartedSearchAnimation = new UnityEvent();
         public UnityEvent OnFinishedSearchAnimation = new UnityEvent();
+
+        public AiReferences References => references;
+        public AiAttributes Attributes => attributes;
+        public GameplayInfo GameplayInfo => gameplayInfo;
+        
         
 
         public event Action OnWalkingThroughDoorway;
@@ -45,6 +51,11 @@ namespace Ai
         public void WalkedThroughDoorway()
         {
             OnWalkedThroughDoorway?.Invoke();
+        }
+
+        public void AiInteracted()
+        {
+            OnAiInteracted?.Invoke();
         }
 
         /// <summary>
