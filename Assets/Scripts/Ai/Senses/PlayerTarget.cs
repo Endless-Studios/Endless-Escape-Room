@@ -49,9 +49,6 @@ namespace Ai
         /// </summary>
         public void HandleAttacked()
         {
-            //Force exit of any camera focus
-            playerCore.CameraManager.FocusCamera(null);
-
             //TODO Cancel any inspection or similar behaviors
         }
 
