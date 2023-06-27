@@ -22,14 +22,15 @@ public class FadeToBlack : MonoBehaviour
 
     ///<summary>
     /// Start a Fade In.
-    /// <param name="callback">Optional callback after fade out is completed.</param>
+    /// <param name="fadeOutCompletedCallback">Optional callback after fade out is completed.</param>
+    /// <param name="fadeBackInCompletedCallback">Optional callback after fade back in is completed.</param>
     ///</summary>
-    public void FadeOut(UnityAction callback = null)
+    public void FadeOut(UnityAction fadeOutCompletedCallback = null, UnityAction fadeBackInCompletedCallback = null)
     {
         if (activeFade != null)
             StopCoroutine(activeFade);
 
-        activeFade = StartCoroutine(FadeProcess(true, callback));
+        activeFade = StartCoroutine(FadeProcess(true, fadeOutCompletedCallback, fadeBackInCompletedCallback));
     }
 
     ///<summary>
@@ -52,7 +53,7 @@ public class FadeToBlack : MonoBehaviour
         FadeIn(null);
     }
 
-    private IEnumerator FadeProcess(bool fadeOut, UnityAction callback)
+    private IEnumerator FadeProcess(bool fadeOut, UnityAction callback, UnityAction nextCallback = null)
     {
         float startTime = Time.realtimeSinceStartup;
         float fadePercentage = 0;
@@ -79,6 +80,9 @@ public class FadeToBlack : MonoBehaviour
         activeFade = null;
 
         if (fadeOut && automaticallyFadeBackIn)
-            Invoke("FadeIn", automaticallyFadeBackInDelay);
+        {
+            yield return new WaitForSeconds(automaticallyFadeBackInDelay);
+            FadeIn(nextCallback);
+        }
     }
 }

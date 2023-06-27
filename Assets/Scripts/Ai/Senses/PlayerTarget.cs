@@ -33,7 +33,14 @@ namespace Ai
         ///</summary>
         public void StartFadeout(UnityAction fadeoutCompleteCallback)
         {
-            PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback);
+            PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback, new UnityAction(LocalFadeoutCompleteCallback));
+        }
+
+        private void LocalFadeoutCompleteCallback()
+        {
+            playerCore.CharacterController.enabled = true;
+            PlayerCore.LocalPlayer.PlayerInput.UnblockLook(this);
+            PlayerCore.LocalPlayer.PlayerInput.UnblockMovement(this);
         }
 
         ///<summary>
@@ -49,7 +56,12 @@ namespace Ai
         /// </summary>
         public void HandleAttacked()
         {
-            //TODO Cancel any inspection or similar behaviors
+            //Force exit of any camera focus
+            playerCore.CharacterMovement.DisableCrouchToggle();
+            playerCore.ItemInspector.ForceStopInspection();
+            playerCore.CharacterController.enabled = false;
+            PlayerCore.LocalPlayer.PlayerInput.BlockLook(this);
+            PlayerCore.LocalPlayer.PlayerInput.BlockMovement(this);
         }
 
         /// <summary>

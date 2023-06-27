@@ -122,6 +122,7 @@ MonoBehaviour:
   navMeshObstacle: {fileID: 2972815285524830649}
   playerTarget: {fileID: 1893632562667910974}
   playerRigidbody: {fileID: 4157247682571816759}
+  characterMovement: {fileID: 5685148041957440190}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0
