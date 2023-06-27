@@ -13,6 +13,7 @@
 
         private void HandleStartedAttacking()
         {
+            PlayerCore.LocalPlayer.PlayerTarget.HandleAttacked();
             references.CameraFocus.Focus();
             references.CameraFocus.AllowUnfocusKey = false;
         }
@@ -24,8 +25,8 @@
                 gameplayInfo.Target = gameplayInfo.RecentTarget;
             }
             
-            gameplayInfo.Target.DealDamage(attributes.AttackDamage);
-            gameplayInfo.Target.StartFadeout(FadeoutCompleteCallback);
+            PlayerCore.LocalPlayer.PlayerTarget.DealDamage(attributes.AttackDamage);
+            PlayerCore.LocalPlayer.PlayerTarget.StartFadeout(FadeoutCompleteCallback);
         }
 
         private void FadeoutCompleteCallback()
