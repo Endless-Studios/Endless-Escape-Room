@@ -8,7 +8,7 @@ namespace Ai
     /// This class provides information to the Ai about the various things it can interact with in the scene,
     /// it also provides the positions, rotations, and kind of interactions necessary to do so.
     /// </summary>
-    public class PointOfInterest : MonoBehaviour, IAiInteractionTypeSource
+    public class PointOfInterest : MonoBehaviour
     {
         /// <summary>
         /// A static list of points of interest that each point of interest adds to and removes itself from.
@@ -17,12 +17,10 @@ namespace Ai
         
         [SerializeField] private GameObject interactionPointObject;
         [SerializeField] private Collider lineOfSightCollider;
-        [SerializeField] private InteractionType interactionType;
 
         public UnityEvent<AiEntity> OnAiInteracted = new UnityEvent<AiEntity>();
         public UnityEvent OnInteractionInterrupted = new UnityEvent();
-
-        public InteractionType InteractionType => interactionType;
+        
         public Vector3 InteractionPoint => interactionPointObject.transform.position;
         public Quaternion InteractionRotation => interactionPointObject.transform.rotation;
         public Collider LineOfSightCollider => lineOfSightCollider;

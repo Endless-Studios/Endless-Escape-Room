@@ -24,7 +24,6 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] NavMeshObstacle navMeshObstacle;
     [SerializeField] PlayerTarget playerTarget;
     [SerializeField] Rigidbody playerRigidbody;
-    [SerializeField] CharacterMovement characterMovement;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
@@ -36,7 +35,6 @@ public class PlayerCore : MonoBehaviour
     public HidingComponent HidingComponent => hidingComponent;
     public HealthComponent HealthComponent => healthComponent;
     public CharacterController CharacterController => characterController;
-    public CharacterMovement CharacterMovement => characterMovement;
     public NavMeshObstacle NavMeshObstacle => navMeshObstacle;
     public PlayerTarget PlayerTarget => playerTarget;
     public Rigidbody Rigidbody => playerRigidbody;

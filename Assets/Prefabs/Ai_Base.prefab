@@ -110,6 +110,9 @@ MonoBehaviour:
           m_StringArgument: OnDespawn
           m_BoolArgument: 0
         m_CallState: 2
+  OnAiInteracted:
+    m_PersistentCalls:
+      m_Calls: []
   OnFinishedInteracting:
     m_PersistentCalls:
       m_Calls: []
@@ -615,7 +618,6 @@ GameObject:
   - component: {fileID: 1080036828054471172}
   - component: {fileID: 5413147699087195352}
   - component: {fileID: 7057165101696368421}
-  - component: {fileID: 9025293886819925347}
   m_Layer: 14
   m_Name: Thresholds
   m_TagString: Untagged
@@ -746,25 +748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thresholdName: Search
-  baseThreshold: 30
-  minThresholdModifier: 0
-  maxThresholdModifier: 15
-  value: 0
-  currentThreshold: 0
-  AmountOverThreshold: 0
---- !u!114 &9025293886819925347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6461828906644631074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdName: Investigate
   baseThreshold: 30
   minThresholdModifier: 0
   maxThresholdModifier: 15
