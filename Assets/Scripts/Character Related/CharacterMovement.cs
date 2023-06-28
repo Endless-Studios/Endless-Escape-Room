@@ -318,4 +318,12 @@ public class CharacterMovement : MonoBehaviour
             Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * groundedCheckDistance, Color.red);
         }
     }
+
+    /// <summary>
+    /// Toggles off crouching
+    /// </summary>
+    public void DisableCrouchToggle()
+    {
+        crouchToggledOn =false;
+    }
 }

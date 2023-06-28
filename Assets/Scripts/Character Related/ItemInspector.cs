@@ -21,6 +21,7 @@ public class ItemInspector : MonoBehaviour
     Pickupable currentPickupable;
     bool inspectingHeldItem;
     bool canPickup;
+    bool forceStopInteraction;
 
     private void Start()
     {
@@ -55,8 +56,8 @@ public class ItemInspector : MonoBehaviour
 
         CurrentInspectable.IsInteractable = false;
         playerInput.InteractEnabled = true;
-        playerInput.LookEnabled = false;
-        playerInput.MoveEnabled = false;
+        PlayerCore.LocalPlayer.PlayerInput.BlockLook(this);
+        PlayerCore.LocalPlayer.PlayerInput.BlockMovement(this);
         //heldItemManager.HideProjectedVisualsAndControls(); //TODO is this line needed?
         if(currentPickupable)
             currentPickupable.gameObject.SetActive(true);
@@ -84,7 +85,8 @@ public class ItemInspector : MonoBehaviour
         bool backPressed = false;
         bool pickupPressed = false;
         bool rotationHeld = false;
-        while(backPressed == false && pickupPressed == false)
+
+        while(backPressed == false && pickupPressed == false && forceStopInteraction == false)
         {
             if(rotationHeld == false && playerInput.GetRotationButtonDown() && interactor.HasTarget == false)
             {
@@ -114,10 +116,12 @@ public class ItemInspector : MonoBehaviour
             //CurrentInspectable.RestoreVisualsRoot();
             if(backPressed)
                 heldItemManager.ActivateDropMode();
-            else if(pickupPressed)
+            else if(pickupPressed || forceStopInteraction)
             {
                 //enter use mode if usable, otherwise, drop mode
-                if(currentPickupable is Useable == false)
+                if(forceStopInteraction)
+                    inventory.PickupItem(currentPickupable);
+                else if(currentPickupable is Useable == false)
                     heldItemManager.ActivateDropMode();
                 else
                     heldItemManager.ReenterHeld();
@@ -125,10 +129,10 @@ public class ItemInspector : MonoBehaviour
         }
         else
         {
-            if(heldItemManager.HeldPickupable)
+            if(heldItemManager.HeldPickupable || forceStopInteraction)
                 heldItemManager.ReenterHeld();
             playerInput.InteractEnabled = true;
-            if(backPressed)
+            if(backPressed || forceStopInteraction)
             {//TODO maybe move some of this into inspectable?
                 CurrentInspectable.RestoreTransform();
                 CurrentInspectable.Unhighlight();
@@ -148,9 +152,10 @@ public class ItemInspector : MonoBehaviour
 
         yield return null;
         CurrentInspectable = null;
-        playerInput.LookEnabled = true;
-        playerInput.MoveEnabled = true;
+        PlayerCore.LocalPlayer.PlayerInput.UnblockLook(this);
+        PlayerCore.LocalPlayer.PlayerInput.UnblockMovement(this);
         inspectCoroutine = null;
+        forceStopInteraction = false;
     }
 
     private void SetToInspectedPosition()
@@ -163,6 +168,12 @@ public class ItemInspector : MonoBehaviour
     bool CanPickupItem(Pickupable pickupable)
     {
         return inventory != null && inventory.CanPickupItem(pickupable);
+    }
+
+    public void ForceStopInspection()
+    {
+        if(CurrentInspectable != null)
+            forceStopInteraction = true;
     }
 
     /// <summary>
