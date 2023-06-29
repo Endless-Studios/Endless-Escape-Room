@@ -35,7 +35,19 @@ public class CameraFocus : MonoBehaviour
         OnUnfocused.Invoke();
     }
 
-    public bool Focus()
+    /// <summary>
+    /// Exposed to be triggered via events. Note that camera focus can fail
+    /// </summary>
+    public void Focus()
+    {
+        PlayerCore.LocalPlayer.CameraManager.FocusCamera(this);
+    }
+
+    /// <summary>
+    /// Attempts to focus the camera
+    /// </summary>
+    /// <returns>Was the focus successful</returns>
+    public bool AttemptFocus()
     {
         return PlayerCore.LocalPlayer.CameraManager.FocusCamera(this);
     }
