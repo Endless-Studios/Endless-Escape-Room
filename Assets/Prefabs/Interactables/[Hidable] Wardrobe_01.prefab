@@ -189,11 +189,26 @@ MonoBehaviour:
   interactionType: 2
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 363586218731287862}
+        m_TargetAssemblyTypeName: Openable, Assembly-CSharp
+        m_MethodName: ToggleOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnEnterHideout:
     m_PersistentCalls:
       m_Calls: []
   OnExitHideout:
+    m_PersistentCalls:
+      m_Calls: []
+  OnForcedExit:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7497559454378999132

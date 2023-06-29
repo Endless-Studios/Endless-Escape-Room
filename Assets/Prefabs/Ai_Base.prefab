@@ -162,7 +162,7 @@ MonoBehaviour:
   recentTarget: {fileID: 0}
   PlayersHideout: {fileID: 0}
   Destination: {x: 0, y: 0, z: 0}
-  AlertState: 0
+  AnimationTraversalType: 0
   ShouldSpawnInPlace: 0
 --- !u!114 &8686548554604012545
 MonoBehaviour:
@@ -475,6 +475,7 @@ MonoBehaviour:
   focusCamera: {fileID: 1224505149943912267}
   showMouseWhileFocused: 1
   allowUnfocusKey: 1
+  priorityFocus: 1
   OnFocused:
     m_PersistentCalls:
       m_Calls: []

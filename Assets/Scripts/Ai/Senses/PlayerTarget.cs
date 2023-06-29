@@ -12,8 +12,11 @@ namespace Ai
     {
         public static readonly List<PlayerTarget> SenseTargets = new List<PlayerTarget>();
 
-        [field: SerializeField] public List<LosProbe> LosProbes { get; private set; }
-        [field: SerializeField] public HealthComponent HealthComponent { get; private set; }
+        [SerializeField] List<LosProbe> losProbes = new List<LosProbe>();
+        [SerializeField] PlayerCore playerCore = null;
+
+        public List<LosProbe> LosProbes => losProbes;
+        public PlayerCore PlayerCore => playerCore;
 
         private void OnEnable()
         {
@@ -25,29 +28,19 @@ namespace Ai
             SenseTargets.Remove(this);
         }
 
-
         ///<summary>
         /// AI triggers a fadeout on the player.
         ///</summary>
         public void StartFadeout(UnityAction fadeoutCompleteCallback)
         {
-            PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback);
+            PlayerHUD.Instance.FadeToBlack.FadeOut(fadeoutCompleteCallback, new UnityAction(LocalFadeoutCompleteCallback));
         }
 
-        /// <summary>
-        /// Ai stops the player from moving or looking around while attacking or grabbing the player out of the hideout.
-        /// </summary>
-        public void DisableInput()
+        private void LocalFadeoutCompleteCallback()
         {
-            //TODO: Implement
-        }
-
-        /// <summary>
-        /// Ai reenables player input after finishing its attack.
-        /// </summary>
-        public void EnableInput()
-        {
-            //TODO: Implement
+            playerCore.CharacterController.enabled = true;
+            PlayerCore.LocalPlayer.PlayerInput.UnblockLook(this);
+            PlayerCore.LocalPlayer.PlayerInput.UnblockMovement(this);
         }
 
         ///<summary>
@@ -55,7 +48,28 @@ namespace Ai
         ///</summary>
         public void DealDamage(float damage)
         {
-            HealthComponent.TakeDamage(damage);
+            PlayerCore.HealthComponent.TakeDamage(damage);
+        }
+
+        /// <summary>
+        /// Called at the beginning of an AI attack
+        /// </summary>
+        public void HandleAttacked()
+        {
+            //Force exit of any camera focus
+            playerCore.CharacterMovement.DisableCrouchToggle();
+            playerCore.ItemInspector.ForceStopInspection();
+            playerCore.CharacterController.enabled = false;
+            PlayerCore.LocalPlayer.PlayerInput.BlockLook(this);
+            PlayerCore.LocalPlayer.PlayerInput.BlockMovement(this);
+        }
+
+        /// <summary>
+        /// Called when an AI needs to snap the Player to a position
+        /// </summary>
+        public void SnapToPosition(Vector3 position)
+        {
+            playerCore.Rigidbody.position = position;
         }
     }
 }
