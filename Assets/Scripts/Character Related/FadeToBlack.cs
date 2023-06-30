@@ -55,19 +55,19 @@ public class FadeToBlack : MonoBehaviour
 
     private IEnumerator FadeProcess(bool fadeOut, UnityAction callback, UnityAction nextCallback = null)
     {
-        float startTime = Time.realtimeSinceStartup;
+        float startTime = Time.time;
         float fadePercentage = 0;
 
         while (fadePercentage < 1)
         {
             if (fadeOut)
             {
-                fadePercentage = (Time.realtimeSinceStartup - startTime) / fadeOutDuration;
+                fadePercentage = (Time.time - startTime) / fadeOutDuration;
                 canvasGroup.alpha = fadePercentage;
             }
             else
             {
-                fadePercentage = (Time.realtimeSinceStartup - startTime) / fadeInDuration;
+                fadePercentage = (Time.time - startTime) / fadeInDuration;
                 canvasGroup.alpha = 1 - fadePercentage;
             }
 

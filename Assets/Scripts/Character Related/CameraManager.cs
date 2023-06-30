@@ -60,7 +60,6 @@ public class CameraManager : MonoBehaviour
 
     IEnumerator UnfocusCameraCoroutine()
     {
-        Debug.Log("Unfocus routine");
         if(currentlyFocusedCamera != null)
         {
             CameraFocus targetCamera = currentlyFocusedCamera;

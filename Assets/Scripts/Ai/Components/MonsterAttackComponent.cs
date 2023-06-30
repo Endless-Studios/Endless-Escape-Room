@@ -14,7 +14,7 @@
         private void HandleStartedAttacking()
         {
             PlayerCore.LocalPlayer.PlayerTarget.HandleAttacked();
-            references.CameraFocus.Focus();
+            references.CameraFocus.AttemptFocus();
             references.CameraFocus.AllowUnfocusKey = false;
         }
 
