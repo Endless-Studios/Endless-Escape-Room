@@ -16,7 +16,8 @@ namespace Ai
         public UnityEvent OnSpawn = new UnityEvent();
         public UnityEvent OnDespawn = new UnityEvent();
         public UnityEvent OnAiInteracted = new UnityEvent();
-        public UnityEvent OnFinishedInteracting = new UnityEvent();
+        public UnityEvent OnFinishedInteractionAnimation = new UnityEvent();
+        public UnityEvent OnFinishedInteraction = new UnityEvent();
         public UnityEvent OnFinishedFidgeting = new UnityEvent();
         public UnityEvent OnStartedAttacking = new UnityEvent();
         public UnityEvent OnDealtDamage = new UnityEvent();
@@ -58,12 +59,17 @@ namespace Ai
             OnAiInteracted?.Invoke();
         }
 
+        public void FinishedInteraction()
+        {
+            OnFinishedInteraction?.Invoke();
+        }
+
         /// <summary>
         /// Invokes the OnFinishedInteracting event
         /// </summary>
-        public void FinishedInteracting()
+        public void FinishedInteractionAnimation()
         {
-            OnFinishedInteracting?.Invoke();
+            OnFinishedInteractionAnimation?.Invoke();
         }
 
         /// <summary>

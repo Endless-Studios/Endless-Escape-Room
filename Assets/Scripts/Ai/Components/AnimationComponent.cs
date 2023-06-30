@@ -116,7 +116,7 @@ namespace Ai
             yield return new WaitForSeconds(.5f);
             AiInteracted();
             yield return new WaitForSeconds(.5f);
-            FinishedInteracting();
+            FinishedInteractionAnimation();
         }
 
         private void WalkThroughDoor()
@@ -188,9 +188,9 @@ namespace Ai
         /// <summary>
         /// This method is called by an Animation event and not directly through code.
         /// </summary>
-        public void FinishedInteracting()
+        public void FinishedInteractionAnimation()
         {
-            entity.FinishedInteracting();
+            entity.FinishedInteractionAnimation();
         }
 
         /// <summary>

@@ -2037,6 +2037,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecordPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 3638885075742266703, guid: 11a99d8055535dc4693f95e6da1a93eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244215976051846241, guid: 11a99d8055535dc4693f95e6da1a93eb,
+        type: 3}
+      propertyPath: _data._json
+      value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Interacting
+        Entity","value":null,"typeHandle":{"Identification":"Ai.AiEntity, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Point
+        Of Interest","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Ai.PointOfInterest,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Continuous
+        Sound Player","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Sound.ContinuousSoundPlayer,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      objectReference: {fileID: 0}
     - target: {fileID: 5685787623640825149, guid: 11a99d8055535dc4693f95e6da1a93eb,
         type: 3}
       propertyPath: OnAiInteracted.m_PersistentCalls.m_Calls.Array.size
@@ -6681,8 +6697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPointObject: {fileID: 3055442248007479339}
-  lineOfSightCollider: {fileID: 0}
-  interactionType: 1
+  lineOfSightCollider: {fileID: 5550954360589342582}
   OnAiInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -6742,7 +6757,7 @@ PrefabInstance:
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.6
+      value: 7.54
       objectReference: {fileID: 0}
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
@@ -6752,7 +6767,7 @@ PrefabInstance:
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.03
+      value: -7.43
       objectReference: {fileID: 0}
     - target: {fileID: 185668552992706738, guid: d79b1e1870f8a2a45af8a3fc0b98fec2,
         type: 3}
@@ -7678,7 +7693,7 @@ PrefabInstance:
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.6
+      value: 7.54
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -7688,7 +7703,7 @@ PrefabInstance:
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.03
+      value: -7.43
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -8156,6 +8171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestPOI
+      objectReference: {fileID: 0}
+    - target: {fileID: 903749937270381331, guid: 95a2196ccfb26e341b378d3fca96d000,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309112485603711277, guid: 95a2196ccfb26e341b378d3fca96d000,
         type: 3}
@@ -9804,11 +9824,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (4)'
       objectReference: {fileID: 0}
-    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -10842,6 +10857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5550954360589342581}
+  - component: {fileID: 5550954360589342582}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -11010,7 +11026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5356936503701192598
 Transform:
   m_ObjectHideFlags: 0
@@ -11641,6 +11657,27 @@ Transform:
   m_Father: {fileID: 5356936503546645328}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!135 &5550954360589342582
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055442248007479339}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &5905533486670205075
 Transform:
   m_ObjectHideFlags: 0

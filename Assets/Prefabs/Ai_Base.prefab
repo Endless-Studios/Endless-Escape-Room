@@ -113,7 +113,10 @@ MonoBehaviour:
   OnAiInteracted:
     m_PersistentCalls:
       m_Calls: []
-  OnFinishedInteracting:
+  OnFinishedInteractionAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedInteraction:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedFidgeting:
@@ -1291,7 +1294,7 @@ MonoBehaviour:
   fidgetNames:
   - Fidget_01
   - Fidget_02
-  lowAttackHeightDifference: 0.5
+  lowAttackHeightDifference: -0.25
   highAttackHeightDifference: 0.5
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:

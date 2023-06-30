@@ -50,7 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPointObject: {fileID: 8868144487915956998}
   lineOfSightCollider: {fileID: 2541021438025607280}
-  interactionType: 1
   OnAiInteracted:
     m_PersistentCalls:
       m_Calls: []
@@ -73,9 +72,7 @@ MonoBehaviour:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"PointOfInterest","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Ai.PointOfInterest,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Interacting
       Entity","value":null,"typeHandle":{"Identification":"Ai.AiEntity, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Is
-      Interacting","value":{"$content":false,"$type":"System.Boolean"},"typeHandle":{"Identification":"System.Boolean,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"ScreenRenderer","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.MeshRenderer,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"ScreenRenderer","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.MeshRenderer,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 5789472008377233195}
