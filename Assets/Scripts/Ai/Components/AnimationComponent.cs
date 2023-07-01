@@ -130,15 +130,13 @@ namespace Ai
             
             if (heightDifference > highAttackHeightDifference)
             {
-                Debug.LogWarning("Attacking high but playing mid attack as placeholder");
-                references.Animator.SetTrigger(midAttack);
+                references.Animator.SetTrigger(highAttack);
                 return;
             }
 
             if (heightDifference < lowAttackHeightDifference || PlayerCore.LocalPlayer.CharacterMovement.IsCrouching)
             {
-                Debug.LogWarning("Attacking low but playing mid attack as placeholder");
-                references.Animator.SetTrigger(midAttack);
+                references.Animator.SetTrigger(lowAttack);
                 return;
             }
             
