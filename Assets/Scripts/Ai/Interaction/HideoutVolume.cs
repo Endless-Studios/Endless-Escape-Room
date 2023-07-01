@@ -11,12 +11,14 @@ namespace Ai
 
         private void OnTriggerEnter(Collider other)
         {
-            hideout.PlayerEnteredHideout();
+            if(other.GetComponentInParent<PlayerCore>())
+                hideout.PlayerEnteredHideout();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            hideout.PlayerLeftHideout();
+            if(other.GetComponentInParent<PlayerCore>())
+                hideout.PlayerLeftHideout();
         }
     }
 }

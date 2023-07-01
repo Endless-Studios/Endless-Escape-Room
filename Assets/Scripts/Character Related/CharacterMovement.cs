@@ -173,7 +173,8 @@ public class CharacterMovement : MonoBehaviour
             connectedMovingPlatformPreviousPosition = connectedMovingPlatform.position;
         }
 
-        characterController.Move((motionToUse * Time.deltaTime) + (movingGroundMotion));
+        if(characterController.enabled)
+            characterController.Move((motionToUse * Time.deltaTime) + (movingGroundMotion));
     }
 
     /// <summary>
@@ -316,5 +317,13 @@ public class CharacterMovement : MonoBehaviour
             Ray radiusRay = new Ray(transform.position + radiusRayOffset + allRaysVerticalOffset, Vector3.down);
             Debug.DrawLine(radiusRay.origin, radiusRay.origin + radiusRay.direction * groundedCheckDistance, Color.red);
         }
+    }
+
+    /// <summary>
+    /// Toggles off crouching
+    /// </summary>
+    public void DisableCrouchToggle()
+    {
+        crouchToggledOn =false;
     }
 }

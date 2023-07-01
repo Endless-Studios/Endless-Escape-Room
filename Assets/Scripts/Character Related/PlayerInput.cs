@@ -10,15 +10,38 @@ public class PlayerInput : MonoBehaviour
     //TODO convert all axis to be SerializedFields
 
     public bool InteractEnabled { get; set; } = true;
-    public bool LookEnabled { get; set; } = true;
-    public bool MoveEnabled { get; set; } = true;
+    public bool LookEnabled => objectsBlockingLook.Count < 1;
+    public bool MoveEnabled => objectsBlockingMovement.Count < 1;
     public bool HeldControlsEnabled { get; set; } = true;
     public bool InspectControlsEnabled { get; set; } = true;
     float lastJumpPressTime = -1;
 
+    private List<object> objectsBlockingMovement = new List<object>();
+    private List<object> objectsBlockingLook = new List<object>();
+
     private void Awake()
     {
         CinemachineCore.GetInputAxis = GetInputAxis;
+    }
+
+    public void BlockMovement(object blockingObject)
+    {
+        objectsBlockingMovement.Add(blockingObject);
+    }
+
+    public void UnblockMovement(object blockingObject)
+    {
+        objectsBlockingMovement.Remove(blockingObject);
+    }
+
+    public void BlockLook(object blockingObject)
+    {
+        objectsBlockingLook.Add(blockingObject);
+    }
+
+    public void UnblockLook(object blockingObject)
+    {
+        objectsBlockingLook.Remove(blockingObject);
     }
 
     private float GetInputAxis(string axisName)

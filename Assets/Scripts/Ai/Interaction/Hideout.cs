@@ -17,10 +17,11 @@ namespace Ai
         public static readonly List<Hideout> Hideouts = new List<Hideout>();
         public static event Action<Hideout> OnEnteredHideout;
         public static event Action<Hideout> OnLeftHideout;
-        
+
         public UnityEvent OnEnterHideout;
         public UnityEvent OnExitHideout;
-        
+        public UnityEvent OnForcedExit;
+
         protected override void Awake()
         {
             base.Awake();
@@ -38,8 +39,7 @@ namespace Ai
         /// </summary>
         public void PlayerEnteredHideout()
         {
-            PlayerCore.LocalPlayer.CharacterController.enabled = false;
-            PlayerCore.LocalPlayer.NavMeshObstacle.enabled = false;
+            PlayerCore.LocalPlayer.HidingComponent.StartHiding();
             PlayerCore.LocalPlayer.PlayerTarget.enabled = false;
             OnEnteredHideout?.Invoke(this);
             OnEnterHideout.Invoke();
@@ -50,11 +50,18 @@ namespace Ai
         /// </summary>
         public void PlayerLeftHideout()
         {
-            PlayerCore.LocalPlayer.CharacterController.enabled = true;
-            PlayerCore.LocalPlayer.NavMeshObstacle.enabled = true;
+            PlayerCore.LocalPlayer.HidingComponent.StopHiding();
             PlayerCore.LocalPlayer.PlayerTarget.enabled = true;
             OnLeftHideout?.Invoke(this);
             OnExitHideout.Invoke();
+        }
+
+        /// <summary>
+        /// Called from the AI when it starts kicking the player out
+        /// </summary>
+        public void KickedOut()
+        {
+            OnForcedExit.Invoke();
         }
     }
 }

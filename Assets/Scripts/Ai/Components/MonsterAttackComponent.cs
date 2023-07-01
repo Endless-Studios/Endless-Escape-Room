@@ -13,7 +13,9 @@
 
         private void HandleStartedAttacking()
         {
-            references.CameraFocus.Focus();
+            PlayerCore.LocalPlayer.PlayerTarget.HandleAttacked();
+            references.CameraFocus.AttemptFocus();
+            references.CameraFocus.AllowUnfocusKey = false;
         }
 
         private void HandleDealDamage()
@@ -23,13 +25,16 @@
                 gameplayInfo.Target = gameplayInfo.RecentTarget;
             }
             
-            gameplayInfo.Target.DealDamage(attributes.AttackDamage);
-            gameplayInfo.Target.StartFadeout(FadeoutCompleteCallback);
+            PlayerCore.LocalPlayer.PlayerTarget.DealDamage(attributes.AttackDamage);
+            PlayerCore.LocalPlayer.PlayerTarget.StartFadeout(FadeoutCompleteCallback);
         }
 
         private void FadeoutCompleteCallback()
         {
+            if(gameplayInfo.TargetHideout)
+                PlayerCore.LocalPlayer.PlayerTarget.SnapToPosition(gameplayInfo.TargetHideout.InteractionPoint);
             entity.Disappear();
+            references.CameraFocus.AllowUnfocusKey = true;
             references.CameraFocus.Unfocus();
         }
     }

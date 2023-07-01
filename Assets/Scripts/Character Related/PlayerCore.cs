@@ -16,9 +16,13 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] HeldItemManager heldItemManager;
     [SerializeField] ItemInspector itemInspector;
     [SerializeField] Transform fpsCameraRootTransform;
+    [SerializeField] HidingComponent hidingComponent;
+    [SerializeField] HealthComponent healthComponent;
     [SerializeField] CharacterController characterController;
     [SerializeField] NavMeshObstacle navMeshObstacle;
     [SerializeField] PlayerTarget playerTarget;
+    [SerializeField] Rigidbody playerRigidbody;
+    [SerializeField] CharacterMovement characterMovement;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;
@@ -27,9 +31,13 @@ public class PlayerCore : MonoBehaviour
     public HeldItemManager HeldItemManager => heldItemManager;
     public Transform FpsCameraRootTransform => fpsCameraRootTransform;
     public ItemInspector ItemInspector => itemInspector;
+    public HidingComponent HidingComponent => hidingComponent;
+    public HealthComponent HealthComponent => healthComponent;
     public CharacterController CharacterController => characterController;
     public NavMeshObstacle NavMeshObstacle => navMeshObstacle;
     public PlayerTarget PlayerTarget => playerTarget;
+    public Rigidbody Rigidbody => playerRigidbody;
+    public CharacterMovement CharacterMovement => characterMovement;
 
     private void Awake()
     {
