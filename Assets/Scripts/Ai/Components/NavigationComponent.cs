@@ -106,7 +106,7 @@ namespace Ai
             //Otherwise we want to listen for us finishing traversal of the threshold
             else
             {
-                //TODO: Branch here to handle different animations
+                references.AnimationComponent.SetTraversalState(true);
                 entity.OnWalkedThroughDoorway += HandleOnWalkedThroughThreshold;
                 entity.WalkingThroughThreshold();
             }
@@ -120,6 +120,7 @@ namespace Ai
         private void HandleOnWalkedThroughThreshold()
         {
             isTraversingLink = false;
+            references.AnimationComponent.SetTraversalState(false);
             Transform agentTransform = references.Agent.transform;
             agentTransform.position = agentTransform.TransformPoint(references.Animator.transform.localPosition);
             references.Animator.transform.position = Vector3.zero;

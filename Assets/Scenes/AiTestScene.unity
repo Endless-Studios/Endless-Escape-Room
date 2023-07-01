@@ -1010,6 +1010,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2891075833820768807, guid: 32429fcbf37a3404eb8b106dd18ad79a,
+        type: 3}
+      propertyPath: interactionPointMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -10853,7 +10858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5550954360589342581}
   - component: {fileID: 5550954360589342582}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

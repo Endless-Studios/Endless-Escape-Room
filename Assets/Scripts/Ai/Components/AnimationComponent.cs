@@ -12,6 +12,7 @@ namespace Ai
     public class AnimationComponent : AiComponent
     {
         [SerializeField] private string thresholdTriggerName;
+        [SerializeField] private string thresholdPursueTriggerName;
         [SerializeField] private string movingBoolName;
         [SerializeField] private string lowAttackTriggerName;
         [SerializeField] private string midAttackTriggerName;
@@ -23,10 +24,12 @@ namespace Ai
         [SerializeField] private List<string> fidgetNames;
         [SerializeField] private float lowAttackHeightDifference;
         [SerializeField] private float highAttackHeightDifference;
+        [SerializeField] private string traversingThresholdName;
 
         private readonly Dictionary<InteractionType, string> animationNamesByInteractionType = new Dictionary<InteractionType, string>();
         
         private int enterDoorway;
+        private int enterDoorwayPursue;
         private int moving;
         private int lowAttack;
         private int midAttack;
@@ -34,6 +37,7 @@ namespace Ai
         private int pursue;
         private int search;
         private int chasing;
+        private int traversingThreshold;
         
         private int velX;
         private int velY;
@@ -41,6 +45,7 @@ namespace Ai
         protected void Awake()
         {
             enterDoorway = Animator.StringToHash(thresholdTriggerName);
+            enterDoorwayPursue = Animator.StringToHash(thresholdPursueTriggerName);
             moving = Animator.StringToHash(movingBoolName);
             lowAttack = Animator.StringToHash(lowAttackTriggerName);
             midAttack = Animator.StringToHash(midAttackTriggerName);
@@ -56,6 +61,7 @@ namespace Ai
             velY = Animator.StringToHash("VelY");
             entity.OnWalkingThroughDoorway += WalkThroughDoor;
             gameplayInfo.OnAwarenessStateChanged.AddListener(HandleAwarenessStateChanged);
+            traversingThreshold = Animator.StringToHash(traversingThresholdName);
             
             //Translate the list to a dictionary for easier lookup and data validation
             for (int i = 0; i < interactionAnimationPairs.Count; i++)
@@ -84,14 +90,12 @@ namespace Ai
                 return;
             }
             
-            //Temp code
-            if (interactionType == InteractionType.OpenDoor)
-            {
-                references.Animator.SetTrigger(animationName);
-                return;
-            }
+            references.Animator.SetTrigger(animationName);
+        }
 
-            StartCoroutine(FauxInteractionRoutine());
+        public void SetTraversalState(bool isTraversing)
+        {
+            references.Animator.SetBool(traversingThreshold, isTraversing);
         }
 
         /// <summary>
@@ -111,19 +115,14 @@ namespace Ai
             references.Animator.SetTrigger(animationName);
         }
 
-        private IEnumerator FauxInteractionRoutine()
-        {
-            yield return new WaitForSeconds(.5f);
-            AiInteracted();
-            yield return new WaitForSeconds(.5f);
-            FinishedInteractionAnimation();
-        }
-
         private void WalkThroughDoor()
         {
-            references.Animator.SetTrigger(enterDoorway);
+            if(gameplayInfo.AiAwarenessState == AiAwarenessState.Pursuing) 
+                references.Animator.SetTrigger(enterDoorwayPursue);
+            else
+                references.Animator.SetTrigger(enterDoorway);
         }
-        
+
         private void HandleStartedAttacking()
         {
             float heightDifference = PlayerCore.LocalPlayer.transform.position.y - entity.transform.position.y;
@@ -150,9 +149,7 @@ namespace Ai
 
         private void HandleStartedSearchAnimation()
         {
-            //references.Animator.SetTrigger(search);
-            
-            StartCoroutine(FauxSearchAnimation());
+            references.Animator.SetTrigger(search);
         }
         
         private IEnumerator FauxSearchAnimation()

@@ -225,7 +225,7 @@ MonoBehaviour:
   approachDistance: 1
   maxAttackAngleDifference: 60
   maxInteractionAngleDifference: 7.5
-  maxAngularSpeed: 55
+  maxAngularSpeed: 360
   attackDamage: 0
   pursueAnimationThreshold: 5
 --- !u!195 &8683445511247982297
@@ -338,9 +338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5008231cb44023806515e3b0c14753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorApproachRotationSpeed: 180
-  doorApproachAngleTolerance: 3
-  doorApproachMovementSpeed: 0.5
+  doorApproachRotationSpeed: 360
+  doorApproachAngleTolerance: 5
+  doorApproachMovementSpeed: 3
   doorApproachDistanceTolerance: 0.1
   smoothTime: 0.5
   OnTriedLockedThreshold:
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 262145
   investigateActionDelay: 5
   maxInvestigateDistance: 15
   reInvestigateTime: 90
@@ -1277,6 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thresholdTriggerName: EnterDoorway
+  thresholdPursueTriggerName: EnterDoorwayPursue
   movingBoolName: Moving
   lowAttackTriggerName: GrabLow
   midAttackTriggerName: GrabMiddle
@@ -1288,7 +1289,7 @@ MonoBehaviour:
   - InteractionType: 0
     animationTriggerName: 
   - InteractionType: 1
-    animationTriggerName: Default
+    animationTriggerName: DefaultInteraction
   - InteractionType: 2
     animationTriggerName: OpenDoor
   fidgetNames:
@@ -1296,6 +1297,7 @@ MonoBehaviour:
   - Fidget_02
   lowAttackHeightDifference: -0.25
   highAttackHeightDifference: 0.5
+  traversingThresholdName: 
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,
