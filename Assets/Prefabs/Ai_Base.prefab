@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightBlockingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   minWanderNearDistance: 2
   wanderNearDistance: 5
   minWanderFarDistance: 10
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteractionDistance: 10
-  reInteractTime: 30
+  reInteractTime: 45
 --- !u!114 &3922537950373188461
 MonoBehaviour:
   m_ObjectHideFlags: 0

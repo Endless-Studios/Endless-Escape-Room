@@ -948,7 +948,7 @@ PrefabInstance:
     - target: {fileID: 1080036828054471172, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: baseThreshold
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1224505149943912267, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
@@ -1010,11 +1010,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1760390034293458789, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: baseThreshold
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 2907165711407015998, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1024,11 +1019,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ai_Base
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476776795415583245, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: baseThreshold
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5322358426517698959, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
@@ -9824,6 +9814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Hidable] Wardrobe_01 (4)'
       objectReference: {fileID: 0}
+    - target: {fileID: 981221836932479685, guid: d213a2b42de899c4591abf933c1374dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4081178179190534977, guid: d213a2b42de899c4591abf933c1374dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -11020,6 +11015,8 @@ GameObject:
   - component: {fileID: 1340913986}
   - component: {fileID: 1340913985}
   - component: {fileID: 1340913987}
+  - component: {fileID: 5356936503546645331}
+  - component: {fileID: 5356936503546645330}
   m_Layer: 0
   m_Name: '[Interactable]_Interrogation Desk'
   m_TagString: Untagged
@@ -11027,6 +11024,41 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5356936503546645330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356936503546645329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: b361fb2bc61e35d4c8f8434c98dc2169, type: 2}
+--- !u!114 &5356936503546645331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356936503546645329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"PointOfInterest","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"Ai.PointOfInterest,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"Interacting
+      Entity","value":null,"typeHandle":{"Identification":"Ai.AiEntity, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 1340913986}
 --- !u!4 &5356936503701192598
 Transform:
   m_ObjectHideFlags: 0
