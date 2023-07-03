@@ -18,8 +18,9 @@ namespace Ai
         [SerializeField] private string midAttackTriggerName;
         [SerializeField] private string highAttackTriggerName;
         [SerializeField] private string pursueTriggerName;
+        [SerializeField] private string pursueShortTriggerName;
         [SerializeField] private string searchTriggerName;
-        [SerializeField] private string chasingBoolName;
+        [SerializeField] private string visualSweepTriggerName;
         [SerializeField] private List<InteractionAnimationPair> interactionAnimationPairs = new List<InteractionAnimationPair>();
         [SerializeField] private List<string> fidgetNames;
         [SerializeField] private float lowAttackHeightDifference;
@@ -35,8 +36,9 @@ namespace Ai
         private int midAttack;
         private int highAttack;
         private int pursue;
+        private int pursueShort;
         private int search;
-        private int chasing;
+        private int visualSweep;
         private int traversingThreshold;
         
         private int velX;
@@ -51,18 +53,19 @@ namespace Ai
             midAttack = Animator.StringToHash(midAttackTriggerName);
             highAttack = Animator.StringToHash(highAttackTriggerName);
             pursue = Animator.StringToHash(pursueTriggerName);
+            pursueShort = Animator.StringToHash(pursueShortTriggerName);
             search = Animator.StringToHash(searchTriggerName);
-            chasing = Animator.StringToHash(chasingBoolName);
-            entity.OnWalkingThroughDoorway += WalkThroughDoor;
+            visualSweep = Animator.StringToHash(visualSweepTriggerName);
+            traversingThreshold = Animator.StringToHash(traversingThresholdName);
+            velX = Animator.StringToHash("VelX");
+            velY = Animator.StringToHash("VelY");
             entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
             entity.OnStartedPursueAnimation.AddListener(HandleStartedPursueAnimation);
             entity.OnStartedSearchAnimation.AddListener(HandleStartedSearchAnimation);
-            velX = Animator.StringToHash("VelX");
-            velY = Animator.StringToHash("VelY");
+            entity.OnStartedVisualSweepAnimation.AddListener(HandleStartedVisualSweepAnimation);
             entity.OnWalkingThroughDoorway += WalkThroughDoor;
-            gameplayInfo.OnAwarenessStateChanged.AddListener(HandleAwarenessStateChanged);
-            traversingThreshold = Animator.StringToHash(traversingThresholdName);
-            
+            entity.OnWalkingThroughDoorway += WalkThroughDoor;
+
             //Translate the list to a dictionary for easier lookup and data validation
             for (int i = 0; i < interactionAnimationPairs.Count; i++)
             {
@@ -144,23 +147,22 @@ namespace Ai
 
         private void HandleStartedPursueAnimation()
         {
-            references.Animator.SetTrigger(pursue);
+            float distance = Vector3.Distance(gameplayInfo.Target.transform.position, entity.transform.position);
+            
+            if(distance > attributes.PursueAnimationThreshold)
+                references.Animator.SetTrigger(pursue);
+            else
+                references.Animator.SetTrigger(pursueShort);
         }
 
         private void HandleStartedSearchAnimation()
         {
             references.Animator.SetTrigger(search);
         }
-        
-        private IEnumerator FauxSearchAnimation()
-        {
-            yield return new WaitForSeconds(3f);
-            FinishedSearchAnimation();
-        }
 
-        private void HandleAwarenessStateChanged()
+        private void HandleStartedVisualSweepAnimation()
         {
-            references.Animator.SetBool(chasing, gameplayInfo.AiAwarenessState == AiAwarenessState.Pursuing);
+            references.Animator.SetTrigger(visualSweep);
         }
 
         /// <summary>
@@ -220,9 +222,20 @@ namespace Ai
             entity.FinishSearchAnimation();
         }
         
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
         public void FinishedFidgeting()
         {
             entity.FinishedFidgeting();
+        }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void FinishedVisualSweep()
+        {
+            entity.FinishVisualSweepAnimation();
         }
         
         private void Update()

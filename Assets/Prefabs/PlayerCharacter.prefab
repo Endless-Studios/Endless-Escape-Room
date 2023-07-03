@@ -360,7 +360,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  footStepVolumeAtMaxSpeed: 80
+  footStepVolumeAtMaxSpeed: 60
 --- !u!114 &5235216998997054313
 MonoBehaviour:
   m_ObjectHideFlags: 0

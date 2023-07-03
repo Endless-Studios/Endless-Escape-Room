@@ -22,6 +22,7 @@ namespace Ai
         [SerializeField] private float maxInteractionAngleDifference;
         [SerializeField] private float maxAngularSpeed;
         [SerializeField] private float attackDamage;
+        [SerializeField] private float shortPursueAnimationThreshold;
         [SerializeField] private float pursueAnimationThreshold;
 
         public LayerMask SightBlockingMask => sightBlockingMask;
@@ -37,6 +38,7 @@ namespace Ai
         public float MaxInteractionAngleDifference => maxInteractionAngleDifference;
         public float MaxAngularSpeed => maxAngularSpeed;
         public float AttackDamage => attackDamage;
+        public float ShortPursueAnimationThreshold => shortPursueAnimationThreshold;
         public float PursueAnimationThreshold => pursueAnimationThreshold;
     }
 }

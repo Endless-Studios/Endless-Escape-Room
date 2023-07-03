@@ -149,6 +149,12 @@ MonoBehaviour:
   OnFinishedSearchAnimation:
     m_PersistentCalls:
       m_Calls: []
+  OnStartedVisualSweepAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedVisualSweepAnimation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6432490834441837270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,8 +232,9 @@ MonoBehaviour:
   maxAttackAngleDifference: 60
   maxInteractionAngleDifference: 7.5
   maxAngularSpeed: 360
-  attackDamage: 0
-  pursueAnimationThreshold: 5
+  attackDamage: 1
+  shortPursueAnimationThreshold: 5
+  pursueAnimationThreshold: 10
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -605,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPerceivedDB: 20
+  minPerceivedDB: 40
 --- !u!1 &6461828906644631074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,8 +1290,9 @@ MonoBehaviour:
   midAttackTriggerName: GrabMiddle
   highAttackTriggerName: GrabHigh
   pursueTriggerName: AlertScream
-  searchTriggerName: Sniff
-  chasingBoolName: Chasing
+  pursueShortTriggerName: AlertShort
+  searchTriggerName: AlertHearing
+  visualSweepTriggerName: VisionSweep
   interactionAnimationPairs:
   - InteractionType: 0
     animationTriggerName: 
@@ -1297,7 +1305,7 @@ MonoBehaviour:
   - Fidget_02
   lowAttackHeightDifference: -0.25
   highAttackHeightDifference: 0.5
-  traversingThresholdName: 
+  traversingThresholdName: TraversingThreshold
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,
