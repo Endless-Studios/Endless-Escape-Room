@@ -23,6 +23,9 @@ namespace Ai
         }
     }
 
+    /// <summary>
+    /// Adds the player target to the standard stimulus
+    /// </summary>
     public class SightStimulus : Stimulus
     {
         public readonly PlayerTarget PlayerTarget;
@@ -33,6 +36,9 @@ namespace Ai
         }
     }
 
+    /// <summary>
+    /// Adds the SoundType and possible PointOfInterest to the standard stimulus
+    /// </summary>
     public class SoundStimulus : Stimulus
     {
         public readonly SoundType SoundType;
@@ -45,6 +51,9 @@ namespace Ai
         }
     }
 
+    /// <summary>
+    /// Doesn't add any new information other than the derived class type
+    /// </summary>
     public class ProximityStimulus : Stimulus
     {
         public ProximityStimulus(Vector3 position, float time, float value) : base(position, time, value, SenseKind.Proximity)

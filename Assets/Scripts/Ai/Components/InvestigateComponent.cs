@@ -135,11 +135,21 @@ namespace Ai
             }
         }
 
+        /// <summary>
+        /// Allows the AI State graph to check if the stimulus is a sound stimulus
+        /// </summary>
+        /// <param name="stimulus"></param>
+        /// <returns></returns>
         public bool IsSoundStimulus(Stimulus stimulus)
         {
             return stimulus is SoundStimulus;
         }
 
+        /// <summary>
+        /// Checks if the AI can see the source of a sound stimulus
+        /// </summary>
+        /// <param name="stimulus"></param>
+        /// <returns></returns>
         public bool CanSeeSoundStimulusSource(SoundStimulus stimulus)
         {
             if (stimulus.PointOfInterest is null)

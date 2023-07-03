@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Sound
 {
+    /// <summary>
+    /// Repeatedly emits a sound the Ai can hear with the given attributes and period between emissions
+    /// </summary>
     public class AiSoundRepeatingEmitter : MonoBehaviour
     {
         [SerializeField] private PointOfInterest pointOfInterest;
@@ -13,6 +16,9 @@ namespace Sound
 
         private Coroutine emitSoundRoutine;
 
+        /// <summary>
+        /// Starts emitting a sound continuously
+        /// </summary>
         public void StartEmittingSound()
         {
             if(emitSoundRoutine is not null)
@@ -21,6 +27,9 @@ namespace Sound
             emitSoundRoutine = StartCoroutine(EmitSoundRoutine());
         }
 
+        /// <summary>
+        /// Stops emitting sound.
+        /// </summary>
         public void StopEmittingSound()
         {
             if (emitSoundRoutine is null)

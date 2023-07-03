@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Ai;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.TextCore.Text;
 
 public class PlayerCore : MonoBehaviour
 {

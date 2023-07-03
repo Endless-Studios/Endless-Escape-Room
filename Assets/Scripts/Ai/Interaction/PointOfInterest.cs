@@ -25,11 +25,18 @@ namespace Ai
         public Quaternion InteractionRotation => interactionPointObject.transform.rotation;
         public Collider LineOfSightCollider => lineOfSightCollider;
         
+        /// <summary>
+        /// Invokes the OnAiInteracted event
+        /// </summary>
+        /// <param name="aiEntity"></param>
         public void AiInteract(AiEntity aiEntity)
         {
             OnAiInteracted.Invoke(aiEntity);
         }
 
+        /// <summary>
+        /// Invokes the OnInteractionInterrupted event
+        /// </summary>
         public void InteractionInterrupted()
         {
             OnInteractionInterrupted.Invoke();

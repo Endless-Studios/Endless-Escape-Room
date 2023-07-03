@@ -35,8 +35,6 @@ namespace Ai
         public AiAttributes Attributes => attributes;
         public GameplayInfo GameplayInfo => gameplayInfo;
         
-        
-
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
 
@@ -56,11 +54,17 @@ namespace Ai
             OnWalkedThroughDoorway?.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the AiInteracted event
+        /// </summary>
         public void AiInteracted()
         {
             OnAiInteracted?.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedInteraction event
+        /// </summary>
         public void FinishedInteraction()
         {
             OnFinishedInteraction?.Invoke();
@@ -147,31 +151,49 @@ namespace Ai
             OnReappear.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnStartedPursueAnimation event
+        /// </summary>
         public void StartPursueAnimation()
         {
             OnStartedPursueAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedPursueAnimation event
+        /// </summary>
         public void FinishPursueAnimation()
         {
             OnFinishedPursueAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnStartedSearchAnimation event
+        /// </summary>
         public void StartSearchAnimation()
         {
             OnStartedSearchAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedSearchAnimation event
+        /// </summary>
         public void FinishSearchAnimation()
         {
             OnFinishedSearchAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnStartedVisualSweepAnimation event
+        /// </summary>
         public void StartVisualSweepAnimation()
         {
             OnStartedVisualSweepAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedVisualSweepAnimation event
+        /// </summary>
         public void FinishVisualSweepAnimation()
         {
             OnFinishedVisualSweepAnimation.Invoke();
