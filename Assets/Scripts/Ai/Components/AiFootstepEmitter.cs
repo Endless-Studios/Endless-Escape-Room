@@ -4,6 +4,9 @@ using Random = UnityEngine.Random;
 
 namespace Ai
 {
+    /// <summary>
+    /// Plays audio clips when the Ai steps.
+    /// </summary>
     public class AiFootstepEmitter : AiComponent
     {
         [SerializeField] private AudioClip[] footstepAudioClips;
