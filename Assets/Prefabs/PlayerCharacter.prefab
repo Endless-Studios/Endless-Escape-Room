@@ -335,29 +335,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 5685148041957440190}
   controller: {fileID: 2419621909708617996}
-  strideTimeAtMaxSpeed: 0.25
+  strideTimeAtMaxSpeed: 0.35
+  strideTimeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   footStepDecibelsMaxSpeed: 60
   speedDecibelsCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
+      value: 0.50603485
       inSlope: 0.06273836
       outSlope: 0.06273836
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0.096185066
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1.8796324
-      outSlope: 1.8796324
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.05641234
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

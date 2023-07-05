@@ -12,6 +12,7 @@ namespace Sound
         [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private CharacterController controller;
         [SerializeField] private float strideTimeAtMaxSpeed;
+        [SerializeField] private AnimationCurve strideTimeCurve;
         [SerializeField] private float footStepDecibelsMaxSpeed;
         [SerializeField] private AnimationCurve speedDecibelsCurve;
         [SerializeField] AudioClip[] walkingFootSteps;
@@ -32,7 +33,7 @@ namespace Sound
                     {
                         speed = controller.velocity.magnitude;
                         speedPercentage = speed / characterMovement.MaximumLocomotionSpeed;
-                        elapsedTime += Time.deltaTime * speedPercentage;
+                        elapsedTime += Time.deltaTime * strideTimeCurve.Evaluate(speedPercentage);
                     }
                     yield return null;
                 }

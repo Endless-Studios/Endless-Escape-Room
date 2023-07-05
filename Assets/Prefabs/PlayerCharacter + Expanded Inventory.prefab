@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -85,43 +85,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: strideTimeAtMaxSpeed
-      value: 0.35
+      propertyPath: footstepTimingCurve.m_Curve.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[0].value
-      value: 0.50603485
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[1].time
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].inSlope
-      value: 0
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[0].inWeight
-      value: 0.33333334
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[0].inSlope
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[1].inSlope
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].outSlope
-      value: 0
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[0].outSlope
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[1].outSlope
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
-      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: footstepTimingCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 7485675807474701852, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
