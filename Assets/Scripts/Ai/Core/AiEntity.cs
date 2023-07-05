@@ -26,6 +26,7 @@ namespace Ai
         public UnityEvent OnFinishedPursueAnimation = new UnityEvent();
         public UnityEvent OnStartedSearchAnimation = new UnityEvent();
         public UnityEvent OnFinishedSearchAnimation = new UnityEvent();
+        public UnityEvent OnFootstep = new UnityEvent();
         
 
         public event Action OnWalkingThroughDoorway;
@@ -147,6 +148,10 @@ namespace Ai
         {
             OnFinishedSearchAnimation.Invoke();
         }
-        
+
+        public void OnStepped()
+        {
+            OnFootstep.Invoke();
+        }
     }
 }

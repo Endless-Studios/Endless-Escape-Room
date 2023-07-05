@@ -18,6 +18,7 @@ namespace Ai
         [SerializeField] private float smoothTime;
 
         public bool IsMoving { get; private set; }
+        public bool IsTraversingLink => isTraversingLink;
 
         public Vector3 LocalRelativeVelocity
         {

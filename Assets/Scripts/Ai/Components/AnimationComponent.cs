@@ -175,6 +175,14 @@ namespace Ai
         {
             entity.FinishedFidgeting();
         }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void OnFootstep()
+        {
+            entity.OnStepped();
+        }
         
         private void Update()
         {
