@@ -362,16 +362,17 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   walkingFootSteps:
-  - {fileID: 8300000, guid: 7e8fa54602ed47948b10ddde76f562b6, type: 3}
-  - {fileID: 8300000, guid: 39e91557cb258ba469f852044e56c38f, type: 3}
-  - {fileID: 8300000, guid: ab2f548b8bcdd0d4fa19f0719b2a4738, type: 3}
-  - {fileID: 8300000, guid: 08772700d510afa45b5d50f181be959c, type: 3}
+  - {fileID: 8300000, guid: 9faf02c8c8b95dc4a8527cdd92f15b44, type: 3}
+  - {fileID: 8300000, guid: 794e16fee78114442bf7cfcb2cadffbf, type: 3}
+  - {fileID: 8300000, guid: ff20e58ab6789e94bbf3c5198e0230b2, type: 3}
+  - {fileID: 8300000, guid: c579fc2893a32d14e904c42f3439dad3, type: 3}
+  - {fileID: 8300000, guid: e26680e81deed4248902a1f9ad44b126, type: 3}
   runningFootSteps:
-  - {fileID: 8300000, guid: 16bffb06410a76b48be83fd16d926693, type: 3}
-  - {fileID: 8300000, guid: 96ccb7fe06517144daca7aa98358d203, type: 3}
-  - {fileID: 8300000, guid: 02a086978c1768e4193116acbc4c27b0, type: 3}
-  - {fileID: 8300000, guid: 2bec91b0260edc94a94c08096463f788, type: 3}
-  - {fileID: 8300000, guid: ecdc26179f935634486cc9ce8264b339, type: 3}
+  - {fileID: 8300000, guid: 9faf02c8c8b95dc4a8527cdd92f15b44, type: 3}
+  - {fileID: 8300000, guid: 794e16fee78114442bf7cfcb2cadffbf, type: 3}
+  - {fileID: 8300000, guid: ff20e58ab6789e94bbf3c5198e0230b2, type: 3}
+  - {fileID: 8300000, guid: c579fc2893a32d14e904c42f3439dad3, type: 3}
+  - {fileID: 8300000, guid: e26680e81deed4248902a1f9ad44b126, type: 3}
   emitLocation: {fileID: 6682786392552947624}
 --- !u!114 &5235216998997054313
 MonoBehaviour:

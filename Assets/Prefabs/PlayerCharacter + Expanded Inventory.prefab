@@ -18,45 +18,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter + Expanded Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 2419621909708617998, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -16.518902
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.049999952
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5239117
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70710784
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -66,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2419621909708618035, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
@@ -77,6 +82,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: strideTimeAtMaxSpeed
+      value: 0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[0].value
+      value: 0.50603485
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
+        type: 3}
+      propertyPath: speedDecibelsCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 7485675807474701852, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
