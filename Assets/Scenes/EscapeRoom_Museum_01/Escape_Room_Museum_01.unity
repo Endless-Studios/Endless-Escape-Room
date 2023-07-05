@@ -33960,11 +33960,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter + Expanded Inventory
       objectReference: {fileID: 0}
-    - target: {fileID: 274739890655059032, guid: 6671c50d70b4a5345b8297fb7d8065d8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 274739890655059045, guid: 6671c50d70b4a5345b8297fb7d8065d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -52123,7 +52118,7 @@ PrefabInstance:
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.19
+      value: -2.857
       objectReference: {fileID: 0}
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
@@ -52133,7 +52128,7 @@ PrefabInstance:
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.7
+      value: 3.991
       objectReference: {fileID: 0}
     - target: {fileID: 1626646627048455303, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
