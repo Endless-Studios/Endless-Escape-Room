@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
       propertyPath: strideTimeAtMaxSpeed
-      value: 0.056
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
         type: 3}
