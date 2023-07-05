@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1779673427
 Transform:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 0.005
-  m_Range: 0.3
+  m_Range: 3.39
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -377,6 +377,7 @@ MonoBehaviour:
   focusCamera: {fileID: 1861533545}
   showMouseWhileFocused: 1
   allowUnfocusKey: 1
+  priorityFocus: 0
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
@@ -640,6 +641,135 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+--- !u!1 &1721858875076436327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5253017255183696487}
+  - component: {fileID: 1601435639404791706}
+  m_Layer: 0
+  m_Name: Fail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5253017255183696487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721858875076436327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5732506859434508851}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1601435639404791706
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721858875076436327}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6629897047612936458, guid: c8b630e9d4294f44489761944451de00,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 708941d5f1487c947a2655b1abfcd76c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5461143638825901150
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +955,7 @@ GameObject:
   - component: {fileID: 5732506859434508845}
   - component: {fileID: 1362980466}
   - component: {fileID: 1362980467}
+  - component: {fileID: 8700645779034087050}
   m_Layer: 0
   m_Name: '[Interactable]_Keypad Code'
   m_TagString: Untagged
@@ -849,8 +980,10 @@ Transform:
   - {fileID: 1861533546}
   - {fileID: 1779673427}
   - {fileID: 1892861095}
+  - {fileID: 7711524432635472581}
+  - {fileID: 5253017255183696487}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5732506859434508850
 MonoBehaviour:
@@ -951,6 +1084,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7159204330414207501}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
       m_Calls: []
@@ -973,6 +1118,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1601435639404791706}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1086,6 +1243,172 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8700645779034087050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5732506859434508844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08483522f4dae7f4abc5d7d6f154063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 5732506859434508851}
+  soundClips:
+  - {fileID: 8300000, guid: f3530dcce214f95449467a42cf249eb2, type: 3}
+  - {fileID: 8300000, guid: 28e4f08b7a30d3841a41c09236e76cbe, type: 3}
+  - {fileID: 8300000, guid: 5f09a562038bcec40b6f76ff010b5bb0, type: 3}
+  - {fileID: 8300000, guid: 1774eb505d1a3dc4abc1d6de37e5d8ce, type: 3}
+  - {fileID: 8300000, guid: 804c6a163250a3245bdc84c3987c6d69, type: 3}
+  - {fileID: 8300000, guid: 7de55def8e14d7d498058ab4ddc359ab, type: 3}
+  - {fileID: 8300000, guid: 6ec48b70f206b8d46b2dab6b1283599d, type: 3}
+  - {fileID: 8300000, guid: a9dcbcbaf2ce28c4d9672ee226925fa0, type: 3}
+  - {fileID: 8300000, guid: e12fa01fd6a35d246a8f133cb0a4ceee, type: 3}
+  - {fileID: 8300000, guid: 1218d44187b38a34aaa577a7fc404ce6, type: 3}
+  - {fileID: 8300000, guid: 0c727264e5a672d4498793aa803c0f81, type: 3}
+  - {fileID: 8300000, guid: a740176bcb62d24458d30898eeedfe64, type: 3}
+  - {fileID: 8300000, guid: 9ae497bd05b5ebc44aa56ff567ca1c8b, type: 3}
+  - {fileID: 8300000, guid: 4ebdfa0b3b2283e47a95b08d5db036a1, type: 3}
+  - {fileID: 8300000, guid: 6e5eaefeb8e82fc4aa4e78bcd8a65736, type: 3}
+  - {fileID: 8300000, guid: 5ffdb19614335fe4ead99e3d1b0ba427, type: 3}
+  - {fileID: 8300000, guid: b2cba8d8ebc99664bb54650d16645fd7, type: 3}
+  - {fileID: 8300000, guid: 38473de25e43d2144928a7b31951f1e4, type: 3}
+  - {fileID: 8300000, guid: 573e14f228ef1164a8341399d4e331a2, type: 3}
+  - {fileID: 8300000, guid: a2c859e185f553643830752da98277aa, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &7907258445308867403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7711524432635472581}
+  - component: {fileID: 7159204330414207501}
+  m_Layer: 0
+  m_Name: Success
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7711524432635472581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907258445308867403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5732506859434508851}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7159204330414207501
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907258445308867403}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6629897047612936458, guid: c8b630e9d4294f44489761944451de00,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 6a5c110ba6ee0d649b4af4990f00e8b7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &5732506859789959363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1189,11 +1512,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2953657871101167496, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506858880345868}
+      addedObject: {fileID: 5732506858880345871}
     - targetCorrespondingSourceObject: {fileID: -2953657871101167496, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506858880345871}
+      addedObject: {fileID: 5732506858880345868}
     - targetCorrespondingSourceObject: {fileID: 7018632749333906166, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
@@ -1213,11 +1536,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5972801696013721907, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506858321481728}
+      addedObject: {fileID: 5732506858321481731}
     - targetCorrespondingSourceObject: {fileID: 5972801696013721907, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506858321481731}
+      addedObject: {fileID: 5732506858321481728}
     - targetCorrespondingSourceObject: {fileID: -5057265001616847726, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
@@ -1225,11 +1548,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5057265001616847726, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506859789959372}
+      addedObject: {fileID: 5732506859789959375}
     - targetCorrespondingSourceObject: {fileID: -5057265001616847726, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506859789959375}
+      addedObject: {fileID: 5732506859789959372}
     - targetCorrespondingSourceObject: {fileID: 740264952218998687, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
@@ -1285,11 +1608,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -1906905234548473973, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506858964232972}
+      addedObject: {fileID: 5732506858964232975}
     - targetCorrespondingSourceObject: {fileID: -1906905234548473973, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5732506858964232975}
+      addedObject: {fileID: 5732506858964232972}
     - targetCorrespondingSourceObject: {fileID: 8667027226157094043, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
@@ -1309,11 +1632,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4150011731940279767, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6870400895486003515}
+      addedObject: {fileID: 7500794418999800425}
     - targetCorrespondingSourceObject: {fileID: -4150011731940279767, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7500794418999800425}
+      addedObject: {fileID: 6870400895486003515}
     - targetCorrespondingSourceObject: {fileID: -2757062222868406239, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
@@ -1321,11 +1644,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2757062222868406239, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2953432804766836848}
+      addedObject: {fileID: 7385285222862660077}
     - targetCorrespondingSourceObject: {fileID: -2757062222868406239, guid: af8b1fde3ffd2334eac82d580e26dff5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7385285222862660077}
+      addedObject: {fileID: 2953432804766836848}
   m_SourcePrefab: {fileID: 100100000, guid: af8b1fde3ffd2334eac82d580e26dff5, type: 3}
 --- !u!4 &368740090972257823 stripped
 Transform:
@@ -1372,41 +1695,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.026080377, y: 0.028543364, z: 0.00566829}
   m_Center: {x: -0.0000000037252903, y: -0.0000000018626451, z: -0.0000000018626451}
---- !u!114 &6870400895486003515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713194698398481130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab412b21bd7cd9e438a1354532dec40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationTime: 0.07
-  finalLocalPosition: {x: 0, y: 0, z: -0.02}
-  finalLocalRotation: {x: 0, y: 0, z: 0}
-  finalLocalScale: {x: 1, y: 1, z: 1}
-  targetTransform: {fileID: 3116972963799560251}
-  OnAnimationFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6870400895486003515}
-        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Reverse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnReverseAnimationFinished:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7500794418999800425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +1737,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6870400895486003515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713194698398481130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab412b21bd7cd9e438a1354532dec40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 0.07
+  finalLocalPosition: {x: 0, y: 0, z: -0.02}
+  finalLocalRotation: {x: 0, y: 0, z: 0}
+  finalLocalScale: {x: 1, y: 1, z: 1}
+  targetTransform: {fileID: 3116972963799560251}
+  OnAnimationFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6870400895486003515}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Reverse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnReverseAnimationFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1599066050962579682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2757062222868406239, guid: af8b1fde3ffd2334eac82d580e26dff5,
@@ -1476,41 +1811,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.026080372, y: 0.028543364, z: 0.00566829}
   m_Center: {x: 9.313226e-10, y: -0.0000000018626451, z: -0.0000000018626451}
---- !u!114 &2953432804766836848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599066050962579682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab412b21bd7cd9e438a1354532dec40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationTime: 0.07
-  finalLocalPosition: {x: 0, y: 0, z: -0.02}
-  finalLocalRotation: {x: 0, y: 0, z: 0}
-  finalLocalScale: {x: 1, y: 1, z: 1}
-  targetTransform: {fileID: 6492999023816969602}
-  OnAnimationFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2953432804766836848}
-        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Reverse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnReverseAnimationFinished:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7385285222862660077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,6 +1853,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2953432804766836848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599066050962579682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab412b21bd7cd9e438a1354532dec40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 0.07
+  finalLocalPosition: {x: 0, y: 0, z: -0.02}
+  finalLocalRotation: {x: 0, y: 0, z: 0}
+  finalLocalScale: {x: 1, y: 1, z: 1}
+  targetTransform: {fileID: 6492999023816969602}
+  OnAnimationFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2953432804766836848}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Reverse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnReverseAnimationFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1769786342864009403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2953657871101167496, guid: af8b1fde3ffd2334eac82d580e26dff5,
@@ -1580,6 +1927,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012, y: 0.012, z: 0.012}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5732506858880345871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769786342864009403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  interactPromptText: Press 0
+  itemName: 
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5732506859434508850}
+        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
+        m_MethodName: AddToCurrentInput
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 0
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5732506858880345868}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5732506858880345868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1615,48 +2016,6 @@ MonoBehaviour:
   OnReverseAnimationFinished:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5732506858880345871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769786342864009403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5732506859434508850}
-        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
-        m_MethodName: AddToCurrentInput
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 0
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5732506858880345868}
-        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Animate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &2120724707467256304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5972801696013721907, guid: af8b1fde3ffd2334eac82d580e26dff5,
@@ -1684,6 +2043,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012, y: 0.012, z: 0.012}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5732506858321481731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120724707467256304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  interactPromptText: Press 2
+  itemName: 2
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5732506859434508850}
+        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
+        m_MethodName: AddToCurrentInput
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 2
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5732506858321481728}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5732506858321481728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,42 +2129,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnReverseAnimationFinished:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5732506858321481731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120724707467256304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5732506859434508850}
-        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
-        m_MethodName: AddToCurrentInput
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 2
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5732506858321481728}
+      - m_Target: {fileID: 5732506859434508844}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Animate
+        m_MethodName: Reverse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1761,6 +2141,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnReverseAnimationFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2511646758522926369 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7878728648931440098, guid: af8b1fde3ffd2334eac82d580e26dff5,
@@ -1801,8 +2184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
+  interactPromptText: Press 7
+  itemName: 7
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -1821,6 +2204,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506858200001555}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1898,6 +2293,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012, y: 0.012, z: 0.012}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5732506858964232975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027750832643964744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  interactPromptText: Press 8
+  itemName: 8
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5732506859434508850}
+        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
+        m_MethodName: AddToCurrentInput
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 8
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5732506858964232972}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5732506858964232972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,48 +2382,6 @@ MonoBehaviour:
   OnReverseAnimationFinished:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5732506858964232975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027750832643964744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5732506859434508850}
-        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
-        m_MethodName: AddToCurrentInput
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 8
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5732506858964232972}
-        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Animate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &3075628447704474974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7287711893622859165, guid: af8b1fde3ffd2334eac82d580e26dff5,
@@ -2027,7 +2434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  interactPromptText: Press 1
+  interactPromptText: Press *
   itemName: '*'
   OnInteracted:
     m_PersistentCalls:
@@ -2047,6 +2454,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506859789959379}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2131,8 +2550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
+  interactPromptText: Press 6
+  itemName: 6
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -2151,6 +2570,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506858883267773}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2264,6 +2695,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5732506858897186407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,6 +2728,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5732506858897186407}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Reverse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5732506859434508844}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Reverse
         m_Mode: 1
@@ -2359,6 +2814,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506858306208030}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2449,7 +2916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  interactPromptText: Press 1
+  interactPromptText: Press #
   itemName: '#'
   OnInteracted:
     m_PersistentCalls:
@@ -2469,6 +2936,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506858106097266}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2553,8 +3032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
+  interactPromptText: Press 4
+  itemName: 4
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -2573,6 +3052,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506859514864114}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2687,8 +3178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
+  interactPromptText: Press 5
+  itemName: 5
   OnInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -2707,6 +3198,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5732506859329784017}
         m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
         m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2784,6 +3287,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012, y: 0.012, z: 0.012}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5732506859789959375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528983007642094673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  interactPromptText: Press 3
+  itemName: 
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5732506859434508850}
+        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
+        m_MethodName: AddToCurrentInput
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 3
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5732506859789959372}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8700645779034087050}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5732506859789959372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2819,48 +3376,6 @@ MonoBehaviour:
   OnReverseAnimationFinished:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5732506859789959375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528983007642094673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7cc2ea693579c345bec8b6772a39eb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
-  interactPromptText: Press 1
-  itemName: 
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5732506859434508850}
-        m_TargetAssemblyTypeName: PasswordPuzzle, Assembly-CSharp
-        m_MethodName: AddToCurrentInput
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 3
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5732506859789959372}
-        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Animate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &8979123759798907957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5543449685738375946, guid: af8b1fde3ffd2334eac82d580e26dff5,
