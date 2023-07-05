@@ -11326,7 +11326,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487168521}
-  - component: {fileID: 487168520}
   m_Layer: 0
   m_Name: InspectableSliderPuzzle
   m_TagString: Untagged
@@ -11334,32 +11333,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &487168520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487168519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412824ccaf466fb4fa3ef9f401882792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
-  interactPromptText: 
-  itemName: 
-  OnInteracted:
-    m_PersistentCalls:
-      m_Calls: []
-  inspectionDefaultRotation: {x: 0, y: 0, z: 0}
-  inspectDistance: 0
-  OnInspectionStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnInspectionEnded:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &487168521
 Transform:
   m_ObjectHideFlags: 0

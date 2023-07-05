@@ -36,6 +36,75 @@ Transform:
   m_Father: {fileID: 8920078397255550032}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &2677367612697822516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995878090611719820}
+  - component: {fileID: 4277714818693024162}
+  m_Layer: 0
+  m_Name: Dials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995878090611719820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677367612697822516}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0.0000029504295}
+  m_LocalPosition: {x: -0.5572778, y: -2.603033, z: -4.3826237}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8920078397255550032}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4277714818693024162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677367612697822516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08483522f4dae7f4abc5d7d6f154063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 995878090611719820}
+  soundClips:
+  - {fileID: 8300000, guid: f3530dcce214f95449467a42cf249eb2, type: 3}
+  - {fileID: 8300000, guid: 28e4f08b7a30d3841a41c09236e76cbe, type: 3}
+  - {fileID: 8300000, guid: 5f09a562038bcec40b6f76ff010b5bb0, type: 3}
+  - {fileID: 8300000, guid: 1774eb505d1a3dc4abc1d6de37e5d8ce, type: 3}
+  - {fileID: 8300000, guid: 804c6a163250a3245bdc84c3987c6d69, type: 3}
+  - {fileID: 8300000, guid: 7de55def8e14d7d498058ab4ddc359ab, type: 3}
+  - {fileID: 8300000, guid: 6ec48b70f206b8d46b2dab6b1283599d, type: 3}
+  - {fileID: 8300000, guid: a9dcbcbaf2ce28c4d9672ee226925fa0, type: 3}
+  - {fileID: 8300000, guid: e12fa01fd6a35d246a8f133cb0a4ceee, type: 3}
+  - {fileID: 8300000, guid: 1218d44187b38a34aaa577a7fc404ce6, type: 3}
+  - {fileID: 8300000, guid: 0c727264e5a672d4498793aa803c0f81, type: 3}
+  - {fileID: 8300000, guid: a740176bcb62d24458d30898eeedfe64, type: 3}
+  - {fileID: 8300000, guid: 9ae497bd05b5ebc44aa56ff567ca1c8b, type: 3}
+  - {fileID: 8300000, guid: 4ebdfa0b3b2283e47a95b08d5db036a1, type: 3}
+  - {fileID: 8300000, guid: 6e5eaefeb8e82fc4aa4e78bcd8a65736, type: 3}
+  - {fileID: 8300000, guid: 5ffdb19614335fe4ead99e3d1b0ba427, type: 3}
+  - {fileID: 8300000, guid: b2cba8d8ebc99664bb54650d16645fd7, type: 3}
+  - {fileID: 8300000, guid: 38473de25e43d2144928a7b31951f1e4, type: 3}
+  - {fileID: 8300000, guid: 573e14f228ef1164a8341399d4e331a2, type: 3}
+  - {fileID: 8300000, guid: a2c859e185f553643830752da98277aa, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2745514835690745831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1202,7 @@ GameObject:
   - component: {fileID: 8920078397255550032}
   - component: {fileID: 2102239053841541975}
   - component: {fileID: 8920078397255550046}
+  - component: {fileID: 9169787152233698392}
   m_Layer: 8
   m_Name: '[Interactable]_Briefcase'
   m_TagString: Untagged
@@ -1154,6 +1224,7 @@ Transform:
   m_Children:
   - {fileID: 8953373178179851270}
   - {fileID: 863883129418280811}
+  - {fileID: 995878090611719820}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1194,6 +1265,9 @@ MonoBehaviour:
   OnDropped:
     m_PersistentCalls:
       m_Calls: []
+  OnDroppedInternal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8920078397255550046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,6 +1295,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9169787152233698392}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnUncompleted:
     m_PersistentCalls:
       m_Calls: []
@@ -1236,6 +1322,23 @@ MonoBehaviour:
   - {fileID: 8920078397068564294}
   - {fileID: 8920078396703760473}
   - {fileID: 8920078397002928714}
+--- !u!114 &9169787152233698392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920078397255550047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 8920078397255550032}
+  soundClip: {fileID: 8300000, guid: 93717ae5feec80341994cc85bf34c49f, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8920078396706714605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1523,10 +1626,34 @@ MonoBehaviour:
   itemName: 
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractStopped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishedRotation:
     m_PersistentCalls:
       m_Calls: []
@@ -1636,10 +1763,34 @@ MonoBehaviour:
   itemName: 
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractStopped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishedRotation:
     m_PersistentCalls:
       m_Calls: []
@@ -1720,10 +1871,34 @@ MonoBehaviour:
   itemName: 
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractStopped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishedRotation:
     m_PersistentCalls:
       m_Calls: []
@@ -1804,10 +1979,34 @@ MonoBehaviour:
   itemName: 
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractStopped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishedRotation:
     m_PersistentCalls:
       m_Calls: []
@@ -1873,10 +2072,34 @@ MonoBehaviour:
   itemName: 
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractStopped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishedRotation:
     m_PersistentCalls:
       m_Calls: []
@@ -1885,7 +2108,19 @@ MonoBehaviour:
       m_Calls: []
   OnRotationChangeDelta:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   targetTransform: {fileID: 8189745491141114331}
   rotationSpeed: 5
   rotationAxis: 0
@@ -1984,10 +2219,34 @@ MonoBehaviour:
   itemName: 
   OnInteracted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractStopped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4277714818693024162}
+        m_TargetAssemblyTypeName: PooledSoundRandomPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFinishedRotation:
     m_PersistentCalls:
       m_Calls: []
