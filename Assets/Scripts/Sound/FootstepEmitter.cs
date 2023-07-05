@@ -29,7 +29,7 @@ namespace Sound
             {
                 while(elapsedTime < strideTimeAtMaxSpeed)
                 {//Wait until enough time has passed while moving before playing the sound
-                    if(characterMovement.IsGrounded)
+                    if(controller.enabled && characterMovement.IsGrounded)
                     {
                         speed = controller.velocity.magnitude;
                         speedPercentage = speed / characterMovement.MaximumLocomotionSpeed;
