@@ -73,6 +73,9 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     public float MaximumLocomotionSpeed => walkSpeed * sprintSpeedMultiplier;
 
+    public float WalkSpeed => walkSpeed;
+    public bool IsGrounded => isGrounded;
+
     Transform connectedMovingPlatform;
     Vector3 connectedMovingPlatformPreviousPosition;
 

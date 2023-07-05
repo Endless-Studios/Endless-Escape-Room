@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Sound
 {
@@ -9,25 +11,47 @@ namespace Sound
     {
         [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private CharacterController controller;
-        [SerializeField] private float strideTime;
-        [SerializeField] private AnimationCurve curve;
-        [SerializeField] private float footStepVolumeAtMaxSpeed;
+        [SerializeField] private float strideTimeAtMaxSpeed;
+        [SerializeField] private float footStepDecibelsMaxSpeed;
+        [SerializeField] private AnimationCurve speedDecibelsCurve;
+        [SerializeField] AudioClip[] walkingFootSteps;
+        [SerializeField] AudioClip[] runningFootSteps;
+        [SerializeField] Transform emitLocation;
 
-        private float nextStepTime;
-
-        public void Update()
+        public IEnumerator Start()
         {
-            if (Time.time < nextStepTime)
-                return;
+            float elapsedTime = 0;
+            float speed = 0;
+            float speedPercentage = 0;
 
-            float velocityMagnitude = controller.velocity.magnitude;
-            float speedValue = velocityMagnitude / characterMovement.MaximumLocomotionSpeed;
-            float volume = footStepVolumeAtMaxSpeed * curve.Evaluate(speedValue);
+            while(true)
+            {
+                while(elapsedTime < strideTimeAtMaxSpeed)
+                {//Wait until enough time has passed while moving before playing the sound
+                    if(characterMovement.IsGrounded)
+                    {
+                        speed = controller.velocity.magnitude;
+                        speedPercentage = speed / characterMovement.MaximumLocomotionSpeed;
+                        elapsedTime += Time.deltaTime * speedPercentage;
+                    }
+                    yield return null;
+                }
 
-            //TODO: Add code to sample surfaces and modify the clip played and the dB of the clip based on the surface
-            EmittedSoundData soundData = new EmittedSoundData(transform.position, volume, SoundType.PlayerGenerated);
-            AiSound.Instance.EmitSound(soundData);
-            nextStepTime = Time.time + strideTime;
+                float finalAiDecibles = footStepDecibelsMaxSpeed * speedDecibelsCurve.Evaluate(speedPercentage);
+
+                //TODO: Add code to sample surfaces and modify the clip played and the dB of the clip based on the surface
+                EmittedSoundData soundData = new EmittedSoundData(emitLocation.position, finalAiDecibles, SoundType.PlayerGenerated);
+                AiSound.Instance.EmitSound(soundData);
+
+                AudioClip audioClipToUse = null;
+                if(speed > characterMovement.WalkSpeed)
+                    audioClipToUse = runningFootSteps[Random.Range(0, runningFootSteps.Length)];
+                else
+                    audioClipToUse = walkingFootSteps[Random.Range(0, walkingFootSteps.Length)];
+
+                SoundPoolManager.Instance.PlaySoundAtPosition(emitLocation.position, audioClipToUse, speedDecibelsCurve.Evaluate(speedPercentage));
+                elapsedTime -= strideTimeAtMaxSpeed;
+            }
         }
     }
 }

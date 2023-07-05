@@ -14,16 +14,17 @@ namespace Sound
 
         private List<AudioSource> audioSourcePool = new List<AudioSource>();
 
-        public void PlaySoundAtPosition(Vector3 position, AudioClip clip)
+        public void PlaySoundAtPosition(Vector3 position, AudioClip clip, float volume = 1)
         {
             //PlayClip from pooled audio source
-            AudioSource useAudioSource = GetAvailableAudioSource();
-            useAudioSource.transform.position = position;
-            useAudioSource.clip = clip;
-            useAudioSource.Play();
+            AudioSource audioSource = GetAvailableAudioSource();
+            audioSource.transform.position = position;
+            audioSource.clip = clip;
+            audioSource.volume = volume;
+            audioSource.Play();
 
             //Schedule pooling
-            StartCoroutine(AddAudioSourceToPoolAfterDelay(useAudioSource, clip.length));
+            StartCoroutine(AddAudioSourceToPoolAfterDelay(audioSource, clip.length));
         }
 
         private AudioSource GetAvailableAudioSource()
