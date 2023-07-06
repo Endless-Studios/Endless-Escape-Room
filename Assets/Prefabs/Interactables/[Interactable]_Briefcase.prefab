@@ -77,10 +77,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2677367612697822516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08483522f4dae7f4abc5d7d6f154063d, type: 3}
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundPositionTransform: {fileID: 995878090611719820}
+  soundClip: {fileID: 0}
   soundClips:
   - {fileID: 8300000, guid: f3530dcce214f95449467a42cf249eb2, type: 3}
   - {fileID: 8300000, guid: 28e4f08b7a30d3841a41c09236e76cbe, type: 3}
@@ -1335,7 +1336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPositionTransform: {fileID: 8920078397255550032}
-  soundClip: {fileID: 8300000, guid: 93717ae5feec80341994cc85bf34c49f, type: 3}
+  soundClip: {fileID: 0}
+  soundClips:
+  - {fileID: 8300000, guid: 93717ae5feec80341994cc85bf34c49f, type: 3}
   OnSoundPlayedAtPosition:
     m_PersistentCalls:
       m_Calls: []
