@@ -63,10 +63,21 @@ namespace Ai
         }
 
         /// <summary>
+        /// Caches the interaction target and informs if of the interaction
+        /// </summary>
+        /// <param name="pointOfInterest"></param>
+        public void StartInteraction(PointOfInterest pointOfInterest)
+        {
+            gameplayInfo.CurrentInteraction = pointOfInterest;
+            pointOfInterest.AiInteract(this);
+        }
+
+        /// <summary>
         /// Invokes the OnFinishedInteraction event
         /// </summary>
         public void FinishedInteraction()
         {
+            gameplayInfo.CurrentInteraction = null;
             OnFinishedInteraction?.Invoke();
         }
 
@@ -75,6 +86,10 @@ namespace Ai
         /// </summary>
         public void FinishedInteractionAnimation()
         {
+            if(gameplayInfo.CurrentInteraction != null)
+            {
+                gameplayInfo.CurrentInteraction.AiAnimationInteractionEvent(this);
+            }
             OnFinishedInteractionAnimation?.Invoke();
         }
 

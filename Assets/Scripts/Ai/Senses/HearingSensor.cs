@@ -33,7 +33,8 @@ namespace Ai
                     Time.time,
                     Mathf.Clamp(perceivedDB, 0, 60), 
                     soundData.SoundKind,
-                    soundData.SourceObject
+                    soundData.SourceObject,
+                    soundData.LineOfSightCollider
                 );
                 SensedStimulus(stimulus);
             }

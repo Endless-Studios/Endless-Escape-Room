@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Ai
 {
@@ -8,6 +9,7 @@ namespace Ai
     /// This class provides information to the Ai about the various things it can interact with in the scene,
     /// it also provides the positions, rotations, and kind of interactions necessary to do so.
     /// </summary>
+    [SelectionBase]
     public class PointOfInterest : MonoBehaviour
     {
         /// <summary>
@@ -15,23 +17,35 @@ namespace Ai
         /// </summary>
         public static readonly List<PointOfInterest> PointsOfInterest = new List<PointOfInterest>();
         
-        [SerializeField] private GameObject interactionPointObject;
-        [SerializeField] private Collider lineOfSightCollider;
+        [Tooltip("The AI will stand at this position/rotation to interact with this object")]
+        [SerializeField] private GameObject aiInteractionTransform;
+        [SerializeField] private InteractionType interactionType;
+        [SerializeField] bool finishInteractionAutomatically = true;
 
         public UnityEvent<AiEntity> OnAiInteracted = new UnityEvent<AiEntity>();
+        public UnityEvent<AiEntity> OnAiInteractionAnimation = new UnityEvent<AiEntity>();
         public UnityEvent OnInteractionInterrupted = new UnityEvent();
         
-        public Vector3 InteractionPoint => interactionPointObject.transform.position;
-        public Quaternion InteractionRotation => interactionPointObject.transform.rotation;
-        public Collider LineOfSightCollider => lineOfSightCollider;
-        
+        public Vector3 InteractionPoint => aiInteractionTransform.transform.position;
+        public Quaternion InteractionRotation => aiInteractionTransform.transform.rotation;
+
         /// <summary>
         /// Invokes the OnAiInteracted event
         /// </summary>
         /// <param name="aiEntity"></param>
-        public void AiInteract(AiEntity aiEntity)
+        internal void AiInteract(AiEntity aiEntity)
         {
+            aiEntity.References.AnimationComponent.PlayInteractionAnimation(interactionType);
             OnAiInteracted.Invoke(aiEntity);
+            if(interactionType == InteractionType.None && finishInteractionAutomatically)
+                aiEntity.FinishedInteraction();
+        }
+
+        internal void AiAnimationInteractionEvent(AiEntity aiEntity)
+        {
+            if(finishInteractionAutomatically)
+                aiEntity.FinishedInteraction();
+            OnAiInteractionAnimation.Invoke(aiEntity);
         }
 
         /// <summary>

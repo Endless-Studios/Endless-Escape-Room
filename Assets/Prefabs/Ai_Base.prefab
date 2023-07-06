@@ -1299,7 +1299,7 @@ MonoBehaviour:
   - InteractionType: 1
     animationTriggerName: DefaultInteraction
   - InteractionType: 2
-    animationTriggerName: OpenDoor
+    animationTriggerName: DefaultInteraction
   fidgetNames:
   - Fidget_01
   - Fidget_02

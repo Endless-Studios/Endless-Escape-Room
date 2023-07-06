@@ -43,11 +43,13 @@ namespace Ai
     {
         public readonly SoundType SoundType;
         public readonly PointOfInterest PointOfInterest;
-        
-        public SoundStimulus(Vector3 position, float time, float value, SoundType soundType, PointOfInterest pointOfInterest) : base(position, time, value, SenseKind.Hearing)
+        public readonly Collider LineOfSightCollider;
+
+        public SoundStimulus(Vector3 position, float time, float value, SoundType soundType, PointOfInterest pointOfInterest, Collider lineOfSightCollider) : base(position, time, value, SenseKind.Hearing)
         {
             SoundType = soundType;
             PointOfInterest = pointOfInterest;
+            LineOfSightCollider = lineOfSightCollider;
         }
     }
 

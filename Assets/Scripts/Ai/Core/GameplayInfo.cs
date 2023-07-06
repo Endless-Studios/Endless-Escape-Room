@@ -11,6 +11,7 @@ namespace Ai
     public class GameplayInfo : MonoBehaviour
     {
         [SerializeField] private float targetMemoryTime;
+        [ShowOnly] public PointOfInterest CurrentInteraction;
         [ShowOnly] public PointOfInterest CurrentPointOfInterest;
         [ShowOnly] public Hideout TargetHideout;
         [ShowOnly, SerializeField] private PlayerTarget target;

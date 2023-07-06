@@ -93,8 +93,8 @@ namespace Ai
         /// <param name="pointOfInterest"></param>
         public void InteractWithPointOfInterest(PointOfInterest pointOfInterest)
         {
-            pointOfInterest.AiInteract(entity);
             recentInteractions.Add(new Interaction(pointOfInterest, Time.time));
+            entity.StartInteraction(pointOfInterest);
         }
 
         private void Update()

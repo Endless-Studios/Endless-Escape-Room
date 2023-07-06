@@ -9,6 +9,7 @@ namespace Sound
     public class AiSoundEmitter : MonoBehaviour
     {
         [SerializeField] private PointOfInterest pointOfInterest;
+        [SerializeField] private Collider lineOfSightCollider;
         [SerializeField] private float soundDecibels;
         [SerializeField] private SoundType soundKind;
 
@@ -18,8 +19,7 @@ namespace Sound
         [ContextMenu("Emit Sound")]
         public void EmitSound()
         {
-            EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, pointOfInterest);
-            AiSound.Instance.EmitSound(soundData);
+            EmitSound(transform.position);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Sound
         /// <param name="position"></param>
         public void EmitSound(Vector3 position)
         {
-            EmittedSoundData soundData = new EmittedSoundData(position, soundDecibels, soundKind, pointOfInterest);
+            EmittedSoundData soundData = new EmittedSoundData(position, soundDecibels, soundKind, pointOfInterest, lineOfSightCollider);
             AiSound.Instance.EmitSound(soundData);
         }
     }

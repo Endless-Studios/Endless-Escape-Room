@@ -155,10 +155,10 @@ namespace Ai
             if (stimulus.PointOfInterest is null)
                 return false;
 
-            Collider collider = stimulus.PointOfInterest.LineOfSightCollider;
+            Collider collider = stimulus.LineOfSightCollider;
 
             Vector3 startingPos = references.SightSensor.transform.position;
-            Vector3 targetPos = stimulus.PointOfInterest.LineOfSightCollider.bounds.center;
+            Vector3 targetPos = stimulus.LineOfSightCollider.bounds.center;
             Vector3 toVector = targetPos - startingPos;
             
             bool didHit = Physics.Raycast(startingPos, toVector.normalized, out RaycastHit hit, toVector.magnitude, interactionPointMask);

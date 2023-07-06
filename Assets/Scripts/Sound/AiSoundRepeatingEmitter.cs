@@ -10,6 +10,7 @@ namespace Sound
     public class AiSoundRepeatingEmitter : MonoBehaviour
     {
         [SerializeField] private PointOfInterest pointOfInterest;
+        [SerializeField] private Collider lineOfSightCollider;
         [SerializeField] private float soundDecibels;
         [SerializeField] private SoundType soundKind;
         [SerializeField] private float period;
@@ -43,7 +44,7 @@ namespace Sound
         {
             while (true)
             {
-                EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, pointOfInterest);
+                EmittedSoundData soundData = new EmittedSoundData(transform.position, soundDecibels, soundKind, pointOfInterest, lineOfSightCollider);
                 AiSound.Instance.EmitSound(soundData);
                 yield return new WaitForSeconds(period);
             }
