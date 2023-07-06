@@ -53,7 +53,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inspectionDefaultRotation: {x: 0, y: 0, z: 0}
-  inspectDistance: 0
+  inspectDistance: 0.4
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -63,12 +63,15 @@ MonoBehaviour:
   dropRigidbody: {fileID: 5214147626133166083}
   identifiers: []
   visualsPrefab: {fileID: 5054655446901125489}
-  holdOffset: {x: 0, y: 0, z: 0}
+  holdOffset: {x: 0, y: -0.2, z: 0}
   holdRotation: {x: 0, y: 20, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []
   OnDropped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDroppedInternal:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &5214147626133166083
