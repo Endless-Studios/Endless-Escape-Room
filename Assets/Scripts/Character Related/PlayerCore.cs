@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Ai;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,10 +17,10 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] HidingComponent hidingComponent;
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] CharacterController characterController;
+    [SerializeField] CharacterMovement characterMovement;
     [SerializeField] NavMeshObstacle navMeshObstacle;
     [SerializeField] PlayerTarget playerTarget;
     [SerializeField] Rigidbody playerRigidbody;
-    [SerializeField] CharacterMovement characterMovement;
 
     public bool IsLocalPlayer => LocalPlayer == this;
     public PlayerInput PlayerInput => playerInput;

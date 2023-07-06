@@ -15,7 +15,9 @@ namespace Ai
         public UnityEvent OnDied = new UnityEvent();
         public UnityEvent OnSpawn = new UnityEvent();
         public UnityEvent OnDespawn = new UnityEvent();
-        public UnityEvent OnFinishedInteracting = new UnityEvent();
+        public UnityEvent OnAiInteracted = new UnityEvent();
+        public UnityEvent OnFinishedInteractionAnimation = new UnityEvent();
+        public UnityEvent OnFinishedInteraction = new UnityEvent();
         public UnityEvent OnFinishedFidgeting = new UnityEvent();
         public UnityEvent OnStartedAttacking = new UnityEvent();
         public UnityEvent OnDealtDamage = new UnityEvent();
@@ -26,8 +28,13 @@ namespace Ai
         public UnityEvent OnFinishedPursueAnimation = new UnityEvent();
         public UnityEvent OnStartedSearchAnimation = new UnityEvent();
         public UnityEvent OnFinishedSearchAnimation = new UnityEvent();
-        
+        public UnityEvent OnStartedVisualSweepAnimation = new UnityEvent();
+        public UnityEvent OnFinishedVisualSweepAnimation = new UnityEvent();
 
+        public AiReferences References => references;
+        public AiAttributes Attributes => attributes;
+        public GameplayInfo GameplayInfo => gameplayInfo;
+        
         public event Action OnWalkingThroughDoorway;
         public event Action OnWalkedThroughDoorway;
 
@@ -48,11 +55,42 @@ namespace Ai
         }
 
         /// <summary>
+        /// Invokes the AiInteracted event
+        /// </summary>
+        public void AiInteracted()
+        {
+            OnAiInteracted?.Invoke();
+        }
+
+        /// <summary>
+        /// Caches the interaction target and informs if of the interaction
+        /// </summary>
+        /// <param name="pointOfInterest"></param>
+        public void StartInteraction(PointOfInterest pointOfInterest)
+        {
+            gameplayInfo.CurrentInteraction = pointOfInterest;
+            pointOfInterest.AiInteract(this);
+        }
+
+        /// <summary>
+        /// Invokes the OnFinishedInteraction event
+        /// </summary>
+        public void FinishedInteraction()
+        {
+            gameplayInfo.CurrentInteraction = null;
+            OnFinishedInteraction?.Invoke();
+        }
+
+        /// <summary>
         /// Invokes the OnFinishedInteracting event
         /// </summary>
-        public void FinishedInteracting()
+        public void FinishedInteractionAnimation()
         {
-            OnFinishedInteracting?.Invoke();
+            if(gameplayInfo.CurrentInteraction != null)
+            {
+                gameplayInfo.CurrentInteraction.AiAnimationInteractionEvent(this);
+            }
+            OnFinishedInteractionAnimation?.Invoke();
         }
 
         /// <summary>
@@ -128,24 +166,52 @@ namespace Ai
             OnReappear.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnStartedPursueAnimation event
+        /// </summary>
         public void StartPursueAnimation()
         {
             OnStartedPursueAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedPursueAnimation event
+        /// </summary>
         public void FinishPursueAnimation()
         {
             OnFinishedPursueAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnStartedSearchAnimation event
+        /// </summary>
         public void StartSearchAnimation()
         {
             OnStartedSearchAnimation.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnFinishedSearchAnimation event
+        /// </summary>
         public void FinishSearchAnimation()
         {
             OnFinishedSearchAnimation.Invoke();
+        }
+
+        /// <summary>
+        /// Invokes the OnStartedVisualSweepAnimation event
+        /// </summary>
+        public void StartVisualSweepAnimation()
+        {
+            OnStartedVisualSweepAnimation.Invoke();
+        }
+
+        /// <summary>
+        /// Invokes the OnFinishedVisualSweepAnimation event
+        /// </summary>
+        public void FinishVisualSweepAnimation()
+        {
+            OnFinishedVisualSweepAnimation.Invoke();
         }
         
     }

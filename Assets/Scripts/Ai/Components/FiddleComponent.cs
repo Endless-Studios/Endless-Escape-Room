@@ -94,6 +94,7 @@ namespace Ai
         public void InteractWithPointOfInterest(PointOfInterest pointOfInterest)
         {
             recentInteractions.Add(new Interaction(pointOfInterest, Time.time));
+            entity.StartInteraction(pointOfInterest);
         }
 
         private void Update()

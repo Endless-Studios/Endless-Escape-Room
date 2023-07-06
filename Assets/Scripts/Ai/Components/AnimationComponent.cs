@@ -12,20 +12,34 @@ namespace Ai
     public class AnimationComponent : AiComponent
     {
         [SerializeField] private string thresholdTriggerName;
+        [SerializeField] private string thresholdPursueTriggerName;
         [SerializeField] private string movingBoolName;
-        [SerializeField] private string attackTriggerName;
+        [SerializeField] private string lowAttackTriggerName;
+        [SerializeField] private string midAttackTriggerName;
+        [SerializeField] private string highAttackTriggerName;
         [SerializeField] private string pursueTriggerName;
+        [SerializeField] private string pursueShortTriggerName;
         [SerializeField] private string searchTriggerName;
+        [SerializeField] private string visualSweepTriggerName;
         [SerializeField] private List<InteractionAnimationPair> interactionAnimationPairs = new List<InteractionAnimationPair>();
         [SerializeField] private List<string> fidgetNames;
+        [SerializeField] private float lowAttackHeightDifference;
+        [SerializeField] private float highAttackHeightDifference;
+        [SerializeField] private string traversingThresholdName;
 
         private readonly Dictionary<InteractionType, string> animationNamesByInteractionType = new Dictionary<InteractionType, string>();
         
         private int enterDoorway;
+        private int enterDoorwayPursue;
         private int moving;
-        private int attack;
+        private int lowAttack;
+        private int midAttack;
+        private int highAttack;
         private int pursue;
+        private int pursueShort;
         private int search;
+        private int visualSweep;
+        private int traversingThreshold;
         
         private int velX;
         private int velY;
@@ -33,19 +47,25 @@ namespace Ai
         protected void Awake()
         {
             enterDoorway = Animator.StringToHash(thresholdTriggerName);
+            enterDoorwayPursue = Animator.StringToHash(thresholdPursueTriggerName);
             moving = Animator.StringToHash(movingBoolName);
-            attack = Animator.StringToHash(attackTriggerName);
+            lowAttack = Animator.StringToHash(lowAttackTriggerName);
+            midAttack = Animator.StringToHash(midAttackTriggerName);
+            highAttack = Animator.StringToHash(highAttackTriggerName);
             pursue = Animator.StringToHash(pursueTriggerName);
+            pursueShort = Animator.StringToHash(pursueShortTriggerName);
             search = Animator.StringToHash(searchTriggerName);
-            entity.OnWalkingThroughDoorway += WalkThroughDoor;
+            visualSweep = Animator.StringToHash(visualSweepTriggerName);
+            traversingThreshold = Animator.StringToHash(traversingThresholdName);
+            velX = Animator.StringToHash("VelX");
+            velY = Animator.StringToHash("VelY");
             entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
             entity.OnStartedPursueAnimation.AddListener(HandleStartedPursueAnimation);
             entity.OnStartedSearchAnimation.AddListener(HandleStartedSearchAnimation);
-            velX = Animator.StringToHash("VelX");
-            velY = Animator.StringToHash("VelY");
+            entity.OnStartedVisualSweepAnimation.AddListener(HandleStartedVisualSweepAnimation);
             entity.OnWalkingThroughDoorway += WalkThroughDoor;
-            entity.OnStartedAttacking.AddListener(HandleStartedAttacking);
-            
+            entity.OnWalkingThroughDoorway += WalkThroughDoor;
+
             //Translate the list to a dictionary for easier lookup and data validation
             for (int i = 0; i < interactionAnimationPairs.Count; i++)
             {
@@ -76,6 +96,11 @@ namespace Ai
             references.Animator.SetTrigger(animationName);
         }
 
+        public void SetTraversalState(bool isTraversing)
+        {
+            references.Animator.SetBool(traversingThreshold, isTraversing);
+        }
+
         /// <summary>
         /// Plays a random fidget animation from the provided list.
         /// </summary>
@@ -95,31 +120,49 @@ namespace Ai
 
         private void WalkThroughDoor()
         {
-            references.Animator.SetTrigger(enterDoorway);
+            if(gameplayInfo.AiAwarenessState == AiAwarenessState.Pursuing) 
+                references.Animator.SetTrigger(enterDoorwayPursue);
+            else
+                references.Animator.SetTrigger(enterDoorway);
         }
-        
+
         private void HandleStartedAttacking()
         {
-            references.Animator.SetTrigger(attack);
-            Debug.Log("Playing attack animation");
+            float heightDifference = PlayerCore.LocalPlayer.transform.position.y - entity.transform.position.y;
+            
+            if (heightDifference > highAttackHeightDifference)
+            {
+                references.Animator.SetTrigger(highAttack);
+                return;
+            }
+
+            if (heightDifference < lowAttackHeightDifference || PlayerCore.LocalPlayer.CharacterMovement.IsCrouching)
+            {
+                references.Animator.SetTrigger(lowAttack);
+                return;
+            }
+            
+            references.Animator.SetTrigger(midAttack);
         }
 
         private void HandleStartedPursueAnimation()
         {
-            references.Animator.SetTrigger(pursue);
+            float distance = Vector3.Distance(gameplayInfo.Target.transform.position, entity.transform.position);
+            
+            if(distance > attributes.PursueAnimationThreshold)
+                references.Animator.SetTrigger(pursue);
+            else
+                references.Animator.SetTrigger(pursueShort);
         }
 
         private void HandleStartedSearchAnimation()
         {
-            //references.Animator.SetTrigger(search);
-            
-            StartCoroutine(FauxSearchAnimation());
+            references.Animator.SetTrigger(search);
         }
-        
-        private IEnumerator FauxSearchAnimation()
+
+        private void HandleStartedVisualSweepAnimation()
         {
-            yield return new WaitForSeconds(3f);
-            FinishedSearchAnimation();
+            references.Animator.SetTrigger(visualSweep);
         }
 
         /// <summary>
@@ -134,9 +177,17 @@ namespace Ai
         /// <summary>
         /// This method is called by an Animation event and not directly through code.
         /// </summary>
-        public void FinishedInteracting()
+        public void AiInteracted()
         {
-            entity.FinishedInteracting();
+            entity.AiInteracted();
+        }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void FinishedInteractionAnimation()
+        {
+            entity.FinishedInteractionAnimation();
         }
 
         /// <summary>
@@ -171,9 +222,20 @@ namespace Ai
             entity.FinishSearchAnimation();
         }
         
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
         public void FinishedFidgeting()
         {
             entity.FinishedFidgeting();
+        }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void FinishedVisualSweep()
+        {
+            entity.FinishVisualSweepAnimation();
         }
         
         private void Update()

@@ -14,6 +14,7 @@ namespace Ai
     {
         [SerializeField] private float noticeThreshold;
         [SerializeField] private float visibilityThreshold;
+        [SerializeField] private float newStimulusOvertakeValue;
         [SerializeField] private Sense[] senses;
 
         public UnityEvent GainedNewStimulus;
@@ -64,20 +65,21 @@ namespace Ai
             switch (stimulus.SenseKind)
             {
                 case SenseKind.Sight:
-                    if (visibilityBySightTarget.ContainsKey(stimulus.PlayerTarget))
+                    SightStimulus sightStimulus = (SightStimulus)stimulus;
+                    if (visibilityBySightTarget.ContainsKey(sightStimulus.PlayerTarget))
                     {
-                        visibilityBySightTarget[stimulus.PlayerTarget] += stimulus.Value;
+                        visibilityBySightTarget[sightStimulus.PlayerTarget] += stimulus.Value;
                     }
                     else
                     {
-                        visibilityBySightTarget.Add(stimulus.PlayerTarget, stimulus.Value);
+                        visibilityBySightTarget.Add(sightStimulus.PlayerTarget, stimulus.Value);
                     }
                     break;
                 case SenseKind.Hearing:
                 case SenseKind.Proximity:
                 case SenseKind.Undefined:
                 case SenseKind.ForceAlert:
-                    if (gameplayInfo.CurrentStimulus is null || stimulus.Value > gameplayInfo.CurrentStimulus.Value)
+                    if (gameplayInfo.CurrentStimulus is null || stimulus.Value > gameplayInfo.CurrentStimulus.Value + newStimulusOvertakeValue)
                     {
                         gameplayInfo.CurrentStimulus = stimulus;
                         GainedNewStimulus?.Invoke();
