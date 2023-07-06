@@ -24,7 +24,6 @@ namespace Ai
         [SerializeField] private ThresholdBehavior fidgetThreshold;
         [SerializeField] private ThresholdBehavior fiddleThreshold;
         [SerializeField] private ThresholdBehavior searchThreshold;
-        [SerializeField] private ThresholdBehavior investigateThreshold;
 
 
         public Animator Animator => animator;
@@ -42,6 +41,5 @@ namespace Ai
         public ThresholdBehavior FidgetThreshold => fidgetThreshold;
         public ThresholdBehavior FiddleThreshold => fiddleThreshold;
         public ThresholdBehavior SearchThreshold => searchThreshold;
-        public ThresholdBehavior InvestigateThreshold => investigateThreshold;
     }
 }

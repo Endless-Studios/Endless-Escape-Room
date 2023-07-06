@@ -20,17 +20,18 @@ namespace Ai
 
         public UnityEvent OnEnterHideout;
         public UnityEvent OnExitHideout;
+        
         public UnityEvent OnForcedExit;
 
-        protected override void Awake()
+        protected override void OnEnable()
         {
-            base.Awake();
+            base.OnEnable();
             Hideouts.Add(this);
         }
 
-        protected override void OnDestroy()
+        protected override void OnDisable()
         {
-            base.OnDestroy();
+            base.OnDisable();
             Hideouts.Remove(this);
         }
 

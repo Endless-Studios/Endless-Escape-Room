@@ -27,12 +27,14 @@ namespace Ai
             float perceivedDB = CalculatePerceivedDB(soundData);
             if (perceivedDB > minPerceivedDB)
             {
-                Stimulus stimulus = new Stimulus
+                SoundStimulus stimulus = new SoundStimulus
                 (
                     soundData.Position,
                     Time.time,
                     Mathf.Clamp(perceivedDB, 0, 60), 
-                    SenseKind.Hearing
+                    soundData.SoundKind,
+                    soundData.SourceObject,
+                    soundData.LineOfSightCollider
                 );
                 SensedStimulus(stimulus);
             }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Ai;
+using UnityEngine;
 
 namespace Sound
 {
@@ -10,12 +11,16 @@ namespace Sound
         public readonly Vector3 Position;
         public readonly float DecibelsAtSource;
         public readonly SoundType SoundKind;
+        public readonly PointOfInterest SourceObject;
+        public readonly Collider LineOfSightCollider;
 
-        public EmittedSoundData(Vector3 position, float decibelsAtSource, SoundType soundKind)
+        public EmittedSoundData(Vector3 position, float decibelsAtSource, SoundType soundKind, PointOfInterest sourceObject = null, Collider lineOfSightCollider = null)
         {
             Position = position;
             DecibelsAtSource = decibelsAtSource;
             SoundKind = soundKind;
+            SourceObject = sourceObject;
+            LineOfSightCollider = lineOfSightCollider;
         }
     }
 }

@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 1384334374420571731}
   - component: {fileID: 184511927446587037}
   - component: {fileID: 3922537950373188461}
-  - component: {fileID: 144151405256224754}
   m_Layer: 14
   m_Name: Ai_Base
   m_TagString: Untagged
@@ -111,7 +110,13 @@ MonoBehaviour:
           m_StringArgument: OnDespawn
           m_BoolArgument: 0
         m_CallState: 2
-  OnFinishedInteracting:
+  OnAiInteracted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedInteractionAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedInteraction:
     m_PersistentCalls:
       m_Calls: []
   OnFinishedFidgeting:
@@ -144,7 +149,10 @@ MonoBehaviour:
   OnFinishedSearchAnimation:
     m_PersistentCalls:
       m_Calls: []
-  OnFootstep:
+  OnStartedVisualSweepAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedVisualSweepAnimation:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6432490834441837270
@@ -166,8 +174,11 @@ MonoBehaviour:
   recentTarget: {fileID: 0}
   PlayersHideout: {fileID: 0}
   Destination: {x: 0, y: 0, z: 0}
-  AnimationTraversalType: 0
+  aiAwarenessState: 0
   ShouldSpawnInPlace: 0
+  OnAwarenessStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8686548554604012545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +206,6 @@ MonoBehaviour:
   fidgetThreshold: {fileID: 1760390034293458789}
   fiddleThreshold: {fileID: 1080036828054471172}
   searchThreshold: {fileID: 7057165101696368421}
-  investigateThreshold: {fileID: 9025293886819925347}
 --- !u!114 &4976039804609410108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d1e43bec5a47e490951aca1c84148c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightBlockingMask:
+    serializedVersion: 2
+    m_Bits: 1
   minWanderNearDistance: 2
   wanderNearDistance: 5
   minWanderFarDistance: 10
@@ -218,8 +231,10 @@ MonoBehaviour:
   approachDistance: 1
   maxAttackAngleDifference: 60
   maxInteractionAngleDifference: 7.5
-  maxAngularSpeed: 55
-  attackDamage: 0
+  maxAngularSpeed: 360
+  attackDamage: 1
+  shortPursueAnimationThreshold: 5
+  pursueAnimationThreshold: 10
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -272,7 +287,7 @@ MonoBehaviour:
   _data:
     _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
     _objectReferences:
-    - {fileID: 11400000, guid: 62fe120029c38414b8ebc62082fbf1df, type: 2}
+    - {fileID: 11400000, guid: 8ccdd6480c7a5b04e86be7216d569814, type: 2}
 --- !u!114 &3801687987798645566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,9 +345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5008231cb44023806515e3b0c14753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorApproachRotationSpeed: 180
-  doorApproachAngleTolerance: 3
-  doorApproachMovementSpeed: 0.5
+  doorApproachRotationSpeed: 360
+  doorApproachAngleTolerance: 5
+  doorApproachMovementSpeed: 3
   doorApproachDistanceTolerance: 0.1
   smoothTime: 0.5
   OnTriedLockedThreshold:
@@ -352,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noticeThreshold: 40
   visibilityThreshold: 60
+  newStimulusOvertakeValue: 15
   senses:
   - {fileID: 4870086894081962781}
   - {fileID: 4769800100488525422}
@@ -383,11 +399,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82791749ce434c159bb654743f979939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPointMask:
+    serializedVersion: 2
+    m_Bits: 262145
   investigateActionDelay: 5
   maxInvestigateDistance: 15
   reInvestigateTime: 90
   ShouldWander: 0
   ShouldInteract: 0
+  ShouldForceInteraction: 0
   OnFinishedInvestigating:
     m_PersistentCalls:
       m_Calls: []
@@ -417,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteractionDistance: 10
-  reInteractTime: 30
+  reInteractTime: 45
 --- !u!114 &3922537950373188461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,58 +450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c815894d455a4e43824314418483894d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &144151405256224754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3417203797340643467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71b172b7aa594e3b8994dc98abd114b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footstepAudioClips:
-  - {fileID: 8300000, guid: 9faf02c8c8b95dc4a8527cdd92f15b44, type: 3}
-  - {fileID: 8300000, guid: 794e16fee78114442bf7cfcb2cadffbf, type: 3}
-  - {fileID: 8300000, guid: ff20e58ab6789e94bbf3c5198e0230b2, type: 3}
-  - {fileID: 8300000, guid: c579fc2893a32d14e904c42f3439dad3, type: 3}
-  - {fileID: 8300000, guid: e26680e81deed4248902a1f9ad44b126, type: 3}
-  stepVolumeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 60
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 37.338966
-      value: 73.11131
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  emitTransform: {fileID: 4690843874338648664}
 --- !u!1 &4481954607991646432
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,9 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70cdc418f316a30439865e141c061320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightBlockingMask:
-    serializedVersion: 2
-    m_Bits: 1
   centralVisionScalar: 1
   nearPeripheralThreshold: 30
   nearPeripheralScalar: 0.66
@@ -647,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPerceivedDB: 20
+  minPerceivedDB: 40
 --- !u!1 &6461828906644631074
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +628,6 @@ GameObject:
   - component: {fileID: 1080036828054471172}
   - component: {fileID: 5413147699087195352}
   - component: {fileID: 7057165101696368421}
-  - component: {fileID: 9025293886819925347}
   m_Layer: 14
   m_Name: Thresholds
   m_TagString: Untagged
@@ -794,25 +758,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thresholdName: Search
-  baseThreshold: 30
-  minThresholdModifier: 0
-  maxThresholdModifier: 15
-  value: 0
-  currentThreshold: 0
-  AmountOverThreshold: 0
---- !u!114 &9025293886819925347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6461828906644631074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b41ce8f57240688a3f745577b72f6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdName: Investigate
   baseThreshold: 30
   minThresholdModifier: 0
   maxThresholdModifier: 15
@@ -1339,20 +1284,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thresholdTriggerName: EnterDoorway
+  thresholdPursueTriggerName: EnterDoorwayPursue
   movingBoolName: Moving
-  attackTriggerName: GrabMiddle
+  lowAttackTriggerName: GrabLow
+  midAttackTriggerName: GrabMiddle
+  highAttackTriggerName: GrabHigh
   pursueTriggerName: AlertScream
-  searchTriggerName: 
+  pursueShortTriggerName: AlertShort
+  searchTriggerName: AlertHearing
+  visualSweepTriggerName: VisionSweep
   interactionAnimationPairs:
   - InteractionType: 0
     animationTriggerName: 
   - InteractionType: 1
-    animationTriggerName: Default
+    animationTriggerName: DefaultInteraction
   - InteractionType: 2
-    animationTriggerName: OpenDoor
+    animationTriggerName: DefaultInteraction
   fidgetNames:
   - Fidget_01
   - Fidget_02
+  lowAttackHeightDifference: -0.25
+  highAttackHeightDifference: 0.5
+  traversingThresholdName: TraversingThreshold
 --- !u!137 &6831132665986546180 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7467374810527879241, guid: 78fc400961e3968428243a300eb8ea2f,

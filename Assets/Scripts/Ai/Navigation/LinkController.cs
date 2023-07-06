@@ -21,12 +21,8 @@ namespace Ai
 
         private void Awake()
         {
-            Openable.OnUnlocked.AddListener(EnableLink);
-        }
-
-        private void OnDestroy()
-        {
-            Openable.OnUnlocked.RemoveListener(EnableLink);
+            if(Openable)
+                Openable.OnUnlocked.AddListener(EnableLink);
         }
 
         /// <summary>
