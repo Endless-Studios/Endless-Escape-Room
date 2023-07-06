@@ -23,7 +23,7 @@ namespace Ai
             float normalizedSpeed = references.NavigationComponent.LocalRelativeVelocity.magnitude;
             if (references.NavigationComponent.IsTraversingLink)
             {
-                if (gameplayInfo.AnimationTraversalType == AnimationTraversalType.Pursuing)
+                if (gameplayInfo.AiAwarenessState == AiAwarenessState.Pursuing)
                     normalizedSpeed = 1;
                 else
                     normalizedSpeed = .5f;
