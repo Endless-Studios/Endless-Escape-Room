@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &447311350890460878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4728192776497570005}
+  - component: {fileID: 6337835494016543483}
+  m_Layer: 0
+  m_Name: Open2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4728192776497570005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447311350890460878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8682338263776961992}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6337835494016543483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447311350890460878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 4728192776497570005}
+  soundClips:
+  - {fileID: 8300000, guid: d49cacb09826d3f47a5792c1526d7e68, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1694018967031632037
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +61,7 @@ GameObject:
   - component: {fileID: 8682338263776961992}
   - component: {fileID: 4489049043042585650}
   - component: {fileID: 1378634910094523602}
+  - component: {fileID: 3725806832119607921}
   m_Layer: 0
   m_Name: '[Hidable]_Locker'
   m_TagString: Untagged
@@ -32,8 +83,11 @@ Transform:
   m_Children:
   - {fileID: 2024267539350315735}
   - {fileID: 3126280638378015798}
+  - {fileID: 1319341319105673668}
+  - {fileID: 4728192776497570005}
+  - {fileID: 7108067539322166848}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4489049043042585650
 MonoBehaviour:
@@ -47,8 +101,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d964ce54895640e3b46ab5cc66aaaad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPointObject: {fileID: 4736643306696848377}
+  aiInteractionTransform: {fileID: 0}
   interactionType: 2
+  finishInteractionAutomatically: 1
+  OnAiInteracted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAiInteractionAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionInterrupted:
+    m_PersistentCalls:
+      m_Calls: []
   OnEnterHideout:
     m_PersistentCalls:
       m_Calls:
@@ -66,31 +130,10 @@ MonoBehaviour:
         m_CallState: 2
   OnExitHideout:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8930695688535876308}
-        m_TargetAssemblyTypeName: CameraFocus, Assembly-CSharp
-        m_MethodName: Unfocus
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1378634910094523602}
-        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
-        m_MethodName: Animate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
+  OnForcedExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1378634910094523602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +153,19 @@ MonoBehaviour:
   targetTransform: {fileID: 884478776507537285}
   OnAnimationFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3725806832119607921}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: PlayTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnReverseAnimationFinished:
     m_PersistentCalls:
       m_Calls:
@@ -126,6 +181,110 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1954926603302753740}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &3725806832119607921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694018967031632037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3e0600383ec574f951e508944f1808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.7
+  autoStart: 0
+  loop: 0
+  OnTimerFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3725806832119607921}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StopTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1378634910094523602}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Reverse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &1792418044168621822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319341319105673668}
+  - component: {fileID: 7315399313952178157}
+  m_Layer: 0
+  m_Name: Open
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1319341319105673668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792418044168621822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8682338263776961992}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7315399313952178157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792418044168621822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 1319341319105673668}
+  soundClips:
+  - {fileID: 8300000, guid: 1028f206d0f078548b662039060c21fa, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3060123535366836787
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,8 +346,8 @@ MonoBehaviour:
   m_RecenterTarget: 0
   m_VerticalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 60
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.5
     m_AccelTime: 0.05
     m_DecelTime: 0.2
     m_InputAxisName: Mouse Y
@@ -211,8 +370,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 60
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.5
     m_AccelTime: 0.05
     m_DecelTime: 0.2
     m_InputAxisName: Mouse X
@@ -220,7 +379,7 @@ MonoBehaviour:
     m_InvertInput: 0
     m_MinValue: -22
     m_MaxValue: 22
-    m_Wrap: 1
+    m_Wrap: 0
     m_Recentering:
       m_enabled: 0
       m_WaitTime: 1
@@ -314,6 +473,56 @@ Transform:
   m_Father: {fileID: 8682338263776961992}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7778630015124039080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7108067539322166848}
+  - component: {fileID: 1954926603302753740}
+  m_Layer: 0
+  m_Name: Close
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7108067539322166848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778630015124039080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8682338263776961992}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1954926603302753740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778630015124039080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPositionTransform: {fileID: 7108067539322166848}
+  soundClips:
+  - {fileID: 8300000, guid: 471df99e723b2f440b6f1c242ed1975f, type: 3}
+  OnSoundPlayedAtPosition:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8115364009552842817
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,12 +611,37 @@ MonoBehaviour:
   focusCamera: {fileID: 656975646544669025}
   showMouseWhileFocused: 0
   allowUnfocusKey: 1
+  priorityFocus: 0
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
   OnUnfocused:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1378634910094523602}
+        m_TargetAssemblyTypeName: TransformAnimator, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6337835494016543483}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1989779490018493756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -561,6 +795,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7315399313952178157}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1625578671004479109
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -628,7 +874,19 @@ MonoBehaviour:
         m_CallState: 2
   OnReverseAnimationFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954926603302753740}
+        m_TargetAssemblyTypeName: PooledSoundPlayer, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3759715907178726126
 MonoBehaviour:
   m_ObjectHideFlags: 0
