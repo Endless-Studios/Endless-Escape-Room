@@ -222,9 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c900ffc2aad94b23beebabd875538b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPointObject: {fileID: 3546340029841694081}
-  lineOfSightCollider: {fileID: 7594580328129027831}
-  interactionType: 1
+  aiInteractionTransform: {fileID: 3546340029841694081}
+  interactionType: 0
+  finishInteractionAutomatically: 0
   OnAiInteracted:
     m_PersistentCalls:
       m_Calls:
@@ -240,6 +240,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnAiInteractionAnimation:
+    m_PersistentCalls:
+      m_Calls: []
   OnInteractionInterrupted:
     m_PersistentCalls:
       m_Calls: []
@@ -256,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointOfInterest: {fileID: 5685787623640825149}
+  lineOfSightCollider: {fileID: 0}
   soundDecibels: 80
   soundKind: 2
   period: 10
@@ -487,12 +491,6 @@ Transform:
 --- !u!1 &3546340029841694081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2570010157789323388, guid: c1d60751f5afeff42a1bf433708446a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1341408485138234877}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &7594580328129027831 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 8933168565261378314, guid: c1d60751f5afeff42a1bf433708446a5,
     type: 3}
   m_PrefabInstance: {fileID: 1341408485138234877}
   m_PrefabAsset: {fileID: 0}

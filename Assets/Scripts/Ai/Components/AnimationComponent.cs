@@ -237,6 +237,14 @@ namespace Ai
         {
             entity.FinishVisualSweepAnimation();
         }
+
+        /// <summary>
+        /// This method is called by an Animation event and not directly through code.
+        /// </summary>
+        public void OnFootstep()
+        {
+            entity.Stepped();
+        }
         
         private void Update()
         {

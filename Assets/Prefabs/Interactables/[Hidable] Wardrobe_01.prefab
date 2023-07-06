@@ -185,9 +185,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d964ce54895640e3b46ab5cc66aaaad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPointObject: {fileID: 1234428846397144448}
-  lineOfSightCollider: {fileID: 5292835237314019062}
+  aiInteractionTransform: {fileID: 1234428846397144448}
+  interactionType: 1
+  finishInteractionAutomatically: 0
   OnAiInteracted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAiInteractionAnimation:
     m_PersistentCalls:
       m_Calls: []
   OnInteractionInterrupted:
@@ -1573,12 +1577,6 @@ GameObject:
 --- !u!4 &2566393999332904875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1231375367386436183, guid: c1d60751f5afeff42a1bf433708446a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 3642023286068649468}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &5292835237314019062 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 8933168565261378314, guid: c1d60751f5afeff42a1bf433708446a5,
     type: 3}
   m_PrefabInstance: {fileID: 3642023286068649468}
   m_PrefabAsset: {fileID: 0}

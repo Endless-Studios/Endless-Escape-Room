@@ -30,6 +30,7 @@ namespace Ai
         public UnityEvent OnFinishedSearchAnimation = new UnityEvent();
         public UnityEvent OnStartedVisualSweepAnimation = new UnityEvent();
         public UnityEvent OnFinishedVisualSweepAnimation = new UnityEvent();
+        public UnityEvent OnFootstep = new UnityEvent();
 
         public AiReferences References => references;
         public AiAttributes Attributes => attributes;
@@ -213,6 +214,13 @@ namespace Ai
         {
             OnFinishedVisualSweepAnimation.Invoke();
         }
-        
+
+        /// <summary>
+        /// Invokes the OnFootstepAnimation event;
+        /// </summary>
+        public void Stepped()
+        {
+            OnFootstep.Invoke();
+        }
     }
 }
