@@ -11,7 +11,6 @@ namespace Ai
     /// </summary>
     public class SightSensor : Sense
     {
-        [SerializeField] private LayerMask sightBlockingMask;
         [SerializeField] private float centralVisionScalar;
         [SerializeField] private float nearPeripheralThreshold;
         [SerializeField] private float nearPeripheralScalar;
@@ -61,7 +60,7 @@ namespace Ai
 
                     Ray ray = new Ray(transformPosition, toVector.normalized);
                     
-                    if (!Physics.Raycast(ray, out RaycastHit hit, distance, sightBlockingMask))
+                    if (!Physics.Raycast(ray, out RaycastHit hit, distance, attributes.SightBlockingMask))
                     {
                         totalAwarenessThisFrame += losProbeBaseValue * viewAngleScalar * distanceScalar;
                     }
@@ -70,12 +69,11 @@ namespace Ai
                 if (totalAwarenessThisFrame <= 0)
                     continue;
 
-                Stimulus stimulus = new Stimulus
+                SightStimulus stimulus = new SightStimulus
                 (
                     senseTarget.transform.position,
                     Time.time,
                     math.clamp(totalAwarenessThisFrame, 0 ,100),
-                    SenseKind.Sight,
                     senseTarget
                 );
                 

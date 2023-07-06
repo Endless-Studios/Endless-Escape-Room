@@ -37,6 +37,7 @@ namespace Ai
         private Vector3 smoothedVelocity;
         private Vector3 currentVelocity;
         private Vector3 lastPosition;
+        private Vector3 linkDirection;
 
         public UnityEvent OnTriedLockedThreshold;
 
@@ -50,7 +51,7 @@ namespace Ai
                 StartCoroutine(TryTraverseLink());
             }
 
-            IsMoving = references.Agent.hasPath && !isTraversingLink;
+            IsMoving = references.Agent.hasPath && !isTraversingLink && references.Agent.velocity.magnitude > .1f;
             
             if (references.Agent.hasPath && Vector3.Distance(references.Agent.destination, transform.position) < attributes.NavigationTolerance)
                 references.Agent.ResetPath();
@@ -61,7 +62,7 @@ namespace Ai
             isTraversingLink = true;
             OffMeshLinkData linkData = references.Agent.currentOffMeshLinkData;
             LinkController linkController = LinkController.GetLinkFromEndPoints(linkData.startPos, linkData.endPos);
-            Vector3 linkDirection = linkData.endPos - linkData.startPos;
+            linkDirection = linkData.endPos - linkData.startPos;
             Quaternion lookRotation = Quaternion.LookRotation(linkDirection);
             references.Agent.updatePosition = false;
             references.Agent.updateRotation = false;
@@ -79,19 +80,17 @@ namespace Ai
                 yield return null;
             }
 
-            if (!linkController.Openable.IsOpen)
+            if (linkController.Openable && !linkController.Openable.IsOpen)
             {
                 references.AnimationComponent.PlayInteractionAnimation(linkController.Openable.InteractionType);
-                yield return new WaitForSeconds(1f);
-                //TODO: Get animations in so I can tie into the animation events
-                // isInteracting = true;
-                // Entity.OnFinishedInteracting.AddListener(HandleFinishedInteracting);
-                // yield return new WaitUntil(() => !isInteracting);
-                // Entity.OnFinishedInteracting.RemoveListener(HandleFinishedInteracting);
+                isInteracting = true;
+                entity.OnFinishedInteractionAnimation.AddListener(HandleFinishedInteracting);
+                entity.OnAiInteracted.AddListener(HandleAiInteracted);
+                yield return new WaitUntil(() => !isInteracting);
             }
 
             //If the threshold is locked we need to break out of current navigation path and disable the link temporarily
-            if (linkController.Openable.IsLocked)
+            if (linkController.Openable && linkController.Openable.IsLocked)
             {
                 linkController.DisableLink(references.Agent.agentTypeID, Navigation.Instance.LinkDisableTime);
                 //This flicker is intentional since it clears the current off mesh link without needing to complete it.
@@ -106,7 +105,7 @@ namespace Ai
             //Otherwise we want to listen for us finishing traversal of the threshold
             else
             {
-                //TODO: Branch here to handle different animations
+                references.AnimationComponent.SetTraversalState(true);
                 entity.OnWalkedThroughDoorway += HandleOnWalkedThroughThreshold;
                 entity.WalkingThroughThreshold();
             }
@@ -114,14 +113,23 @@ namespace Ai
             void HandleFinishedInteracting()
             {
                 isInteracting = false;
+                entity.OnFinishedInteractionAnimation.RemoveListener(HandleFinishedInteracting);
+            }
+
+            void HandleAiInteracted()
+            {
+                linkController.Openable.Open();
+                entity.OnAiInteracted.RemoveListener(HandleAiInteracted);
             }
         }
 
         private void HandleOnWalkedThroughThreshold()
         {
             isTraversingLink = false;
+            references.AnimationComponent.SetTraversalState(false);
             Transform agentTransform = references.Agent.transform;
             agentTransform.position = agentTransform.TransformPoint(references.Animator.transform.localPosition);
+            transform.rotation = Quaternion.LookRotation(linkDirection);
             references.Animator.transform.position = Vector3.zero;
             if(references.Agent.hasPath)
                 references.Agent.CompleteOffMeshLink();

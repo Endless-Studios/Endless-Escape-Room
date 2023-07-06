@@ -1,4 +1,5 @@
 ﻿using Sight;
+using Sound;
 using UnityEngine;
 
 namespace Ai
@@ -12,15 +13,54 @@ namespace Ai
         public readonly float Value;
         public readonly float Time; 
         public readonly SenseKind SenseKind;
-        public readonly PlayerTarget PlayerTarget;
 
-        public Stimulus(Vector3 position, float time, float value, SenseKind senseKind, PlayerTarget playerTarget = null)
+        public Stimulus(Vector3 position, float time, float value, SenseKind senseKind)
         {
             Position = position;
             Time = time;
             Value = value;
             SenseKind = senseKind;
+        }
+    }
+
+    /// <summary>
+    /// Adds the player target to the standard stimulus
+    /// </summary>
+    public class SightStimulus : Stimulus
+    {
+        public readonly PlayerTarget PlayerTarget;
+        
+        public SightStimulus(Vector3 position, float time, float value, PlayerTarget playerTarget) : base(position, time, value, SenseKind.Sight)
+        {
             PlayerTarget = playerTarget;
+        }
+    }
+
+    /// <summary>
+    /// Adds the SoundType and possible PointOfInterest to the standard stimulus
+    /// </summary>
+    public class SoundStimulus : Stimulus
+    {
+        public readonly SoundType SoundType;
+        public readonly PointOfInterest PointOfInterest;
+        public readonly Collider LineOfSightCollider;
+
+        public SoundStimulus(Vector3 position, float time, float value, SoundType soundType, PointOfInterest pointOfInterest, Collider lineOfSightCollider) : base(position, time, value, SenseKind.Hearing)
+        {
+            SoundType = soundType;
+            PointOfInterest = pointOfInterest;
+            LineOfSightCollider = lineOfSightCollider;
+        }
+    }
+
+    /// <summary>
+    /// Doesn't add any new information other than the derived class type
+    /// </summary>
+    public class ProximityStimulus : Stimulus
+    {
+        public ProximityStimulus(Vector3 position, float time, float value) : base(position, time, value, SenseKind.Proximity)
+        {
+            
         }
     }
 }

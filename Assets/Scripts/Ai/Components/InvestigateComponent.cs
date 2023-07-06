@@ -12,50 +12,53 @@ namespace Ai
     /// </summary>
     public class InvestigateComponent : AiComponent
     {
+        [SerializeField] private LayerMask interactionPointMask; 
         [SerializeField] private float investigateActionDelay;
         [SerializeField] private float maxInvestigateDistance;
         [SerializeField] private float reInvestigateTime;
         [HideInInspector] public bool ShouldWander;
         [HideInInspector] public bool ShouldInteract;
+        [HideInInspector] public bool ShouldForceInteraction;
  
         public UnityEvent OnFinishedInvestigating = new UnityEvent();
         public float InvestigateActionDelay => investigateActionDelay;
 
         private readonly List<Interaction> recentInvestigations = new List<Interaction>();
 
-        /// <summary>
-        /// This method evaluates all the hideouts and selects one within range that hasn't been
-        /// searched recently. 
-        /// </summary>
-        /// <returns>Returns a valid hideout that isn't the hideout the player is in unless all other
-        /// hideouts have been searched or null if the player isn't in a hideout. </returns>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public Hideout GetNextInvestigateTarget()
+        public PointOfInterest GetNextInvestigateTarget()
         {
-            //Collect all hideouts
-            List<Hideout> hideouts = new List<Hideout>(Hideout.Hideouts);
+            if (ShouldForceInteraction)
+            {
+                if (gameplayInfo.CurrentStimulus is SoundStimulus { PointOfInterest: not null } soundStimulus)
+                    return soundStimulus.PointOfInterest;
+            }
 
+            List<PointOfInterest> pointOfInterests;
+
+            if (gameplayInfo.AiAwarenessState == AiAwarenessState.Searching)
+                pointOfInterests = new List<PointOfInterest>(PointOfInterest.PointsOfInterest);
+            else
+                pointOfInterests = new List<PointOfInterest>(Hideout.Hideouts);
+                
+            pointOfInterests.Remove(gameplayInfo.PlayersHideout);
+            
             //Filter out those that have been recently searched
             foreach (Interaction interaction in recentInvestigations)
             {
                 if (interaction.PointOfInterest is Hideout hideout)
                 {
-                    hideouts.Remove(hideout);
+                    pointOfInterests.Remove(hideout);
                 }
             }
-
-            //If the player is in a hideout remove that one from consideration for now
-            if(gameplayInfo.PlayersHideout)
-                hideouts.Remove(gameplayInfo.PlayersHideout);
-
+            
             //Associate a hideout with a float representing the distance it will take to reach it
             List<PointOfInterestDistancePair> potentialInvestigationTarget = new List<PointOfInterestDistancePair>();
 
-            foreach (Hideout hideout in hideouts)
+            foreach (PointOfInterest pointOfInterest in pointOfInterests)
             {
                 //Calculate the path to the hideout
                 NavMeshPath path = new NavMeshPath();
-                if(!NavMesh.SamplePosition(hideout.InteractionPoint, out NavMeshHit hit, attributes.NavSampleDistance, NavMesh.AllAreas))
+                if(!NavMesh.SamplePosition(pointOfInterest.InteractionPoint, out NavMeshHit hit, attributes.NavSampleDistance, NavMesh.AllAreas))
                 {
                     continue;
                 }
@@ -67,7 +70,7 @@ namespace Ai
                     case NavMeshPathStatus.PathComplete:
                         float distance = Navigation.GetPathDistance(path);
                         if(distance <= maxInvestigateDistance)
-                            potentialInvestigationTarget.Add(new PointOfInterestDistancePair(hideout, distance));
+                            potentialInvestigationTarget.Add(new PointOfInterestDistancePair(pointOfInterest, distance));
                         break;
                     case NavMeshPathStatus.PathPartial:
                         float offset = Vector3.Distance(path.corners[path.corners.Length - 1], hit.position);
@@ -75,10 +78,10 @@ namespace Ai
                         {
                             distance = Navigation.GetPathDistance(path);
                             if(distance <= maxInvestigateDistance)
-                                potentialInvestigationTarget.Add(new PointOfInterestDistancePair(hideout, distance));
+                                potentialInvestigationTarget.Add(new PointOfInterestDistancePair(pointOfInterest, distance));
                             break;
                         }
-                        Debug.LogWarning("Partial path, check the position of the interact point on this point of interest", hideout.gameObject);
+                        Debug.LogWarning("Partial path, check the position of the interact point on this point of interest", pointOfInterest.gameObject);
                         break;
                     case NavMeshPathStatus.PathInvalid:
                         Debug.LogWarning("Invalid path, check source and target positions to ensure validity");
@@ -87,8 +90,7 @@ namespace Ai
                         throw new ArgumentOutOfRangeException();
                 }
             }
-
-            //If there are no valid hideouts return null
+            
             if (potentialInvestigationTarget.Count == 0)
                 return null;
             
@@ -98,7 +100,7 @@ namespace Ai
             recentInvestigations.Add(new Interaction(potentialInvestigationTarget[0].PointOfInterest, Time.time));
 
             //Return the closest hideout
-            return (Hideout)potentialInvestigationTarget[0].PointOfInterest;
+            return potentialInvestigationTarget[0].PointOfInterest;
         }
 
         /// <summary>
@@ -132,6 +134,36 @@ namespace Ai
                     recentInvestigations.RemoveAt(i);
             }
         }
-        
+
+        /// <summary>
+        /// Allows the AI State graph to check if the stimulus is a sound stimulus
+        /// </summary>
+        /// <param name="stimulus"></param>
+        /// <returns></returns>
+        public bool IsSoundStimulus(Stimulus stimulus)
+        {
+            return stimulus is SoundStimulus;
+        }
+
+        /// <summary>
+        /// Checks if the AI can see the source of a sound stimulus
+        /// </summary>
+        /// <param name="stimulus"></param>
+        /// <returns></returns>
+        public bool CanSeeSoundStimulusSource(SoundStimulus stimulus)
+        {
+            if (stimulus.PointOfInterest is null)
+                return false;
+
+            Collider collider = stimulus.LineOfSightCollider;
+
+            Vector3 startingPos = references.SightSensor.transform.position;
+            Vector3 targetPos = stimulus.LineOfSightCollider.bounds.center;
+            Vector3 toVector = targetPos - startingPos;
+            
+            bool didHit = Physics.Raycast(startingPos, toVector.normalized, out RaycastHit hit, toVector.magnitude, interactionPointMask);
+
+            return didHit && hit.collider == collider;
+        }
     }
 }

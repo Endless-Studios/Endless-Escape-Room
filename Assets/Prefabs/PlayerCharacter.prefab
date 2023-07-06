@@ -119,10 +119,10 @@ MonoBehaviour:
   hidingComponent: {fileID: -6473274695708391681}
   healthComponent: {fileID: 5235216998997054313}
   characterController: {fileID: 2419621909708617996}
+  characterMovement: {fileID: 5685148041957440190}
   navMeshObstacle: {fileID: 2972815285524830649}
   playerTarget: {fileID: 1893632562667910974}
   playerRigidbody: {fileID: 4157247682571816759}
-  characterMovement: {fileID: 5685148041957440190}
 --- !u!114 &8377813685331739176
 MonoBehaviour:
   m_ObjectHideFlags: 0
