@@ -983,7 +983,7 @@ Transform:
   - {fileID: 7711524432635472581}
   - {fileID: 5253017255183696487}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5732506859434508850
 MonoBehaviour:
@@ -1252,10 +1252,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5732506859434508844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08483522f4dae7f4abc5d7d6f154063d, type: 3}
+  m_Script: {fileID: 11500000, guid: e557a7fc986d1b74a8e71a8f649df8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundPositionTransform: {fileID: 5732506859434508851}
+  soundClip: {fileID: 0}
   soundClips:
   - {fileID: 8300000, guid: f3530dcce214f95449467a42cf249eb2, type: 3}
   - {fileID: 8300000, guid: 28e4f08b7a30d3841a41c09236e76cbe, type: 3}

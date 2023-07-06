@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 8323241588225033632}
   m_Father: {fileID: 0}
-  m_RootOrder: 83
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7505427569858072035
 MonoBehaviour:
@@ -53,7 +53,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inspectionDefaultRotation: {x: 0, y: 0, z: 0}
-  inspectDistance: 0
+  inspectDistance: 0.2
   OnInspectionStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -63,12 +63,15 @@ MonoBehaviour:
   dropRigidbody: {fileID: 4118183542478209204}
   identifiers: []
   visualsPrefab: {fileID: 0}
-  holdOffset: {x: 0, y: 0, z: 0}
+  holdOffset: {x: 0, y: -0.1, z: 0}
   holdRotation: {x: 0, y: 20, z: 0}
   OnPickedUp:
     m_PersistentCalls:
       m_Calls: []
   OnDropped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDroppedInternal:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &4118183542478209204

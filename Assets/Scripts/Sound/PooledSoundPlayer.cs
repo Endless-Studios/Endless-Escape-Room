@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class PooledSoundPlayer : MonoBehaviour
 {
     [SerializeField] private Transform soundPositionTransform;
-    [SerializeField] private AudioClip soundClip;
+    [SerializeField] private AudioClip[] soundClips;
 
     public UnityEvent<Vector3> OnSoundPlayedAtPosition = new UnityEvent<Vector3>();
 
@@ -20,7 +20,7 @@ public class PooledSoundPlayer : MonoBehaviour
 
     public void PlaySound()
     {
-        Sound.SoundPoolManager.Instance.PlaySoundAtPosition(soundPositionTransform.position, soundClip);
+        Sound.SoundPoolManager.Instance.PlaySoundAtPosition(soundPositionTransform.position, soundClips[Random.Range(0, soundClips.Length)]);
         OnSoundPlayedAtPosition.Invoke(soundPositionTransform.position);
     }
 }
