@@ -175,8 +175,11 @@ namespace Ai
 
         public void ResetPath()
         {
-            if(!isTraversingLink)
+            if (!isTraversingLink)
+            {
                 references.Agent.ResetPath();
+                gameplayInfo.Destination = transform.position;
+            }
         }
 
         public void SetDestination(Vector3 destination)
