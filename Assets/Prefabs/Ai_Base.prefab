@@ -48,7 +48,7 @@ Transform:
   - {fileID: 4690843874338648664}
   - {fileID: 682002620391529714}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7791166832454865358
 MonoBehaviour:
@@ -468,11 +468,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstepAudioClips:
-  - {fileID: 8300000, guid: 9faf02c8c8b95dc4a8527cdd92f15b44, type: 3}
-  - {fileID: 8300000, guid: 794e16fee78114442bf7cfcb2cadffbf, type: 3}
-  - {fileID: 8300000, guid: ff20e58ab6789e94bbf3c5198e0230b2, type: 3}
-  - {fileID: 8300000, guid: c579fc2893a32d14e904c42f3439dad3, type: 3}
-  - {fileID: 8300000, guid: e26680e81deed4248902a1f9ad44b126, type: 3}
+  - {fileID: 8300000, guid: 65de1edd2f48aea408e8343d97f447d7, type: 3}
+  - {fileID: 8300000, guid: 2c15e6b05084ea843ab1b8893b5f76ea, type: 3}
+  - {fileID: 8300000, guid: a4b59287f414d25418dc70b1bb15ac3d, type: 3}
+  - {fileID: 8300000, guid: 378a7777ce0a9ce4aad9dcfd904f8723, type: 3}
+  - {fileID: 8300000, guid: 6e61a6dc1f6a496468bf8e806c8fd344, type: 3}
   stepVolumeCurve:
     serializedVersion: 2
     m_Curve:
@@ -1223,6 +1223,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 78fc400961e3968428243a300eb8ea2f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7072302
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 78fc400961e3968428243a300eb8ea2f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 78fc400961e3968428243a300eb8ea2f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 78fc400961e3968428243a300eb8ea2f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
