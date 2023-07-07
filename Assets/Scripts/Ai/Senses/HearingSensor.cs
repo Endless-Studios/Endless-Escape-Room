@@ -60,7 +60,6 @@ namespace Ai
             if (numHits == 0)
             {
                 float dbAfterFalloff = CalculateDBAfterDistanceFalloff(soundData.DecibelsAtSource, distanceToSoundSource);
-                Debug.Log($"Perceived db after falloff only: {dbAfterFalloff} db");
                 return dbAfterFalloff;
             }
 
@@ -117,7 +116,6 @@ namespace Ai
                 }
             }
             
-            Debug.Log($"Final perceived db after blocking and falloff: {currentDB}");
             return currentDB;
         }
         
