@@ -238,8 +238,8 @@ MonoBehaviour:
   maxInteractionAngleDifference: 7.5
   maxAngularSpeed: 360
   attackDamage: 1
-  shortPursueAnimationThreshold: 5
-  pursueAnimationThreshold: 10
+  shortPursueAnimationThreshold: 3
+  pursueAnimationThreshold: 7.5
 --- !u!195 &8683445511247982297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -640,14 +640,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centralVisionScalar: 1
   nearPeripheralThreshold: 30
-  nearPeripheralScalar: 0.66
-  farPeripheralThreshold: 75
-  farPeripheralScalar: 0.33
+  nearPeripheralScalar: 0.75
+  farPeripheralThreshold: 60
+  farPeripheralScalar: 0.5
   maxViewConeHalfAngle: 120
   maxViewDistance: 333
   closeViewThreshold: 100
   closeViewDistanceScalar: 1
-  losProbeBaseValue: 20
+  losProbeBaseValue: 30
 --- !u!114 &4769800100488525422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f62dfb4abaf3e419a5e72bcafee674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPerceivedDB: 40
+  minPerceivedDB: 20
 --- !u!1 &6461828906644631074
 GameObject:
   m_ObjectHideFlags: 0

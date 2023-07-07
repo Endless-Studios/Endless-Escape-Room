@@ -993,11 +993,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1080036828054471172, guid: 32429fcbf37a3404eb8b106dd18ad79a,
-        type: 3}
-      propertyPath: baseThreshold
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1224505149943912267, guid: 32429fcbf37a3404eb8b106dd18ad79a,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -8340,11 +8335,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7434589766560750895, guid: 4bd0166003eb95042908a281e57794c0,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

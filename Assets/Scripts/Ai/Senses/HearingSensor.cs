@@ -1,4 +1,3 @@
-using System;
 using Sound;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ namespace Ai
     public class HearingSensor : Sense
     {
         [SerializeField] private float minPerceivedDB;
-
+        
         private readonly RaycastHit[] hits = new RaycastHit[10];
         
         private void Start()
@@ -21,7 +20,7 @@ namespace Ai
         
         private void HandleOnSoundEmitted(EmittedSoundData soundData)
         {
-            if (soundData.SoundKind == SoundType.AiGenerated)
+            if (soundData.SoundKind == SoundType.AiGenerated || soundData.DecibelsAtSource < minPerceivedDB)
                 return;
 
             float perceivedDB = CalculatePerceivedDB(soundData);
@@ -31,7 +30,7 @@ namespace Ai
                 (
                     soundData.Position,
                     Time.time,
-                    Mathf.Clamp(perceivedDB, 0, 60), 
+                    Mathf.Clamp(perceivedDB, 0, 80), 
                     soundData.SoundKind,
                     soundData.SourceObject,
                     soundData.LineOfSightCollider
@@ -50,7 +49,7 @@ namespace Ai
         private float CalculatePerceivedDB(EmittedSoundData soundData)
         {
             Vector3 position = transform.position;
-            
+
             //Get the distance from the source of the sound to the sensor
             float distanceToSoundSource = Vector3.Distance(position, soundData.Position);
 
@@ -61,6 +60,7 @@ namespace Ai
             if (numHits == 0)
             {
                 float dbAfterFalloff = CalculateDBAfterDistanceFalloff(soundData.DecibelsAtSource, distanceToSoundSource);
+                Debug.Log($"Perceived db after falloff only: {dbAfterFalloff} db");
                 return dbAfterFalloff;
             }
 
@@ -72,9 +72,10 @@ namespace Ai
             {
                 //Get the hit collider and check if it has a SoundBlockingModifier. If it does use that value otherwise use the default
                 RaycastHit hit = hits[i];
+                float distanceToBarrier = Vector3.Distance(currentSoundOrigin, hit.point);
                 SoundBlockingModifier modifier = hit.transform.GetComponent<SoundBlockingModifier>();
                 float soundBlockingValue;
-                float distanceToBarrier = Vector3.Distance(currentSoundOrigin, hit.point);
+                
 
                 if (modifier)
                     soundBlockingValue = modifier.SoundBlockingValue;
@@ -94,7 +95,7 @@ namespace Ai
                 if (i + 1 < numHits)
                 {
                     RaycastHit nextHit = hits[i + 1];
-                    Vector3 toVector = hit.point - nextHit.point;
+                    Vector3 toVector = hit.point - position;
                     Ray ray = new Ray(nextHit.point, toVector.normalized);
                     if (hit.collider.Raycast(ray, out RaycastHit backSideHit, toVector.magnitude))
                     {
@@ -116,6 +117,7 @@ namespace Ai
                 }
             }
             
+            Debug.Log($"Final perceived db after blocking and falloff: {currentDB}");
             return currentDB;
         }
         
